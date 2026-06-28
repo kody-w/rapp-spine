@@ -38,7 +38,7 @@ on-disk token storage, and log/telemetry scrubbing.
 - **Tier-3 (Nervous System / M365):** Dataverse app-registration + macOS SSO brokered
   auth (`disableBrokeredAuth=false`). See the Power Platform solution + MSX tether docs.
 - **Inbound auth to the brainstem itself** (who may call `localhost:7071/chat`). Tier-1 is
-  local-first and binds loopback; inbound authorization is a separate concern.
+  local-first and binds 0.0.0.0 by default (loopback is the pending Phase-1 change); inbound authorization is a separate concern.
 - **Rappid eternity identity** (`rappid:@owner/slug:<sha256>`). That is *content-address*
   identity for artifacts. `rapp-auth` is *operator* identity for outbound LLM calls. They
   are orthogonal: eternity is PKI-free sha256; auth is GitHub-account-as-identity. Neither

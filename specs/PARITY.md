@@ -23,7 +23,7 @@ a caller sees) and provides the **golden conformance vectors** that *prove* a
 substrate-swapped runtime is the same runtime.
 
 The governing principle of this corpus: **what you don't write down gets lost.** Parity has
-been true *in practice* (brainstem.py and function_app.py have been hand-kept identical)
+been true *in practice* (brainstem.py is the kernel; kody-w/CommunityRAPP/function_app.py (Tier 2) currently DIVERGES from the frozen envelope (legacy assistant_response/voice_response keys, a different 400 body, and per-request agent caching) — a KNOWN parity gap, NOT yet golden-vector-clean)
 but never written as a spec an LLM can learn from or a harness can enforce. This closes
 that gap.
 

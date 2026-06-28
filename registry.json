@@ -11,8 +11,12 @@
     "network",
     "leviathan"
   ],
-  "doctrine": "The rapp-spine is not a new protocol \u2014 it is a situational router laid over the full RAPP (Rapid Agent Prototyping Platform) protocol stack. It indexes every load-bearing spec as a vertebra in an ordered column \u2014 MAP -> RUNTIME -> DISTRIBUTION -> IDENTITY -> NETWORK -> LEVIATHAN \u2014 where each layer answers exactly one question an intelligence faces. To \"crawl the spine\" is to start from your concrete situation, descend to the layer that owns that concern, and read off the one or few protocols that govern it plus how to act \u2014 instead of re-deriving the ~60-repo architecture each time. The spine inherits RAPP's prime directive: every capability rides the single wire (POST /chat, or a signed append-only event), so the router never invents new endpoints \u2014 only new agents, cartridges, or \u00a7-profiles on top of existing specs. Where two specs collide on a name (most importantly the TWO unrelated \"Leviathan\" concepts), the spine names the collision explicitly so the crawler picks the right one rather than the nearer one.",
+  "doctrine": "KERNEL FIRST: the grail/kernel of record is kody-w/rapp-installer (frozen single-file brainstem, immutable vX.Y.Z tags); kody-w/RAPP is the REFERENCE DISTRO that pins it unmodified + adds userland (rapp-distro/1.0). The rapp-spine is not a new protocol \u2014 it is a situational router laid over the full RAPP (Rapid Agent Prototyping Platform) protocol stack. It indexes every load-bearing spec as a vertebra in an ordered column \u2014 MAP -> RUNTIME -> DISTRIBUTION -> IDENTITY -> NETWORK -> LEVIATHAN \u2014 where each layer answers exactly one question an intelligence faces. To \"crawl the spine\" is to start from your concrete situation, descend to the layer that owns that concern, and read off the one or few protocols that govern it plus how to act \u2014 instead of re-deriving the ~60-repo architecture each time. The spine inherits RAPP's prime directive: every capability rides the single wire (POST /chat, or a signed append-only event), so the router never invents new endpoints \u2014 only new agents, cartridges, or \u00a7-profiles on top of existing specs. Where two specs collide on a name (most importantly the TWO unrelated \"Leviathan\" concepts), the spine names the collision explicitly so the crawler picks the right one rather than the nearer one.",
   "layers": [
+    {
+      "layer": "kernel",
+      "summary": "The kernel + its governance: the frozen single-file brainstem (rapp-agent/1.0, GRAIL=kody-w/rapp-installer; kody-w/RAPP is the reference distro pinning it via rapp-distro/1.0). Specs: rapp-kernel/1.0, rapp-auth/1.0, rapp-kernel-boundary/1.0, rapp-runtime-parity/1.0, rapp-canon/1.0, rapp-cubby/1.0, rapp-trust/1.0, rapp-substrate-trust/1.0, rapp-eternity/1.0 (identity), rapp-distro/1.0 (distros), rapp-fleet-chat/1.0 (fleet over /chat), rapp-metropolis/1.0, rapp-stores/1.0, brainstem-egg/2.3. The kernel never breaks userspace."
+    },
     {
       "layer": "map (orientation + observability)",
       "summary": "Crawl here FIRST when lost or auditing. Answers 'where does this concept live?' and 'is my copy current?'. rapp-map indexes WHICH repo owns WHICH spec; rapp-god is the live every-version content-addressed registry + drift observatory (observes, never fixes); RAPP-Bible is the synthesized human narrative ('the one file to read'); rapp_docs streams every spec's raw text live with zero copies. These four are the 'drift triangle' (actually 4 legs) anchored on ecosystem-spec.json \u2014 when they disagree, the JSON wins.",
@@ -89,9 +93,10 @@
     {
       "situation": "I just want to run AI agents locally, no API keys, fastest path (Tier 1).",
       "use": [
-        "rapp-agent/1.0 (kody-w/RAPP)"
+        "rapp-agent/1.0 (kody-w/rapp-installer = grail)",
+        "rapp-distro/1.0 (kody-w/RAPP = reference distro)"
       ],
-      "why": "Canonical current kernel: GitHub Copilot OAuth means no keys; single-file *_agent.py cartridges hot-load every request. It's the newest consolidated root other runtimes inherit from."
+      "why": "The kernel is the single-file brainstem; the GRAIL of record is kody-w/rapp-installer. kody-w/RAPP is the reference DISTRO that pins it unmodified (v0.6.0) + adds userland. GitHub Copilot OAuth means no keys."
     },
     {
       "situation": "I need persistent memory, an always-on cloud body, or a path to Copilot Studio + Teams (Tier 2/3).",
@@ -271,6 +276,17 @@
         "rapp-fleet-chat/1.0"
       ],
       "why": "The kernel/governance vertebra: the frozen ABI + the constitution + identity + the distro model + the canonical fleet wire. Grail=rapp-installer; RAPP is a distro."
+    },
+    {
+      "situation": "How do neighborhoods/estates aggregate into a metropolis? Or: how does a distro pin the kernel, or fleet talk over /chat?",
+      "use": [
+        "rapp-metropolis/1.0",
+        "rapp-distro/1.0",
+        "rapp-fleet-chat/1.0",
+        "rapp-runtime-parity/1.0",
+        "rapp-eternity/1.0"
+      ],
+      "why": "The kernel/governance vertebra's load-bearing specs: metropolis mesh composition, the distro pin model, the canonical fleet wire, T1/T2 runtime parity, and PKI-free identity."
     }
   ],
   "registry": [
@@ -278,8 +294,8 @@
       "spec_id": "rapp-agent/1.0",
       "repo": "kody-w/RAPP",
       "layer": "runtime",
-      "purpose": "Species root / canonical kernel: ~1,100-line single-file Flask brainstem running single-file *_agent.py cartridges via GitHub Copilot OAuth, no API keys. Source of truth other runtimes inherit. Owns CONSTITUTION, the brainstem-egg/2.x family, and the rapp-tether/1.0 network spec.",
-      "when_to_use": "Default Tier-1 install and the authoritative current local runtime + governing canon. Newest consolidated federation root (absorbed installer/rapp_swarm/worker).",
+      "purpose": "The REFERENCE DISTRO (rapp-distro/1.0): a clean distro that PINS the grail kernel v0.6.0 byte-identical (declared in RAPP/KERNEL_PIN.json + freeze CI) and adds the full RAPP userland (agents, soul, tiers, docs). ~1,800-line single-file Flask brainstem (the pinned kernel) running *_agent.py cartridges via GitHub Copilot OAuth, no keys. NOT the grail \u2014 the grail/kernel of record is kody-w/rapp-installer (brainstem-vX.Y.Z tags).",
+      "when_to_use": "Default Tier-1 install \u2014 the reference distro. It ships an UNMODIFIED pinned kernel (v0.6.0) plus userland. For the canonical kernel itself, see kody-w/rapp-installer (the grail).",
       "entry_point": "curl -fsSL https://kody-w.github.io/RAPP/installer/install.sh | bash (global ~/.brainstem :7071; add `-s -- --here` for project-local :7072+)"
     },
     {
@@ -475,12 +491,12 @@
       "entry_point": "https://kody-w.github.io/rapp_docs/ (specs.json is the index; add a spec = add one raw URL line)."
     },
     {
-      "spec_id": "(DEPRECATED -> kody-w/rapphub)",
+      "spec_id": "(DEPRECATED -> the RAR/RAPP_Store registry path)",
       "repo": "kody-w/RAPP_Hub",
       "layer": "distribution",
       "purpose": "ARCHIVED. Was the central registry for COMPLETE RAPP implementations (vs RAPP_Store's individual rapplications). README is now just a 'this repository has moved' redirect.",
-      "when_to_use": "Effectively never \u2014 historical reference only. For the live catalog go to kody-w/rapphub.",
-      "entry_point": "MOVED -> https://github.com/kody-w/rapphub (live: https://kody-w.github.io/rapphub/)."
+      "when_to_use": "Effectively never \u2014 historical reference only. For the live catalog go to the RAR/RAPP_Store registry path.",
+      "entry_point": "MOVED -> https://github.com/the RAR/RAPP_Store registry path (live: https://kody-w.github.io/rapphub/)."
     },
     {
       "spec_id": "rapp-estate/1.1 (canonical def in kody-w/RAPP specs/SPEC.md)",
@@ -518,7 +534,7 @@
       "spec_id": "(none; Mirror-Spec instance, kernel byte-identical to grail)",
       "repo": "kody-w/heimdall",
       "layer": "distribution",
-      "purpose": "A single planted RAPP front door on the public internet \u2014 a deployed personal estate/instance ('real estate, not software'), kernel-compliant and byte-identical to the grail kernel (v0.6.0). Conforms to the Mirror Spec; rapp_brainstem/ files are kernel-locked, agents/+soul+UI are operator's choice.",
+      "purpose": "A single planted RAPP front door on the public internet \u2014 a deployed personal estate/instance ('real estate, not software'), kernel-compliant and kernel-derived from the grail (one-string change; not byte-identical) (v0.6.0). Conforms to the Mirror Spec; rapp_brainstem/ files are kernel-locked, agents/+soul+UI are operator's choice.",
       "when_to_use": "When you want a concrete public reference of the plant/mirror pattern \u2014 visit it, install ITS brainstem (a thin wrapper re-fetching the canonical grail installer so it can't drift), or hatch it as a twin. A worked example, not a protocol.",
       "entry_point": "Visit https://kody-w.github.io/heimdall; install: curl -fsSL https://kody-w.github.io/heimdall/installer/install.sh | bash; hatch via twin-egg-hatcher --source kody-w/heimdall."
     },
@@ -678,12 +694,19 @@
       "role": "rapp-canon/1.0 \u2014 see kody-w/rapp-spine",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/CANON.md",
       "entry_point": "read specs/CANON.md in kody-w/rapp-spine"
+    },
+    {
+      "spec_id": "rapp-distro/1.0",
+      "repo": "kody-w/rapp-distro",
+      "role": "The RAPP distro standard \u2014 a distro = the unmodified pinned grail kernel + a userland; spawn permissionlessly; freeze CI proves the kernel is unmodified. Grail=rapp-installer; RAPP is the reference distro.",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-distro/main/SPEC.md",
+      "entry_point": "read SPEC.md in kody-w/rapp-distro; spawn-distro.sh scaffolds a distro"
     }
   ],
   "collisions_and_gaps": [
     "LEVIATHAN \u2014 TWO unrelated concepts share the name (the load-bearing collision). (A) Leviathan PROTOCOL (kody-w/leviathan, self-titled SPEC v1.0): ONE external mind drives MANY no-LLM brainstem BODIES over POST /api/agent/<name> \u2014 a LAN FLEET/fan-out orchestration; 'one mind, many bodies.' (B) Wrapped-Organism Leviathan (rapp_leviathan_factory -> wrap_leviathan -> rapp-leviathan-hub/rapp-leviathan-egg/1.0): ONE operator's single digital BEING built of MANY CELLS across 5 estates (Sanctum/Polity/Works/Press/Commons); 'one being, many cells.' Same word, orthogonal architectures \u2014 a crawler must disambiguate by intent (drive a node fleet vs. mint/ship a being).",
     "PORT + ROOT COLLISION: kody-w/RAPP, kody-w/rapp-installer, AND kody-w/rappterbox all install to ~/.brainstem and bind 127.0.0.1:7071. The three cannot coexist on one machine; CommunityRAPP also lands on 7071 locally (or 7072 scaffolded). Project-local RAPP uses :7072+.",
-    "DEPRECATIONS: kody-w/rapp-installer is THE GRAIL/kernel of record; kody-w/RAPP is a downstream DISTRO that pins the unmodified kernel (rapp-distro/1.0). kody-w/RAPP_Hub is ARCHIVED and redirects to kody-w/rapphub. Treat rapp-installer as the kernel grail, RAPP as its reference distro, RAPP_Hub as archived.",
+    "DEPRECATIONS: kody-w/rapp-installer is THE GRAIL/kernel of record; kody-w/RAPP is a downstream DISTRO that pins the unmodified kernel (rapp-distro/1.0). kody-w/RAPP_Hub is ARCHIVED and is archived (superseded by the RAR + RAPP_Store registry path). Treat rapp-installer as the kernel grail, RAPP as its reference distro, RAPP_Hub as archived.",
     "MISSING / 404 PROTOCOLS (gaps): (1) The Wrapped Organism Spec \u2014 advertised home kody-w/rappter is 404, no version slug; only a reference runtime survives at kody-w/rappterbook/scripts/wrapped_organism/. (2) kody-w/wrap_leviathan ships NO code anywhere reachable \u2014 its wiring stage is aspirational; leviathan_hub `hatch` covers it today. (3) kody-w/rapp_leviathan_factory has no standalone repo (404) \u2014 the canonical artifact is a RAR agent (v0.2.0).",
     "SEALING COLLISION: rapp-sealed/1.0 is the CANONICAL codec (PBKDF2-SHA256 salt 'rapp-neighborhood-5a/1', 210000 iters -> AES-256-GCM). rapp-vneighborhood/1.0 uses a DIFFERENT front-door PIN-seal variant (PBKDF2-SHA256(PIN, salt 'rapp-vneighborhood:'+channel, 100000) -> AES-GCM). Two incompatible schemes; never assume a vneighborhood channel is rapp-sealed bytes.",
     "ALIAS, NOT A PROTOCOL: 'rapp-twin-chat/1.0' is an ALIAS for \u00a76 of rapp-neighborhood-protocol/1.0, not a standalone spec. rapp-commons-protocol/2.0 and rapp-vneighborhood/1.0 are PROFILES/APPS on top of it; MCP is just another \u00a75 transport carrying the same \u00a76 envelope. None of these are new peer types.",

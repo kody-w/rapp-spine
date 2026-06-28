@@ -117,7 +117,7 @@ Frozen surface of `BasicAgent`:
 POST /chat
 {
   "user_input": "user turn (string)",
-  "conversation_history": [ {"role": "user|assistant", "content": "..."} ],  // optional prior turns
+  "conversation_history": [ {"role": "user|assistant|tool", "content": "..."} ],  // optional prior turns
   "session_id": "opaque id (string)"                                          // optional; echoed back
 }
 
