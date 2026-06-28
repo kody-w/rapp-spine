@@ -541,6 +541,41 @@
       "purpose": "The many-headed unkillable medium: the swarm's static data is mirrored to many independent heads (GitHub raw, jsDelivr, raw.githack, mirrors, IPFS); read from any head, trust the content-hash not the host. Cut one head, two grow.",
       "when_to_use": "I must keep reading the swarm even if a host/CDN is taken down, geoblocked, or bans the account",
       "entry_point": "an edge head-list with content-verify + failover; HYDRA.md"
+    },
+    {
+      "spec_id": "rapp-sense/1.0",
+      "repo": "kody-w/RAPP_Sense_Store",
+      "role": "Canonical public catalog + spec for RAPP senses (modular per-channel output overlays that drop into a brainstem's utils/senses/); peer to RAR (agents) and RAPP_Store (rapplications)",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP_Sense_Store/main/SPEC.md",
+      "entry_point": "Browse index.json / submit via @rapp/rapp_publish_agent or a [SENSE] @<user>/<slug> issue; install sense .py files into rapp_brainstem/utils/senses/"
+    },
+    {
+      "spec_id": "rapp-application/1.0",
+      "repo": "kody-w/RAPP_Store",
+      "role": "Public catalog + canonical spec for rapplications (bundled single-file agent + UI/state/service/twin cartridges); defines bundle layout, manifest schema, gated-rapp federation, and the static Pokedex API.",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP_Store/main/SPEC.md",
+      "entry_point": "Browse the static Pokedex API at https://raw.githubusercontent.com/kody-w/RAPP_Store/main/api/v1/index.json (or the viewer kody-w.github.io/RAPP_Store/); rapps conform to rapp-application/1.0 and drop into a local brainstem."
+    },
+    {
+      "spec_id": "rappcards-binder/1.0",
+      "repo": "kody-w/RAPPcards",
+      "role": "Canonical owner of the portable RAPPcards trading-card standard (card data model, deterministic seed identity, incantation protocol, lossless export, cross-binder federation) \u2014 declares rappcards-binder/1.0 + rappcards-peers/1.0 + rappcards-seed-index/1.0",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPPcards/main/SPEC.md",
+      "entry_point": "Read SPEC.md for the standard; live site at kody-w.github.io/RAPPcards (index.html browse, binder.html local-first IndexedDB collection). Federation bootstrap: raw.githubusercontent.com/kody-w/RAPPcards/main/peers.json"
+    },
+    {
+      "spec_id": "rapp-demo/1.0",
+      "repo": "kody-w/rapp-demos",
+      "role": "Owner of the rapp-demo/1.0 scenario schema and its scan-to-watch synced demo player: an M365-style template where a host walks a text scenario step-by-step and QR/link watchers follow live, read-only, over a rapp-sealed WebRTC channel.",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-demos/main/README.md",
+      "entry_point": "Live player at https://kody-w.github.io/rapp-demos/ ; author/import a `rapp-demo/1.0` scenario JSON (see scenarios/) into the fixed M365 template and drive it; schema canonically defined inline in README.md"
+    },
+    {
+      "spec_id": "rapp-spine/1.0",
+      "repo": "kody-w/rapp-spine",
+      "role": "The situational router/index over the full RAPP protocol stack \u2014 maps situation\u2192layer\u2192protocol across ~60 repos and ~33 specs; also owns FOUNDATION (foundation.json, the locked content-addressed canonical registry) and the crawlable registry.json",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/SPINE.md",
+      "entry_point": "Crawl it: fetch https://raw.githubusercontent.com/kody-w/rapp-spine/main/registry.json and match your situation against `router`, or run `python crawl.py \"<situation>\"`; full instructions in CRAWL.md. Read SPINE.md for the whole column + collisions."
     }
   ],
   "collisions_and_gaps": [
