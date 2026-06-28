@@ -231,7 +231,7 @@
     {
       "situation": "A brainstem on a spotty/high-latency/intermittent link (a 'robot on Mars') must act autonomously and re-aim when it reaches the swarm.",
       "use": [
-        "rapp-frame/1.0"
+        "rapp-frame/2.0"
       ],
       "why": "the edge is a brainstem making local judgments; frames/echos re-aim it; degrade-to-one offline."
     },
@@ -527,7 +527,7 @@
       "entry_point": "az login && func --version (v4) && ./deploy.sh; add base URL to neighborhood.json -> commons.cloud_hosts. Routes: /api/health, /api/rooms/{room}/events. Live: rapp-resident-kw165843.azurewebsites.net/api."
     },
     {
-      "spec_id": "rapp-frame/1.0",
+      "spec_id": "rapp-frame/2.0",
       "repo": "kody-w/rapp-frame-net",
       "layer": "leviathan",
       "purpose": "The planetary swarm wire: drive far/intermittent brainstem EDGES as one swarm over append-only frames/echos served from GitHub. The edge is a brainstem making local judgments; verify-before-act; degrade-to-one offline.",

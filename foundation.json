@@ -30,12 +30,12 @@
       "sha256": "60eb87dc018fd55151c2a87369b051da9d1c010c53c3927980a11e9f3f804a18"
     },
     {
-      "spec": "rapp-frame/1.0",
+      "spec": "rapp-frame/2.0",
       "repo": "kody-w/rapp-frame-net",
       "role": "planet \u2014 many fleets, async, over GitHub",
       "locked": true,
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/SPEC.md",
-      "sha256": "8b50616c64887656e9855481263dfccbca27804c383fc6b46ee24f334bcaf37d"
+      "sha256": "98b8f7a1a550257528c30e51631574a1dcc700e40079ee4dae00b5f5eae8862c"
     },
     {
       "spec": "rapp-hydra/1.0",
@@ -43,7 +43,7 @@
       "role": "survival \u2014 many heads, one body; unkillable static medium",
       "locked": true,
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/HYDRA.md",
-      "sha256": "d5e85b93dcfc7b4097994f1856a7ad97949f754c48a8a6958cd735c613049167"
+      "sha256": "6a6de8ae6ffed90b244aef3f0c5c2791c6e97cc05811b1cd11240d7c7900ed7e"
     },
     {
       "spec": "rapp-spine/1.0",

@@ -13,7 +13,7 @@ The atom is the same everywhere; only the arrangement scales.
 - one brainstem = an organism (`rapp-agent/1.0`, the kernel)
 - many cells in one = a **being** (Wrapped Organism)
 - many bodies as one mind = a **fleet** (Leviathan Protocol)
-- many fleets across the planet, async = the **frame-net** (`rapp-frame/1.0`)
+- many fleets across the planet, async = the **frame-net** (`rapp-frame/2.0`)
 
 Compose atoms; never split the atom.
 
@@ -55,7 +55,7 @@ build →  agents/cartridges/profiles ON the wire           (never into the kern
 | **Kernel** | `rapp-agent/1.0` | the atom — the single-file brainstem contract |
 | **Fleet** | `leviathan` SPEC v1.0 | one mind, many bodies (sync, LAN) |
 | **Being** | `rapp-leviathan-egg/1.0` + Wrapped Organism | many cells, one organism (portable) |
-| **Planet** | `rapp-frame/1.0` | many fleets, async, over GitHub (frame/echo/public-twin) |
+| **Planet** | `rapp-frame/2.0` | many fleets, async, over GitHub (frame/echo/public-twin) |
 | **Survival** | `rapp-hydra/1.0` | many heads, one body — the static medium no one can shut down (cut a head, two grow) |
 | **Router** | `rapp-spine/1.0` | situation → the right pillar |
 | **Map / Drift** | `rapp-map`, `rapp-god` | where each pillar lives; is your copy canonical? |
