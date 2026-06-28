@@ -455,14 +455,6 @@
       "entry_point": "https://kody-w.github.io/rapp-god/ (dashboard); registry.json + api/v1/status.json (static API); build_god.py."
     },
     {
-      "spec_id": "rapp-eternity/1.0",
-      "repo": "kody-w/RAPP-Bible",
-      "layer": "map",
-      "purpose": "Single human-readable aggregation site rendering the whole ecosystem end-to-end ('the one repo to understand RAPP from'). 4th leg of the drift triangle \u2014 when it disagrees with ecosystem-spec.json, the JSON wins. Canonical home of rapp-eternity/1.0 (the rappid:@owner/slug:64hex identity standard).",
-      "when_to_use": "When a HUMAN needs to onboard to all of RAPP in one pass \u2014 the 5 primitives / 7 OSI layers / fractal scales, the one agent, the ~80 schemas, every repo, the operator journeys.",
-      "entry_point": "https://kody-w.github.io/RAPP-Bible/ -> OVERVIEW.md (the 'if you read one file' file). Pinned v1.0.0; points back to kody-w/RAPP."
-    },
-    {
       "spec_id": "(none; live spec renderer)",
       "repo": "kody-w/rapp_docs",
       "layer": "map",
