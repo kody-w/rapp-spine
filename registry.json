@@ -666,6 +666,13 @@
       "role": "<!-- (c) 2026 Kody Wildfeuer \u00b7 part of the RAPP ecosystem (RAPP) -->",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/CANON.md",
       "entry_point": "read specs/CANON.md in kody-w/rapp-spine"
+    },
+    {
+      "spec_id": "rapp-bible-corpus",
+      "repo": "kody-w/RAPP-Bible",
+      "role": "The human-facing canonical aggregation site: one repo that renders ecosystem-spec.json v1.0.0 into a read-it-all narrative of the entire RAP",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP-Bible/main/README.md",
+      "entry_point": "Browse the aggregated spec corpus; mirrors each spec's canonical home."
     }
   ],
   "collisions_and_gaps": [
