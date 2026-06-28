@@ -51,7 +51,7 @@
       "role": "router + foundation registry",
       "locked": true,
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md",
-      "sha256": "b75bf96d19c0e185ef86aace8d696574bd0ce481e4a5c7fea6233090cc368777"
+      "sha256": "6c0fbeee5bc134e74278edc4970924142d2cb1f3680f0e439fedd926ffc95176"
     },
     {
       "spec": "rapp-roadmap",
@@ -59,7 +59,7 @@
       "role": "how we build from here (kernel stays locked)",
       "locked": true,
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/roadmap.json",
-      "sha256": "a9acf961fa31d351d6f9543797a4223a581754dbec7718b5822cd5deff735fd1"
+      "sha256": "f1ccef8774de5bf3a408ba24d27bbbf122154d468bc6a4b20bcb9b6f79f389e5"
     }
   ],
   "law": [
