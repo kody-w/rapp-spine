@@ -171,8 +171,10 @@ codec, and schema belong to the cited owning specs.
   (`rappid:@owner/slug:<64hex>`, a PKI-free sha256 content-address) and an **optional** keypair
   signature over the payload bytes. The signature's `sig_suite` MUST be drawn from the
   `rapp-eternity/1.0` ladder — `none` → `ed25519` → `ecdsa-p256` → reserved-PQ — where `none` is the
-  gh-collaborator default and `ed25519` is the canonical valid keypair suite; a verifier MUST reject a
-  `sig_suite` value not on that ladder and MUST NOT define a substrate-local suite. This binding is
+  gh-collaborator default and `ed25519` is the canonical valid keypair suite; a verifier treats a
+  `sig_suite` value it does not recognize on that ladder as **skip-as-absent** — it falls through to the
+  gh-collaborator L1 default and MUST NOT deny on an unrecognized suite alone (per `rapp-trust/1.0` §5);
+  it MUST NOT define a substrate-local suite. This binding is
   **purely additive sovereignty**: it lets the author prove authorship *independently of GitHub*
   (surviving takedown, account loss, or going offline — §6). It is **never required** by any
   conforming component, and a verifier MUST accept a validly-consented write that carries no keypair

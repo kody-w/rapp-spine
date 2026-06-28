@@ -15,7 +15,23 @@
   "layers": [
     {
       "layer": "kernel",
-      "summary": "The kernel + its governance: the frozen single-file brainstem (rapp-agent/1.0, GRAIL=kody-w/rapp-installer; kody-w/RAPP is the reference distro pinning it via rapp-distro/1.0). Specs: rapp-kernel/1.0, rapp-auth/1.0, rapp-kernel-boundary/1.0, rapp-runtime-parity/1.0, rapp-canon/1.0, rapp-cubby/1.0, rapp-trust/1.0, rapp-substrate-trust/1.0, rapp-eternity/1.0 (identity), rapp-distro/1.0 (distros), rapp-fleet-chat/1.0 (fleet over /chat), rapp-metropolis/1.0, rapp-stores/1.0, brainstem-egg/2.3. The kernel never breaks userspace."
+      "summary": "The kernel + its governance: the frozen single-file brainstem (rapp-agent/1.0, GRAIL=kody-w/rapp-installer; kody-w/RAPP is the reference distro pinning it via rapp-distro/1.0). Specs: rapp-kernel/1.0, rapp-auth/1.0, rapp-kernel-boundary/1.0, rapp-runtime-parity/1.0, rapp-canon/1.0, rapp-cubby/1.0, rapp-trust/1.0, rapp-substrate-trust/1.0, rapp-eternity/1.0 (identity), rapp-distro/1.0 (distros), rapp-fleet-chat/1.0 (fleet over /chat), rapp-metropolis/1.0, rapp-stores/1.0, brainstem-egg/2.3. The kernel never breaks userspace.",
+      "protocols": [
+        "rapp-kernel/1.0",
+        "rapp-auth/1.0",
+        "rapp-kernel-boundary/1.0",
+        "rapp-runtime-parity/1.0",
+        "rapp-canon/1.0",
+        "rapp-cubby/1.0",
+        "rapp-trust/1.0",
+        "rapp-substrate-trust/1.0",
+        "rapp-eternity/1.0",
+        "rapp-distro/1.0",
+        "rapp-fleet-chat/1.0",
+        "rapp-metropolis/1.0",
+        "rapp-stores/1.0",
+        "brainstem-egg/2.3"
+      ]
     },
     {
       "layer": "map (orientation + observability)",
@@ -104,7 +120,7 @@
         "CommunityRAPP (Tier-2 Azure Functions)",
         "rapp-dataverse/1.0"
       ],
-      "why": "CommunityRAPP adds memory on every request and deploys to Azure OpenAI; rapp-dataverse runs the same brainstem natively on Power Platform, ending in a grounded Copilot Studio bot. Both preserve the agent contract (stem/function_app parity)."
+      "why": "CommunityRAPP adds memory on every request and deploys to Azure OpenAI; rapp-dataverse runs the same brainstem natively on Power Platform, ending in a grounded Copilot Studio bot. Both run the agent contract; NOTE function_app.py (T2) currently emits the legacy envelope (assistant_response/voice_response, no session_id/voice_mode) \u2014 a KNOWN parity gap, not golden-vector-clean (PARITY.md)."
     },
     {
       "situation": "I need a brainstem for curl/CI/MCP/scripts with no Flask, no browser, no Copilot subscription.",
@@ -287,6 +303,19 @@
         "rapp-eternity/1.0"
       ],
       "why": "The kernel/governance vertebra's load-bearing specs: metropolis mesh composition, the distro pin model, the canonical fleet wire, T1/T2 runtime parity, and PKI-free identity."
+    },
+    {
+      "situation": "Auth chain / network boundary / cubby storage / trust+ownership / substrate signing / the three stores / the egg family \u2014 where are these governed?",
+      "use": [
+        "rapp-auth/1.0",
+        "rapp-kernel-boundary/1.0",
+        "rapp-cubby/1.0",
+        "rapp-trust/1.0",
+        "rapp-substrate-trust/1.0",
+        "rapp-stores/1.0",
+        "brainstem-egg/2.3"
+      ],
+      "why": "The remaining kernel/governance-vertebra specs: the GitHub-Copilot auth chain, the 0.0.0.0/RCE network boundary (Phase-1 open), cubby storage, signing-optional trust, substrate signing, the RAR/RAPP_Store/RAPP_Sense_Store federation, and the egg scale ladder."
     }
   ],
   "registry": [
@@ -496,7 +525,7 @@
       "layer": "distribution",
       "purpose": "ARCHIVED. Was the central registry for COMPLETE RAPP implementations (vs RAPP_Store's individual rapplications). README is now just a 'this repository has moved' redirect.",
       "when_to_use": "Effectively never \u2014 historical reference only. For the live catalog go to the RAR/RAPP_Store registry path.",
-      "entry_point": "MOVED -> https://github.com/the RAR/RAPP_Store registry path (live: https://kody-w.github.io/rapphub/)."
+      "entry_point": "MOVED -> the RAR + RAPP_Store registry path (live: https://kody-w.github.io/rapphub/)."
     },
     {
       "spec_id": "rapp-estate/1.1 (canonical def in kody-w/RAPP specs/SPEC.md)",
@@ -602,77 +631,88 @@
       "repo": "kody-w/rapp-eternity",
       "role": "rapp-eternity/1.0 \u2014 The Rappid Identity & Ownership Standard",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-eternity/main/SPEC.md",
-      "entry_point": "read SPEC.md in kody-w/rapp-eternity"
+      "entry_point": "read SPEC.md in kody-w/rapp-eternity",
+      "layer": "kernel"
     },
     {
       "spec_id": "rapp-fleet-chat/1.0",
       "repo": "kody-w/leviathan",
       "role": "RAPP Fleet-Chat \u2014 `rapp-fleet-chat/1.0`",
       "raw_url": "https://raw.githubusercontent.com/kody-w/leviathan/main/FLEET_CHAT.md",
-      "entry_point": "read FLEET_CHAT.md in kody-w/leviathan"
+      "entry_point": "read FLEET_CHAT.md in kody-w/leviathan",
+      "layer": "kernel"
     },
     {
       "spec_id": "rapp-kernel/1.0",
       "repo": "kody-w/rapp-spine",
       "role": "rapp-kernel/1.0",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/KERNEL.md",
-      "entry_point": "read specs/KERNEL.md in kody-w/rapp-spine"
+      "entry_point": "read specs/KERNEL.md in kody-w/rapp-spine",
+      "layer": "kernel"
     },
     {
       "spec_id": "rapp-metropolis/1.0",
       "repo": "kody-w/rapp-estate",
       "role": "rapp-metropolis/1.0",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-estate/main/METROPOLIS.md",
-      "entry_point": "read METROPOLIS.md in kody-w/rapp-estate"
+      "entry_point": "read METROPOLIS.md in kody-w/rapp-estate",
+      "layer": "kernel"
     },
     {
       "spec_id": "rapp-auth/1.0",
       "repo": "kody-w/rapp-spine",
       "role": "rapp-auth/1.0 \u2014 The Brainstem Auth Chain",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/AUTH_CHAIN.md",
-      "entry_point": "read specs/AUTH_CHAIN.md in kody-w/rapp-spine"
+      "entry_point": "read specs/AUTH_CHAIN.md in kody-w/rapp-spine",
+      "layer": "kernel"
     },
     {
       "spec_id": "rapp-kernel-boundary/1.0",
       "repo": "kody-w/rapp-spine",
       "role": "rapp-kernel-boundary/1.0 \u2014 The Kernel Network Trust Boundary",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/NETWORK_TRUST_BOUNDARY.md",
-      "entry_point": "read specs/NETWORK_TRUST_BOUNDARY.md in kody-w/rapp-spine"
+      "entry_point": "read specs/NETWORK_TRUST_BOUNDARY.md in kody-w/rapp-spine",
+      "layer": "kernel"
     },
     {
       "spec_id": "rapp-trust/1.0",
       "repo": "kody-w/rapp-spine",
       "role": "Trust & ownership \u2014 defers to rapp-eternity/1.0 (content-address identity; keypair optional)",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/TRUST_AND_OWNERSHIP.md",
-      "entry_point": "read specs/TRUST_AND_OWNERSHIP.md in kody-w/rapp-spine"
+      "entry_point": "read specs/TRUST_AND_OWNERSHIP.md in kody-w/rapp-spine",
+      "layer": "kernel"
     },
     {
       "spec_id": "rapp-substrate-trust/1.0",
       "repo": "kody-w/rapp-spine",
       "role": "The Substrate Trust Model \u2014 `rapp-substrate-trust/1.0`",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/SUBSTRATE_TRUST.md",
-      "entry_point": "read specs/SUBSTRATE_TRUST.md in kody-w/rapp-spine"
+      "entry_point": "read specs/SUBSTRATE_TRUST.md in kody-w/rapp-spine",
+      "layer": "kernel"
     },
     {
       "spec_id": "rapp-cubby/1.0",
       "repo": "kody-w/rapp-spine",
       "role": "The Cubby Shelf & the Super-RAR",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/CUBBY.md",
-      "entry_point": "read specs/CUBBY.md in kody-w/rapp-spine"
+      "entry_point": "read specs/CUBBY.md in kody-w/rapp-spine",
+      "layer": "kernel"
     },
     {
       "spec_id": "rapp-stores/1.0",
       "repo": "kody-w/RAPP_Store",
       "role": "RAPP Stores \u2014 The Three-Store Topology",
       "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP_Store/main/specs/STORES.md",
-      "entry_point": "read specs/STORES.md in kody-w/RAPP_Store"
+      "entry_point": "read specs/STORES.md in kody-w/RAPP_Store",
+      "layer": "kernel"
     },
     {
       "spec_id": "brainstem-egg/2.3",
       "repo": "kody-w/rapp-egg-hub",
       "role": "The `.egg` Cartridge Family & Multi-Scale Hatch Contract",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-egg-hub/main/EGG_FAMILY.md",
-      "entry_point": "read EGG_FAMILY.md in kody-w/rapp-egg-hub"
+      "entry_point": "read EGG_FAMILY.md in kody-w/rapp-egg-hub",
+      "layer": "kernel"
     },
     {
       "spec_id": "rapp-payphone-dial/1.0",
@@ -686,21 +726,24 @@
       "repo": "kody-w/rapp-spine",
       "role": "rapp-runtime-parity/1.0",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/PARITY.md",
-      "entry_point": "read specs/PARITY.md in kody-w/rapp-spine"
+      "entry_point": "read specs/PARITY.md in kody-w/rapp-spine",
+      "layer": "kernel"
     },
     {
       "spec_id": "rapp-canon/1.0",
       "repo": "kody-w/rapp-spine",
       "role": "rapp-canon/1.0 \u2014 see kody-w/rapp-spine",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/CANON.md",
-      "entry_point": "read specs/CANON.md in kody-w/rapp-spine"
+      "entry_point": "read specs/CANON.md in kody-w/rapp-spine",
+      "layer": "kernel"
     },
     {
       "spec_id": "rapp-distro/1.0",
       "repo": "kody-w/rapp-distro",
       "role": "The RAPP distro standard \u2014 a distro = the unmodified pinned grail kernel + a userland; spawn permissionlessly; freeze CI proves the kernel is unmodified. Grail=rapp-installer; RAPP is the reference distro.",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-distro/main/SPEC.md",
-      "entry_point": "read SPEC.md in kody-w/rapp-distro; spawn-distro.sh scaffolds a distro"
+      "entry_point": "read SPEC.md in kody-w/rapp-distro; spawn-distro.sh scaffolds a distro",
+      "layer": "kernel"
     }
   ],
   "collisions_and_gaps": [

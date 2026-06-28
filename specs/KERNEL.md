@@ -121,18 +121,17 @@ POST /chat
   "session_id": "opaque id (string)"                                          // optional; echoed back
 }
 
-// Response
+// Response (success)
 {
   "response": "final assistant text (string)",
   "session_id": "the conversation id (string)",
   "agent_logs": "agent activity, NEWLINE-JOINED STRING (not an array)",
-  "voice_mode": false,
-  "model": "the model used (string)",
-  "requested_model": "the model asked for (string)"
+  "voice_mode": false
+  // optional: "voice_response" (string) — present only when the reply carries a |||VOICE||| split
 }
 ```
 
-Guarantees: `/chat` accepts `user_input` + optional `conversation_history`/`session_id`, runs the discover→tools→`perform`→loop cycle (bounded at 3 tool rounds), and returns `response` (+ `session_id`, `agent_logs` as a newline-joined string, `voice_mode`, `model`, `requested_model`). There is **no** `assistant_response` key. New capability is added by **dropping an agent**, never by adding a route. (Fleet/estate messaging rides on top of `/chat` as signed twin-chat events — see [`rapp-fleet-chat/1.0`](https://github.com/kody-w/leviathan/blob/main/FLEET_CHAT.md) / `rapp-commons-event/1.0` — not on a side channel.)
+Guarantees: `/chat` accepts `user_input` + optional `conversation_history`/`session_id`, runs the discover→tools→`perform`→loop cycle (bounded at 3 tool rounds), and returns the success envelope `{response, session_id, agent_logs (newline-joined string), voice_mode}` (+ optional `voice_response`). There is **no** `assistant_response`, `model`, or `requested_model` key on the success path (`model` appears only in the 5xx error body). New capability is added by **dropping an agent**, never by adding a route. (Fleet/estate messaging rides on top of `/chat` as signed twin-chat events — see [`rapp-fleet-chat/1.0`](https://github.com/kody-w/leviathan/blob/main/FLEET_CHAT.md) / `rapp-commons-event/1.0` — not on a side channel.)
 
 ### 2.3 ABI-3 — Auto-discovery
 
@@ -155,7 +154,7 @@ Missing pip dependencies referenced by an agent are auto-installed at import tim
 - Line counts, private function names, or internal globals inside `brainstem.py`.
 - The contents of `soul.md` / `index.html` (seed files, user-replaceable).
 
-Agents that reach past the ABesI into kernel internals are **non-conforming** and carry no compatibility guarantee.
+Agents that reach past the ABI into kernel internals are **non-conforming** and carry no compatibility guarantee.
 
 ---
 
@@ -285,7 +284,7 @@ A server that adds capability only through drop-in agents, never moves a tag, an
 extends BasicAgent · name + metadata{name,description,parameters(OpenAI schema)} · perform(**kwargs)->str
 optional: system_context()->str|None
 file: agents/**/<name>_agent.py   (NOT under experimental_agents/ or disabled_agents/)
-wire:  POST /chat {user_input, conversation_history?, session_id?} -> {response, session_id, agent_logs(newline-string), voice_mode, model, requested_model}
+wire:  POST /chat {user_input, conversation_history?, session_id?} -> success {response, session_id, agent_logs(newline-string), voice_mode} (+ optional voice_response)
 shim:  from utils.azure_file_storage import AzureFileStorageManager   (→ local)
 guarantee: works on every 1.x kernel, unmodified, forever.
 ```

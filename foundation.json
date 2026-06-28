@@ -1,6 +1,6 @@
 {
   "spec": "rapp-foundation/1.0",
-  "what": "The locked, content-addressed canonical registry of the RAPP foundation pillars. Fetch over the hydra, verify sha256 against this, then build ON the wire (agents/cartridges/profiles) \u2014 never into the kernel. rapp-god watches every copy against these hashes for drift.",
+  "what": "The locked, content-addressed canonical registry of the RAPP foundation pillars. Fetch over the hydra, verify sha256 against this, then build ON the wire (agents/cartridges/profiles) \u2014 never into the kernel. rapp-god watches copies against these hashes (its own observatory has known-open lag \u2014 see estate-map known-open) for drift.",
   "doctrine": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md",
   "generated": "2026-06-28",
   "pillars": [
@@ -19,7 +19,8 @@
       "role": "fleet \u2014 one mind, many bodies (sync/LAN)",
       "locked": true,
       "raw_url": "https://raw.githubusercontent.com/kody-w/leviathan/main/SPEC.md",
-      "sha256": "3e6679f192b67c8eb30b92f0fda23ff8b3a3a800e75d0772bc8c6e32733c5453"
+      "sha256": "3e6679f192b67c8eb30b92f0fda23ff8b3a3a800e75d0772bc8c6e32733c5453",
+      "canonical_wire_note": "Fleet ORCHESTRATION concept. The canonical fleet WIRE is rapp-fleet-chat/1.0 (signed twin-chat events over /chat, Art XXV). The legacy POST /api/agent route is the Phase-1 RCE (LAN-only, to retire)."
     },
     {
       "spec": "rapp-leviathan-egg/1.0",
@@ -83,8 +84,8 @@
       "doc": "SPEC (kernel wire contract)",
       "repo": "kody-w/RAPP",
       "role": "the wire contract the Constitution protects",
-      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/main/SPEC.md",
-      "sha256": null,
+      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/main/specs/SPEC.md",
+      "sha256": "c27433db81074d0bb2b9ec6d45809b4aad33a1803a1f2632d4a257ce74a66716",
       "locked": true
     },
     {
