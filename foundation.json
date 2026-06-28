@@ -102,10 +102,26 @@
       "sha256": null
     }
   ],
-  "spec_corpus": {
-    "canonical_aggregate (RAPP-Bible)": "https://github.com/kody-w/RAPP-Bible \u2014 one repo, every RAPP spec, every entry point",
-    "live_stream (rapp_docs)": "https://github.com/kody-w/rapp_docs \u2014 every spec streamed live from each home repo's raw data, no copies",
-    "drift_detector (rapp-god)": "https://github.com/kody-w/rapp-god \u2014 god's-eye map + live canonical-integrity / cross-repo drift detector",
-    "router (rapp-spine)": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/registry.json"
-  }
+  "spec_corpus": [
+    {
+      "role": "canonical_aggregate",
+      "repo": "kody-w/RAPP-Bible",
+      "url": "https://github.com/kody-w/RAPP-Bible \u2014 one repo, every RAPP spec, every entry point"
+    },
+    {
+      "role": "live_stream",
+      "repo": "kody-w/rapp_docs",
+      "url": "https://github.com/kody-w/rapp_docs \u2014 every spec streamed live from each home repo's raw data, no copies"
+    },
+    {
+      "role": "drift_detector",
+      "repo": "kody-w/rapp-god",
+      "url": "https://github.com/kody-w/rapp-god \u2014 god's-eye map + live canonical-integrity / cross-repo drift detector"
+    },
+    {
+      "role": "router",
+      "repo": "kody-w/rapp-spine",
+      "url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/registry.json"
+    }
+  ]
 }

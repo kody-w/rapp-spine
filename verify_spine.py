@@ -24,6 +24,19 @@ import urllib.request
 RAW = "https://raw.githubusercontent.com"
 SPINE = f"{RAW}/kody-w/rapp-spine/main"
 ESTATE = f"{RAW}/kody-w/rapp-map/main/estate-map.json"
+LOCAL = "--local" in sys.argv  # read the working tree (no CDN lag) for spine + estate; specs still fetched live
+
+
+def _local_or(url, local_path):
+    if LOCAL:
+        import os
+        p = os.path.expanduser(local_path)
+        if os.path.exists(p):
+            try:
+                return json.load(open(p))
+            except Exception:
+                pass
+    return getj(url)
 
 
 def get(url, timeout=15):
@@ -55,9 +68,9 @@ def _iter(o):
 
 def main():
     report = {"invariants": {}, "drift": []}
-    estate = getj(ESTATE) or {}
-    registry = getj(f"{SPINE}/registry.json") or {}
-    foundation = getj(f"{SPINE}/foundation.json") or {}
+    estate = _local_or(ESTATE, "~/Documents/GitHub/rapp-map/estate-map.json") or {}
+    registry = _local_or(f"{SPINE}/registry.json", "~/Documents/GitHub/rapp-spine/registry.json") or {}
+    foundation = _local_or(f"{SPINE}/foundation.json", "~/Documents/GitHub/rapp-spine/foundation.json") or {}
 
     # collect spine-referenced repos + spec entries
     spine_repos, spec_entries = set(), []
