@@ -31,6 +31,33 @@ brainstem running the unchanged kernel + agents, everything the rapp repo offers
 (eggs/organisms, the RAR/Store/Sense federation, vBrainstem, the three tiers, soul/memory/
 rappid identity) works at every edge, unchanged. The frame-net only *re-aims* it.
 
+## 2a. The kernel/distro model — the Linux philosophy
+
+RAPP deliberately follows the model that made **Linux rule compute**: a tiny sacred kernel, and an
+open explosion of *distros* built on it. The mapping is exact:
+
+| Linux | RAPP |
+|---|---|
+| the Linux kernel | the **brainstem** (`rapp-agent/1.0`, [kody-w/rapp-installer](https://github.com/kody-w/rapp-installer) — **the grail**) |
+| a kernel release + immutable tag (`v6.9`) | a brainstem **VERSION** + immutable `vX.Y.Z` tag |
+| the syscall ABI — *"never break userspace"* | the **agent ABI**: `BasicAgent.metadata` + `perform(**kwargs) -> str`, the `/chat` envelope, agent auto-discovery |
+| loadable modules / userspace programs | **agents** — drop-in `*_agent.py` |
+| a distro (Ubuntu, Fedora, Arch) | a **RAPP distro** — the unmodified kernel (pinned to a version) + a userland (agents, `soul.md`, specs, branding) |
+| an LTS distro pinning an older kernel | [kody-w/RAPP](https://github.com/kody-w/RAPP) pins kernel **v0.6.0** *byte-identical* while the grail ships `0.6.1` (verified: `brainstem.py` + `basic_agent.py` + `VERSION` all match grail@v0.6.0) |
+
+**The rules (borrowed from Linus, because they work):**
+
+1. **The kernel is sacred and minimal.** One file, one job. Changed only in the grail, version-bumped, tagged immutably. Distros never patch it.
+2. **The kernel never breaks userspace.** The agent ABI is frozen — an `agent.py` written for any kernel keeps running on every later kernel, forever. This is the contract that lets the ecosystem compound.
+3. **A distro = a pinned kernel + a userland.** It ships the kernel *unmodified* (byte-identical to a grail tag) and adds everything else on top. RAPP is the reference distro.
+4. **Anyone can spawn a distro.** Pick a kernel version, assemble a userland, ship — no permission needed. Exactly why Linux distros number in the thousands. The kernel stays one thing; the variety lives in the distros. *This is the adoption flywheel.*
+5. **Pin, don't fork.** A distro may pin any kernel version (LTS-style) or track the latest (rolling) — but it may **not modify** the kernel. That's a fork, and forks are drift. The freeze CI invariant is therefore **`distro kernel files == grail @ its pinned tag`** — *not* `main == main`.
+
+So "kernel sacred," "use everyone else's hardware," and "engine, not experience" are one idea: the
+kernel is the single fixed point; distros and operators do everything else. The estate's "split-brain"
+between rapp-installer and RAPP was never drift — it is a distro correctly **pinning** an unmodified
+kernel. RAPP is to the brainstem what Ubuntu is to Linux.
+
 ## 3. A globally-public canonical twin for everything
 
 Every load-bearing spec has a **canonical twin**: content-addressed, signed, and served
