@@ -110,7 +110,7 @@ Frozen surface of `BasicAgent`:
 
 ### 2.2 ABI-2 — `POST /chat` is the only wire
 
-`POST /chat` is the **single public capability surface**. All agent capability flows through it; the kernel exposes no per-feature REST routes. The frozen request/response shape — **as the grail `brainstem.py` actually serves it** (`brainstem-v0.6.1`). [`PARITY.md`](./PARITY.md) is the single **normative owner** of this wire; this section restates it for context only:
+`POST /chat` is the **single public capability surface**. All agent capability flows through it; the kernel exposes no per-feature REST routes. The frozen request/response shape — **as the grail `brainstem.py` on `main` actually serves it** (this is the kernel the one-liner installs; the `brainstem-v0.6.1` tag is currently *behind* `main` and omits `model`/`requested_model` — a Phase-0 tag-hygiene item). [`PARITY.md`](./PARITY.md) is the single **normative owner** of this wire; this section restates it for context only:
 
 ```jsonc
 // Request
@@ -126,12 +126,14 @@ POST /chat
   "response": "final assistant text (string)",
   "session_id": "the conversation id (string)",
   "agent_logs": "agent activity, NEWLINE-JOINED STRING (not an array)",
-  "voice_mode": false
+  "voice_mode": false,
+  "model": "the model that actually answered (string)",
+  "requested_model": "the configured/requested model id (string)"
   // optional: "voice_response" (string) — present only when the reply carries a |||VOICE||| split
 }
 ```
 
-Guarantees: `/chat` accepts `user_input` + optional `conversation_history`/`session_id`, runs the discover→tools→`perform`→loop cycle (bounded at 3 tool rounds), and returns the success envelope `{response, session_id, agent_logs (newline-joined string), voice_mode}` (+ optional `voice_response`). There is **no** `assistant_response`, `model`, or `requested_model` key on the success path (`model` appears only in the 5xx error body). New capability is added by **dropping an agent**, never by adding a route. (Fleet/estate messaging rides on top of `/chat` as signed twin-chat events — see [`rapp-fleet-chat/1.0`](https://github.com/kody-w/leviathan/blob/main/FLEET_CHAT.md) / `rapp-commons-event/1.0` — not on a side channel.)
+Guarantees: `/chat` accepts `user_input` + optional `conversation_history`/`session_id`, runs the discover→tools→`perform`→loop cycle (bounded at 3 tool rounds), and returns the success envelope `{response, session_id, agent_logs (newline-joined string), voice_mode, model, requested_model}` (+ optional `voice_response`). There is **no** `assistant_response` key. (`model`/`requested_model` report which model answered vs. was requested.) New capability is added by **dropping an agent**, never by adding a route. (Fleet/estate messaging rides on top of `/chat` as signed twin-chat events — see [`rapp-fleet-chat/1.0`](https://github.com/kody-w/leviathan/blob/main/FLEET_CHAT.md) / `rapp-commons-event/1.0` — not on a side channel.)
 
 ### 2.3 ABI-3 — Auto-discovery
 
@@ -222,11 +224,11 @@ Any tagged kernel can be pinned at install time. There is no separate "downgrade
 
 ```bash
 # Pin a specific kernel by env var:
-BRAINSTEM_VERSION=0.6.0 curl -fsSL https://rapp.tools/install.sh | bash
+BRAINSTEM_VERSION=0.6.0 curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-installer/main/install.sh | bash
 
 # …or by flag, accepting canonical or legacy tag forms:
-curl -fsSL https://rapp.tools/install.sh | bash -s -- --version brainstem-v0.6.0
-curl -fsSL https://rapp.tools/install.sh | bash -s -- --version v0.6.0   # legacy form still resolves
+curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-installer/main/install.sh | bash -s -- --version brainstem-v0.6.0
+curl -fsSL https://raw.githubusercontent.com/kody-w/rapp-installer/main/install.sh | bash -s -- --version v0.6.0   # legacy form still resolves
 ```
 
 The installer resolves the pin to the matching git tag and `git checkout`s it; if the tag does not exist it lists the available tags and stops. Because every tag is immutable and `main` is always working, **rollback is risk-free**: pinning `brainstem-vX.Y.Z` yields byte-identical the kernel that shipped as that release. Omitting the pin tracks `main` (latest production).
@@ -284,7 +286,7 @@ A server that adds capability only through drop-in agents, never moves a tag, an
 extends BasicAgent · name + metadata{name,description,parameters(OpenAI schema)} · perform(**kwargs)->str
 optional: system_context()->str|None
 file: agents/**/<name>_agent.py   (NOT under experimental_agents/ or disabled_agents/)
-wire:  POST /chat {user_input, conversation_history?, session_id?} -> success {response, session_id, agent_logs(newline-string), voice_mode} (+ optional voice_response)
+wire:  POST /chat {user_input, conversation_history?, session_id?} -> success {response, session_id, agent_logs(newline-string), voice_mode, model, requested_model} (+ optional voice_response)
 shim:  from utils.azure_file_storage import AzureFileStorageManager   (→ local)
 guarantee: works on every 1.x kernel, unmodified, forever.
 ```

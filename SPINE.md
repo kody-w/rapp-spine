@@ -35,7 +35,7 @@ The rapp-spine is not a new protocol — it is a situational router laid over th
 | I'm lost in the ~60-repo ecosystem, or need to know whether my copy of a load-bearing file is current. | rapp-map (rapp-ecosystem-spec/1.0), rapp-god (rapp-grail-scan/1.0), RAPP-Bible (rapp-eternity/1.0), rapp_docs |
 | I want the brainstem framed as a sealed game console with a frozen cartridge contract and a curated starter set. | rappterbox-console-spec/1.0 |
 
-## The column — six layers
+## The column — seven layers (kernel · map · runtime · distribution · identity · network · leviathan)
 
 ### map (orientation + observability)
 Crawl here FIRST when lost or auditing. Answers 'where does this concept live?' and 'is my copy current?'. rapp-map indexes WHICH repo owns WHICH spec; rapp-god is the live every-version content-addressed registry + drift observatory (observes, never fixes); RAPP-Bible is the synthesized human narrative ('the one file to read'); rapp_docs streams every spec's raw text live with zero copies. These four are the 'drift triangle' (actually 4 legs) anchored on ecosystem-spec.json — when they disagree, the JSON wins.
@@ -124,4 +124,4 @@ The spine names every place two specs collide on a name or a port, so a crawler 
 - OVERLAP — map renderers: RAPP-Bible (synthesized, PINNED v1.0.0 human narrative — can itself drift), rapp_docs (live raw passthrough, always-current, zero copies), and rapp-map (index of WHERE, not the TEXT) cover overlapping ground with different jobs. Use rapp_docs for current spec text, Bible for narrative onboarding, rapp-map for location.
 - LICENSE COLLISION: most of the cluster is MIT (rapp-sealed, rapp-dataverse, rapp-neighborhood-protocol, rapp-kite, rapp-static-apis, rapp-agents). BUT kody-w/RAPP and rappterbox are source-available All-Rights-Reserved, and rapp-moment/1.0 is PolyForm-Noncommercial 1.0.0 + trademarked marks ('RAPP', 'Holographic Moment(s)'). A consumer/redistributor must check per-repo terms, not assume MIT.
 - SECURITY GAP: the Leviathan fleet protocol's POST /api/agent/<name> route is UNAUTHENTICATED — a shell-capable agent on any body = fleet-wide RCE from one request. It is explicitly LAN/trusted-subnet only; there is no auth layer in the spec. Also the fleet protocol declares NO rapp-xxx/N.N slug, so it sits outside the registry's naming convention and won't show up in spec-id scans.
-- SPINE GAP: the rapp-spine itself has no formal spec id, version, or canonical home repo — it is a synthesis/router over existing specs (this document). It should likely be minted (e.g. rapp-spine/1.0) and wired into rapp-map/rapp-god as a first-class leg if it is to avoid becoming its own drift source.
+- 

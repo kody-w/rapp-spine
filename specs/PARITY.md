@@ -133,12 +133,12 @@ On success (`200`):
   "session_id": "string",
   "agent_logs": "string — newline-joined log lines (\"\" if no tools ran)",
   "voice_mode": false,
-  ,
-  
+  "model": "string — the model that actually answered",
+  "requested_model": "string — the configured/requested model id"
 }
 ```
 
-- `model` MAY differ from `` when the runtime's own fallback logic switched
+- `model` MAY differ from `requested_model` when the runtime's own fallback logic switched
   models; clients rely on this to attribute answers honestly. A runtime with no fallback
   sets them equal.
 - If `voice_mode` is on **and** the reply contains the `|||VOICE|||` sentinel, the runtime
@@ -147,7 +147,7 @@ On success (`200`):
 
 On error:
 - `400` → `{"error": "user_input is required"}` for the empty-input case.
-- Upstream model HTTP error → `502` with `{"error": <human msg>, "model": <model>, "detail": <≤300 chars>}`;
+- Upstream model HTTP error → `502` with `{"error": <human msg>, "model": <id>, "detail": <≤300 chars>}`;
   quota/`429` produces the "usage limit reached" message.
 - Any other exception → `500` with `{"error": "<message>"}`.
 
@@ -185,7 +185,7 @@ NOT be reported as a parity failure:
 |------|--------------|
 | **Auth chain** | Copilot token exchange (T1) vs Azure OpenAI key (T2) vs managed identity / Entra (T2 cloud) vs Dataverse connector auth (T3). |
 | **Storage backend** | `local_storage.py` JSON files vs Azure Files vs Dataverse tables vs in-memory. The `utils.azure_file_storage` shim exists *to make this axis invisible to agents.* |
-| **Model provider / id** | GitHub Copilot models, Azure OpenAI deployments, or anything else. `model`/`` simply report whatever was used. |
+| **Model provider / id** | GitHub Copilot models, Azure OpenAI deployments, or anything else. `model`/`requested_model` simply report whatever was used. |
 | **Transport host / port / URL** | `localhost:7071`, an Azure Functions host, a Pages-edge worker, a browser `fetch` handler — all fine. |
 | **Model-selection / fallback policy** | Whether and how a runtime falls back across models. (Its *reporting* via `model` is in scope; its *policy* is not.) |
 | **Optional capabilities** | `voice_mode`, diagnostics routes, login UI, model picker. *If implemented*, their envelopes match (§2.4); a runtime MAY omit them entirely. |
@@ -271,7 +271,7 @@ can attest *exactly which* corpus it passed.
         "perform": { "kind": "deterministic", "returns": "{a}+{b}={sum}" }
       }
     ],
-    }
+    "model": { "kind": "scripted" }
   },
   "request": {
     "user_input": "what is 2 plus 3?",
@@ -292,7 +292,7 @@ can attest *exactly which* corpus it passed.
       "agent_logs": "[AddNumbers] 2+3=5",
       "voice_mode": false
     },
-    "envelope_required_keys": ["response", "session_id", "agent_logs", "voice_mode"]
+    "envelope_required_keys": ["response","session_id","agent_logs","voice_mode","model","requested_model"]
   }
 }
 ```
@@ -364,7 +364,7 @@ For each vector the harness:
    into the runtime's agent source, injects the scripted model at the model-call seam).
 2. Issues the `request` to the runtime's `/chat`.
 3. Compares the actual `(status, tool_call_sequence, envelope, required-keys, agent_logs)`
-   against `expect`, **modulo out-of-scope keys** (`model`, ``, and any
+   against `expect`, **modulo out-of-scope keys** (`model`, `requested_model`, and any
    value the vector marks `ignore`). Comparison is **exact** on in-scope keys.
 4. Records `pass` / `fail` with a structured diff.
 
@@ -522,8 +522,8 @@ T2 response (in-scope keys):
   "agent_logs": "[AddNumbers] 2+3=5",
   "voice_mode": false }
 ```
-The out-of-scope keys differ and are ignored: T1 reports `
-Copilot; T2 reports `
+The out-of-scope keys differ and are ignored: T1 reports `"model":"claude-sonnet-…"` via
+Copilot; T2 reports `"model":"gpt-4o"` via an Azure OpenAI deployment. **Both pass.**
 
 **Step 4 — the cross-walk asserts equality:**
 

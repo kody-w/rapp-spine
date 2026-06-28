@@ -8,7 +8,7 @@
 >
 > A rappid is a PKI-free SHA-256 content-address — it exists with zero keys. The **default** authority to act in a namespace is *GitHub collaborator status* (`sig_suite: none`). A keypair is an **opt-in** durability upgrade, **never** a requirement. No component may reject an actor for lacking a key.
 
-**Authority:** this file. **Constitutional anchors:** Art. XXV ("`/chat` is the only wire"), Art. XXXIV.5 (rappid invariants), MASTER_PLAN Part Deux §3 (no mandatory PKI) and §4 (un-shutdownable). **Normative cross-refs:** `rapp-eternity/1.0` (Eternity identity), `rapp-moment/1.0` §6 (keypair-bound ownership, deed chains), `rapp-protocol/1.0` §2 (the canonical rappid string), the RAPP **compatibility contract** (read-all-legacy / emit-canonical / hash-is-join-key).
+**Authority:** this file. **Constitutional anchors:** Art. XXV ("`/chat` is the only wire"), Art. XXXIV.5 (rappid invariants), MASTER_PLAN Part Deux §3 (no mandatory PKI) and §4 (un-shutdownable). **Normative cross-refs:** `rapp-eternity/1.0` (Eternity identity), `rapp-moment/1.0` §6 (keypair-bound ownership, deed chains), `rapp-eternity/1.0` §2 (the canonical rappid string), the RAPP **compatibility contract** (read-all-legacy / emit-canonical / hash-is-join-key).
 
 Keywords **MUST**, **MUST NOT**, **SHOULD**, **MAY** are used per RFC 2119.
 
@@ -24,7 +24,7 @@ Out of scope (see §13 Non-goals): payload encryption, substrate write-path auth
 
 ## §1 — Identity is PKI-free (the rappid)
 
-A **rappid** is a globally-resolvable, self-locating address whose identity component is a 256-bit SHA-256 hash. Canonical form (per `rapp-protocol/1.0` §2, locked 2026-06-03):
+A **rappid** is a globally-resolvable, self-locating address whose identity component is a 256-bit SHA-256 hash. Canonical form (per `rapp-eternity/1.0` §2, locked 2026-06-03):
 
 ```
 rappid:@<owner>/<slug>:<64-hex-no-dashes>
@@ -232,7 +232,7 @@ A component is `rapp-trust/1.0`-conformant iff:
 - **Not an encryption codec.** Confidentiality/sealing of payloads is `rapp-sealed/1.0`. `rapp-trust` covers *who may act*, not *who may read*.
 - **Not substrate write-path authorization.** Raw git/GitHub permission enforcement (branch protection, push rules) is `rapp-substrate-trust/1.0`. `rapp-trust` consumes the substrate's collaborator graph; it does not police it.
 - **Not agent code trust / sandboxing.** Whether an agent's *code* is safe to run is a separate concern (kernel ABI / drop-in conformance), not this authority model.
-- **Not identity minting rules.** Format, minting (content-address only), lineage, and invariants of the rappid string are `rapp-eternity/1.0` and `rapp-protocol/1.0` §2. This spec defers the identity model entirely to `rapp-eternity/1.0`.
+- **Not identity minting rules.** Format, minting (content-address only), lineage, and invariants of the rappid string are `rapp-eternity/1.0` and `rapp-eternity/1.0` §2. This spec defers the identity model entirely to `rapp-eternity/1.0`.
 
 ---
 
@@ -240,7 +240,7 @@ A component is `rapp-trust/1.0`-conformant iff:
 
 - **1.0** (2026-06-28) — initial canonical formalization of the signing-optional trust & ownership model. Names the three-layer stack (L0 identity / L1 gh-collaborator default / L2 optional keypair sovereignty), the normative verifier, the `sig_suite` eternity ladder (`none → ed25519 → ecdsa-p256 → reserved-PQ`, growable, unknown-suite = skip-as-absent), and the MASTER_PLAN §3↔§4 reconciliation via optional sovereignty. Defers identity minting entirely to `rapp-eternity/1.0` (content-address only) and de-conflicts the `rapp-moment/1.0` keypair ownership profile as an optional layer rather than a minting rule.
 
-**See also:** `rapp-eternity/1.0` (the SOLE identity standard) · `rapp-protocol/1.0` §2 (canonical rappid string) · `rapp-moment/1.0` §6 (keypair ownership, deed chains) · `rapp-commons-event/1.0` + `rapp-resident` (signed twin-chat events) · `rapp-sealed/1.0` (encryption, non-goal) · `rapp-substrate-trust/1.0` (substrate write-path, non-goal) · `CONSTITUTION.md` Art. XXV, Art. XXXIV.5 · `MASTER_PLAN.md` Part Deux §3, §4 · the RAPP compatibility contract.
+**See also:** `rapp-eternity/1.0` (the SOLE identity standard) · `rapp-eternity/1.0` §2 (canonical rappid string) · `rapp-moment/1.0` §6 (keypair ownership, deed chains) · `rapp-commons-event/1.0` + `rapp-resident` (signed twin-chat events) · `rapp-sealed/1.0` (encryption, non-goal) · `rapp-substrate-trust/1.0` (substrate write-path, non-goal) · `CONSTITUTION.md` Art. XXV, Art. XXXIV.5 · `MASTER_PLAN.md` Part Deux §3, §4 · the RAPP compatibility contract.
 
 ---
 

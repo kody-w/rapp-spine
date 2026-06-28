@@ -19,7 +19,7 @@ Compose atoms; never split the atom.
 
 ## 2. The kernel is locked (the anti-drift law)
 
-The kernel (`rapp-agent/1.0`, [kody-w/RAPP](https://github.com/kody-w/RAPP)) is **frozen
+The kernel (`rapp-agent/1.0`, [kody-w/rapp-installer](https://github.com/kody-w/rapp-installer) — the grail; [kody-w/RAPP](https://github.com/kody-w/RAPP) is the reference distro that pins it) is **frozen
 contract**: one `/chat` tool-loop, the `BasicAgent.metadata` + `perform(**kwargs) -> str`
 ABI, agent-injected direct routes, T1/T2 parity. Every capability — the swarm, the
 frame-net, the auth, the registry — ships as an **agent / cartridge / spine-profile on
