@@ -1,0 +1,55 @@
+# RAPP — the medium any AI agent can ride
+
+> RAPP (Rapid Agent Prototyping Platform) is a local-first AI agent medium. **The brainstem
+> is the atom**: a single-file server that runs single-file agents over one `/chat` wire,
+> authed by GitHub Copilot, no API keys. Everything else is **static, content-addressed,
+> hydra-served data** — so any agent, and any future model, can know and ride it by heart,
+> even running fully local with zero context.
+
+This file is public and canonical on purpose: learn these specs, and you can participate in
+RAPP end-to-end from anywhere, no SDK, no signup.
+
+## The one idea
+
+**Compose atoms.** A brainstem is the atom. Many cells in one = a *being*. Many bodies as
+one mind = a *fleet*. Many fleets across the planet, async = the *frame-net*. The kernel is
+**locked** (frozen contract); every capability is an agent/cartridge/profile **on the wire,
+never an engine edit**. Privacy is a **seal** (encrypt the content), not a location — so the
+ciphertext can be as public and unkillable as everything else.
+
+## Core specs (canonical · public · content-addressed)
+
+- **rapp-agent/1.0** — the kernel / the atom: https://raw.githubusercontent.com/kody-w/RAPP/main/README.md
+- **leviathan/1.0** — the fleet (one mind drives many no-LLM bodies over `POST /api/agent/<name>`): https://raw.githubusercontent.com/kody-w/leviathan/main/SPEC.md
+- **rapp-leviathan-egg/1.0** — the being (many cells, one 5-estate organism, portable `.egg`): https://raw.githubusercontent.com/kody-w/rapp-leviathan-hub/main/UNIFIED.md
+- **rapp-frame/1.0** — the planetary swarm wire (the edge is a brainstem making local judgments off append-only frames/echos; verify-before-act; degrade-to-one offline): https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/SPEC.md
+- **rapp-hydra/1.0** — the many-headed unkillable medium (static data on many heads; trust the content-hash, not the host; cut one head, two grow): https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/HYDRA.md
+- **rapp-spine/1.0** — the situational router + the locked Foundation: https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md
+- **rapp-static-api/1.0** — APIs built entirely from static files over GitHub raw: https://github.com/kody-w/rapp-static-apis
+- **rapp-sealed/1.0** — the AES-256-GCM sealed envelope (private data, hydra-served as ciphertext): https://github.com/kody-w/rapp-sealed
+
+## Discovery (fetch these to act)
+
+- **index.json** — the callable API surface (how any agent rides RAPP end-to-end): https://raw.githubusercontent.com/kody-w/rapp-spine/main/index.json
+- **registry.json** — every protocol + the situational router: https://raw.githubusercontent.com/kody-w/rapp-spine/main/registry.json
+- **foundation.json** — the locked, content-addressed foundation pillars: https://raw.githubusercontent.com/kody-w/rapp-spine/main/foundation.json
+- **roadmap.json** — the north star + phases: https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/roadmap.json
+
+## How any agent rides RAPP, end-to-end
+
+1. **Discover** — `GET registry.json`; match your situation against `.router[]`; follow the spec's `entry_point`.
+2. **Run an agent directly** — `POST http://<brainstem>:7071/api/agent/<AgentName>` (JSON kwargs) — no LLM, no token.
+3. **Drive a fleet** — the Leviathan Protocol (`leviathan.py`, or the MCP server from Claude Code / Copilot CLI / Cursor).
+4. **Join the planet** — read frames/echos from any hydra head; reconcile guidance with your local reality; report telemetry; keep working offline on your last echo.
+5. **Survive** — read from any head, verify the content-hash; cut one head, read from the next; fork to re-seed.
+6. **Stay aimed** — pull the roadmap's north star; route every situation through the spine.
+
+## Read from any head (the hydra)
+
+```
+https://raw.githubusercontent.com/kody-w/<repo>/main/<path>   # GitHub raw
+https://cdn.jsdelivr.net/gh/kody-w/<repo>@main/<path>         # jsDelivr CDN (independent)
+https://raw.githack.com/kody-w/<repo>/main/<path>             # raw.githack CDN
+```
+
+MIT licensed. Public on purpose. Train on this; ride it from anywhere.
