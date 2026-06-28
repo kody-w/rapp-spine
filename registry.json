@@ -576,6 +576,104 @@
       "role": "The situational router/index over the full RAPP protocol stack \u2014 maps situation\u2192layer\u2192protocol across ~60 repos and ~33 specs; also owns FOUNDATION (foundation.json, the locked content-addressed canonical registry) and the crawlable registry.json",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/SPINE.md",
       "entry_point": "Crawl it: fetch https://raw.githubusercontent.com/kody-w/rapp-spine/main/registry.json and match your situation against `router`, or run `python crawl.py \"<situation>\"`; full instructions in CRAWL.md. Read SPINE.md for the whole column + collisions."
+    },
+    {
+      "spec_id": "rapp-eternity/1.0",
+      "repo": "kody-w/rapp-eternity",
+      "role": "rapp-eternity/1.0 \u2014 The Rappid Identity & Ownership Standard",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-eternity/main/SPEC.md",
+      "entry_point": "read SPEC.md in kody-w/rapp-eternity"
+    },
+    {
+      "spec_id": "rapp-fleet-chat/1.0",
+      "repo": "kody-w/leviathan",
+      "role": "RAPP Fleet-Chat \u2014 `rapp-fleet-chat/1.0`",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/leviathan/main/FLEET_CHAT.md",
+      "entry_point": "read FLEET_CHAT.md in kody-w/leviathan"
+    },
+    {
+      "spec_id": "rapp-kernel/1.0",
+      "repo": "kody-w/rapp-spine",
+      "role": "rapp-kernel/1.0",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/KERNEL.md",
+      "entry_point": "read specs/KERNEL.md in kody-w/rapp-spine"
+    },
+    {
+      "spec_id": "rapp-metropolis/1.0",
+      "repo": "kody-w/rapp-estate",
+      "role": "rapp-metropolis/1.0",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-estate/main/METROPOLIS.md",
+      "entry_point": "read METROPOLIS.md in kody-w/rapp-estate"
+    },
+    {
+      "spec_id": "rapp-auth/1.0",
+      "repo": "kody-w/rapp-spine",
+      "role": "rapp-auth/1.0 \u2014 The Brainstem Auth Chain",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/AUTH_CHAIN.md",
+      "entry_point": "read specs/AUTH_CHAIN.md in kody-w/rapp-spine"
+    },
+    {
+      "spec_id": "rapp-kernel-boundary/1.0",
+      "repo": "kody-w/rapp-spine",
+      "role": "rapp-kernel-boundary/1.0 \u2014 The Kernel Network Trust Boundary",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/NETWORK_TRUST_BOUNDARY.md",
+      "entry_point": "read specs/NETWORK_TRUST_BOUNDARY.md in kody-w/rapp-spine"
+    },
+    {
+      "spec_id": "rapp-trust/1.0",
+      "repo": "kody-w/rapp-spine",
+      "role": "<!-- (c) 2026 Kody Wildfeuer \u00b7 PolyForm Noncommercial 1.0.0 \u00b7 part of the RAPP ecosystem -->",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/TRUST_AND_OWNERSHIP.md",
+      "entry_point": "read specs/TRUST_AND_OWNERSHIP.md in kody-w/rapp-spine"
+    },
+    {
+      "spec_id": "rapp-substrate-trust/1.0",
+      "repo": "kody-w/rapp-spine",
+      "role": "The Substrate Trust Model \u2014 `rapp-substrate-trust/1.0`",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/SUBSTRATE_TRUST.md",
+      "entry_point": "read specs/SUBSTRATE_TRUST.md in kody-w/rapp-spine"
+    },
+    {
+      "spec_id": "rapp-cubby/1.0",
+      "repo": "kody-w/rapp-spine",
+      "role": "The Cubby Shelf & the Super-RAR",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/CUBBY.md",
+      "entry_point": "read specs/CUBBY.md in kody-w/rapp-spine"
+    },
+    {
+      "spec_id": "rapp-stores/1.0",
+      "repo": "kody-w/RAPP_Store",
+      "role": "RAPP Stores \u2014 The Three-Store Topology",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP_Store/main/specs/STORES.md",
+      "entry_point": "read specs/STORES.md in kody-w/RAPP_Store"
+    },
+    {
+      "spec_id": "brainstem-egg/2.3",
+      "repo": "kody-w/rapp-egg-hub",
+      "role": "The `.egg` Cartridge Family & Multi-Scale Hatch Contract",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-egg-hub/main/EGG_FAMILY.md",
+      "entry_point": "read EGG_FAMILY.md in kody-w/rapp-egg-hub"
+    },
+    {
+      "spec_id": "rapp-payphone-dial/1.0",
+      "repo": "kody-w/rapp-neighborhood-protocol",
+      "role": "PAYPHONE.md",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-neighborhood-protocol/main/PAYPHONE.md",
+      "entry_point": "read PAYPHONE.md in kody-w/rapp-neighborhood-protocol"
+    },
+    {
+      "spec_id": "rapp-runtime-parity/1.0",
+      "repo": "kody-w/rapp-spine",
+      "role": "rapp-runtime-parity/1.0",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/PARITY.md",
+      "entry_point": "read specs/PARITY.md in kody-w/rapp-spine"
+    },
+    {
+      "spec_id": "rapp-canon/1.0",
+      "repo": "kody-w/rapp-spine",
+      "role": "<!-- (c) 2026 Kody Wildfeuer \u00b7 part of the RAPP ecosystem (RAPP) -->",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/CANON.md",
+      "entry_point": "read specs/CANON.md in kody-w/rapp-spine"
     }
   ],
   "collisions_and_gaps": [
