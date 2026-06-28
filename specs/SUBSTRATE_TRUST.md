@@ -163,13 +163,21 @@ codec, and schema belong to the cited owning specs.
 - **Bridge to `rapp-trust/1.0`.** This spec supplies the *substrate facts* (who appended, who merged,
   who is a collaborator); `rapp-trust/1.0` is the policy layer that decides *what those facts authorize*.
   The default policy is **gh-collaborator**: authority = collaborator membership, attribution = the login.
+- **Identity defers to `rapp-eternity/1.0`.** This spec defines no identity string and no signing
+  scheme of its own; identity-the-string (the `rappid` sha256 content-address) and the canonical
+  **`sig_suite` ladder** are owned exclusively by `rapp-eternity/1.0`. This spec only *consumes*
+  them.
 - **Optional rappid keypair binding.** A payload MAY additionally carry a `rapp-eternity/1.0` rappid
   (`rappid:@owner/slug:<64hex>`, a PKI-free sha256 content-address) and an **optional** keypair
-  signature over the payload bytes. This binding is **purely additive sovereignty**: it lets the
-  author prove authorship *independently of GitHub* (surviving takedown, account loss, or going
-  offline — §6). It is **never required** by any conforming component, and a verifier MUST accept a
-  validly-consented write that carries no keypair signature. Keypair-optional is a hard invariant of
-  the estate (see `rapp-trust/1.0 §sovereignty`, MASTER_PLAN §3↔§4).
+  signature over the payload bytes. The signature's `sig_suite` MUST be drawn from the
+  `rapp-eternity/1.0` ladder — `none` → `ed25519` → `ecdsa-p256` → reserved-PQ — where `none` is the
+  gh-collaborator default and `ed25519` is the canonical valid keypair suite; a verifier MUST reject a
+  `sig_suite` value not on that ladder and MUST NOT define a substrate-local suite. This binding is
+  **purely additive sovereignty**: it lets the author prove authorship *independently of GitHub*
+  (surviving takedown, account loss, or going offline — §6). It is **never required** by any
+  conforming component, and a verifier MUST accept a validly-consented write that carries no keypair
+  signature. Keypair-optional is a hard invariant of the estate (see `rapp-trust/1.0 §sovereignty`,
+  MASTER_PLAN §3↔§4).
 
 **Trust annotation (normative shape).** Any substrate-borne write SHOULD be reasoned about with this
 authorization annotation. It is *metadata about authority*, carried alongside whatever transport/payload
@@ -184,15 +192,16 @@ these fields' meaning:
     "state": "proposed",                // "proposed" | "accepted"
     "acl_repo": "kody-w/rappterbook",   // the canon repo whose authority set governs this write
     "consent": null,                    // null while proposed; the merge ref/sha once accepted
-    "rappid": null,                     // optional: rappid:@owner/slug:<64hex>
-    "sig_suite": "none"                 // "none" (gh-collaborator default) | a keypair suite if bound
+    "rappid": null,                     // optional: rappid:@owner/slug:<64hex> (rapp-eternity/1.0)
+    "sig_suite": "none"                 // rapp-eternity/1.0 ladder: "none" (gh-collaborator default) | "ed25519" | "ecdsa-p256" | reserved-PQ
   }
 }
 ```
 
 - `state: "proposed"` ⇒ `consent: null` ⇒ **trust = identity-only**, act-as-canon = **forbidden**.
 - `state: "accepted"` ⇒ `consent` = the merge sha by an `acl_repo` authority ⇒ **trust = full canon**.
-- `sig_suite: "none"` is the conformant default; a non-`none` suite adds sovereignty, never gates it.
+- `sig_suite: "none"` is the conformant default; a non-`none` suite (`ed25519` and up the
+  `rapp-eternity/1.0` ladder) adds sovereignty, never gates it.
 
 ---
 
@@ -230,8 +239,9 @@ these fields' meaning:
   attribution, consent). A frame implementation MUST carry / be able to derive the §5 annotation;
   it MUST NOT promote a `proposed` event to a materialized canonical view without consent.
 - **With `rapp-eternity/1.0`** — supplies the PKI-free `rappid` content-address used for optional binding
-  and for pinning published canon by sha256. Identity-the-string lives there; authority-the-decision lives
-  here.
+  and for pinning published canon by sha256, **and owns the canonical `sig_suite` ladder** this spec's
+  optional signatures draw from. Identity-the-string and the suite ladder live there; authority-the-decision
+  lives here.
 - **With `rapp-sealed/1.0`** — when a published or appended payload must be confidential, it is a sealed
   envelope; this spec's "no secrets in publish" rule (§2.1) is satisfied by sealing, not by hiding.
 - **With the metropolis tier (mesh-composition)** — neighborhoods compose into estate→metropolis by each
@@ -270,9 +280,10 @@ Every reader can now see *"@alice proposes adding @alice/twin"* — attributable
 A conforming roster renderer MUST NOT list the twin from this open issue.
 
 **Step 2 — (optional) sovereignty bind.** Alice's payload also carries a keypair signature over the
-event bytes (`sig_suite: "ed25519"`). This is additive: it lets `@alice` prove authorship even if GitHub
-is down or her account is later suspended. **It changes nothing about whether the write is accepted** —
-acceptance still requires consent.
+event bytes (`sig_suite: "ed25519"`, the canonical valid keypair suite on the `rapp-eternity/1.0`
+ladder). This is additive: it lets `@alice` prove authorship even if GitHub is down or her account is
+later suspended. **It changes nothing about whether the write is accepted** — acceptance still requires
+consent.
 
 **Step 3 — consent (PR + merge, `proposed → accepted`).** `@kody-w` (or an auto-merge bot running under
 `@kody-w`'s policy) opens a PR that writes the entry into `residents.json` and **merges** it. The merge is
@@ -307,8 +318,9 @@ This spec defines **authorization semantics only**. It explicitly does **not** d
   `rapp-twin-chat/1.0`). This spec only annotates each such event's trust state.
 - **The sealed payload codec.** Confidentiality is `rapp-sealed/1.0` (AES-256-GCM sealed envelope). This
   spec only mandates *that* secrets are sealed-not-published, never *how*.
-- **The rappid string format / keypair suites.** Identity-the-string and its content-addressing are
-  `rapp-eternity/1.0`; this spec only *consumes* a rappid for optional binding.
+- **The rappid string format / keypair suites.** Identity-the-string, its content-addressing, and the
+  canonical `sig_suite` ladder are `rapp-eternity/1.0`; this spec only *consumes* a rappid and a ladder
+  suite for optional binding.
 - **The mesh-composition / metropolis tier.** How neighborhoods are wired into estate→metropolis is its
   own spec; this one supplies the trust substrate it stands on.
 - **`/chat` and the agent ABI.** Untouched. This is a read of GitHub realized by agents + CI, never an
@@ -328,10 +340,12 @@ An implementation conforms to `rapp-substrate-trust/1.0` iff:
 4. It tracks the `proposed`/`accepted` state of every substrate write and exposes (or can derive) the §5
    authorization annotation.
 5. It accepts a validly-consented write that carries **no** keypair signature (keypair-optional, §5), and
-   treats any keypair signature strictly as additive sovereignty.
+   treats any keypair signature strictly as additive sovereignty, drawing its `sig_suite` only from the
+   `rapp-eternity/1.0` ladder (`none` → `ed25519` → `ecdsa-p256` → reserved-PQ).
 6. It degrades to last-known pinned canon + optional keypair-verified proposals when the substrate is
    unreachable, and resumes the consent flow on reconnect (§6).
-7. It introduces **no** RAPP-specific auth server, second ACL system, `/chat` change, or kernel edit.
+7. It introduces **no** RAPP-specific auth server, second ACL system, `sig_suite` not on the
+   `rapp-eternity/1.0` ladder, `/chat` change, or kernel edit.
 
 ---
 

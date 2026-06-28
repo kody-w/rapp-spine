@@ -1,6 +1,6 @@
 # rapp-runtime-parity/1.0
 
-> **Status:** Canonical · **Version:** 1.0 · **Home:** `kody-w/rapp-installer/rapp_brainstem/PARITY.md`
+> **Status:** Canonical · **Version:** 1.0 · **Home:** `kody-w/rapp-spine/specs/PARITY.md`
 > **Companion:** `rapp-kernel/1.0` (the ABI half) · **Authority on drift:** `rapp-god`
 > **Estate map:** https://raw.githubusercontent.com/kody-w/rapp-map/main/estate-map.json
 
@@ -199,8 +199,9 @@ reference.** Everything about *how the box is wired* is the substrate's business
 ## 4. The in-scope runtimes registry + parity tiers
 
 Each runtime in the estate declares a **parity tier**. The registry is a small JSON
-manifest (canonical copy committed beside this spec as `parity-runtimes.json`, mirrored into
-`rapp-map`):
+manifest. The canonical copy **SHOULD** ship alongside this spec as `parity-runtimes.json`
+and be mirrored into `rapp-map` — this file is **PLANNED** and is not yet committed; the
+manifest below is its normative shape:
 
 ```json
 {
@@ -208,7 +209,7 @@ manifest (canonical copy committed beside this spec as `parity-runtimes.json`, m
   "reference": "brainstem.py",
   "runtimes": [
     { "id": "brainstem.py",          "repo": "kody-w/rapp-installer",     "path": "rapp_brainstem/brainstem.py",       "substrate": "flask-local",   "tier": "reference" },
-    { "id": "function_app.py",       "repo": "kody-w/rapp_swarm",         "path": "function_app.py",                   "substrate": "azure-functions","tier": "full" },
+    { "id": "function_app.py",       "repo": "kody-w/CommunityRAPP",      "path": "function_app.py",                   "substrate": "azure-functions","tier": "full" },
     { "id": "rapp-dataverse",        "repo": "kody-w/rapp-dataverse",     "path": "handler",                           "substrate": "dataverse-static","tier": "core" },
     { "id": "rapp-brainstem-sdk",    "repo": "kody-w/rapp-brainstem-sdk", "path": "sdk",                               "substrate": "headless",      "tier": "full" },
     { "id": "vBrainstem",            "repo": "kody-w/vBrainstem",         "path": "browser",                           "substrate": "browser",       "tier": "core" }
@@ -238,11 +239,12 @@ versions without a recorded reconciliation.
 
 ## 5. Golden conformance vectors
 
-The vectors are a **frozen corpus** committed beside this spec at
+The vectors are a **frozen corpus** that **SHOULD** ship alongside this spec at
 `rapp_brainstem/parity_vectors/` (mirrored into `rapp-map` for estate-wide harness runs).
-Each vector is a single JSON file. **Vectors are content-addressed by sha256** of their
-canonical JSON (consistent with rappid eternity identity, §8) so a runtime can attest
-*exactly which* corpus it passed.
+This corpus is **PLANNED** — it is not yet committed; what follows is its normative schema
+and required cases. Each vector is a single JSON file. **Vectors are content-addressed by
+sha256** of their canonical JSON (consistent with rappid eternity identity, §8) so a runtime
+can attest *exactly which* corpus it passed.
 
 ### 5.1 Vector schema
 
@@ -345,8 +347,8 @@ are **append-only and immutable** once tagged (consistent with rappid eternity, 
 
 ## 6. The parity harness
 
-`parity_harness.py` (committed beside this spec) runs the corpus against a live runtime and
-emits a pass/fail report.
+`parity_harness.py` **SHOULD** ship alongside this spec; it is **PLANNED** and not yet
+committed. It runs the corpus against a live runtime and emits a pass/fail report.
 
 ### 6.1 Contract
 
@@ -385,9 +387,9 @@ reports from runtimes across the estate are directly comparable.
 
 ### 6.3 Reference cross-walk
 
-The reference implementation of the harness ships a **cross-walk**: it runs the corpus
-against both `brainstem.py` and `rapp_swarm/function_app.py` and asserts **identical**
-in-scope results. This cross-walk is the executable embodiment of *"stem/function_app parity
+The reference implementation of the harness **SHOULD** ship a **cross-walk**: it runs the
+corpus against both `brainstem.py` and `CommunityRAPP/function_app.py` and asserts
+**identical** in-scope results. This cross-walk is the executable embodiment of *"stem/function_app parity
 is sacred"* and SHOULD run in CI on any change to either file.
 
 ---
@@ -430,7 +432,7 @@ Parity inherits the estate trust model wholesale; it introduces **no new trust p
   signing of a parity report is **OPTIONAL** sovereignty (a runtime owner MAY sign their
   attestation) and is **NEVER required** to participate. The hash is the join key.
 - **Authorship / ownership = gh-collaborator (default).** Who may *amend* the corpus or the
-  runtimes registry is governed by GitHub collaborator status on `kody-w/rapp-installer`
+  runtimes registry is governed by GitHub collaborator status on `kody-w/rapp-spine`
   (and the mirror in `rapp-map`) — `sig_suite: none` by default. No PKI gate.
 - **Consent = PR.** Adding a runtime to the registry, adding/retiring a vector, or bumping
   the corpus is a **pull request** — PR-consent is the change-control wire.
@@ -486,7 +488,7 @@ Parity inherits the estate trust model wholesale; it introduces **no new trust p
 
 ## 10. Worked example: proving T2 is the same runtime as T1
 
-**Goal:** show that `rapp_swarm/function_app.py` (Azure Functions, Azure OpenAI auth, Azure
+**Goal:** show that `CommunityRAPP/function_app.py` (Azure Functions, Azure OpenAI auth, Azure
 Files storage) is the **same runtime** as `brainstem.py` (Flask, Copilot auth, local JSON).
 
 Their **out-of-scope axes are entirely different** — different transport, host, auth,
@@ -511,7 +513,7 @@ T1 response (in-scope keys):
 **Step 3 — run the same harness against T2:**
 
 ```
-$ parity_harness.py --runtime https://rapp-swarm.azurewebsites.net --vectors ./parity_vectors --tier full
+$ parity_harness.py --runtime https://communityrapp.azurewebsites.net --vectors ./parity_vectors --tier full
 ```
 T2 response (in-scope keys):
 ```json
@@ -536,7 +538,7 @@ Copilot; T2 reports `"model":"gpt-4o"` via an Azure OpenAI deployment. **Both pa
 **Step 5 — a deviation appears (drift, not a feature).** Suppose a later T2 change makes it
 loop **5** rounds instead of 3. Vector `round-cap-3` now fails on T2: it returns a 4th-round
 tool result where T1 returned the 3rd-round content. The harness files a drift record to
-`kody-w/rapp_swarm` Issues, cross-linked to rapp-god:
+`kody-w/CommunityRAPP` Issues, cross-linked to rapp-god:
 ```json
 { "runtime": "function_app.py", "vector": "round-cap-3", "declared_tier": "full",
   "corpus_sha256": "a1b2…",

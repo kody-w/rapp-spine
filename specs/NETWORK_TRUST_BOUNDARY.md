@@ -13,15 +13,15 @@
 
 The brainstem is, by construction, a **remote-code-execution engine**: its whole purpose is to load arbitrary `*_agent.py` files from `agents/` and run their `perform(**kwargs)` on request. That is a feature, not a bug — but it is only safe under one assumption: **the only thing that can reach the engine's privileged surfaces is the local user.**
 
-That assumption has never been written down, and the kernel's own default contradicts it. `brainstem.py` ends with:
+That assumption has never been written down, and the kernel's own default contradicts it. As of this spec, `brainstem.py` still ends with:
 
 ```python
-app.run(host="0.0.0.0", port=PORT, debug=False)   # brainstem.py L1817
+app.run(host="0.0.0.0", port=PORT, debug=False)   # brainstem.py L1817 — STILL LIVE
 ```
 
-`0.0.0.0` binds **every** network interface. Every one of the kernel's ~25 routes — including the ones that write and execute code — is therefore reachable by **anything on the LAN, with no authentication**. On a coffee-shop or corporate Wi-Fi this is an unauthenticated RCE. The same class of hole is re-opened, deliberately, by Leviathan's injected `/api/agent` route (see §6).
+`0.0.0.0` binds **every** network interface. Every one of the kernel's ~25 routes — including the ones that write and execute code — is therefore reachable by **anything on the LAN, with no authentication**. On a coffee-shop or corporate Wi-Fi this is an unauthenticated RCE, **and it is still open today**. The same class of hole is re-opened, deliberately, by Leviathan's injected `/api/agent` route (see §6).
 
-"What you don't write down gets lost." This spec writes down the trust boundary the engine has always *assumed*, makes it **normative**, classifies every route, and closes **both** RCE surfaces — the grail's own `0.0.0.0` bind and Leviathan's unauth route — without weakening the engine's openness to the local user.
+"What you don't write down gets lost." This spec writes down the trust boundary the engine has always *assumed*, makes it **normative**, classifies every route, and **mandates the closure of** both RCE surfaces — the grail's own `0.0.0.0` bind and Leviathan's unauth route. It is the *specification* of the fix, not the fix itself: until R1 and R7 (§4, §6) actually land in the grail, **both surfaces remain unremediated** (`rapp-roadmap` Phase 1 is **OPEN** — see §8). The boundary is written so the engine's openness to the *local* user survives the fix.
 
 This spec changes **policy and defaults**, never the agent ABI. It is fully compatible with "never break userspace" (`rapp-kernel-release/1.0`): no agent, no `/chat` payload, and no `BasicAgent` contract changes.
 
@@ -34,6 +34,8 @@ This spec changes **policy and defaults**, never the agent ABI. It is fully comp
 **Adversary.** Any process that can open a TCP connection to the listening port: another user on the same LAN/VPN, a malicious page performing DNS-rebinding or CSRF against `localhost`, a co-tenant container, a compromised device on the network.
 
 **Trust assumption (made explicit and normative).** The kernel trusts exactly one principal: **the local user on loopback** (`127.0.0.1` / `::1`). Reach to a **privileged** route (§3) by any other principal, absent an explicit local token (§7), MUST be treated as **arbitrary code execution as the user** and MUST be refused.
+
+**Current reality (not yet conformant).** The shipping grail does **not** yet enforce this: it binds `0.0.0.0` (§0) and any deployment running Leviathan also exposes the unauthenticated `/api/agent` (§6). The threat above is therefore **live**, not hypothetical, until R1/R7 land.
 
 **Non-goals.** This spec does not add user accounts, TLS, or multi-tenant isolation to the kernel. The kernel is single-user and local-first by design (`rapp-distro/1.0`). It defines a *boundary*, not an authentication system. Anything that needs to cross the boundary does so as a **signed `/chat` event** (§6) or via the **optional local agent-token** (§7).
 
@@ -86,7 +88,7 @@ These are read-only, secret-free, side-effect-free. They MAY be served on any bo
 
 ## 4. Default bind = loopback (normative)
 
-> **R1.** The kernel **MUST** default its listen bind to loopback: `host="127.0.0.1"` (and/or `::1`). This replaces `host="0.0.0.0"` at `brainstem.py` L1817.
+> **R1.** The kernel **MUST** default its listen bind to loopback: `host="127.0.0.1"` (and/or `::1`). This replaces `host="0.0.0.0"` at `brainstem.py` L1817. **This change has not yet landed in the grail; until it does the kernel binds `0.0.0.0` by default and R1 is unmet.**
 
 > **R2.** Binding a non-loopback interface (`0.0.0.0`, a LAN IP) **MUST** require explicit operator opt-in via the env var **`BRAINSTEM_BIND`**. The value is the bind address; the kernel binds it verbatim. Absent `BRAINSTEM_BIND`, the kernel binds `127.0.0.1`.
 
@@ -128,15 +130,15 @@ Corollary: **route injection is forbidden.** No accessory, plugin, or "fleet" la
 
 ## 6. The `/api/agent` RCE — named and closed
 
-**The hole.** `/api/agent` is **not part of the grail.** It is injected at runtime by Leviathan's `FlockEndpoint` so a controller can drive many brainstem bodies *without* going through `/chat` and *without* the LLM — bypassing both the wire and any auth, to "kill the shared-token throttle." Combined with the legacy `0.0.0.0` bind, `/api/agent` is a fully unauthenticated, networked `perform()` invocation: textbook RCE. It directly violates §5 (route injection) and §4 (privileged reach).
+**The hole.** `/api/agent` is **not part of the grail.** It is injected at runtime by Leviathan's `FlockEndpoint` so a controller can drive many brainstem bodies *without* going through `/chat` and *without* the LLM — bypassing both the wire and any auth, to "kill the shared-token throttle." Combined with the legacy `0.0.0.0` bind, `/api/agent` is a fully unauthenticated, networked `perform()` invocation: textbook RCE. **It is live today** in any deployment running Leviathan. It directly violates §5 (route injection) and §4 (privileged reach).
 
-**The closure (decision #2, this session).** Fleet messaging is re-expressed as **signed twin-chat events over `/chat`**, never as a new route:
+**The closure (decision #2, this session) — specified, not yet enforced.** Fleet messaging is re-expressed as **signed twin-chat events over `/chat`**, never as a new route:
 
 - A fleet message is a **`rapp-commons-event/1.0`** event addressed to a peer twin, carried as a **`rapp-twin-chat/1.0`** turn delivered to that peer's **`POST /chat`**.
 - The sender is a **`rapp-resident/1.0`** identity; the event is **signed** and resolves under **`rapp-trust/1.0`** (gh-collaborator membership and/or a `rappid` sha256 content-address; keypair binding OPTIONAL per the eternity resolution, never required).
 - The receiving kernel applies the **§4.1 gate** like any other `/chat` request: loopback, or a presented local agent-token (§7), or `403`. There is no path that reaches `perform()` un-gated.
 
-> **R7.** Leviathan-class controllers **MUST** drive bodies via signed `/chat` twin-chat events. The injected `/api/agent` route **MUST** be removed; any deployment that injects an unauthenticated route is **non-conformant** with `rapp-kernel-boundary/1.0` and with Art. XXV.
+> **R7.** Leviathan-class controllers **MUST** drive bodies via signed `/chat` twin-chat events. The injected `/api/agent` route **MUST** be removed; any deployment that injects an unauthenticated route is **non-conformant** with `rapp-kernel-boundary/1.0` and with Art. XXV. **As of this spec the route is still injected and still unauthenticated — R7 is unmet until Leviathan stops registering it.**
 
 This preserves Leviathan's intent — one mind driving many bodies, flight-recorded, resilient when interactive `/chat` is busy — while eliminating the unauth route. The throttle problem is a *rate/auth* problem solved by the local agent-token + serial waves, not by deleting authentication.
 
@@ -170,7 +172,7 @@ A presented token authorizes the request, and the request is **attributed** to t
 - **Kernel / distro.** The boundary is a kernel invariant; a `rapp-distro/1.0` distro pins a kernel version and inherits this boundary unchanged. Tags are immutable (`rapp-kernel-release/1.0`); R1–R9 ride the kernel tag.
 - **Neighborhood → estate → metropolis.** Public-safe routes (§3.1) are the *discovery* surface neighbors probe (liveness/identity). All *capability* between bodies crosses as signed `/chat` events (§6) under `rapp-trust/1.0` — so "use everyone else's hardware" scales without ever opening an unauth code path. The mesh-composition tier (`rapp-metropolis/*`) builds **on top of** this gate, never around it.
 - **GitHub-as-substrate.** Cross-instance consent rides PR-consent and Issues-mailbox; the *runtime* hop into a peer is still the gated `/chat` wire. The boundary is the local enforcement point of the estate's global trust model.
-- **Roadmap.** This spec is the written form of `rapp-roadmap` **Phase 1: "closes the unauth `/api/agent` RCE."** Phase 1 is *done* when R1 (loopback default) and R7 (no injected route) are merged into the grail and a distro pins the resulting tag.
+- **Roadmap.** This spec is the written form of `rapp-roadmap` **Phase 1: "closes the unauth `/api/agent` RCE."** **Phase 1 is currently OPEN.** Writing the boundary does not close it: the shipping grail still binds `0.0.0.0` (R1 unmet, §4) and Leviathan still injects the unauthenticated `/api/agent` (R7 unmet, §6). Phase 1 is *done* only when **R1** (loopback default) and **R7** (no injected route) are merged into the grail **and** a distro pins the resulting tag. Until then, treat both RCE surfaces as **live and unremediated**.
 
 ---
 
@@ -178,10 +180,10 @@ A presented token authorizes the request, and the request is **attributed** to t
 
 A kernel/instance is **conformant with `rapp-kernel-boundary/1.0`** iff:
 
-1. **C1 — Loopback default.** With no `BRAINSTEM_BIND` set, the listener binds loopback only. (Test: start kernel; assert it is unreachable from a non-loopback address.)
-2. **C2 — Gated privilege.** A request to any §3.2 route from a non-loopback origin **without** a valid token is refused `403`, executes no agent, writes no file, leaks no secret. (Test below.)
+1. **C1 — Loopback default.** With no `BRAINSTEM_BIND` set, the listener binds loopback only. (Test: start kernel; assert it is unreachable from a non-loopback address.) *Current grail: FAILS C1 — binds `0.0.0.0` by default.*
+2. **C2 — Gated privilege.** A request to any §3.2 route from a non-loopback origin **without** a valid token is refused `403`, executes no agent, writes no file, leaks no secret. (Test below.) *Current grail: FAILS C2 — privileged routes answer un-gated.*
 3. **C3 — Loud opt-in.** Setting `BRAINSTEM_BIND=0.0.0.0` binds wide **and** emits the §4.1/R3 warning; privileged routes still enforce C2.
-4. **C4 — No new/injected privileged routes.** The privileged route set equals §3.2; no accessory registers an additional route (esp. no unauth `/api/agent`). (Test: diff live route table against §3.2 + §3.1.)
+4. **C4 — No new/injected privileged routes.** The privileged route set equals §3.2; no accessory registers an additional route (esp. no unauth `/api/agent`). (Test: diff live route table against §3.2 + §3.1.) *A Leviathan deployment currently FAILS C4 — `/api/agent` is injected.*
 5. **C5 — Token binding.** When `BRAINSTEM_AGENT_TOKEN` is set, only the matching bearer passes the gate from non-loopback, attributed to a `rapp-trust` principal; writes are recorded against it.
 6. **C6 — Public-safe stays open & clean.** `/health`, `/version`, `/` answer any origin and contain no secrets.
 
@@ -203,9 +205,13 @@ curl -fsS http://<lan-ip>:7071/health >/dev/null || { echo "FAIL: health unreach
 echo "PASS: rapp-kernel-boundary/1.0 C2/C6"
 ```
 
+> Run against the current grail this test **FAILS** (the privileged route returns `200`, not `403`) — which is the expected, honest result until R1/R4 land. It is written to pass only a conformant kernel.
+
 ---
 
 ## 10. Worked example: a sanctioned neighborhood body
+
+> Illustrative of the **target** (post-R1/R7) behavior. The current grail does not yet behave this way (see §8/§9).
 
 **Goal.** Kody runs a brainstem on his desktop and wants his laptop's controller to drive it as part of a 2-body neighborhood — without re-opening the RCE.
 
@@ -234,4 +240,4 @@ Result: one mind drives many bodies, fleet messaging works, the throttle is side
 
 ## 11. Changelog
 
-- **1.0** — Initial canonical boundary. Establishes loopback default (`BRAINSTEM_BIND` opt-in), the §3 route trust classification, the §4.1 privileged-route gate, Art. XXV as a security invariant forbidding new/injected privileged routes, the named closure of Leviathan's `/api/agent` via signed `/chat` twin-chat events, and the optional `BRAINSTEM_AGENT_TOKEN` bound to a `rapp-trust/1.0` principal. Closes `rapp-roadmap` Phase 1.
+- **1.0** — Initial canonical boundary. Establishes loopback default (`BRAINSTEM_BIND` opt-in), the §3 route trust classification, the §4.1 privileged-route gate, Art. XXV as a security invariant forbidding new/injected privileged routes, the named closure of Leviathan's `/api/agent` via signed `/chat` twin-chat events, and the optional `BRAINSTEM_AGENT_TOKEN` bound to a `rapp-trust/1.0` principal. **Specifies (does not yet implement)** the closure of `rapp-roadmap` Phase 1: Phase 1 remains **OPEN** until R1 (loopback default) and R7 (no injected `/api/agent`) land in the grail and a distro pins the tag. Until then the kernel still binds `0.0.0.0` and the unauthenticated `/api/agent` is still live.
