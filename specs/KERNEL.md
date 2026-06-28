@@ -4,9 +4,9 @@
 
 - **spec_id:** `rapp-kernel/1.0`
 - **status:** canonical, stable
-- **home:** `kody-w/rapp-installer` → `rapp_brainstem/KERNEL.md`
-- **kernel artifact:** `rapp_brainstem/brainstem.py` (the grail)
-- **inventory:** see `KERNEL_TREE.md` for the file-level kernel manifest
+- **home:** `kody-w/rapp-spine` → `specs/KERNEL.md` (this file documents the grail kernel `kody-w/rapp-installer`)
+- **kernel artifact:** `rapp_brainstem/brainstem.py` in the grail `kody-w/rapp-installer` (`brainstem-v0.6.1`)
+- **inventory:** a file-level `KERNEL_TREE.md` manifest is **planned** (not yet shipped)
 - **depends on:** `rapp-installer` (the grail repo), the GitHub substrate (raw CDN, tags, Pages)
 - **referenced by:** `rapp-distro/1.0` (a distro PINS a kernel tag), `rapp-god` (drift detection), `rappid eternity` (content-address of the kernel artifact)
 
@@ -34,14 +34,14 @@ This document writes down the contract that has been true *in practice* but neve
 
 ### 1.1 Definition
 
-The **kernel** is `rapp_brainstem/brainstem.py`: a single-file Flask server (~1,100 lines) that owns, indivisibly:
+The **kernel** is `rapp_brainstem/brainstem.py`: a single-file Flask server (~1,800 lines at grail `0.6.1`; the reference distro `kody-w/RAPP` pins `0.6.0`) that owns, indivisibly:
 
 - **auth** — the GitHub-Copilot token exchange chain (`GITHUB_TOKEN` env → `.copilot_token` → `gh auth token`), short-lived Copilot tokens with auto-refresh;
 - **the wire** — `POST /chat` (plus its health/UI/login support routes);
 - **agent orchestration** — discover → build tool schemas → call the model with tools → execute `perform()` → loop (≤3 rounds) → return;
 - **the import shims** — `sys.modules` injection so cloud-authored agents run locally unmodified.
 
-The kernel is the **grail**: it is sacred and changes only through the grail repo (`rapp-installer`). It is the *engine, not the experience* (see `CONSTITUTION.md`). The kernel ships with a small set of supporting engine files; the authoritative list is `KERNEL_TREE.md`. As of this spec the kernel surface is:
+The kernel is the **grail**: it is sacred and changes only through the grail repo (`rapp-installer`). It is the *engine, not the experience* (see `CONSTITUTION.md`). The kernel ships with a small set of supporting engine files (a `KERNEL_TREE.md` file-level manifest is planned). As of this spec the kernel surface is:
 
 | File | Role | Layer |
 |------|------|-------|
