@@ -1,0 +1,65 @@
+{
+  "spec": "rapp-foundation/1.0",
+  "what": "The locked, content-addressed canonical registry of the RAPP foundation pillars. Fetch over the hydra, verify sha256 against this, then build ON the wire (agents/cartridges/profiles) \u2014 never into the kernel. rapp-god watches every copy against these hashes for drift.",
+  "doctrine": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md",
+  "generated": "2026-06-28",
+  "pillars": [
+    {
+      "spec": "rapp-agent/1.0",
+      "repo": "kody-w/RAPP",
+      "role": "kernel \u2014 the atom",
+      "locked": true,
+      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/main/README.md",
+      "sha256": null,
+      "note": "frozen single-file brainstem contract; hash scanned live by rapp-god"
+    },
+    {
+      "spec": "leviathan/1.0",
+      "repo": "kody-w/leviathan",
+      "role": "fleet \u2014 one mind, many bodies (sync/LAN)",
+      "locked": true,
+      "raw_url": "https://raw.githubusercontent.com/kody-w/leviathan/main/SPEC.md",
+      "sha256": "3e6679f192b67c8eb30b92f0fda23ff8b3a3a800e75d0772bc8c6e32733c5453"
+    },
+    {
+      "spec": "rapp-leviathan-egg/1.0",
+      "repo": "kody-w/rapp-leviathan-hub",
+      "role": "being \u2014 many cells, one organism (portable)",
+      "locked": true,
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-leviathan-hub/main/UNIFIED.md",
+      "sha256": "60eb87dc018fd55151c2a87369b051da9d1c010c53c3927980a11e9f3f804a18"
+    },
+    {
+      "spec": "rapp-frame/1.0",
+      "repo": "kody-w/rapp-frame-net",
+      "role": "planet \u2014 many fleets, async, over GitHub",
+      "locked": true,
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/SPEC.md",
+      "sha256": "8b50616c64887656e9855481263dfccbca27804c383fc6b46ee24f334bcaf37d"
+    },
+    {
+      "spec": "rapp-hydra/1.0",
+      "repo": "kody-w/rapp-frame-net",
+      "role": "survival \u2014 many heads, one body; unkillable static medium",
+      "locked": true,
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/HYDRA.md",
+      "sha256": "d5e85b93dcfc7b4097994f1856a7ad97949f754c48a8a6958cd735c613049167"
+    },
+    {
+      "spec": "rapp-spine/1.0",
+      "repo": "kody-w/rapp-spine",
+      "role": "router + foundation registry",
+      "locked": true,
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md",
+      "sha256": "b75bf96d19c0e185ef86aace8d696574bd0ce481e4a5c7fea6233090cc368777"
+    },
+    {
+      "spec": "rapp-roadmap",
+      "repo": "kody-w/rapp-roadmap",
+      "role": "how we build from here (kernel stays locked)",
+      "locked": true,
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/roadmap.json",
+      "sha256": "a9acf961fa31d351d6f9543797a4223a581754dbec7718b5822cd5deff735fd1"
+    }
+  ]
+}

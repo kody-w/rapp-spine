@@ -227,6 +227,20 @@
         "rappterbox-console-spec/1.0"
       ],
       "why": "A FROZEN additive-only console<->cartridge contract over the same RAPP kernel + Constitution Article XXXIII, with 'Wii Sports' starter carts and on-demand expansion packs."
+    },
+    {
+      "situation": "A brainstem on a spotty/high-latency/intermittent link (a 'robot on Mars') must act autonomously and re-aim when it reaches the swarm.",
+      "use": [
+        "rapp-frame/1.0"
+      ],
+      "why": "the edge is a brainstem making local judgments; frames/echos re-aim it; degrade-to-one offline."
+    },
+    {
+      "situation": "I need the swarm/medium to survive a host being taken down, geoblocked, or banned \u2014 no single point of failure.",
+      "use": [
+        "rapp-hydra/1.0"
+      ],
+      "why": "static data mirrored to many heads, content-verified; cut one head, read from the next; fork to re-seed."
     }
   ],
   "registry": [
@@ -493,6 +507,22 @@
       "purpose": "The permanent cloud host (Azure Function) for kited vneighborhoods \u2014 an always-on 'resident vTwin' serving the same signed rapp-commons-event/1.0 stream over plain HTTP for any room, never sleeping. Trustless: verifies every POST server-side (ECDSA P-256, fingerprint match, bounded body); can refuse but cannot forge.",
       "when_to_use": "When a browser-tab host isn't durable enough and you want a vneighborhood (the Commons, a forum, your room) to 'graduate' to an always-on relay so late joiners still get in. 'Kited is the floor, this is the ceiling.'",
       "entry_point": "az login && func --version (v4) && ./deploy.sh; add base URL to neighborhood.json -> commons.cloud_hosts. Routes: /api/health, /api/rooms/{room}/events. Live: rapp-resident-kw165843.azurewebsites.net/api."
+    },
+    {
+      "spec_id": "rapp-frame/1.0",
+      "repo": "kody-w/rapp-frame-net",
+      "layer": "leviathan",
+      "purpose": "The planetary swarm wire: drive far/intermittent brainstem EDGES as one swarm over append-only frames/echos served from GitHub. The edge is a brainstem making local judgments; verify-before-act; degrade-to-one offline.",
+      "when_to_use": "a brainstem on a spotty/high-latency link must act autonomously and re-aim when it reaches the swarm",
+      "entry_point": "drop edge_node_agent.py into a brainstem; raw.githubusercontent.com/kody-w/rapp-frame-net/main/net/latest.json"
+    },
+    {
+      "spec_id": "rapp-hydra/1.0",
+      "repo": "kody-w/rapp-frame-net",
+      "layer": "network",
+      "purpose": "The many-headed unkillable medium: the swarm's static data is mirrored to many independent heads (GitHub raw, jsDelivr, raw.githack, mirrors, IPFS); read from any head, trust the content-hash not the host. Cut one head, two grow.",
+      "when_to_use": "I must keep reading the swarm even if a host/CDN is taken down, geoblocked, or bans the account",
+      "entry_point": "an edge head-list with content-verify + failover; HYDRA.md"
     }
   ],
   "collisions_and_gaps": [
