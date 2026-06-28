@@ -316,6 +316,14 @@
         "brainstem-egg/2.3"
       ],
       "why": "The remaining kernel/governance-vertebra specs: the GitHub-Copilot auth chain, the 0.0.0.0/RCE network boundary (Phase-1 open), cubby storage, signing-optional trust, substrate signing, the RAR/RAPP_Store/RAPP_Sense_Store federation, and the egg scale ladder."
+    },
+    {
+      "situation": "What is the roadmap / the long-term hardening backlog for the ecosystem?",
+      "use": [
+        "rapp-roadmap/1.0",
+        "rapp-backlog/1.0"
+      ],
+      "why": "kody-w/rapp-roadmap: the grounded 5-phase roadmap (re-anchored on the metropolis north star) + the adversarial BACKLOG (165 wrenches). How we build from here without unlocking the kernel."
     }
   ],
   "registry": [
