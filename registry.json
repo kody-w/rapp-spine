@@ -57,7 +57,7 @@
     },
     {
       "layer": "distribution (package, name, ship, install)",
-      "summary": "How a unit becomes shippable. The single user-facing abstraction is the cartridge (rapp-cart/1.0): if it's an agent.py or an .egg, drop it in RACon and it runs. Twins/eggs ship via rapp-egg-hub (rapp-rappid-spec/2.0) and materialize via the generic twin-egg-hatcher; rapp-agents is a flat community stack + loader; rapp-static-api/1.0 is the zero-server 'the repo IS the API' convention every catalog builds on; the sacred one-liner installers (rapp-installer), planted public instances (heimdall, conforming to the Mirror Spec), and the Wrapped-Organism egg hub (rapp-leviathan-egg/1.0) live here too. RAPP_Hub is deprecated -> rapphub.",
+      "summary": "How a unit becomes shippable. The single user-facing abstraction is the cartridge (rapp-cart/1.0): if it's an agent.py or an .egg, drop it in RACon and it runs. Twins/eggs ship via rapp-egg-hub (rapp-rappid-spec/2.0) and materialize via the generic twin-egg-hatcher; rapp-agents is a flat community stack + loader; rapp-static-api/1.0 is the zero-server 'the repo IS the API' convention every catalog builds on; the sacred one-liner installers (rapp-installer), planted public instances (heimdall, conforming to the Mirror Spec), and the Wrapped-Organism egg hub (rapp-leviathan-egg/1.0) live here too. RAPP_Hub is archived -> RAR + RAPP_Store registry path.",
       "protocols": [
         "rapp-cart/1.0",
         "rapp-rappid-spec/2.0 (rapp-egg-hub)",
@@ -324,6 +324,17 @@
         "rapp-backlog/1.0"
       ],
       "why": "kody-w/rapp-roadmap: the grounded 5-phase roadmap (re-anchored on the metropolis north star) + the adversarial BACKLOG (165 wrenches). How we build from here without unlocking the kernel."
+    },
+    {
+      "situation": "I want to PACKAGE/PUBLISH a rapplication bundle or a sense overlay, or handle a holocard; or reach a dark-door neighborhood by dialing a rappid.",
+      "use": [
+        "rapp-application/1.0",
+        "rapp-sense/1.0",
+        "rappcards-binder/1.0",
+        "rapp-demo/1.0",
+        "rapp-payphone-dial/1.0"
+      ],
+      "why": "The distribution/network sub-protocols: the rapplication bundle FORMAT (RAPP_Store), the sense overlay FORMAT (RAPP_Sense_Store), the holocard format (RAPPcards), the demo bundle, and the payphone/dial async-reach pattern (a sub-protocol of rapp-neighborhood-protocol)."
     }
   ],
   "registry": [
@@ -533,7 +544,7 @@
       "layer": "distribution",
       "purpose": "ARCHIVED. Was the central registry for COMPLETE RAPP implementations (vs RAPP_Store's individual rapplications). README is now just a 'this repository has moved' redirect.",
       "when_to_use": "Effectively never \u2014 historical reference only. For the live catalog go to the RAR/RAPP_Store registry path.",
-      "entry_point": "MOVED -> the RAR + RAPP_Store registry path (live: https://kody-w.github.io/rapphub/)."
+      "entry_point": "MOVED -> the RAR + RAPP_Store registry path (live: https://kody-w.github.io/RAPP_Store/)."
     },
     {
       "spec_id": "rapp-estate/1.1 (canonical def in kody-w/RAPP specs/SPEC.md)",
@@ -604,28 +615,32 @@
       "repo": "kody-w/RAPP_Sense_Store",
       "role": "Canonical public catalog + spec for RAPP senses (modular per-channel output overlays that drop into a brainstem's utils/senses/); peer to RAR (agents) and RAPP_Store (rapplications)",
       "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP_Sense_Store/main/SPEC.md",
-      "entry_point": "Browse index.json / submit via @rapp/rapp_publish_agent or a [SENSE] @<user>/<slug> issue; install sense .py files into rapp_brainstem/utils/senses/"
+      "entry_point": "Browse index.json / submit via @rapp/rapp_publish_agent or a [SENSE] @<user>/<slug> issue; install sense .py files into rapp_brainstem/utils/senses/",
+      "layer": "distribution"
     },
     {
       "spec_id": "rapp-application/1.0",
       "repo": "kody-w/RAPP_Store",
       "role": "Public catalog + canonical spec for rapplications (bundled single-file agent + UI/state/service/twin cartridges); defines bundle layout, manifest schema, gated-rapp federation, and the static Pokedex API.",
       "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP_Store/main/SPEC.md",
-      "entry_point": "Browse the static Pokedex API at https://raw.githubusercontent.com/kody-w/RAPP_Store/main/api/v1/index.json (or the viewer kody-w.github.io/RAPP_Store/); rapps conform to rapp-application/1.0 and drop into a local brainstem."
+      "entry_point": "Browse the static Pokedex API at https://raw.githubusercontent.com/kody-w/RAPP_Store/main/api/v1/index.json (or the viewer kody-w.github.io/RAPP_Store/); rapps conform to rapp-application/1.0 and drop into a local brainstem.",
+      "layer": "distribution"
     },
     {
       "spec_id": "rappcards-binder/1.0",
       "repo": "kody-w/RAPPcards",
       "role": "Canonical owner of the portable RAPPcards trading-card standard (card data model, deterministic seed identity, incantation protocol, lossless export, cross-binder federation) \u2014 declares rappcards-binder/1.0 + rappcards-peers/1.0 + rappcards-seed-index/1.0",
       "raw_url": "https://raw.githubusercontent.com/kody-w/RAPPcards/main/SPEC.md",
-      "entry_point": "Read SPEC.md for the standard; live site at kody-w.github.io/RAPPcards (index.html browse, binder.html local-first IndexedDB collection). Federation bootstrap: raw.githubusercontent.com/kody-w/RAPPcards/main/peers.json"
+      "entry_point": "Read SPEC.md for the standard; live site at kody-w.github.io/RAPPcards (index.html browse, binder.html local-first IndexedDB collection). Federation bootstrap: raw.githubusercontent.com/kody-w/RAPPcards/main/peers.json",
+      "layer": "distribution"
     },
     {
       "spec_id": "rapp-demo/1.0",
       "repo": "kody-w/rapp-demos",
       "role": "Owner of the rapp-demo/1.0 scenario schema and its scan-to-watch synced demo player: an M365-style template where a host walks a text scenario step-by-step and QR/link watchers follow live, read-only, over a rapp-sealed WebRTC channel.",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-demos/main/README.md",
-      "entry_point": "Live player at https://kody-w.github.io/rapp-demos/ ; author/import a `rapp-demo/1.0` scenario JSON (see scenarios/) into the fixed M365 template and drive it; schema canonically defined inline in README.md"
+      "entry_point": "Live player at https://kody-w.github.io/rapp-demos/ ; author/import a `rapp-demo/1.0` scenario JSON (see scenarios/) into the fixed M365 template and drive it; schema canonically defined inline in README.md",
+      "layer": "distribution"
     },
     {
       "spec_id": "rapp-spine/1.0",
@@ -727,7 +742,8 @@
       "repo": "kody-w/rapp-neighborhood-protocol",
       "role": "PAYPHONE.md",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-neighborhood-protocol/main/PAYPHONE.md",
-      "entry_point": "read PAYPHONE.md in kody-w/rapp-neighborhood-protocol"
+      "entry_point": "read PAYPHONE.md in kody-w/rapp-neighborhood-protocol",
+      "layer": "network"
     },
     {
       "spec_id": "rapp-runtime-parity/1.0",
@@ -757,7 +773,7 @@
   "collisions_and_gaps": [
     "LEVIATHAN \u2014 TWO unrelated concepts share the name (the load-bearing collision). (A) Leviathan PROTOCOL (kody-w/leviathan, self-titled SPEC v1.0): ONE external mind drives MANY no-LLM brainstem BODIES over POST /api/agent/<name> \u2014 a LAN FLEET/fan-out orchestration; 'one mind, many bodies.' (B) Wrapped-Organism Leviathan (rapp_leviathan_factory -> wrap_leviathan -> rapp-leviathan-hub/rapp-leviathan-egg/1.0): ONE operator's single digital BEING built of MANY CELLS across 5 estates (Sanctum/Polity/Works/Press/Commons); 'one being, many cells.' Same word, orthogonal architectures \u2014 a crawler must disambiguate by intent (drive a node fleet vs. mint/ship a being).",
     "PORT + ROOT COLLISION: kody-w/RAPP, kody-w/rapp-installer, AND kody-w/rappterbox all install to ~/.brainstem and bind 127.0.0.1:7071. The three cannot coexist on one machine; CommunityRAPP also lands on 7071 locally (or 7072 scaffolded). Project-local RAPP uses :7072+.",
-    "DEPRECATIONS: kody-w/rapp-installer is THE GRAIL/kernel of record; kody-w/RAPP is a downstream DISTRO that pins the unmodified kernel (rapp-distro/1.0). kody-w/RAPP_Hub is ARCHIVED and is archived (superseded by the RAR + RAPP_Store registry path). Treat rapp-installer as the kernel grail, RAPP as its reference distro, RAPP_Hub as archived.",
+    "DEPRECATIONS: kody-w/rapp-installer is THE GRAIL/kernel of record; kody-w/RAPP is a downstream DISTRO that pins the unmodified kernel (rapp-distro/1.0). kody-w/RAPP_Hub is ARCHIVED (superseded by the RAR + RAPP_Store registry path). Treat rapp-installer as the kernel grail, RAPP as its reference distro, RAPP_Hub as archived.",
     "MISSING / 404 PROTOCOLS (gaps): (1) The Wrapped Organism Spec \u2014 advertised home kody-w/rappterbook (the Wrapped-Organism cell runtime; the standalone spec repo is 404 \u2014 see rappterbook) is 404, no version slug; only a reference runtime survives at kody-w/rappterbook/scripts/wrapped_organism/. (2) kody-w/wrap_leviathan ships NO code anywhere reachable \u2014 its wiring stage is aspirational; leviathan_hub `hatch` covers it today. (3) kody-w/rapp_leviathan_factory has no standalone repo (404) \u2014 the canonical artifact is a RAR agent (v0.2.0).",
     "SEALING COLLISION: rapp-sealed/1.0 is the CANONICAL codec (PBKDF2-SHA256 salt 'rapp-neighborhood-5a/1', 210000 iters -> AES-256-GCM). rapp-vneighborhood/1.0 uses a DIFFERENT front-door PIN-seal variant (PBKDF2-SHA256(PIN, salt 'rapp-vneighborhood:'+channel, 100000) -> AES-GCM). Two incompatible schemes; never assume a vneighborhood channel is rapp-sealed bytes.",
     "ALIAS, NOT A PROTOCOL: 'rapp-twin-chat/1.0' is an ALIAS for \u00a76 of rapp-neighborhood-protocol/1.0, not a standalone spec. rapp-commons-protocol/2.0 and rapp-vneighborhood/1.0 are PROFILES/APPS on top of it; MCP is just another \u00a75 transport carrying the same \u00a76 envelope. None of these are new peer types.",
