@@ -1,6 +1,6 @@
 # rapp-auth/1.0 — The Brainstem Auth Chain
 
-> **Status:** Canonical · **Version:** 1.0 · **Home:** `kody-w/rapp-installer/specs/AUTH_CHAIN.md`
+> **Status:** Canonical · **Version:** 1.0 · **Home:** `kody-w/rapp-spine/specs/AUTH_CHAIN.md`
 > **Layer:** Tier-1 (Brainstem / the grail kernel) · **Reference implementation:** `rapp_brainstem/brainstem.py`
 > **Normative keywords:** MUST / MUST NOT / SHOULD / MAY per RFC 2119.
 

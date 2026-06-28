@@ -123,5 +123,31 @@
       "repo": "kody-w/rapp-spine",
       "url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/registry.json"
     }
+  ],
+  "core_infra": [
+    {
+      "role": "agent_registry",
+      "repo": "kody-w/RAR",
+      "url": "https://github.com/kody-w/RAR",
+      "note": "canonical home + minting authority for every agent"
+    },
+    {
+      "role": "egg_spec_origin",
+      "repo": "kody-w/rappterbook",
+      "url": "https://github.com/kody-w/rappterbook",
+      "note": "owns the canonical EGG_SPEC.md, depended on by many repos"
+    },
+    {
+      "role": "moment_engine",
+      "repo": "kody-w/rapp-hologram",
+      "url": "https://github.com/kody-w/rapp-hologram",
+      "note": "sole reference engine of rapp-moment"
+    },
+    {
+      "role": "eternity_reference_deploy",
+      "repo": "kody-w/rapp-oneclick-deploy",
+      "url": "https://github.com/kody-w/rapp-oneclick-deploy",
+      "note": "reference deployment of the rappid eternity form"
+    }
   ]
 }

@@ -2,7 +2,7 @@
 
 # RAPP Canon — the levels of canon law, their precedence, and the amendment process
 
-> **Spec id:** `rapp-canon/1.0` · **status:** normative, governance-constitutional · **home:** kody-w/RAPP/CANON.md
+> **Spec id:** `rapp-canon/1.0` · **status:** normative, governance-constitutional · **home:** kody-w/rapp-spine/specs/CANON.md
 > **canonical_source:** kody-w/RAPP · **drift legs:** rapp-god (archive + grail-scan), rapp-map (mirror), RAPP-Bible (render)
 >
 > The RAPP estate is governed by many documents — a north-star plan, a constitution, dozens of wire/protocol specs, a machine registry, per-spec docs, agent metadata, and soul files. They will eventually disagree. **rapp-canon** is the meta-law that says *which document wins*, *for which kind of question*, and *how the law itself is changed*. It is the constitution of the constitutions.
@@ -70,7 +70,7 @@ For the question *"what is true / current?"* — which specs exist, at which ver
 
 This is not a contradiction of §2. The law ladder governs *legality*; it deliberately contains **no live facts**, precisely so it never goes stale. The moment a fact needs stating ("rapp-commons is at 2.0," "the home of rappid eternity is rapp-moment"), it belongs in the JSON, and **the JSON wins** over any prose that says otherwise — because prose drifts and the registry is the audited, drift-triangulated source.
 
-- **Home:** `kody-w/rapp-god/api/v1/ecosystem-spec.json`
+- **Home:** `kody-w/rapp-spine/specs/CANON.md`
 - **Mirror (must be sha256-identical):** `kody-w/rapp-map/ecosystem-spec.json`
 - **Schema:** `rapp-ecosystem-spec/1.0`
 - **Bound by the law.** The registry records *what is*; it **cannot record what the law forbids**. A registry entry that describes a state the Constitution prohibits is itself a violation — the entry loses, and grail-scan (§4) MUST flag it. The registry is supreme on facts, **subordinate on legality.**
