@@ -110,24 +110,29 @@ Frozen surface of `BasicAgent`:
 
 ### 2.2 ABI-2 — `POST /chat` is the only wire
 
-`POST /chat` is the **single public capability surface**. All agent capability flows through it; the kernel exposes no per-feature REST routes. The frozen request/response shape:
+`POST /chat` is the **single public capability surface**. All agent capability flows through it; the kernel exposes no per-feature REST routes. The frozen request/response shape — **as the grail `brainstem.py` actually serves it** (`brainstem-v0.6.1`). [`PARITY.md`](./PARITY.md) is the single **normative owner** of this wire; this section restates it for context only:
 
 ```jsonc
 // Request
 POST /chat
 {
-  "message": "user turn (string)",
-  "history": [ {"role": "user|assistant", "content": "..."} ]   // optional prior turns
+  "user_input": "user turn (string)",
+  "conversation_history": [ {"role": "user|assistant", "content": "..."} ],  // optional prior turns
+  "session_id": "opaque id (string)"                                          // optional; echoed back
 }
 
 // Response
 {
   "response": "final assistant text (string)",
-  "agent_logs": [ {"agent": "MyAgent", "args": {...}, "result": "..."} ]
+  "session_id": "the conversation id (string)",
+  "agent_logs": "agent activity, NEWLINE-JOINED STRING (not an array)",
+  "voice_mode": false,
+  "model": "the model used (string)",
+  "requested_model": "the model asked for (string)"
 }
 ```
 
-Guarantees: `/chat` accepts a user message + optional history, runs the discover→tools→`perform`→loop cycle (bounded at 3 tool rounds), and returns `response` plus `agent_logs`. New capability is added by **dropping an agent**, never by adding a route. (Fleet/estate messaging rides on top of `/chat` as signed twin-chat events — see `rapp-leviathan` / `rapp-commons-event/1.0` — not on a side channel.)
+Guarantees: `/chat` accepts `user_input` + optional `conversation_history`/`session_id`, runs the discover→tools→`perform`→loop cycle (bounded at 3 tool rounds), and returns `response` (+ `session_id`, `agent_logs` as a newline-joined string, `voice_mode`, `model`, `requested_model`). There is **no** `assistant_response` key. New capability is added by **dropping an agent**, never by adding a route. (Fleet/estate messaging rides on top of `/chat` as signed twin-chat events — see [`rapp-fleet-chat/1.0`](https://github.com/kody-w/leviathan/blob/main/FLEET_CHAT.md) / `rapp-commons-event/1.0` — not on a side channel.)
 
 ### 2.3 ABI-3 — Auto-discovery
 
@@ -280,7 +285,7 @@ A server that adds capability only through drop-in agents, never moves a tag, an
 extends BasicAgent · name + metadata{name,description,parameters(OpenAI schema)} · perform(**kwargs)->str
 optional: system_context()->str|None
 file: agents/**/<name>_agent.py   (NOT under experimental_agents/ or disabled_agents/)
-wire:  POST /chat {message, history?} -> {response, agent_logs}
+wire:  POST /chat {user_input, conversation_history?, session_id?} -> {response, session_id, agent_logs(newline-string), voice_mode, model, requested_model}
 shim:  from utils.azure_file_storage import AzureFileStorageManager   (→ local)
 guarantee: works on every 1.x kernel, unmodified, forever.
 ```

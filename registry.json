@@ -3,6 +3,7 @@
   "what": "A situational router over the full RAPP protocol stack. Fetch this, match your situation against `router`, follow to the protocol's entry_point. This is not a new protocol \u2014 it routes to existing ones.",
   "generated": "2026-06-28",
   "layers_order": [
+    "kernel",
     "map",
     "runtime",
     "distribution",
@@ -51,7 +52,7 @@
     },
     {
       "layer": "identity (who an agent IS + confidentiality)",
-      "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood \u00a78). rapp-moment/1.0 is the keypair-signed (ECDSA P-256) living social primitive where identity IS a keypair and ownership IS a signature. The rappid string itself (rappid:@owner/slug:64hex, rapp-eternity/1.0) underpins both but is canonically filed up in the map layer (RAPP-Bible) \u2014 an organizational seam.",
+      "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood \u00a78). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp-eternity/1.0: a sha256 content-address (PKI-FREE); gh-collaborator is the default ownership; a keypair is OPTIONAL sovereignty, NEVER required. The rappid string itself (rappid:@owner/slug:64hex, rapp-eternity/1.0) underpins both but is canonically filed up in the map layer (RAPP-Bible) \u2014 an organizational seam.",
       "protocols": [
         "rapp-sealed/1.0",
         "rapp-moment/1.0",
@@ -193,14 +194,14 @@
       "use": [
         "rapp-moment/1.0"
       ],
-      "why": "A Moment is a post + exact UTC instant + 100-frame organism, all static CDN data; identity a keypair, ownership an ECDSA P-256 signature. Engine is rapp-hologram. NOTE: PolyForm-NC + trademarked marks, unlike the MIT cluster."
+      "why": "A Moment is a post + exact UTC instant + 100-frame organism, all static CDN data; identity = the rappid sha256 content-address (rapp-eternity/1.0); an OPTIONAL ECDSA P-256 keypair may sign for ownership (never required). Engine is rapp-hologram. NOTE: PolyForm-NC + trademarked marks, unlike the MIT cluster."
     },
     {
       "situation": "I run several brainstem nodes on a TRUSTED LAN and want to drive them as one fleet with no-LLM, no-throttle fan-out.",
       "use": [
         "leviathan SPEC v1.0 (THE Leviathan PROTOCOL)"
       ],
-      "why": "ONE external mind drives MANY no-LLM BODIES via POST /api/agent/<name>; fan-out finishes in slowest-body latency, no shared-token throttle, drivable even when a node's LLM is down. SECURITY: /api/agent is unauthenticated -> fleet-wide RCE risk; LAN/trusted-subnet ONLY. This is the FLEET Leviathan, NOT the being."
+      "why": "ONE external mind drives MANY no-LLM BODIES. CANONICAL wire = rapp-fleet-chat/1.0 (SIGNED twin-chat events over /chat, Art XXV). The legacy POST /api/agent/<name> route is UNAUTHENTICATED \u2014 a known Phase-1 RCE, LAN/trusted-subnet ONLY, to be retired. This is the FLEET Leviathan, NOT the being."
     },
     {
       "situation": "I want to create/transport ONE operator's full digital being made of many cells across 5 estates.",
@@ -259,6 +260,17 @@
         "foundation.json (locked hashes)"
       ],
       "why": "the corpus is aggregated, live-streamed, and drift-watched against canonical hashes; foundation.json locks the foundation pillars + law."
+    },
+    {
+      "situation": "What does the kernel/law actually say, or where is a newly-formalized foundation spec?",
+      "use": [
+        "rapp-kernel/1.0",
+        "rapp-canon/1.0",
+        "rapp-eternity/1.0",
+        "rapp-distro/1.0",
+        "rapp-fleet-chat/1.0"
+      ],
+      "why": "The kernel/governance vertebra: the frozen ABI + the constitution + identity + the distro model + the canonical fleet wire. Grail=rapp-installer; RAPP is a distro."
     }
   ],
   "registry": [
@@ -303,11 +315,11 @@
       "entry_point": "curl -fsSL https://kody-w.github.io/rappterbox/installer/install.sh | bash (then bash ~/.brainstem/start.sh; --with twin)"
     },
     {
-      "spec_id": "(none; distribution/installer \u2014 SUPERSEDED by kody-w/RAPP)",
+      "spec_id": "rapp-agent/1.0 (the kernel \u2014 the grail of record)",
       "repo": "kody-w/rapp-installer",
       "layer": "distribution",
       "purpose": "Original single-repo install surface for the brainstem (Tier 1) + the full three-tier ramp (local Flask -> Azure -> Copilot Studio). The repo the local working tree ~/.brainstem/src corresponds to. Sacred install.sh/ps1/cmd.",
-      "when_to_use": "Legacy/teaching path. Largely superseded by kody-w/RAPP, which folded the same tiers into installer/ + rapp_swarm/ + worker/.",
+      "when_to_use": "Legacy/teaching path. THE grail/kernel of record \u2014 the one-liner installs from it. kody-w/RAPP is a downstream DISTRO that pins the unmodified kernel (rapp-distro/1.0).",
       "entry_point": "curl -fsSL https://kody-w.github.io/rapp-installer/install.sh | bash (Tier 2: .../community_rapp/install.sh)"
     },
     {
@@ -410,7 +422,7 @@
       "spec_id": "rapp-moment/1.0",
       "repo": "kody-w/rapp-moment",
       "layer": "identity",
-      "purpose": "Standard for a serverless cryptographic living social primitive: a 'Moment' is simultaneously a post, an exact UTC instant, and a 100-frame holographic organism \u2014 all static CDN data, identity a keypair, ownership an ECDSA P-256 signature. Implementation-free; engine lives in kody-w/rapp-hologram.",
+      "purpose": "Standard for a serverless cryptographic living social primitive: a 'Moment' is simultaneously a post, an exact UTC instant, and a 100-frame holographic organism \u2014 all static CDN data, identity = the rappid sha256 content-address (rapp-eternity/1.0); an OPTIONAL ECDSA P-256 keypair may sign for ownership (never required). Implementation-free; engine lives in kody-w/rapp-hologram.",
       "when_to_use": "When building an interoperable backend-free client for the holographic social network (mint/play/own/embed Moments), or you need the normative wire format + conformance rules.",
       "entry_point": "SPEC.md + CONFORMANCE.md in repo. Reference engine: kody-w/rapp-hologram. Play: ?m=<base64url(JSON)>; dial: ?dial=<pk>. License: PolyForm-NC 1.0.0 + trademarked marks (NOT MIT)."
     },
@@ -614,7 +626,7 @@
     {
       "spec_id": "rapp-trust/1.0",
       "repo": "kody-w/rapp-spine",
-      "role": "<!-- (c) 2026 Kody Wildfeuer \u00b7 PolyForm Noncommercial 1.0.0 \u00b7 part of the RAPP ecosystem -->",
+      "role": "Trust & ownership \u2014 defers to rapp-eternity/1.0 (content-address identity; keypair optional)",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/TRUST_AND_OWNERSHIP.md",
       "entry_point": "read specs/TRUST_AND_OWNERSHIP.md in kody-w/rapp-spine"
     },
@@ -663,7 +675,7 @@
     {
       "spec_id": "rapp-canon/1.0",
       "repo": "kody-w/rapp-spine",
-      "role": "<!-- (c) 2026 Kody Wildfeuer \u00b7 part of the RAPP ecosystem (RAPP) -->",
+      "role": "rapp-canon/1.0 \u2014 see kody-w/rapp-spine",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/CANON.md",
       "entry_point": "read specs/CANON.md in kody-w/rapp-spine"
     }
@@ -671,7 +683,7 @@
   "collisions_and_gaps": [
     "LEVIATHAN \u2014 TWO unrelated concepts share the name (the load-bearing collision). (A) Leviathan PROTOCOL (kody-w/leviathan, self-titled SPEC v1.0): ONE external mind drives MANY no-LLM brainstem BODIES over POST /api/agent/<name> \u2014 a LAN FLEET/fan-out orchestration; 'one mind, many bodies.' (B) Wrapped-Organism Leviathan (rapp_leviathan_factory -> wrap_leviathan -> rapp-leviathan-hub/rapp-leviathan-egg/1.0): ONE operator's single digital BEING built of MANY CELLS across 5 estates (Sanctum/Polity/Works/Press/Commons); 'one being, many cells.' Same word, orthogonal architectures \u2014 a crawler must disambiguate by intent (drive a node fleet vs. mint/ship a being).",
     "PORT + ROOT COLLISION: kody-w/RAPP, kody-w/rapp-installer, AND kody-w/rappterbox all install to ~/.brainstem and bind 127.0.0.1:7071. The three cannot coexist on one machine; CommunityRAPP also lands on 7071 locally (or 7072 scaffolded). Project-local RAPP uses :7072+.",
-    "DEPRECATIONS: kody-w/rapp-installer is SUPERSEDED by kody-w/RAPP (which folded the same three tiers into installer/ + rapp_swarm/ + worker/) but still self-identifies as 'RAPP Brainstem'. kody-w/RAPP_Hub is ARCHIVED and redirects to kody-w/rapphub. Treat installer as legacy/teaching, RAPP_Hub as dead.",
+    "DEPRECATIONS: kody-w/rapp-installer is THE GRAIL/kernel of record; kody-w/RAPP is a downstream DISTRO that pins the unmodified kernel (rapp-distro/1.0). kody-w/RAPP_Hub is ARCHIVED and redirects to kody-w/rapphub. Treat rapp-installer as the kernel grail, RAPP as its reference distro, RAPP_Hub as archived.",
     "MISSING / 404 PROTOCOLS (gaps): (1) The Wrapped Organism Spec \u2014 advertised home kody-w/rappter is 404, no version slug; only a reference runtime survives at kody-w/rappterbook/scripts/wrapped_organism/. (2) kody-w/wrap_leviathan ships NO code anywhere reachable \u2014 its wiring stage is aspirational; leviathan_hub `hatch` covers it today. (3) kody-w/rapp_leviathan_factory has no standalone repo (404) \u2014 the canonical artifact is a RAR agent (v0.2.0).",
     "SEALING COLLISION: rapp-sealed/1.0 is the CANONICAL codec (PBKDF2-SHA256 salt 'rapp-neighborhood-5a/1', 210000 iters -> AES-256-GCM). rapp-vneighborhood/1.0 uses a DIFFERENT front-door PIN-seal variant (PBKDF2-SHA256(PIN, salt 'rapp-vneighborhood:'+channel, 100000) -> AES-GCM). Two incompatible schemes; never assume a vneighborhood channel is rapp-sealed bytes.",
     "ALIAS, NOT A PROTOCOL: 'rapp-twin-chat/1.0' is an ALIAS for \u00a76 of rapp-neighborhood-protocol/1.0, not a standalone spec. rapp-commons-protocol/2.0 and rapp-vneighborhood/1.0 are PROFILES/APPS on top of it; MCP is just another \u00a75 transport carrying the same \u00a76 envelope. None of these are new peer types.",
@@ -683,7 +695,6 @@
     "OVERLAP \u2014 distribution catalogs: rapp-agents (flat public agent stack + RappLoader) overlaps RAR (curated content-addressed registry); rapp-egg-hub (twin .egg hub) overlaps twin-egg-hatcher (generic hatcher) and rapp-carts (the unifying cartridge abstraction). They are complementary (stack vs registry; hub-distribution vs hatch-tool vs user-facing unit), not duplicates \u2014 but a crawler should pick by role, not by nearest match.",
     "OVERLAP \u2014 map renderers: RAPP-Bible (synthesized, PINNED v1.0.0 human narrative \u2014 can itself drift), rapp_docs (live raw passthrough, always-current, zero copies), and rapp-map (index of WHERE, not the TEXT) cover overlapping ground with different jobs. Use rapp_docs for current spec text, Bible for narrative onboarding, rapp-map for location.",
     "LICENSE COLLISION: most of the cluster is MIT (rapp-sealed, rapp-dataverse, rapp-neighborhood-protocol, rapp-kite, rapp-static-apis, rapp-agents). BUT kody-w/RAPP and rappterbox are source-available All-Rights-Reserved, and rapp-moment/1.0 is PolyForm-Noncommercial 1.0.0 + trademarked marks ('RAPP', 'Holographic Moment(s)'). A consumer/redistributor must check per-repo terms, not assume MIT.",
-    "SECURITY GAP: the Leviathan fleet protocol's POST /api/agent/<name> route is UNAUTHENTICATED \u2014 a shell-capable agent on any body = fleet-wide RCE from one request. It is explicitly LAN/trusted-subnet only; there is no auth layer in the spec. Also the fleet protocol declares NO rapp-xxx/N.N slug, so it sits outside the registry's naming convention and won't show up in spec-id scans.",
-    "SPINE GAP: the rapp-spine itself has no formal spec id, version, or canonical home repo \u2014 it is a synthesis/router over existing specs (this document). It should likely be minted (e.g. rapp-spine/1.0) and wired into rapp-map/rapp-god as a first-class leg if it is to avoid becoming its own drift source."
+    "SECURITY GAP: the Leviathan fleet protocol's POST /api/agent/<name> route is UNAUTHENTICATED \u2014 a shell-capable agent on any body = fleet-wide RCE from one request. It is explicitly LAN/trusted-subnet only; there is no auth layer in the spec. Also the fleet protocol declares NO rapp-xxx/N.N slug, so it sits outside the registry's naming convention and won't show up in spec-id scans."
   ]
 }
