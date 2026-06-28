@@ -61,6 +61,26 @@ build →  agents/cartridges/profiles ON the wire           (never into the kern
 | **Map / Drift** | `rapp-map`, `rapp-god` | where each pillar lives; is your copy canonical? |
 | **Roadmap** | [`rapp-roadmap`](https://github.com/kody-w/rapp-roadmap) | how we build from here without un-locking the kernel |
 
+## 4a. The law + the spec corpus (brought into the lock)
+
+The foundation isn't only protocols — it's the **law** that keeps the kernel sacred and the **full
+spec corpus**, both content-addressed and hydra-served in [`foundation.json`](foundation.json):
+
+- **The law (constitutions).** The kernel **[CONSTITUTION](https://github.com/kody-w/RAPP/blob/main/CONSTITUTION.md)**
+  is the authoring discipline (Article 0 — *the file IS the agent IS the documentation IS the contract*);
+  **MASTER_PLAN** is the why-axis first-principles north star (when the two disagree, **the Master Plan
+  wins**); **SPEC** is the wire contract they protect. Estate constitutions
+  (`rappterbook`, `rappterbook-governance`) govern their own domains. *"What does the law say — is this
+  change allowed?"* routes here.
+- **The spec corpus.** Every RAPP spec, three ways: **[RAPP-Bible](https://github.com/kody-w/RAPP-Bible)**
+  (canonical aggregate), **[rapp_docs](https://github.com/kody-w/rapp_docs)** (live-streamed from each home
+  repo's raw, no copies), and **[rapp-god](https://github.com/kody-w/rapp-god)** (the drift detector —
+  watches every copy against the canonical hash). The spine's [`registry.json`](registry.json) routes
+  situations to the right spec; `foundation.json` locks the pillars + the law by hash.
+
+The law and the corpus are themselves canonical public twins — so the discipline that keeps the kernel
+sacred is as locked, public, and drift-watched as the kernel itself.
+
 ## 5. Build from here
 
 Lock first, build second. New capability = a new agent/cartridge/egg/frame, registered

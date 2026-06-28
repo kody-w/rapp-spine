@@ -241,6 +241,24 @@
         "rapp-hydra/1.0"
       ],
       "why": "static data mirrored to many heads, content-verified; cut one head, read from the next; fork to re-seed."
+    },
+    {
+      "situation": "What does the governing law say \u2014 is this change allowed, and which discipline/article governs it?",
+      "use": [
+        "rapp-constitution (kody-w/RAPP/CONSTITUTION.md)",
+        "MASTER_PLAN (the why-axis; wins ties)"
+      ],
+      "why": "the Constitution is the authoring discipline; the Master Plan is the first-principles north star and wins when they disagree."
+    },
+    {
+      "situation": "Where is the canonical, current spec for X \u2014 and is my copy authoritative (not drifted)?",
+      "use": [
+        "RAPP-Bible (canonical aggregate)",
+        "rapp_docs (live stream)",
+        "rapp-god (drift detector)",
+        "foundation.json (locked hashes)"
+      ],
+      "why": "the corpus is aggregated, live-streamed, and drift-watched against canonical hashes; foundation.json locks the foundation pillars + law."
     }
   ],
   "registry": [

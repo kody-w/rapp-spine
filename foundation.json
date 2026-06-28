@@ -61,5 +61,51 @@
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/roadmap.json",
       "sha256": "a9acf961fa31d351d6f9543797a4223a581754dbec7718b5822cd5deff735fd1"
     }
-  ]
+  ],
+  "law": [
+    {
+      "doc": "rapp-constitution (kernel)",
+      "repo": "kody-w/RAPP",
+      "role": "the authoring discipline that keeps the wire contract shippable for a decade (Article 0: the file IS the agent IS the contract)",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/main/CONSTITUTION.md",
+      "sha256": "0a384b1960a94e75005cbe659d07390868b0abf0ff9e9ec7fcfce16c7415b23e",
+      "locked": true
+    },
+    {
+      "doc": "MASTER_PLAN (why-axis)",
+      "repo": "kody-w/RAPP",
+      "role": "the first-principles north star; when the Constitution and the Master Plan disagree, the Master Plan wins",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/main/MASTER_PLAN.md",
+      "sha256": "eea0cccd176281128324e1138709e427cf245af6482ee46f4be91a14daefa758",
+      "locked": true
+    },
+    {
+      "doc": "SPEC (kernel wire contract)",
+      "repo": "kody-w/RAPP",
+      "role": "the wire contract the Constitution protects",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/main/SPEC.md",
+      "sha256": null,
+      "locked": true
+    },
+    {
+      "doc": "Rappterbook Constitution",
+      "repo": "kody-w/rappterbook",
+      "role": "governance for the social-network estate",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rappterbook/main/CONSTITUTION.md",
+      "sha256": null
+    },
+    {
+      "doc": "Rappterbook Governance (executable)",
+      "repo": "kody-w/rappterbook-governance",
+      "role": "constitutional debates compiled into code by 99 agents",
+      "raw_url": "https://github.com/kody-w/rappterbook-governance",
+      "sha256": null
+    }
+  ],
+  "spec_corpus": {
+    "canonical_aggregate (RAPP-Bible)": "https://github.com/kody-w/RAPP-Bible \u2014 one repo, every RAPP spec, every entry point",
+    "live_stream (rapp_docs)": "https://github.com/kody-w/rapp_docs \u2014 every spec streamed live from each home repo's raw data, no copies",
+    "drift_detector (rapp-god)": "https://github.com/kody-w/rapp-god \u2014 god's-eye map + live canonical-integrity / cross-repo drift detector",
+    "router (rapp-spine)": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/registry.json"
+  }
 }
