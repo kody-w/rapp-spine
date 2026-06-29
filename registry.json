@@ -17,20 +17,22 @@
       "layer": "kernel",
       "summary": "The kernel + its governance: the frozen single-file brainstem (rapp-agent/1.0, GRAIL=kody-w/rapp-installer; kody-w/RAPP is the reference distro pinning it via rapp-distro/1.0). Specs: rapp-kernel/1.0, rapp-auth/1.0, rapp-kernel-boundary/1.0, rapp-runtime-parity/1.0, rapp-canon/1.0, rapp-cubby/1.0, rapp-trust/1.0, rapp-substrate-trust/1.0, rapp-eternity/1.0 (identity), rapp-distro/1.0 (distros), rapp-fleet-chat/1.0 (fleet over /chat), rapp-metropolis/1.0, rapp-stores/1.0, brainstem-egg/2.3. The kernel never breaks userspace.",
       "protocols": [
-        "rapp-kernel/1.0",
+        "brainstem-egg/2.3",
         "rapp-auth/1.0",
-        "rapp-kernel-boundary/1.0",
-        "rapp-runtime-parity/1.0",
+        "rapp-backlog/1.0",
         "rapp-canon/1.0",
         "rapp-cubby/1.0",
-        "rapp-trust/1.0",
-        "rapp-substrate-trust/1.0",
-        "rapp-eternity/1.0",
         "rapp-distro/1.0",
+        "rapp-eternity/1.0",
         "rapp-fleet-chat/1.0",
+        "rapp-kernel-boundary/1.0",
+        "rapp-kernel/1.0",
         "rapp-metropolis/1.0",
+        "rapp-roadmap/1.0",
+        "rapp-runtime-parity/1.0",
         "rapp-stores/1.0",
-        "brainstem-egg/2.3"
+        "rapp-substrate-trust/1.0",
+        "rapp-trust/1.0"
       ]
     },
     {
@@ -95,13 +97,13 @@
     },
     {
       "layer": "leviathan (multicellular beings \u2014 COLLISION LAYER)",
-      "summary": "Many parts acting as one organism. TWO unrelated concepts share the name. (A) The Leviathan PROTOCOL (kody-w/leviathan, self-titled SPEC v1.0) = ONE external mind drives MANY no-LLM brainstem BODIES over POST /api/agent/<name>; a LAN fleet/fan-out orchestration. (B) The Wrapped-Organism Leviathan (rapp_leviathan_factory -> wrap_leviathan -> rapp-leviathan-hub) = ONE operator's single digital BEING built of MANY CELLS across 5 estates (Sanctum/Polity/Works/Press/Commons = soul/will/hands/eyes/mouth). The cell-protocol underpinning (B) is the Wrapped Organism Spec, advertised at kody-w/rappterbook (the Wrapped-Organism cell runtime; the standalone spec repo is 404 \u2014 see rappterbook) \u2014 currently 404.",
+      "summary": "Many parts acting as one organism. TWO unrelated concepts share the name. (A) The Leviathan PROTOCOL (kody-w/leviathan, self-titled SPEC v1.0) = ONE external mind drives MANY no-LLM brainstem BODIES over POST /api/agent/<name>; a LAN fleet/fan-out orchestration. (B) The Wrapped-Organism Leviathan (rapp_leviathan_factory -> wrap_leviathan -> rapp-leviathan-hub) = ONE operator's single digital BEING built of MANY CELLS across 5 estates (Sanctum/Polity/Works/Press/Commons = soul/will/hands/eyes/mouth). The cell-protocol underpinning (B) is the Wrapped Organism Spec, advertised at kody-w/rappterbook (live \u2014 owns EGG_SPEC.md; the standalone Wrapped-Organism spec repo kody-w/rappter is 404 \u2014 see rappterbook) \u2014 currently 404.",
       "protocols": [
         "leviathan SPEC v1.0 \u2014 FLEET protocol: one mind, many no-LLM BODIES",
         "rapp-leviathan-egg/1.0 \u2014 BEING egg (distribution-layer hub)",
         "rapp_leviathan_factory (mint inert 5-estate tree; agent in RAR)",
         "wrap_leviathan (wire stage \u2014 UNPUBLISHED/404)",
-        "WRAPPED_ORGANISM_SPEC.md (kody-w/rappterbook (the Wrapped-Organism cell runtime; the standalone spec repo is 404 \u2014 see rappterbook) \u2014 404, no slug)"
+        "WRAPPED_ORGANISM_SPEC.md (kody-w/rappterbook (live \u2014 owns EGG_SPEC.md; the standalone Wrapped-Organism spec repo kody-w/rappter is 404 \u2014 see rappterbook) \u2014 404, no slug)"
       ]
     }
   ],
@@ -429,7 +431,7 @@
       "spec_id": "(WRAPPED_ORGANISM_SPEC.md; unslugged; repo 404 \u2014 gap)",
       "repo": "kody-w/rappterbook",
       "layer": "leviathan",
-      "purpose": "Advertised home of WRAPPED_ORGANISM_SPEC.md \u2014 constitutional spec for the cell-protocol multicellular pattern underpinning every Wrapped-Organism Leviathan (one stateless brainstem, one cell protocol, hierarchical transcript routing, infinite depth). Repo currently inaccessible. [NOTE: the Wrapped-Organism cell runtime; the standalone spec repo is 404 \u2014 see rappterbook)]",
+      "purpose": "Advertised home of WRAPPED_ORGANISM_SPEC.md \u2014 constitutional spec for the cell-protocol multicellular pattern underpinning every Wrapped-Organism Leviathan (one stateless brainstem, one cell protocol, hierarchical transcript routing, infinite depth). kody-w/rappterbook is live (owns EGG_SPEC.md); the standalone spec repo kody-w/rappter is 404. [NOTE: the Wrapped-Organism cell runtime; the standalone spec repo is 404 \u2014 see rappterbook)]",
       "when_to_use": "When you need the canonical Wrapped Organism / cell-protocol definition. Spec URL is dead; 404 gap \u2014 no surviving runtime at the cited path is kody-w/rappterbook/scripts/wrapped_organism/.",
       "entry_point": "404. Reference cell runtime: kody-w/rappterbook/scripts/wrapped_organism/ (runtime + retrofit + tests)."
     },
@@ -806,7 +808,7 @@
     "LEVIATHAN \u2014 TWO unrelated concepts share the name (the load-bearing collision). (A) Leviathan PROTOCOL (kody-w/leviathan, self-titled SPEC v1.0): ONE external mind drives MANY no-LLM brainstem BODIES over POST /api/agent/<name> \u2014 a LAN FLEET/fan-out orchestration; 'one mind, many bodies.' (B) Wrapped-Organism Leviathan (rapp_leviathan_factory -> wrap_leviathan -> rapp-leviathan-hub/rapp-leviathan-egg/1.0): ONE operator's single digital BEING built of MANY CELLS across 5 estates (Sanctum/Polity/Works/Press/Commons); 'one being, many cells.' Same word, orthogonal architectures \u2014 a crawler must disambiguate by intent (drive a node fleet vs. mint/ship a being).",
     "PORT + ROOT COLLISION: kody-w/RAPP, kody-w/rapp-installer, AND kody-w/rappterbox all install to ~/.brainstem and bind 127.0.0.1:7071. The three cannot coexist on one machine; CommunityRAPP also lands on 7071 locally (or 7072 scaffolded). Project-local RAPP uses :7072+.",
     "DEPRECATIONS: kody-w/rapp-installer is THE GRAIL/kernel of record; kody-w/RAPP is a downstream DISTRO that pins the unmodified kernel (rapp-distro/1.0). kody-w/RAPP_Hub is ARCHIVED (superseded by the RAR + RAPP_Store registry path). Treat rapp-installer as the kernel grail, RAPP as its reference distro, RAPP_Hub as archived.",
-    "MISSING / 404 PROTOCOLS (gaps): (1) The Wrapped Organism Spec \u2014 advertised home kody-w/rappterbook (the Wrapped-Organism cell runtime; the standalone spec repo is 404 \u2014 see rappterbook) is 404, no version slug; only a reference runtime survives at kody-w/rappterbook/scripts/wrapped_organism/. (2) kody-w/wrap_leviathan ships NO code anywhere reachable \u2014 its wiring stage is aspirational; leviathan_hub `hatch` covers it today. (3) kody-w/rapp_leviathan_factory has no standalone repo (404) \u2014 the canonical artifact is a RAR agent (v0.2.0).",
+    "MISSING / 404 PROTOCOLS (gaps): (1) The Wrapped Organism Spec \u2014 advertised home kody-w/rappterbook (live \u2014 owns EGG_SPEC.md; the standalone Wrapped-Organism spec repo kody-w/rappter is 404 \u2014 see rappterbook) is 404, no version slug; only a reference runtime survives at kody-w/rappterbook/scripts/wrapped_organism/. (2) kody-w/wrap_leviathan ships NO code anywhere reachable \u2014 its wiring stage is aspirational; leviathan_hub `hatch` covers it today. (3) kody-w/rapp_leviathan_factory has no standalone repo (404) \u2014 the canonical artifact is a RAR agent (v0.2.0).",
     "SEALING COLLISION: rapp-sealed/1.0 is the CANONICAL codec (PBKDF2-SHA256 salt 'rapp-neighborhood-5a/1', 210000 iters -> AES-256-GCM). rapp-vneighborhood/1.0 uses a DIFFERENT front-door PIN-seal variant (PBKDF2-SHA256(PIN, salt 'rapp-vneighborhood:'+channel, 100000) -> AES-GCM). Two incompatible schemes; never assume a vneighborhood channel is rapp-sealed bytes.",
     "ALIAS, NOT A PROTOCOL: 'rapp-twin-chat/1.0' is an ALIAS for \u00a76 of rapp-neighborhood-protocol/1.0, not a standalone spec. rapp-commons-protocol/2.0 and rapp-vneighborhood/1.0 are PROFILES/APPS on top of it; MCP is just another \u00a75 transport carrying the same \u00a76 envelope. None of these are new peer types.",
     "'rappter*' NAMING CLUSTER: openrappter (divergent dual Python+TS runtime, data root ~/.openrappter, own hub rappterhub), rappterbox (console re-skin on ~/.brainstem), rappter (404, Wrapped Organism Spec home), and rappterbook (+~25 rappterbook-*/rappter-* repos) are DISTINCT things. openrappter shares only the Copilot-backed single-file thesis with the RAPP kernel \u2014 do not treat it as a RAPP runtime variant.",

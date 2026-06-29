@@ -94,13 +94,6 @@
       "role": "governance for the social-network estate",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rappterbook/main/CONSTITUTION.md",
       "sha256": null
-    },
-    {
-      "doc": "Rappterbook Governance (executable)",
-      "repo": "kody-w/rappterbook-governance",
-      "role": "constitutional debates compiled into code by 99 agents",
-      "raw_url": "https://github.com/kody-w/rappterbook-governance",
-      "sha256": null
     }
   ],
   "spec_corpus": [
