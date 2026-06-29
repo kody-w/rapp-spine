@@ -344,6 +344,13 @@
         "rapp-registry/1.0"
       ],
       "why": "kody-w/RAR is THE canonical home + minting authority for bare agents (the 'RAR + RAPP_Store registry path'): RAR for agents, RAPP_Store for rapplications, RAPP_Sense_Store for senses."
+    },
+    {
+      "situation": "How do I make the brainstem + its organs survive reboot, and see/control which organs are running?",
+      "use": [
+        "rapp-burrow/1.0"
+      ],
+      "why": "The Burrow organ-rapplication: launchd persistence (RunAtLoad+KeepAlive+Aqua+FDA-pinned binary) + a locally-served PWA control room aggregating organs over /api/agent."
     }
   ],
   "registry": [
@@ -802,6 +809,14 @@
       "role": "The RAPP Agent Registry \u2014 canonical home + minting authority for every agent (SDK validate->stage->approve->forge->registry.json); peer to RAPP_Store/RAPP_Sense_Store.",
       "raw_url": "https://raw.githubusercontent.com/kody-w/RAR/main/README.md",
       "entry_point": "submit via the RAR SDK; browse registry.json"
+    },
+    {
+      "spec_id": "rapp-burrow/1.0",
+      "repo": "kody-w/rapp-burrow",
+      "layer": "distribution",
+      "role": "The ORGAN-RAPPLICATION pattern: a drop-in organ that burrows the brainstem into launchd (persistence for the brainstem + every organ) and serves a locally-exposed PWA pulled from this global repo \u2014 the Organ Control Room (operator visibility + enable/disable + observe/live over persistent/monitoring organs).",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-burrow/main/SPEC.md",
+      "entry_point": "read SPEC.md in kody-w/rapp-burrow; drop burrow_agent.py into any brainstem agents/"
     }
   ],
   "collisions_and_gaps": [
