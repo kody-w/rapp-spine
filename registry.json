@@ -120,7 +120,7 @@
         "CommunityRAPP (Tier-2 Azure Functions)",
         "rapp-dataverse/1.0"
       ],
-      "why": "CommunityRAPP adds memory on every request and deploys to Azure OpenAI; rapp-dataverse runs the same brainstem natively on Power Platform, ending in a grounded Copilot Studio bot. Both run the agent contract; NOTE function_app.py (T2) currently emits the legacy envelope (assistant_response/voice_response, no session_id/voice_mode) \u2014 a KNOWN parity gap, not golden-vector-clean (PARITY.md)."
+      "why": "CommunityRAPP adds memory on every request and deploys to Azure OpenAI; rapp-dataverse runs the same brainstem natively on Power Platform, ending in a grounded Copilot Studio bot. Both run the agent contract; NOTE function_app.py (T2) currently emits the legacy envelope (assistant_response/voice_response, no session_id/voice_mode) \u2014 aligned to the kernel envelope (2026-06-28) (PARITY.md)."
     },
     {
       "situation": "I need a brainstem for curl/CI/MCP/scripts with no Flask, no browser, no Copilot subscription.",
