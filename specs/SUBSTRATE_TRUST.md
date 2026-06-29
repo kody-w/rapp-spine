@@ -282,7 +282,7 @@ Every reader can now see *"@alice proposes adding @alice/twin"* — attributable
 A conforming roster renderer MUST NOT list the twin from this open issue.
 
 **Step 2 — (optional) sovereignty bind.** Alice's payload also carries a keypair signature over the
-event bytes (`sig_suite: "ed25519"`, the canonical valid keypair suite on the `rapp-eternity/1.0`
+event bytes (`sig_suite: "ed25519"`, a canonical keypair suite on the rapp-eternity ladder on the `rapp-eternity/1.0`
 ladder). This is additive: it lets `@alice` prove authorship even if GitHub is down or her account is
 later suspended. **It changes nothing about whether the write is accepted** — acceptance still requires
 consent.

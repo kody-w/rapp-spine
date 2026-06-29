@@ -5,7 +5,7 @@
 - **spec_id:** `rapp-kernel/1.0`
 - **status:** canonical, stable
 - **home:** `kody-w/rapp-spine` → `specs/KERNEL.md` (this file documents the grail kernel `kody-w/rapp-installer`)
-- **kernel artifact:** `rapp_brainstem/brainstem.py` in the grail `kody-w/rapp-installer` (`brainstem-v0.6.1`)
+- **kernel artifact:** `rapp_brainstem/brainstem.py` in the grail `kody-w/rapp-installer` on **main** (the kernel the one-liner installs; the `brainstem-v0.6.1` tag lags main — Phase-0 tag-hygiene, a locked operator known-open)
 - **inventory:** a file-level `KERNEL_TREE.md` manifest is **planned** (not yet shipped)
 - **depends on:** `rapp-installer` (the grail repo), the GitHub substrate (raw CDN, tags, Pages)
 - **referenced by:** `rapp-distro/1.0` (a distro PINS a kernel tag), `rapp-god` (drift detection), `rappid eternity` (content-address of the kernel artifact)
