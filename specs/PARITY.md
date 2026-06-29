@@ -29,6 +29,35 @@ that gap.
 
 ---
 
+## 0.5 The kernel LOOP is the locked unit — runtimes are *substrate-distros*
+
+> *"It's the same loop."* The `/chat` tool-loop **is** the kernel.
+
+The kernel is not a server — it is a **loop**: discover agents → build tool schemas → call the model
+with tools → execute `perform()` → loop (≤3 rounds) → emit the envelope. **That loop is the locked
+unit**, exactly as locked as the kernel *file* (`rapp-kernel/1.0`). Every RAPP runtime runs the **same
+loop** on a different substrate:
+
+| Runtime | Substrate | Relationship to the kernel loop |
+|---|---|---|
+| **T1 brainstem** (`brainstem.py`, Flask) | a local process (the grail) | the **reference** — the loop's canonical implementation |
+| **T2** (`function_app.py`, Azure Functions) | someone else's cloud | a **substrate-distro** — the *same loop*, different binding |
+| **T3** (Dataverse) · headless SDK · browser (Pyodide) | M365 · a library · the visitor's tab | substrate-distros of the *same loop* |
+
+A substrate-distro may differ **only** in transport/bootstrap (a Flask route vs. an Azure binding) and
+in deployed-only optimizations that **do not change observable output** (e.g. an immutable-deploy agent
+cache). It **MUST NOT** change the loop semantics, the agent ABI, or the `/chat` envelope.
+
+**The golden conformance vectors (§4) are the runtime-level freeze invariant — the "`KERNEL_PIN` for
+substrates."** Passing them proves a runtime runs the *unmodified kernel loop*, exactly as a distro's
+`KERNEL_PIN.json` proves it ships the unmodified kernel *file*. This is precisely what *"stem/function_app
+parity is sacred"* means: **the kernel is locked in T2 too — because it's the same loop.** The distro
+model (one kernel, many distros) and the parity model (one loop, many substrates) are the *same idea* at
+two layers — and together they are literally *"use everyone else's hardware":* the one locked kernel runs
+on whoever's silicon.
+
+---
+
 ## 1. Definitions
 
 | Term | Meaning |
@@ -79,7 +108,7 @@ This is the heart of parity. Per `/chat` call, in order:
 1. **Load soul** (the system prompt) fresh.
 2. **Discover agents** fresh from the agent source (`rapp-kernel/1.0` auto-discovery:
    recursive `*_agent.py`, excluding `experimental_agents/` and `disabled_agents/`). Agents
-   are reloaded **every request** — no warm cache that survives an edit.
+   are reloaded **every request** in the dev/reference runtime (no warm cache survives an edit). A *deployed immutable substrate-distro* (e.g. T2 on Azure, where the agent set cannot change between requests) MAY cache agents IFF observable output is identical — a permitted substrate optimization (§0.5), never a loop change.
 3. **Build tools** = `[agent.to_tool() for agent in agents]`, or `null`/absent if there are
    no agents. Each tool is the OpenAI function schema `{"type":"function","function":
    {"name","description","parameters"}}` derived from the agent's `metadata`.

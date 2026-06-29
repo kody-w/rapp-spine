@@ -58,6 +58,8 @@ kernel is the single fixed point; distros and operators do everything else. The 
 between rapp-installer and RAPP was never drift — it is a distro correctly **pinning** an unmodified
 kernel. RAPP is to the brainstem what Ubuntu is to Linux.
 
+**Two layers of the same idea.** A **distro** pins the kernel *file* on the *same* substrate (a Flask brainstem) — RAPP. A **substrate-distro** pins the kernel *loop* on a *different* substrate: T2 (`function_app.py`, Azure Functions), T3 (Dataverse), the headless SDK, the browser (Pyodide). Both are "the same kernel, different wrapper" — the loop is locked; only the silicon differs. The freeze invariant for a distro is `KERNEL_PIN` (kernel file == grail@tag); for a substrate-distro it is the `rapp-runtime-parity/1.0` golden vectors (loop output == reference). *The kernel is locked in T2 too — it's the same loop.* This is exactly *"use everyone else's hardware":* the one locked kernel runs on whoever's silicon.
+
 ## 3. A globally-public canonical twin for everything
 
 Every load-bearing spec has a **canonical twin**: content-addressed, signed, and served
