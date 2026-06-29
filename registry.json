@@ -39,7 +39,7 @@
       "protocols": [
         "rapp-ecosystem-spec/1.0 (rapp-map)",
         "rapp-grail-scan/1.0 (rapp-god)",
-        "rapp-eternity/1.0 (RAPP-Bible; identity standard housed here)",
+        "rapp-eternity/1.0 (owned by kody-w/rapp-eternity; mirrored in RAPP-Bible)",
         "rapp_docs (live renderer, no slug)"
       ]
     },
@@ -72,7 +72,7 @@
     },
     {
       "layer": "identity (who an agent IS + confidentiality)",
-      "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood \u00a78). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp-eternity/1.0: a sha256 content-address (PKI-FREE); gh-collaborator is the default ownership; a keypair is OPTIONAL sovereignty, NEVER required. The rappid string itself (rappid:@owner/slug:64hex, rapp-eternity/1.0) underpins both but is canonically filed up in the map layer (RAPP-Bible) \u2014 an organizational seam.",
+      "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood \u00a78). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp-eternity/1.0: a sha256 content-address (PKI-FREE); gh-collaborator is the default ownership; a keypair is OPTIONAL sovereignty, NEVER required. The rappid string itself (rappid:@owner/slug:64hex, rapp-eternity/1.0) underpins both but is owned by kody-w/rapp-eternity (RAPP-Bible holds a mirror) \u2014 an organizational seam.",
       "protocols": [
         "rapp-sealed/1.0",
         "rapp-moment/1.0",
@@ -768,6 +768,22 @@
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-distro/main/SPEC.md",
       "entry_point": "read SPEC.md in kody-w/rapp-distro; spawn-distro.sh scaffolds a distro",
       "layer": "kernel"
+    },
+    {
+      "spec_id": "rapp-roadmap/1.0",
+      "repo": "kody-w/rapp-roadmap",
+      "role": "The grounded 5-phase ecosystem roadmap (re-anchored on the metropolis north star).",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/roadmap.json",
+      "entry_point": "read in kody-w/rapp-roadmap",
+      "layer": "kernel"
+    },
+    {
+      "spec_id": "rapp-backlog/1.0",
+      "repo": "kody-w/rapp-roadmap",
+      "role": "The adversarial hardening backlog (165 wrenches + pre-solves).",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/backlog.json",
+      "entry_point": "read in kody-w/rapp-roadmap",
+      "layer": "kernel"
     }
   ],
   "collisions_and_gaps": [
@@ -780,7 +796,7 @@
     "'rappter*' NAMING CLUSTER: openrappter (divergent dual Python+TS runtime, data root ~/.openrappter, own hub rappterhub), rappterbox (console re-skin on ~/.brainstem), rappter (404, Wrapped Organism Spec home), and rappterbook (+~25 rappterbook-*/rappter-* repos) are DISTINCT things. openrappter shares only the Copilot-backed single-file thesis with the RAPP kernel \u2014 do not treat it as a RAPP runtime variant.",
     "'kite' NAMING CLUSTER: rapp-kite (the operator 'string' \u2014 CDP tooling) is distinct from kite-mark (visual identity repo) and rapp-kited-twin (canonical kite-mark SVG). Three 'kite' things; only rapp-kite is the transport operator.",
     "RAPPID IDENTITY REPRESENTATIONAL SEAMS: multiple on-the-wire forms coexist \u2014 rappid:<birth-slug>:<64hex> (rapp-egg-hub v2.0), rappid:@owner/slug:<64hex> (rapp-eternity/1.0 canonical), rappid:v2:<kind>:@owner/slug:<hex> (rapp-estate), rappid:v3:<base64url(SHA-256(pub))> (rapp-commons). rapp-commons' event SCHEMA and its PROTOCOL.md even show different forms. Rule (per the compatibility contract): READ all legacy forms forever, EMIT only canonical, join on the hash \u2014 never rewrite identity in place.",
-    "ETERNITY IDENTITY LIVES IN THE WRONG LAYER: rapp-eternity/1.0 (the rappid:@owner/slug:64hex identity STANDARD) is canonically housed in RAPP-Bible (the map/aggregation layer), not the identity layer \u2014 an organizational seam a crawler should know about so it doesn't look for it under rapp-sealed/rapp-moment.",
+    "ETERNITY HOME (resolved): rapp-eternity/1.0 is owned by kody-w/rapp-eternity (the rappid:@owner/slug:64hex identity STANDARD) is owned by kody-w/rapp-eternity (RAPP-Bible mirrors it) (the map/aggregation layer), not the identity layer \u2014 an organizational seam a crawler should know about so it doesn't look for it under rapp-sealed/rapp-moment.",
     "'DRIFT TRIANGLE' IS A MISNOMER \u2014 it has FOUR legs (the @rapp/rapp agent, rapp-god, rapp-map, RAPP-Bible) anchored on ecosystem-spec.json; when any leg disagrees with the JSON, the JSON wins. rapp-map and rapp-god both carry byte-identical mirrors of ecosystem-spec.json, so divergence between them IS the detectable drift signal.",
     "OVERLAP \u2014 distribution catalogs: rapp-agents (flat public agent stack + RappLoader) overlaps RAR (curated content-addressed registry); rapp-egg-hub (twin .egg hub) overlaps twin-egg-hatcher (generic hatcher) and rapp-carts (the unifying cartridge abstraction). They are complementary (stack vs registry; hub-distribution vs hatch-tool vs user-facing unit), not duplicates \u2014 but a crawler should pick by role, not by nearest match.",
     "OVERLAP \u2014 map renderers: RAPP-Bible (synthesized, PINNED v1.0.0 human narrative \u2014 can itself drift), rapp_docs (live raw passthrough, always-current, zero copies), and rapp-map (index of WHERE, not the TEXT) cover overlapping ground with different jobs. Use rapp_docs for current spec text, Bible for narrative onboarding, rapp-map for location.",

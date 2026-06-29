@@ -63,7 +63,7 @@ on whoever's silicon.
 | Term | Meaning |
 |------|---------|
 | **Runtime** | Any executable that serves the RAPP `/chat` contract on some substrate. |
-| **Reference runtime** | `kody-w/rapp-installer/rapp_brainstem/brainstem.py` at the pinned kernel tag. **The reference is normative**: where any wording here is ambiguous, the reference runtime's observable behavior wins. |
+| **Reference runtime** | `kody-w/rapp-installer/rapp_brainstem/brainstem.py` on **main** (the kernel the one-liner installs). **The reference is normative** (NOTE: the `brainstem-v0.6.1` tag is currently behind main and serves a 4-key envelope — a Phase-0 tag-hygiene item; the 6-key envelope is what main and every conformant runtime emit): where any wording here is ambiguous, the reference runtime's observable behavior wins. |
 | **Parity** | The property that a runtime reproduces the reference runtime's **observable `/chat` behavior** byte-behaviorally, for all inputs, modulo the **out-of-scope axes** (§3). |
 | **Observable behavior** | The `/chat` request envelope it accepts, the response envelope it emits, the tool-call discovery+execution **loop semantics**, the `agent_logs` shape, and the **agent ABI** it honors. Nothing else. |
 | **Golden conformance vector** | A frozen `(system_prompt + history + agents + user_input → expected tool-call sequence + expected envelope)` case any conformant runtime MUST reproduce. |
@@ -240,7 +240,7 @@ manifest below is its normative shape:
     { "id": "brainstem.py",          "repo": "kody-w/rapp-installer",     "path": "rapp_brainstem/brainstem.py",       "substrate": "flask-local",   "tier": "reference" },
     { "id": "function_app.py",       "repo": "kody-w/CommunityRAPP",      "path": "function_app.py",                   "substrate": "azure-functions","tier": "full" },
     { "id": "rapp-dataverse",        "repo": "kody-w/rapp-dataverse",     "path": "handler",                           "substrate": "dataverse-static","tier": "core" },
-    { "id": "rapp-brainstem-sdk",    "repo": "kody-w/rapp-brainstem-sdk", "path": "sdk",                               "substrate": "headless",      "tier": "full" },
+    { "id": "rapp-brainstem-sdk (tier: core — envelope minus the optional model/requested_model reporting keys; declares so)",    "repo": "kody-w/rapp-brainstem-sdk", "path": "sdk",                               "substrate": "headless",      "tier": "full" },
     { "id": "vBrainstem",            "repo": "kody-w/vBrainstem",         "path": "browser",                           "substrate": "browser",       "tier": "core" }
   ]
 }
@@ -552,7 +552,7 @@ T2 response (in-scope keys):
   "voice_mode": false }
 ```
 The out-of-scope keys differ and are ignored: T1 reports `"model":"claude-sonnet-…"` via
-Copilot; T2 reports `"model":"gpt-4o"` via an Azure OpenAI deployment. **Both pass.**
+Copilot; T2 reports `"model":"gpt-4o"` via an Azure OpenAI deployment. **Both emit the kernel envelope; the full golden-vector harness is not yet executed (the vectors + runner are PLANNED, §4).**
 
 **Step 4 — the cross-walk asserts equality:**
 
@@ -560,7 +560,7 @@ Copilot; T2 reports `"model":"gpt-4o"` via an Azure OpenAI deployment. **Both pa
 { "spec": "rapp-runtime-parity/1.0",
   "corpus_sha256": "a1b2…",
   "utc": "2026-06-28T00:00:00Z",
-  "crosswalk": { "brainstem.py": "pass(14/14)", "function_app.py": "pass(14/14)",
+  "crosswalk": { "brainstem.py": "envelope-conformant (full golden-vector harness not yet executed)", "function_app.py": "envelope-conformant (full golden-vector harness not yet executed)",
                  "in_scope_identical": true } }
 ```
 

@@ -228,7 +228,7 @@ echo "PASS: rapp-kernel-boundary/1.0 C2/C6"
    curl -fsS http://desktop.lan:7071/chat \
      -H "Authorization: Bearer $BRAINSTEM_AGENT_TOKEN" \
      -H 'Content-Type: application/json' \
-     -d '{"user_input":"{\"schema\":\"rapp-commons-event/1.0\",\"kind\":\"command\",\"body\":\"@desktop run nightly-sweep\",\"sig_suite\":\"none\"}","session_id":"sweep-1"}'
+     -d '{"user_input":"{\"schema\":\"rapp-commons-event/1.0\",\"kind\":\"fleet.command\",\"body\":\"@desktop run nightly-sweep\",\"sig_suite\":\"none\"}","session_id":"sweep-1"}'
    ```
    The desktop's §4.1 gate sees a non-loopback origin, a valid bearer bound to `kody-w` → **allow**, attributed to `kody-w`. The sweep runs through the normal `/chat` → agent path; the call is flight-recorded against `kody-w`.
 4. **Attacker on the same Wi-Fi.** Hits `/agents/import` with no token → **403**, no file written (C2). Hits `/health` → `200` (C6). There is **no `/api/agent`** to hit (C4).

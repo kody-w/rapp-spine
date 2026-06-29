@@ -52,7 +52,7 @@
       "role": "router + foundation registry",
       "locked": true,
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md",
-      "sha256": "502bd419b98d67a68f8469a1eaae2f9bc95c8f37001f8991c747f3cc8a210e2e"
+      "sha256": "dacf3f4af72f46def6fdb51e7472f830f16ff61abb032a9fc52c3252d6c4dea2"
     },
     {
       "spec": "rapp-roadmap",
