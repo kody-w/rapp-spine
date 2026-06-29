@@ -120,7 +120,7 @@
         "CommunityRAPP (Tier-2 Azure Functions)",
         "rapp-dataverse/1.0"
       ],
-      "why": "CommunityRAPP adds memory on every request and deploys to Azure OpenAI; rapp-dataverse runs the same brainstem natively on Power Platform, ending in a grounded Copilot Studio bot. Both run the agent contract; NOTE function_app.py (T2) currently emits the legacy envelope (assistant_response/voice_response, no session_id/voice_mode) \u2014 aligned to the kernel envelope (2026-06-28) (PARITY.md)."
+      "why": "CommunityRAPP adds memory on every request and deploys to Azure OpenAI; rapp-dataverse runs the same brainstem natively on Power Platform, ending in a grounded Copilot Studio bot. Both run the agent contract; NOTE function_app.py (T2) emits the kernel envelope (aligned 2026-06-28) (assistant_response/voice_response, no session_id/voice_mode) \u2014 aligned to the kernel envelope (2026-06-28) (PARITY.md)."
     },
     {
       "situation": "I need a brainstem for curl/CI/MCP/scripts with no Flask, no browser, no Copilot subscription.",
@@ -335,6 +335,13 @@
         "rapp-payphone-dial/1.0"
       ],
       "why": "The distribution/network sub-protocols: the rapplication bundle FORMAT (RAPP_Store), the sense overlay FORMAT (RAPP_Sense_Store), the holocard format (RAPPcards), the demo bundle, and the payphone/dial async-reach pattern (a sub-protocol of rapp-neighborhood-protocol)."
+    },
+    {
+      "situation": "Where do I PUBLISH or DISCOVER the canonical agent registry (a bare agent.py)?",
+      "use": [
+        "rapp-registry/1.0"
+      ],
+      "why": "kody-w/RAR is THE canonical home + minting authority for bare agents (the 'RAR + RAPP_Store registry path'): RAR for agents, RAPP_Store for rapplications, RAPP_Sense_Store for senses."
     }
   ],
   "registry": [
@@ -420,10 +427,10 @@
     },
     {
       "spec_id": "(WRAPPED_ORGANISM_SPEC.md; unslugged; repo 404 \u2014 gap)",
-      "repo": "kody-w/rappterbook (the Wrapped-Organism cell runtime; the standalone spec repo is 404 \u2014 see rappterbook)",
+      "repo": "kody-w/rappterbook",
       "layer": "leviathan",
-      "purpose": "Advertised home of WRAPPED_ORGANISM_SPEC.md \u2014 constitutional spec for the cell-protocol multicellular pattern underpinning every Wrapped-Organism Leviathan (one stateless brainstem, one cell protocol, hierarchical transcript routing, infinite depth). Repo currently inaccessible.",
-      "when_to_use": "When you need the canonical Wrapped Organism / cell-protocol definition. Spec URL is dead; closest reachable runtime is kody-w/rappterbook/scripts/wrapped_organism/.",
+      "purpose": "Advertised home of WRAPPED_ORGANISM_SPEC.md \u2014 constitutional spec for the cell-protocol multicellular pattern underpinning every Wrapped-Organism Leviathan (one stateless brainstem, one cell protocol, hierarchical transcript routing, infinite depth). Repo currently inaccessible. [NOTE: the Wrapped-Organism cell runtime; the standalone spec repo is 404 \u2014 see rappterbook)]",
+      "when_to_use": "When you need the canonical Wrapped Organism / cell-protocol definition. Spec URL is dead; 404 gap \u2014 no surviving runtime at the cited path is kody-w/rappterbook/scripts/wrapped_organism/.",
       "entry_point": "404. Reference cell runtime: kody-w/rappterbook/scripts/wrapped_organism/ (runtime + retrofit + tests)."
     },
     {
@@ -647,7 +654,8 @@
       "repo": "kody-w/rapp-spine",
       "role": "The situational router/index over the full RAPP protocol stack \u2014 maps situation\u2192layer\u2192protocol across ~60 repos and ~33 specs; also owns FOUNDATION (foundation.json, the locked content-addressed canonical registry) and the crawlable registry.json",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/SPINE.md",
-      "entry_point": "Crawl it: fetch https://raw.githubusercontent.com/kody-w/rapp-spine/main/registry.json and match your situation against `router`, or run `python crawl.py \"<situation>\"`; full instructions in CRAWL.md. Read SPINE.md for the whole column + collisions."
+      "entry_point": "Crawl it: fetch https://raw.githubusercontent.com/kody-w/rapp-spine/main/registry.json and match your situation against `router`, or run `python crawl.py \"<situation>\"`; full instructions in CRAWL.md. Read SPINE.md for the whole column + collisions.",
+      "layer": "map"
     },
     {
       "spec_id": "rapp-eternity/1.0",
@@ -784,6 +792,14 @@
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/backlog.json",
       "entry_point": "read in kody-w/rapp-roadmap",
       "layer": "kernel"
+    },
+    {
+      "spec_id": "rapp-registry/1.0",
+      "repo": "kody-w/RAR",
+      "layer": "distribution",
+      "role": "The RAPP Agent Registry \u2014 canonical home + minting authority for every agent (SDK validate->stage->approve->forge->registry.json); peer to RAPP_Store/RAPP_Sense_Store.",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/RAR/main/README.md",
+      "entry_point": "submit via the RAR SDK; browse registry.json"
     }
   ],
   "collisions_and_gaps": [
