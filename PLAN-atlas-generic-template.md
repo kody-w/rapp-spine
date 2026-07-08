@@ -2,9 +2,12 @@
 
 > **Branch:** `feat/atlas-generic-template` · **Source of intent:** Bill Whalen's approved work brief
 > https://gist.github.com/billwhalenmsft/3ca0daf1a1bea6305f1bc44491afd0b2 (public, fetched 2026-07-08)
-> **Status:** plan locked; build not started. `kody-w` has NO access yet to `billwhalenmsft/MCAPS-OS-Platform`
-> (no pending invite as of 2026-07-08 — ping Bill). `billwhalenmsft/se-os-template` verified public;
-> feed target `web_ui/resource-hub-data.json` verified present (46 KB).
+> **Status:** plan locked; build not started. **M3 UNBLOCKED 2026-07-08:** Bill re-sent the invite,
+> accepted — `kody-w` now has WRITE on `billwhalenmsft/MCAPS-OS-Platform` (private; `feat/se-os` is
+> the default branch). Recon verified: no `atlas/` dir exists yet; vendored packs present at
+> `src/components/se-os/workshop/packs/` (both current packs absorbed — matches the brief's all-green
+> state, so M3's detection DoD needs the fixture path). `billwhalenmsft/se-os-template` verified
+> public; feed target `web_ui/resource-hub-data.json` verified present (46 KB).
 
 ---
 
