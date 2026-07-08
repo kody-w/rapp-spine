@@ -93,6 +93,52 @@ Floor → escalation → absence. Every door, any twin, same three beats.
    header or a deprecation pointer, else CI fails. This is the standing guard against "5 similar
    things" ever re-accreting.
 
+## The genealogy: body as class, twins as objects (stated precisely)
+
+Kody's directive: the organism is the class; twins born from specific frames are its objects, each
+traceable to its frame ancestor. That is the right conceptual picture — and the ecosystem's own
+machinery tells us the precise flavor: **RAPP is prototype-based OO, not class-based** — and that
+distinction is what makes the DOG/GOD law implementable rather than aspirational.
+
+The mapping, both languages:
+
+| OO concept | RAPP reality |
+|---|---|
+| **Class definition** | The canon: ecosystem spec + kernel + bones TEMPLATE (kody-w/twin/TEMPLATE.md) + agent contracts |
+| **Class *version*** | A **body frame** — the class definition frozen at a slice, content-addressed. The biography is the class's version history |
+| **Constructor** | `hatch()` / the installer ceremony — runs with whatever class-version is current |
+| **Object / instance** | A twin (a GOD, on its owner's device) |
+| **Instantiation record** | `rappid.json` — which ALREADY carries `parent_rappid` + `born_at` (the lineage machinery exists; eggs mint `parent_rappid: rappid:@rapp/origin:…` today) |
+| **Prototype delegation** | The DOG/GOD law itself: GOD = derive(DOG bones) + private overlay. Bones updates flow down to every deriving instance — that is prototype semantics (Self/JS), NOT class-copy semantics. A class-copy world couldn't push bone updates to living twins; a prototype world does it natively |
+| **Private members** | `vault/` (never flows up — encapsulation is the law, not a convention) |
+| **Public members** | `bones/` + `frames/` |
+| **Interface / polymorphism** | The wire: every being answers `POST /chat` + twin-chat. Subtype variation = soul/facets, never new endpoints |
+| **instanceof / lineage query** | Walk `parent_rappid` + frame-ancestor pins — content-addressed, PKI-free, verifiable by anyone |
+
+**The one concrete mechanism to add — the frame-ancestor pin:** the hatch ceremony stamps the
+newborn's `rappid.json` with its constructor context:
+
+```json
+"born_of_frame": {
+  "body": "rappid:@kody-w/rapp-body:<64hex>",
+  "frame_seq": 41,
+  "frame_sha256": "<the body-frame's chain hash at hatch time>"
+}
+```
+
+Every twin can then trace its own life to the exact slice of the organism that defined it — "I was
+built when the body knew *this*" — verifiable forever, because both sides are content-addressed
+chains. And the genealogy composes with the biography: **the body's worldline is the trunk; each
+twin's own frames/ chain is a branch rooted at its `born_of_frame` slice.** The snake has children;
+every child is a smaller snake whose tail is pinned to a point on the parent's body.
+
+Two disciplined consequences:
+- **The class knows its instances by observation, never coercion:** twin births appear in body
+  frames as census/beacon events (estate discovery), not by mandatory registration — same
+  observe-never-coerce doctrine as everything else.
+- **Races gain a second dimension:** a twin can race its OWN frame-ancestors (its branch), and the
+  body can race its class-versions (the trunk) — same workflow, different worldline.
+
 ## What this kills (the incoherence inventory)
 
 - "brainstem" meaning four codebases → ONE lineage, three bodies, N declared mirrors.
