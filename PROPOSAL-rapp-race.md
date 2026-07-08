@@ -67,6 +67,22 @@ Why this is right:
    class-version would be surgery. In prototype OO it is just an overlay on a different base —
    the operation the DOG/GOD law already defines.
 
+**The time matrix (Kody's completion):** if GOD state is backed up — and it is: the vault is
+versionable, and a twin's own frame chain reconstructs its mind at any slice — then lanes can be
+injected with the CURRENT GOD **or any archived GOD state**. Both are true; either/or per lane.
+The race canvas is therefore a PLANE, not a line: **body-time × mind-time**. Every point (i, j)
+is a runnable self: the body as it was at frame i, animated by the mind as it was at j. The four
+corners have names:
+
+| | mind = then (j = i) | mind = now |
+|---|---|---|
+| **body = then** | **Reenactment** — the being exactly as it was; pure replay, the honest historical baseline | **Resurrection** — past body, present mind; isolates body evolution (the original race) |
+| **body = now** | **Remembrance** — present body, past mind; "would today's tools have saved the old me?" — isolates knowledge evolution | **Presence** — the living being; the control lane in every race |
+
+Arbitrary (i, j) points fill the plane between. A race is any SET of points on this plane racing
+one problem; a composition is any PATH through it. Reenactment lanes carry the strictest privacy
+class (archived vault = still vault).
+
 **The privacy law that comes with it (non-negotiable):** a GOD-injected race is a GOD-side event.
 Lanes receive vault-derived context, so lane artifacts are private by default and the race runs
 where the GOD lives — on the operator's device/estate, never in public CI. What enters the public
