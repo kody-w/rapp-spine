@@ -65,6 +65,39 @@ repos, shedding drift, bumping canon — literally watchable, globally public, z
   Any private operational state (tokens, unpublished work) stays off-frame by construction, same
   law as every twin.
 
+## The snake through time (the framing that locks the design)
+
+Kody's directive: think of the ecosystem as **a snake slithering through time** — each frame a
+cross-sectional SLICE of its existence, the full chain its worldline, cradle to grave, public on
+GitHub as raw-loadable data. Three design consequences fall straight out:
+
+1. **Identity is the worldline, not any slice.** No single frame IS the body — the chained
+   sequence is. This is rapp-eternity applied at body scale: the content-addressed chain is the
+   identity; a slice is just where you cut it. (Same reason a twin is its frames, not its latest
+   state.)
+2. **Witnessed vs reconstructed frames — the cradle is reachable.** Frames taken from today
+   forward are `witnessed` (the pulse observed the body live). But git already remembers: every
+   repo's history lets us RECONSTRUCT approximate slices backwards — spec versions, repo births,
+   canon ratifications — as `reconstructed` frames, marked as such, chained before the genesis
+   witness. The flip book then genuinely opens at the cradle: the actual birth of RAPP, not the
+   day we started filming. (Honesty rule: reconstructed frames carry their evidence — the commit
+   shas they were derived from — and never claim witness.)
+3. **The player is the product.** `player.html` — single-file, zero-server, loads the whole chain
+   from raw.githubusercontent (CORS-open, per rapp-static-api/1.0):
+   - Walks the chain (latest ← `prev` links, or a `frames/index.json` manifest for one-fetch load).
+   - Renders each slice as a **visual body**, not a table: repos as organs/cells (sized by
+     activity, clustered by spine layer), drift as inflammation coloring, spec version as age
+     rings, new organs appearing, deprecated ones fading — so playback literally shows a body
+     being born, growing, getting older, transforming.
+   - **Flip-book controls:** play/pause/scrub/speed, frame-diff highlighting (what changed since
+     the previous slice), jump-to-event (ratifications, births, drift storms).
+   - Same artifact discipline as atlas.html/the OS generator: self-contained, light/dark, works
+     from file:// and Pages.
+
+Cradle to grave includes the grave: the twin ESTATE.md heirloom ceremony applies at body scale —
+the biography is the part of the organism built to outlive its operator. Succession of the body's
+frames repo (who may append after) is an ESTATE.md profile, not a new invention.
+
 ## Build notes (small, after the drift fixes land)
 
 1. Frame-taker `pulse.mjs`: reads spec homes + repo census via GitHub API + latest sweep/issue
