@@ -41,6 +41,39 @@ Same pattern, two axes. One word for both: a swarm is a fan-out over a dimension
 - **Decision archaeology:** before ratifying a canon change, race the pre-change and post-change
   bodies on the workloads that matter. Evolution with a regression suite made of your own past.
 
+## The GOD injection (Kody's refinement, 2026-07-08)
+
+Each lane does not race cold. When a frame wakes up, it is composed as:
+
+```
+lane = derive(frame.body) + overlay(current GOD state) + task
+```
+
+The historical BODY (that frame's canon, specs, agent roster, pinned repos) is the base; the
+**current GOD context** — the operator's live private state, memory, and the briefing of the
+present moment — is overlaid onto every lane at wake-up. Your past self wakes up with your
+*present* memories and today's problem, but only its own era's body and canon.
+
+Why this is right:
+1. **It preserves the controlled experiment.** Mind: constant (today's model). Private context:
+   constant (today's GOD overlay). Only the BODY varies across lanes — so score differences are
+   still evidence about the body's evolution, now uncontaminated by lanes wasting effort
+   rediscovering context the present already has.
+2. **It is the ecosystem's ONE composition operator, reused.** `derive(public base) + overlay(private
+   state)` is already how a GOD hatches from DOG bones (altitude 3) and how a doorman escalates a
+   session (altitude 4). A race lane is the same operation with a *historical* prototype. Nothing
+   new — the same move at a third site, which is exactly what coherence means.
+3. **Prototype semantics make it legal.** In class-copy OO, injecting present state into a past
+   class-version would be surgery. In prototype OO it is just an overlay on a different base —
+   the operation the DOG/GOD law already defines.
+
+**The privacy law that comes with it (non-negotiable):** a GOD-injected race is a GOD-side event.
+Lanes receive vault-derived context, so lane artifacts are private by default and the race runs
+where the GOD lives — on the operator's device/estate, never in public CI. What enters the public
+biography is the race's **DOG shadow**: scores, winning frame, score-over-time curve, sanitized
+verdict — never lane transcripts. (Public races remain possible with DOG-only injection — bones,
+no vault — and are marked as such; the two race classes never mix lanes.)
+
 ## Mechanics (compose from what exists — nothing new invented)
 
 A race is a WORKFLOW script (the orchestration harness we already run), not a new protocol:
