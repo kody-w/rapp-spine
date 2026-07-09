@@ -10,8 +10,8 @@
       "role": "kernel \u2014 the atom",
       "locked": true,
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py",
-      "sha256": "2af53ce75c6c7c751a73b2f4169c1644aa6a6af0422b0550e8aedf53511156ee",
-      "note": "the grail/kernel of record; kody-w/RAPP is the reference distro pinning it (rapp-distro/1.0)"
+      "sha256": "a293dd9f11eef915bf15776f08c736faa60cb749820871b6753ea98233142a71",
+      "note": "the grail/kernel of record (brainstem-v0.6.9); kody-w/RAPP is the reference distro pinning it (rapp-distro/1.0)"
     },
     {
       "spec": "leviathan/1.0",
