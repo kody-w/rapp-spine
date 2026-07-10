@@ -1,7 +1,7 @@
 {
   "spec": "rapp-spine/1.0",
   "what": "A situational router over the full RAPP protocol stack. Fetch this, match your situation against `router`, follow to the protocol's entry_point. This is not a new protocol \u2014 it routes to existing ones.",
-  "generated": "2026-06-28",
+  "generated": "2026-07-10",
   "layers_order": [
     "kernel",
     "map",
@@ -11,7 +11,7 @@
     "network",
     "leviathan"
   ],
-  "doctrine": "KERNEL FIRST: the grail/kernel of record is kody-w/rapp-installer (frozen single-file brainstem, immutable vX.Y.Z tags); kody-w/RAPP is the REFERENCE DISTRO that pins it unmodified + adds userland (rapp-distro/1.0). The rapp-spine is not a new protocol \u2014 it is a situational router laid over the full RAPP (Rapid Agent Prototyping Platform) protocol stack. It indexes every load-bearing spec as a vertebra in an ordered column \u2014 MAP -> RUNTIME -> DISTRIBUTION -> IDENTITY -> NETWORK -> LEVIATHAN \u2014 where each layer answers exactly one question an intelligence faces. To \"crawl the spine\" is to start from your concrete situation, descend to the layer that owns that concern, and read off the one or few protocols that govern it plus how to act \u2014 instead of re-deriving the ~60-repo architecture each time. The spine inherits RAPP's prime directive: every capability rides the single wire (POST /chat, or a signed append-only event), so the router never invents new endpoints \u2014 only new agents, cartridges, or \u00a7-profiles on top of existing specs. Where two specs collide on a name (most importantly the TWO unrelated \"Leviathan\" concepts), the spine names the collision explicitly so the crawler picks the right one rather than the nearer one.",
+  "doctrine": "KERNEL FIRST: the grail/kernel of record is kody-w/rapp-installer (frozen single-file brainstem, immutable vX.Y.Z tags); kody-w/RAPP is the REFERENCE DISTRO that pins it unmodified + adds userland (rapp-distro/1.0). The rapp-spine is not a new protocol \u2014 it is a situational router laid over the full RAPP (Rapid Agent Prototyping Platform) protocol stack. It indexes every load-bearing spec as a vertebra in an ordered column \u2014 KERNEL -> MAP -> RUNTIME -> DISTRIBUTION -> IDENTITY -> NETWORK -> LEVIATHAN \u2014 where each layer answers exactly one question an intelligence faces. To \"crawl the spine\" is to start from your concrete situation, descend to the layer that owns that concern, and read off the one or few protocols that govern it plus how to act \u2014 instead of re-deriving the ~60-repo architecture each time. The spine inherits RAPP's prime directive: every capability rides the single wire (POST /chat, or a signed append-only event), so the router never invents new endpoints \u2014 only new agents, cartridges, or \u00a7-profiles on top of existing specs. Where concepts share a name, the spine names their relationship explicitly \u2014 most importantly the Leviathan stack, where the fleet protocol coordinates Wrapped-Organism beings rather than competing with them.",
   "layers": [
     {
       "layer": "kernel",
@@ -47,14 +47,14 @@
     },
     {
       "layer": "runtime (the engine)",
-      "summary": "What actually runs single-file *_agent.py cartridges through one /chat tool-calling loop. The canonical kernel is rapp-agent/1.0 (kody-w/RAPP); the rest are substrate-swapped variants preserving the same agent contract and /chat envelope: CommunityRAPP (Azure Functions + memory, Tier 2), rapp-brainstem-sdk (headless stdlib, no Flask/browser/Copilot gate), rappterbox (frozen game-console re-skin), rapp-dataverse (runs natively on Power Platform), and the DIVERGENT openrappter (Python+TS parallel lineage, ~/.openrappter, own hub).",
+      "summary": "What actually runs single-file *_agent.py cartridges through one /chat tool-calling loop. The reference kernel is rapp-agent/1.0 in kody-w/rapp-installer; substrate-distros may implement the same locked loop and frozen agent ABI on different machinery. CommunityRAPP, rapp-brainstem-sdk, rappterbox, and rapp-dataverse occupy that family. OpenRappter is the intended consumer-facing machine AI and RAPP<->OpenClaw Rosetta stone; its current Python+TypeScript release has not yet proved runtime parity, so it remains a conformance target rather than a second kernel.",
       "protocols": [
-        "rapp-agent/1.0 (RAPP)",
+        "rapp-agent/1.0 (grail: rapp-installer)",
         "rappterbox-console-spec/1.0",
         "rapp-dataverse/1.0",
         "CommunityRAPP (Tier-2, no slug)",
         "rapp-brainstem-sdk (no slug)",
-        "openrappter (divergent, no slug)"
+        "openrappter (consumer substrate-distro; parity target incomplete)"
       ]
     },
     {
@@ -97,9 +97,9 @@
     },
     {
       "layer": "leviathan (multicellular beings \u2014 COLLISION LAYER)",
-      "summary": "Many parts acting as one organism. the two senses STACK (protocol builds on the being-medium). (A) The Leviathan PROTOCOL (kody-w/leviathan, self-titled SPEC v1.0) = ONE external mind drives MANY no-LLM brainstem BODIES over POST /api/agent/<name>; a LAN fleet/fan-out orchestration. (B) The Wrapped-Organism Leviathan (rapp_leviathan_factory -> wrap_leviathan -> rapp-leviathan-hub) = ONE operator's single digital BEING built of MANY CELLS across 5 estates (Sanctum/Polity/Works/Press/Commons = soul/will/hands/eyes/mouth). The cell-protocol underpinning (B) is the Wrapped Organism Spec, advertised at kody-w/rappterbook (live \u2014 owns EGG_SPEC.md; the standalone Wrapped-Organism spec repo kody-w/rappter is 404 \u2014 see rappterbook) \u2014 currently 404.",
+      "summary": "Many parts acting as one organism. The two senses STACK (protocol builds on the being-medium). (A) The Leviathan PROTOCOL coordinates many brainstem bodies; its canonical wire is rapp-fleet-chat/1.0 signed twin-chat over /chat. The legacy injected POST /api/agent/<name> implementation remains a known Phase-1 RCE and is non-conformant. (B) The Wrapped-Organism Leviathan (rapp_leviathan_factory -> wrap_leviathan -> rapp-leviathan-hub) is one operator's digital being built of many cells across 5 estates (Sanctum/Polity/Works/Press/Commons = soul/will/hands/eyes/mouth). The cell-protocol underpinning (B) is the Wrapped Organism Spec, advertised at kody-w/rappterbook (live \u2014 owns EGG_SPEC.md; the standalone Wrapped-Organism spec repo kody-w/rappter is 404 \u2014 see rappterbook) \u2014 currently 404.",
       "protocols": [
-        "leviathan SPEC v1.0 \u2014 FLEET protocol: one mind, many no-LLM BODIES",
+        "leviathan SPEC v1.0 \u2014 FLEET protocol: one mind, many signed /chat BODIES",
         "rapp-leviathan-egg/1.0 \u2014 BEING egg (distribution-layer hub)",
         "rapp_leviathan_factory (mint inert 5-estate tree; agent in RAR)",
         "wrap_leviathan (wire stage \u2014 UNPUBLISHED/404)",
@@ -114,7 +114,7 @@
         "rapp-agent/1.0 (kody-w/rapp-installer = grail)",
         "rapp-distro/1.0 (kody-w/RAPP = reference distro)"
       ],
-      "why": "The kernel is the single-file brainstem; the GRAIL of record is kody-w/rapp-installer. kody-w/RAPP is the reference DISTRO that pins it unmodified (v0.6.0) + adds userland. GitHub Copilot OAuth means no keys."
+      "why": "The kernel is the single-file brainstem; the GRAIL of record is kody-w/rapp-installer (current release commit/version 0.6.16). kody-w/RAPP is the reference DISTRO and intentionally pins the older compatible v0.6.0 kernel + userland. GitHub Copilot OAuth means no API keys."
     },
     {
       "situation": "I need persistent memory, an always-on cloud body, or a path to Copilot Studio + Teams (Tier 2/3).",
@@ -130,6 +130,13 @@
         "rapp-brainstem-sdk (vbrainstem_sdk.py)"
       ],
       "why": "stdlib-only headless runtime serving the same /chat envelope in real CPython \u2014 the headless twin of the browser vBrainstem, ideal for secret/network agents and automation."
+    },
+    {
+      "situation": "I want OpenRappter: a consumer-facing, chat-first AI that lives on my machine, hot-loads RAPP agent.py cartridges, and maps RAPP concepts to OpenClaw-compatible experiences.",
+      "use": [
+        "OpenRappter consumer substrate-distro (RAPP parity target; currently incomplete)"
+      ],
+      "why": "OpenRappter is the full machine-resident RAPP experience and a bidirectional RAPP<->OpenClaw Rosetta stone. Conversation is the control surface: capabilities and configuration are generated through natural language over /chat, while UI views render conversation and state instead of becoming a competing form-driven authority. It may implement the kernel loop with its own architecture, but conformance requires the same /chat behavior and frozen drop-in agent.py ABI. The lineage was running by Groundhog Day 2025, before its first public release; current Python+TypeScript releases have not yet attested RAPP runtime parity."
     },
     {
       "situation": "An AI in Claude Desktop / Copilot CLI / Cursor needs to use my local agents or my on-device brainstem.",
@@ -220,7 +227,7 @@
       "why": "A Moment is a post + exact UTC instant + 100-frame organism, all static CDN data; identity = the rappid sha256 content-address (rapp-eternity/1.0); an OPTIONAL ECDSA P-256 keypair may sign for ownership (never required). Engine is rapp-hologram. NOTE: PolyForm-NC + trademarked marks, unlike the MIT cluster."
     },
     {
-      "situation": "I run several brainstem nodes on a TRUSTED LAN and want to drive them as one fleet with no-LLM, no-throttle fan-out.",
+      "situation": "I run several brainstem nodes and want one mind to coordinate them as a signed fleet over the canonical /chat wire.",
       "use": [
         "leviathan SPEC v1.0 (THE Leviathan PROTOCOL)"
       ],
@@ -350,7 +357,7 @@
       "use": [
         "rapp-burrow/1.0"
       ],
-      "why": "The Burrow organ-rapplication: launchd persistence (RunAtLoad+KeepAlive+Aqua+FDA-pinned binary) + a locally-served PWA control room aggregating organs over /api/agent."
+      "why": "The Burrow organ-rapplication supplies launchd persistence and a locally-served PWA control room. Its current organ aggregation uses the legacy /api/agent surface and is non-conformant until migrated to the canonical /chat wire."
     }
   ],
   "registry": [
@@ -379,11 +386,11 @@
       "entry_point": "python3 vbrainstem_sdk.py serve --port 7173 (also: run @kody-w/<agent> '...', agents --grep, eval)"
     },
     {
-      "spec_id": "(none; divergent parallel runtime)",
+      "spec_id": "(none; consumer RAPP substrate-distro, parity target incomplete)",
       "repo": "kody-w/openrappter",
       "layer": "runtime",
-      "purpose": "Dual-runtime (Python + TypeScript) single-file-agent framework using GitHub Copilot for inference while all data stays local in ~/.openrappter/. Own registry (rappterhub), own clawhub bridge, consumer touches (menu-bar tamagotchi, Dream-mode).",
-      "when_to_use": "When you want a parallel-lineage runtime with a TS runtime, a launchd daemon, and its own hub \u2014 NOT the RAPP kernel. Shares only the Copilot-backed single-file thesis.",
+      "purpose": "The consumer-facing RAPP machine AI: an OpenClaw-class local experience built to preserve the RAPP /chat loop and hot-load the same drop-in *_agent.py cartridges, while translating RAPP concepts to and from OpenClaw-compatible UI, channel, and skill surfaces. OpenRappter is chat-first: natural language over /chat creates and configures the experience; UI views render conversation and state rather than defining capability through forms. It may use its own Python+TypeScript implementation architecture; brainstem.py remains the reference kernel shape, not a file OpenRappter must vendor. Local state lives under ~/.openrappter/, while prompts and channel payloads may leave the machine for the configured provider. The lineage was running by Groundhog Day 2025, before its first public release.",
+      "when_to_use": "When you want the full consumer AI living on a machine \u2014 daemon, desktop/web UI, channels, memory, and OpenClaw interoperability \u2014 while retaining RAPP cartridge compatibility. Current releases are a parity target, not yet a conformant replacement for the reference kernel.",
       "entry_point": "curl -fsSL https://kody-w.github.io/openrappter/install.sh | bash (or hand skills.md to any AI agent to self-install)"
     },
     {
@@ -406,9 +413,9 @@
       "spec_id": "leviathan SPEC v1.0 (self-titled; no rapp-* slug)",
       "repo": "kody-w/leviathan",
       "layer": "leviathan",
-      "purpose": "The Leviathan PROTOCOL \u2014 language-agnostic wire contract for driving a FLEET of no-LLM brainstem BODY nodes from ONE external MIND that does all thinking. (Meaning A \u2014 NOT the Wrapped-Organism being.) Frozen Result taxonomy: ok/down/timeout/missing/error/bad_response.",
-      "when_to_use": "You run several brainstem nodes on a trusted LAN and want to drive them as one distributed organism via direct no-LLM capability calls \u2014 fan-out in slowest-body latency, no shared-token throttle, drivable even when a node's LLM is down.",
-      "entry_point": "DRIVE: python leviathan.py one alpha RemoteControl command=hostname. JOIN: drop flock_endpoint.py into a brainstem's agents/ (injects POST /api/agent/<name>). MCP: leviathan_mcp.py. SECURITY: /api/agent unauthenticated \u2014 LAN-only."
+      "purpose": "The Leviathan PROTOCOL \u2014 language-agnostic contract for driving a FLEET of brainstem BODY nodes from ONE external MIND. (Meaning A \u2014 NOT the Wrapped-Organism being.) The canonical wire is rapp-fleet-chat/1.0 signed twin-chat over /chat. Frozen Result taxonomy: ok/down/timeout/missing/error/bad_response.",
+      "when_to_use": "You run several brainstem nodes and want one mind to coordinate them through signed fleet-chat events over the canonical /chat boundary. The old direct no-LLM route is a documented RCE and is not the conformant path.",
+      "entry_point": "CANONICAL: use rapp-fleet-chat/1.0 signed twin-chat events over /chat (read FLEET_CHAT.md). LEGACY ONLY: flock_endpoint.py injects unauthenticated /api/agent and is non-conformant; do not expose or deploy it as the canonical fleet wire."
     },
     {
       "spec_id": "rapp-leviathan-egg/1.0",
@@ -820,16 +827,17 @@
     }
   ],
   "collisions_and_gaps": [
-    "LEVIATHAN \u2014 the two senses STACK (protocol builds on the being-medium) (the load-bearing collision). (A) Leviathan PROTOCOL (kody-w/leviathan, self-titled SPEC v1.0): ONE external mind drives MANY no-LLM brainstem BODIES over POST /api/agent/<name> \u2014 a LAN FLEET/fan-out orchestration; 'one mind, many bodies.' (B) Wrapped-Organism Leviathan (rapp_leviathan_factory -> wrap_leviathan -> rapp-leviathan-hub/rapp-leviathan-egg/1.0): ONE operator's single digital BEING built of MANY CELLS across 5 estates (Sanctum/Polity/Works/Press/Commons); 'one being, many cells.' NOT orthogonal \u2014 a STACK (protocol builds on the being-medium) \u2014 a crawler must disambiguate by intent (drive a node fleet vs. mint/ship a being).",
+    "LEVIATHAN \u2014 the two senses STACK (protocol builds on the being-medium) (the load-bearing collision). (A) Leviathan PROTOCOL (kody-w/leviathan, self-titled SPEC v1.0): ONE external mind coordinates MANY brainstem BODIES; canonical wire = rapp-fleet-chat/1.0 signed twin-chat over /chat. The old injected POST /api/agent route is a non-conformant RCE, not the protocol's future. (B) Wrapped-Organism Leviathan (rapp_leviathan_factory -> wrap_leviathan -> rapp-leviathan-hub/rapp-leviathan-egg/1.0): ONE operator's single digital BEING built of MANY CELLS across 5 estates (Sanctum/Polity/Works/Press/Commons); 'one being, many cells.' NOT orthogonal \u2014 a STACK (protocol builds on the being-medium) \u2014 a crawler must disambiguate by intent (drive a node fleet vs. mint/ship a being).",
+    "KERNEL TAG HYGIENE: current grail release commit/version is 0.6.16, but brainstem-v0.6.16 is missing and brainstem-v0.6.15 is lightweight rather than annotated. foundation.json pins the immutable 0.6.16 commit SHA directly. Do not move legacy refs; the next release must cut a new annotated brainstem-vX.Y.Z tag and restore VERSION == latest tag.",
     "PORT + ROOT COLLISION: kody-w/RAPP, kody-w/rapp-installer, AND kody-w/rappterbox all install to ~/.brainstem and bind 127.0.0.1:7071. The three cannot coexist on one machine; CommunityRAPP also lands on 7071 locally (or 7072 scaffolded). Project-local RAPP uses :7072+.",
     "DEPRECATIONS: kody-w/rapp-installer is THE GRAIL/kernel of record; kody-w/RAPP is a downstream DISTRO that pins the unmodified kernel (rapp-distro/1.0). kody-w/RAPP_Hub is ARCHIVED (superseded by the RAR + RAPP_Store registry path). Treat rapp-installer as the kernel grail, RAPP as its reference distro, RAPP_Hub as archived.",
     "MISSING / 404 PROTOCOLS (gaps): (1) The Wrapped Organism Spec \u2014 advertised home kody-w/rappterbook (live \u2014 owns EGG_SPEC.md; the standalone Wrapped-Organism spec repo kody-w/rappter is 404 \u2014 see rappterbook) is 404, no version slug; only a reference runtime survives at kody-w/rappterbook/scripts/wrapped_organism/. (2) kody-w/wrap_leviathan ships NO code anywhere reachable \u2014 its wiring stage is aspirational; leviathan_hub `hatch` covers it today. (3) kody-w/rapp_leviathan_factory has no standalone repo (404) \u2014 the canonical artifact is a RAR agent (v0.2.0).",
     "SEALING COLLISION: rapp-sealed/1.0 is the CANONICAL codec (PBKDF2-SHA256 salt 'rapp-neighborhood-5a/1', 210000 iters -> AES-256-GCM). rapp-vneighborhood/1.0 uses a DIFFERENT front-door PIN-seal variant (PBKDF2-SHA256(PIN, salt 'rapp-vneighborhood:'+channel, 100000) -> AES-GCM). Two incompatible schemes; never assume a vneighborhood channel is rapp-sealed bytes.",
     "ALIAS, NOT A PROTOCOL: 'rapp-twin-chat/1.0' is an ALIAS for \u00a76 of rapp-neighborhood-protocol/1.0, not a standalone spec. rapp-commons-protocol/2.0 and rapp-vneighborhood/1.0 are PROFILES/APPS on top of it; MCP is just another \u00a75 transport carrying the same \u00a76 envelope. None of these are new peer types.",
-    "'rappter*' NAMING CLUSTER: openrappter (divergent dual Python+TS runtime, data root ~/.openrappter, own hub rappterhub), rappterbox (console re-skin on ~/.brainstem), rappter (404, Wrapped Organism Spec home), and rappterbook (+~25 rappterbook-*/rappter-* repos) are DISTINCT things. openrappter shares only the Copilot-backed single-file thesis with the RAPP kernel \u2014 do not treat it as a RAPP runtime variant.",
+    "'rappter*' NAMING CLUSTER: OpenRappter is the intended consumer RAPP substrate-distro and RAPP<->OpenClaw Rosetta stone (current parity incomplete; data root ~/.openrappter); rappterbox is a console re-skin on ~/.brainstem; rappter is the 404 Wrapped Organism Spec home; rappterbook (+~25 rappterbook-*/rappter-* repos) is the social estate. They are distinct roles. OpenRappter must converge on the frozen /chat behavior and drop-in agent.py ABI without turning OpenClaw-shaped compatibility surfaces into new RAPP protocol authorities.",
     "'kite' NAMING CLUSTER: rapp-kite (the operator 'string' \u2014 CDP tooling) is distinct from kite-mark (visual identity repo) and rapp-kited-twin (canonical kite-mark SVG). Three 'kite' things; only rapp-kite is the transport operator.",
     "RAPPID IDENTITY REPRESENTATIONAL SEAMS: multiple on-the-wire forms coexist \u2014 rappid:<birth-slug>:<64hex> (rapp-egg-hub v2.0), rappid:@owner/slug:<64hex> (rapp-eternity/1.0 canonical), rappid:v2:<kind>:@owner/slug:<hex> (rapp-estate), rappid:v3:<base64url(SHA-256(pub))> (rapp-commons). rapp-commons' event SCHEMA and its PROTOCOL.md even show different forms. Rule (per the compatibility contract): READ all legacy forms forever, EMIT only canonical, join on the hash \u2014 never rewrite identity in place.",
-    "ETERNITY HOME (resolved): rapp-eternity/1.0 is owned by kody-w/rapp-eternity (the rappid:@owner/slug:64hex identity STANDARD) is owned by kody-w/rapp-eternity (RAPP-Bible mirrors it) (the map/aggregation layer), not the identity layer \u2014 an organizational seam a crawler should know about so it doesn't look for it under rapp-sealed/rapp-moment.",
+    "ETERNITY HOME (resolved): rapp-eternity/1.0 and the canonical rappid:@owner/slug:64hex identity standard are owned by kody-w/rapp-eternity; RAPP-Bible is a narrative mirror, not the owner. Identity is cross-referenced from the map/kernel layers even though sealing and Moment profiles live in the identity layer.",
     "'DRIFT TRIANGLE' IS A MISNOMER \u2014 it has FOUR legs (the @rapp/rapp agent, rapp-god, rapp-map, RAPP-Bible) anchored on ecosystem-spec.json; when any leg disagrees with the JSON, the JSON wins. rapp-map and rapp-god both carry byte-identical mirrors of ecosystem-spec.json, so divergence between them IS the detectable drift signal.",
     "OVERLAP \u2014 distribution catalogs: rapp-agents (flat public agent stack + RappLoader) overlaps RAR (curated content-addressed registry); rapp-egg-hub (twin .egg hub) overlaps twin-egg-hatcher (generic hatcher) and rapp-carts (the unifying cartridge abstraction). They are complementary (stack vs registry; hub-distribution vs hatch-tool vs user-facing unit), not duplicates \u2014 but a crawler should pick by role, not by nearest match.",
     "OVERLAP \u2014 map renderers: RAPP-Bible (synthesized, PINNED v1.0.0 human narrative \u2014 can itself drift), rapp_docs (live raw passthrough, always-current, zero copies), and rapp-map (index of WHERE, not the TEXT) cover overlapping ground with different jobs. Use rapp_docs for current spec text, Bible for narrative onboarding, rapp-map for location.",

@@ -9,12 +9,12 @@ When your operator says **"crawl the spine"** (for a situation, or to orient bef
    It's a single static JSON file on the CDN — no server, no auth, CORS-open.
 
 2. **Locate the layer.** The stack is an ordered column, each layer owning exactly one question:
-   `map → runtime → distribution → identity → network → leviathan`.
+   `kernel → map → runtime → distribution → identity → network → leviathan`.
    Find the layer that owns the operator's concern.
 
 3. **Match the situation.** Scan `router` (`situation → use → why`) for the entry closest to the operator's actual situation. Read off the protocol id(s) in `use`.
 
-4. **Resolve collisions before acting.** Check `collisions_and_gaps`. Two things share the name **"Leviathan"** — the *Protocol* (`kody-w/leviathan`: one mind drives many no-LLM bodies on a LAN) and the *Wrapped-Organism* (`rapp-leviathan-hub`: one operator's 5-estate being). Pick the right one by the situation, not the nearer name. Same for the `~/.brainstem`:7071 install collision and the deprecated repos.
+4. **Resolve collisions before acting.** Check `collisions_and_gaps`. The two **"Leviathan"** meanings form a stack: the *Wrapped-Organism* is one operator's 5-estate being, and the *Protocol* coordinates many such bodies as one mind. Pick the layer your situation needs without treating them as unrelated. Do the same for the `~/.brainstem`:7071 install collision and deprecated repos.
 
 5. **Act via the entry_point.** Look the chosen `spec_id` up in `registry`; its `entry_point` is the install one-liner, spec file, or URL to act on. **The spine routes; it never invents a new endpoint** — every RAPP capability rides the existing wire (`POST /chat`, or a signed append-only event).
 

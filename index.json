@@ -10,9 +10,8 @@
     "how_to_route": "fetch registry.json, match your situation against .router[], follow the spec's entry_point"
   },
   "ride": {
-    "run an agent directly (no LLM, ~tens of ms)": "POST http://<brainstem>:7071/api/agent/<AgentName>  (install flock_endpoint.py — kody-w/leviathan)",
-    "the chat wire (LLM tool-loop)": "POST http://<brainstem>:7071/chat  {\"user_input\": \"...\"}",
-    "drive a fleet as one mind": "kody-w/leviathan — leviathan.py, or leviathan_mcp.py (MCP: drive from Claude Code / GitHub Copilot CLI / Cursor)",
+    "the capability wire (agent tool-loop)": "POST http://<brainstem>:7071/chat  {\"user_input\": \"...\"}",
+    "drive a fleet as one mind": "kody-w/leviathan — use rapp-fleet-chat/1.0 signed twin-chat events over /chat; the legacy injected /api/agent route is unauthenticated and non-conformant",
     "join the planetary swarm (frames/echos, async, intermittent)": "kody-w/rapp-frame-net — read https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/net/latest.json ; run edge_node_agent.py",
     "survive a takedown (read from any head)": "rapp-hydra/1.0 — try the heads[] below, verify the content-hash, the first verified copy wins",
     "keep a north star": "kody-w/rapp-roadmap — read https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/roadmap.json ; run RappRoadmap agent",

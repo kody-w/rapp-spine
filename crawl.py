@@ -29,7 +29,8 @@ def load(remote=False):
     if remote:
         with urllib.request.urlopen(REMOTE, timeout=15) as r:
             return json.loads(r.read())
-    return json.load(open(LOCAL))
+    with open(LOCAL, encoding="utf-8") as handle:
+        return json.load(handle)
 
 
 def _toks(s):

@@ -5,7 +5,7 @@
 The RAPP ecosystem is ~60 repos and ~33 load-bearing protocols. The spine is not another protocol — it's the **situational router** over all of them: an ordered column of layers where each layer owns exactly one question, plus a map from *your concrete situation* to *the protocol(s) that govern it* and how to act.
 
 ```
-map → runtime → distribution → identity → network → leviathan
+kernel → map → runtime → distribution → identity → network → leviathan
 ```
 
 > **Any agent — or any LLM — can ride RAPP end-to-end.** The callable API surface is
@@ -24,6 +24,7 @@ map → runtime → distribution → identity → network → leviathan
 ```bash
 python crawl.py                                   # the whole spine
 python crawl.py "I need persistent memory + cloud"   # → CommunityRAPP (Tier-2)
+python crawl.py "I want OpenRappter on my machine"   # → OpenRappter consumer substrate-distro
 python crawl.py "package one capability for a non-technical user"   # → rapp-cart/1.0
 python crawl.py --collisions                      # the name/port collisions it untangles
 python crawl.py --remote "..."                    # crawl the live CDN copy
@@ -31,9 +32,21 @@ python crawl.py --remote "..."                    # crawl the live CDN copy
 
 ## What makes it useful
 
-- **One question per layer.** Lost? Start at `map`. Need to run agents? `runtime`. Ship a unit? `distribution`. Crypto identity? `identity`. Peers/federation? `network`. Many-as-one beings/fleets? `leviathan`.
-- **It names the collisions** so a crawler picks the *right* protocol, not the *nearer* one — most importantly the **two unrelated "Leviathan" concepts** (the fleet *Protocol* vs the 5-estate *Wrapped-Organism*), the `~/.brainstem`:7071 triple-install, the deprecated/404 specs, and the unauthenticated-RCE security note on the Leviathan fleet route.
+- **One question per layer.** Kernel law and ABI? Start at `kernel`. Lost? Use `map`. Need to run agents? `runtime`. Ship a unit? `distribution`. Crypto identity? `identity`. Peers/federation? `network`. Many-as-one beings/fleets? `leviathan`.
+- **It names the collisions** so a crawler follows the real relationship, not the nearer name — most importantly the **Leviathan stack** (the fleet Protocol acts through 5-estate Wrapped-Organism beings), the `~/.brainstem`:7071 triple-install, the deprecated/404 specs, and the unauthenticated-RCE security note on the legacy Leviathan route.
 - **It never invents endpoints.** Every RAPP capability rides the existing wire (`POST /chat`, or a signed append-only event); the spine routes to agents/cartridges/§-profiles on top of specs that already exist.
+
+## Verify the spine
+
+```bash
+python3 -m unittest discover -s tests -v
+python3 render_spine.py --check
+python3 verify_spine.py --local
+```
+
+The first command checks the local router and public contract. The second proves the human Spine is
+an exact render of the registry. The third crawls the live estate and fails on missing inputs,
+unresolved specs, stale foundation hashes, or spec-id drift.
 
 ## Layers & sources
 

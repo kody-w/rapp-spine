@@ -2,16 +2,19 @@
   "spec": "rapp-foundation/1.0",
   "what": "The locked, content-addressed canonical registry of the RAPP foundation pillars. Fetch over the hydra, verify sha256 against this, then build ON the wire (agents/cartridges/profiles) \u2014 never into the kernel. rapp-god watches copies against these hashes (its own observatory has known-open lag \u2014 see estate-map known-open) for drift.",
   "doctrine": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md",
-  "generated": "2026-06-28",
+  "generated": "2026-07-10",
   "pillars": [
     {
       "spec": "rapp-agent/1.0",
       "repo": "kody-w/rapp-installer",
       "role": "kernel \u2014 the atom",
       "locked": true,
-      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-installer/main/rapp_brainstem/brainstem.py",
-      "sha256": "a293dd9f11eef915bf15776f08c736faa60cb749820871b6753ea98233142a71",
-      "note": "the grail/kernel of record (brainstem-v0.6.9); kody-w/RAPP is the reference distro pinning it (rapp-distro/1.0)"
+      "version": "0.6.16",
+      "commit": "5fbde1776a72715935c3d597a9ddfce28a04032b",
+      "release_tag": null,
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-installer/5fbde1776a72715935c3d597a9ddfce28a04032b/rapp_brainstem/brainstem.py",
+      "sha256": "bd55a7f0bcf5efd3f7966ca39bb146da3c25fda9a0b1ce5ba587919d3c3775f4",
+      "note": "the current production grail at release commit v0.6.16, pinned immutably by commit because its required annotated brainstem-v0.6.16 tag is missing (known-open); kody-w/RAPP is the reference distro and intentionally pins an older compatible kernel"
     },
     {
       "spec": "leviathan/1.0",
@@ -52,7 +55,7 @@
       "role": "router + foundation registry",
       "locked": true,
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md",
-      "sha256": "dacf3f4af72f46def6fdb51e7472f830f16ff61abb032a9fc52c3252d6c4dea2"
+      "sha256": "d75f0cc04bab6ac981a98d8137304a32ab52a33ca2f9e3585c5eee80da89e6b3"
     },
     {
       "spec": "rapp-roadmap",
@@ -60,7 +63,7 @@
       "role": "how we build from here (kernel stays locked)",
       "locked": true,
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/roadmap.json",
-      "sha256": "f52d0b32321a4d0794d52141fc04c12a7fc27c865dc2c4cd50f7101f3b13e259"
+      "sha256": "b904a9d4342c264eb92a386c434471bddd90c4af878338a2a689f7b66d50daf7"
     }
   ],
   "law": [
@@ -69,7 +72,7 @@
       "repo": "kody-w/RAPP",
       "role": "the authoring discipline that keeps the wire contract shippable for a decade (Article 0: the file IS the agent IS the contract)",
       "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/main/CONSTITUTION.md",
-      "sha256": "0a384b1960a94e75005cbe659d07390868b0abf0ff9e9ec7fcfce16c7415b23e",
+      "sha256": "53cb10592cf44ea04e8f1fab443aaf09bab610f298203555e959e13f19330f11",
       "locked": true
     },
     {
@@ -85,7 +88,7 @@
       "repo": "kody-w/RAPP",
       "role": "the wire contract the Constitution protects",
       "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/main/specs/SPEC.md",
-      "sha256": "c27433db81074d0bb2b9ec6d45809b4aad33a1803a1f2632d4a257ce74a66716",
+      "sha256": "fbc3a05b428b2674c6c1868f8e09813603df578925066aaf8c83885676ebdfe2",
       "locked": true
     },
     {
@@ -93,7 +96,8 @@
       "repo": "kody-w/rappterbook",
       "role": "governance for the social-network estate",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rappterbook/main/CONSTITUTION.md",
-      "sha256": null
+      "sha256": "4240bb128a34938a8bc77f233e06d7d0214805b3afcd6f601692982aa7270845",
+      "locked": true
     }
   ],
   "spec_corpus": [

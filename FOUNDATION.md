@@ -21,7 +21,7 @@ Compose atoms; never split the atom.
 
 The kernel (`rapp-agent/1.0`, [kody-w/rapp-installer](https://github.com/kody-w/rapp-installer) — the grail; [kody-w/RAPP](https://github.com/kody-w/RAPP) is the reference distro that pins it) is **frozen
 contract**: one `/chat` tool-loop, the `BasicAgent.metadata` + `perform(**kwargs) -> str`
-ABI, agent-injected direct routes, T1/T2 parity. Every capability — the swarm, the
+ABI, fresh drop-in agent discovery, T1/T2 parity. Every capability — the swarm, the
 frame-net, the auth, the registry — ships as an **agent / cartridge / spine-profile on
 the existing wire, never an engine edit.** A passing CI invariant proves the kernel never
 changed. This is what lets the foundation be *built upon* without drifting underneath.
@@ -43,7 +43,7 @@ open explosion of *distros* built on it. The mapping is exact:
 | the syscall ABI — *"never break userspace"* | the **agent ABI**: `BasicAgent.metadata` + `perform(**kwargs) -> str`, the `/chat` envelope, agent auto-discovery |
 | loadable modules / userspace programs | **agents** — drop-in `*_agent.py` |
 | a distro (Ubuntu, Fedora, Arch) | a **RAPP distro** — the unmodified kernel (pinned to a version) + a userland (agents, `soul.md`, specs, branding) |
-| an LTS distro pinning an older kernel | [kody-w/RAPP](https://github.com/kody-w/RAPP) pins kernel **v0.6.0** *byte-identical* while the grail ships `0.6.1` (verified: `brainstem.py` + `basic_agent.py` + `VERSION` all match grail@v0.6.0) |
+| an LTS distro pinning an older kernel | [kody-w/RAPP](https://github.com/kody-w/RAPP) intentionally pins kernel **v0.6.0** *byte-identical* while the current grail release commit/version is `0.6.16` (the Foundation pins that commit directly while tag hygiene is repaired) |
 
 **The rules (borrowed from Linus, because they work):**
 
