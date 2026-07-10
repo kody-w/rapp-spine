@@ -19,10 +19,11 @@ ciphertext can be as public and unkillable as everything else.
 
 ## Core specs (canonical · public · content-addressed)
 
-- **rapp-agent/1.0** — the kernel / the atom: https://raw.githubusercontent.com/kody-w/RAPP/main/README.md
-- **leviathan/1.0** — the fleet (one mind drives many no-LLM bodies over `POST /api/agent/<name>`): https://raw.githubusercontent.com/kody-w/leviathan/main/SPEC.md
+- **rapp-kernel/1.0** — the frozen kernel, wire, and agent ABI contract: https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/KERNEL.md
+- **rapp-agent/1.0** — the reference kernel artifact, pinned by immutable commit + sha256 in: https://raw.githubusercontent.com/kody-w/rapp-spine/main/foundation.json
+- **leviathan/1.0** — the fleet (one mind drives many bodies through `rapp-fleet-chat/1.0`, signed twin-chat events over `/chat`; the legacy `/api/agent` route is non-conformant): https://raw.githubusercontent.com/kody-w/leviathan/main/FLEET_CHAT.md
 - **rapp-leviathan-egg/1.0** — the being (many cells, one 5-estate organism, portable `.egg`): https://raw.githubusercontent.com/kody-w/rapp-leviathan-hub/main/UNIFIED.md
-- **rapp-frame/1.0** — the planetary swarm wire (the edge is a brainstem making local judgments off append-only frames/echos; verify-before-act; degrade-to-one offline): https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/SPEC.md
+- **rapp-frame/2.0** — the planetary swarm wire (the edge is a brainstem making local judgments off append-only frames/echos; verify-before-act; degrade-to-one offline): https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/SPEC.md
 - **rapp-hydra/1.0** — the many-headed unkillable medium (static data on many heads; trust the content-hash, not the host; cut one head, two grow): https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/HYDRA.md
 - **rapp-spine/1.0** — the situational router + the locked Foundation: https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md
 - **rapp-static-api/1.0** — APIs built entirely from static files over GitHub raw: https://github.com/kody-w/rapp-static-apis
@@ -38,8 +39,8 @@ ciphertext can be as public and unkillable as everything else.
 ## How any agent rides RAPP, end-to-end
 
 1. **Discover** — `GET registry.json`; match your situation against `.router[]`; follow the spec's `entry_point`.
-2. **Run an agent directly** — `POST http://<brainstem>:7071/api/agent/<AgentName>` (JSON kwargs) — no LLM, no token.
-3. **Drive a fleet** — the Leviathan Protocol (`leviathan.py`, or the MCP server from Claude Code / Copilot CLI / Cursor).
+2. **Run capability through the canonical wire** — `POST http://<brainstem>:7071/chat` with `{"user_input":"..."}`. Agents remain the only extension point.
+3. **Drive a fleet** — follow `rapp-fleet-chat/1.0` in `kody-w/leviathan/FLEET_CHAT.md`. The legacy `leviathan.py`/MCP controllers use unauthenticated `/api/agent` and MUST NOT be used until migrated to signed twin-chat over `/chat`.
 4. **Join the planet** — read frames/echos from any hydra head; reconcile guidance with your local reality; report telemetry; keep working offline on your last echo.
 5. **Survive** — read from any head, verify the content-hash; cut one head, read from the next; fork to re-seed.
 6. **Stay aimed** — pull the roadmap's north star; route every situation through the spine.

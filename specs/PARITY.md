@@ -63,7 +63,7 @@ on whoever's silicon.
 | Term | Meaning |
 |------|---------|
 | **Runtime** | Any executable that serves the RAPP `/chat` contract on some substrate. |
-| **Reference runtime** | `kody-w/rapp-installer/rapp_brainstem/brainstem.py` on **main** (the kernel the one-liner installs). **The reference is normative** (NOTE: the `brainstem-v0.6.1` tag is currently behind main and serves a 4-key envelope — a Phase-0 tag-hygiene item; the 6-key envelope is what main and every conformant runtime emit): where any wording here is ambiguous, the reference runtime's observable behavior wins. |
+| **Reference runtime** | The immutable `rapp-agent/1.0` artifact identified by `foundation.json` (`kody-w/rapp-installer/rapp_brainstem/brainstem.py`, release commit/version `0.6.16` as of 2026-07-10). The Foundation's commit + sha256 is normative; floating `main` is only the install channel. The required annotated `brainstem-v0.6.16` tag is currently missing, so tag hygiene remains open without making the reference itself mutable. Where wording here is ambiguous, the pinned reference runtime's observable behavior wins. |
 | **Parity** | The property that a runtime reproduces the reference runtime's **observable `/chat` behavior** byte-behaviorally, for all inputs, modulo the **out-of-scope axes** (§3). |
 | **Observable behavior** | The `/chat` request envelope it accepts, the response envelope it emits, the tool-call discovery+execution **loop semantics**, the `agent_logs` shape, and the **agent ABI** it honors. Nothing else. |
 | **Golden conformance vector** | A frozen `(system_prompt + history + agents + user_input → expected tool-call sequence + expected envelope)` case any conformant runtime MUST reproduce. |
