@@ -1,7 +1,7 @@
 {
   "spec": "rapp-spine/1.0",
   "what": "A situational router over the full RAPP protocol stack. Fetch this, match your situation against `router`, follow to the protocol's entry_point. This is not a new protocol \u2014 it routes to existing ones.",
-  "generated": "2026-07-10",
+  "generated": "2026-07-11",
   "layers_order": [
     "kernel",
     "map",
@@ -83,9 +83,10 @@
     },
     {
       "layer": "network (peers, transports, neighborhoods, federation)",
-      "summary": "Once you have a runtime + identity, how organisms find and talk to each other. The capstone god-spec is rapp-neighborhood-protocol/1.0 \u2014 it owns the vocabulary and the rapp-twin-chat/1.0 \u00a76 envelope (delegating the \u00a78 seal to rapp-sealed). Everything else is a \u00a75 transport or a \u00a7-profile carrying that same envelope, never a new peer type: rapp-commons-protocol/2.0 (open global town square), rapp-vneighborhood/1.0 (private brandable front-door template), rapp-network/1.0 (project-twin fan-out), rapp-estate/1.1 (operator-wide discovery, 'the network is the backup'), rapp-mcp-spec/1.0 (MCP host onto /chat), rapp-kite ('the string' CDP operator tools), rapp-resident (always-on Azure cloud relay; 'kited is the floor, this is the ceiling').",
+      "summary": "Once you have a runtime + identity, how organisms find and talk to each other. The capstone god-spec is rapp-neighborhood-protocol/1.0 \u2014 it owns the vocabulary and the rapp-twin-chat/1.0 \u00a76 envelope (delegating the \u00a78 seal to rapp-sealed). rapp-messaging/1.0 profiles human trust, memory projection, consent, group epochs, and delivery over that existing wire. Everything else is a \u00a75 transport or a \u00a7-profile carrying that same envelope, never a new peer type: rapp-commons-protocol/2.0 (open global town square), rapp-vneighborhood/1.0 (private brandable front-door template), rapp-network/1.0 (project-twin fan-out), rapp-estate/1.1 (operator-wide discovery, 'the network is the backup'), rapp-mcp-spec/1.0 (MCP host onto /chat), rapp-kite ('the string' CDP operator tools), rapp-resident (always-on Azure cloud relay; 'kited is the floor, this is the ceiling').",
       "protocols": [
         "rapp-neighborhood-protocol/1.0 (owns rapp-twin-chat/1.0 \u00a76)",
+        "rapp-messaging/1.0 (+ rapp-messaging-imessage/1.0)",
         "rapp-commons-protocol/2.0 (+ rapp-commons-event/1.0)",
         "rapp-vneighborhood/1.0",
         "rapp-network/1.0",
@@ -144,6 +145,14 @@
         "rapp-mcp-spec/1.0"
       ],
       "why": "MCP is TRANSPORT realizing 'Chat Is The Only Wire' onto /chat \u2014 serve a folder as tools, bridge a running brainstem as one tool, or serve a static catalog. It reaches the same cartridge, never a new unit."
+    },
+    {
+      "situation": "I need a Rappter to remember everyone across direct and group conversations without leaking confidences, and to honor explicit natural-language consent when a fact may be shared.",
+      "use": [
+        "rapp-messaging/1.0",
+        "rapp-messaging-imessage/1.0 (when the transport is iMessage)"
+      ],
+      "why": "RAPP Messaging defines one global provenance-rich memory graph, per-turn audience projection, familiarity without disclosure, fact-specific consent, group roster epochs, tool authority, and durable inbox/outbox behavior over the existing /chat and signed-event wire."
     },
     {
       "situation": "I want to package ONE capability for a nontechnical user who should never see ports or code.",
@@ -528,6 +537,14 @@
       "purpose": "The god-spec / capstone of the kited neighborhood and single source of truth for its vocabulary (vTwin, Kited, the String, Tethered, Neighbor, Scan-to-Join, Sealed, Doorman, Cloud Neighborhood). Owns the rapp-twin-chat/1.0 \u00a76 envelope (an ALIAS for \u00a76, not a separate protocol); delegates \u00a78 seal to rapp-sealed.",
       "when_to_use": "When implementing/documenting ANY neighborhood concern \u2014 peer, transport (\u00a75), sealed channel (\u00a78), session (\u00a79), multiplayer (\u00a710), agent-in-a-link (\u00a715), controller (\u00a717). Reference the words, don't fork them.",
       "entry_point": "NEIGHBORHOOD_PROTOCOL.md in repo. Reference impl: kody-w/vbrainstem (\u00a712); realized by twin_chat_agent.py in rapp-commons (\u00a717). MIT."
+    },
+    {
+      "spec_id": "rapp-messaging/1.0 (+ rapp-messaging-imessage/1.0)",
+      "repo": "kody-w/rapp-messaging",
+      "layer": "network",
+      "purpose": "Transport-neutral profile for human/Rappter conversation identity, global memory projection, confidentiality, explicit audience-scoped consent, group roster epochs, tool authority, and durable delivery. iMessage is the first implementation-backed transport profile; no new kernel route or peer type.",
+      "when_to_use": "When a Rappter talks with multiple people or groups and must retain full local context while deciding what is appropriate to recall or disclose in each conversation, including consent changes made naturally mid-thread.",
+      "entry_point": "Read SPEC.md and IMESSAGE.md; machine schemas live under schemas/, conformance vectors under vectors/, and OpenRappter PR #28 is the reference implementation."
     },
     {
       "spec_id": "(none; operator tooling \u2014 'the string')",
