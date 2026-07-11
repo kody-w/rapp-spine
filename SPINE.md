@@ -10,8 +10,9 @@ KERNEL FIRST: the grail/kernel of record is kody-w/rapp-installer (frozen single
 
 ## How to crawl
 
-- **AI:** fetch `registry.json`, match the concrete situation against `router`, then follow the selected registry entry.
-- **Human/script:** run `python3 crawl.py "<situation>"`.
+- **AI, exhaustive:** fetch `crawl.json`, traverse every ID in `graph.traversal_order`, and read only safe/read-only targets.
+- **AI, scoped:** match the concrete situation against `router`, then follow the selected typed route node's exact targets and closure.
+- **Human/script:** bare `python3 crawl.py` retains the whole-spine summary; use `python3 crawl.py --full` for exhaustive traversal.
 - **Integrity:** run `python3 verify_spine.py --local`.
 
 ## Router — situation → protocol

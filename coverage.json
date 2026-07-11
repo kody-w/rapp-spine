@@ -1,0 +1,308 @@
+{
+  "spec": "rapp-spine-coverage/1.0",
+  "source_spec": "rapp-spine/1.1",
+  "generated": "2026-07-10",
+  "inputs": {
+    "registry": {
+      "path": "registry.json",
+      "sha256": "2e6bd04a1ffc38d15c5549d322e718e2db43ed38f3f680b36d020b0a10f37bbf"
+    },
+    "foundation": {
+      "path": "foundation.json",
+      "sha256": "18748997a9f49c1f592f95798443a4a4a3034520a578ac363758ab79527bd0cd"
+    }
+  },
+  "inventory": {
+    "registry_entries_expected": 58,
+    "registry_nodes_represented": 58,
+    "routes_expected": 31,
+    "route_nodes_represented": 31,
+    "route_target_references": 65,
+    "repositories_represented": 46,
+    "foundation_records_represented": 19
+  },
+  "graph": {
+    "nodes": 216,
+    "relations": 658,
+    "nodes_by_type": {
+      "artifact": 2,
+      "evidence": 19,
+      "issue": 52,
+      "layer": 7,
+      "protocol": 58,
+      "repository": 46,
+      "route": 31,
+      "spine": 1
+    },
+    "nodes_by_status": {
+      "informational": 18,
+      "represented": 44,
+      "resolved": 77,
+      "unresolved": 77
+    },
+    "orphans": [],
+    "dangling_relations": []
+  },
+  "required_material": {
+    "protocols": 58,
+    "exact_targets": 24,
+    "unresolved": 34,
+    "unresolved_node_ids": [
+      "protocol:kody-w/rapp/rapp-agent/1.0",
+      "protocol:kody-w/communityrapp/entry",
+      "protocol:kody-w/rapp-brainstem-sdk/entry",
+      "protocol:kody-w/openrappter/entry",
+      "protocol:kody-w/rappterbox/rappterbox-console-spec/1.0",
+      "protocol:kody-w/rapp-installer/rapp-agent/1.0",
+      "protocol:kody-w/leviathan/leviathan/1.0",
+      "protocol:kody-w/rapp-leviathan-hub/rapp-leviathan-egg/1.0",
+      "protocol:kody-w/rapp_leviathan_factory/entry",
+      "protocol:kody-w/wrap_leviathan/entry",
+      "protocol:kody-w/rappterbook/entry",
+      "protocol:kody-w/rapp-static-apis/rapp-static-api/1.0",
+      "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+      "protocol:kody-w/rapp-egg-hub/rapp-rappid-spec/2.0",
+      "protocol:kody-w/twin-egg-hatcher/entry",
+      "protocol:kody-w/rapp-carts/rapp-cart/1.0",
+      "protocol:kody-w/rapp-agents/entry",
+      "protocol:kody-w/rapp-sealed/rapp-sealed/1.0",
+      "protocol:kody-w/rapp-moment/rapp-moment/1.0",
+      "protocol:kody-w/rapp-dataverse/rapp-dataverse/1.0",
+      "protocol:kody-w/rapp-neighborhood-protocol/rapp-neighborhood-protocol/1.0",
+      "protocol:kody-w/rapp-kite/entry",
+      "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
+      "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
+      "protocol:kody-w/rapp_docs/entry",
+      "protocol:kody-w/rapp_hub/entry",
+      "protocol:kody-w/rapp-estate/rapp-estate/1.1",
+      "protocol:kody-w/rapp-network/rapp-network/1.0",
+      "protocol:kody-w/rapp-commons/rapp-commons-protocol/2.0",
+      "protocol:kody-w/rapp-vneighborhood/rapp-vneighborhood/1.0",
+      "protocol:kody-w/heimdall/entry",
+      "protocol:kody-w/rapp-resident/rapp-commons-event/1.0",
+      "protocol:kody-w/rapp-frame-net/rapp-frame/2.0",
+      "protocol:kody-w/rapp-frame-net/rapp-hydra/1.0"
+    ],
+    "complete": false
+  },
+  "all_required_sources": {
+    "required": 125,
+    "exact_targets": 89,
+    "unresolved": 36,
+    "unresolved_sources": [
+      {
+        "node_id": "protocol:kody-w/rapp/rapp-agent/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/communityrapp/entry",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-brainstem-sdk/entry",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/openrappter/entry",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rappterbox/rappterbox-console-spec/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-installer/rapp-agent/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/leviathan/leviathan/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-leviathan-hub/rapp-leviathan-egg/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp_leviathan_factory/entry",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/wrap_leviathan/entry",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rappterbook/entry",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-static-apis/rapp-static-api/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-egg-hub/rapp-rappid-spec/2.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/twin-egg-hatcher/entry",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-carts/rapp-cart/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-agents/entry",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-sealed/rapp-sealed/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-moment/rapp-moment/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-dataverse/rapp-dataverse/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-neighborhood-protocol/rapp-neighborhood-protocol/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-kite/entry",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp_docs/entry",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp_hub/entry",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-estate/rapp-estate/1.1",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-network/rapp-network/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-commons/rapp-commons-protocol/2.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-vneighborhood/rapp-vneighborhood/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/heimdall/entry",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-resident/rapp-commons-event/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-frame-net/rapp-frame/2.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "protocol:kody-w/rapp-frame-net/rapp-hydra/1.0",
+        "role": "canonical_material"
+      },
+      {
+        "node_id": "repo:kody-w/rapp_leviathan_factory",
+        "role": "repository_identity"
+      },
+      {
+        "node_id": "repo:kody-w/wrap_leviathan",
+        "role": "repository_identity"
+      }
+    ],
+    "complete": false
+  },
+  "known_gaps": {
+    "structured_issues": 52,
+    "blocking": 41,
+    "blocking_issue_ids": [
+      "issue:security:de7fec630b7d59b0",
+      "issue:gap:aae4cfd4841a6e85",
+      "issue:gap:64e5431ba2b4486e",
+      "issue:gap:4ca9be907b392155",
+      "issue:security:dc174a64279000de",
+      "issue:material:a4ae4a7bb33464d5",
+      "issue:material:6a2042e1ae168bcd",
+      "issue:material:01cfb1e737509224",
+      "issue:material:9b69d4304293566d",
+      "issue:material:783fc2a6445d88e4",
+      "issue:material:5899f4076540cf06",
+      "issue:material:ed93a8e5fe2b6d98",
+      "issue:material:09ae9fd77e876477",
+      "issue:material:e8ef6014c6d9388c",
+      "issue:material:4172a18374adb0fd",
+      "issue:material:859c12f45e2cb368",
+      "issue:material:e8faf0545618570e",
+      "issue:material:56879919da0bbf86",
+      "issue:material:e965f8e88439d6e4",
+      "issue:material:0189b254c5c9f89a",
+      "issue:material:4f8d57ad6c888205",
+      "issue:material:123b48a2a7534ccc",
+      "issue:material:90f715bd3fd0ed1c",
+      "issue:material:8f743fafb9578261",
+      "issue:material:2dc434483f7e4a73",
+      "issue:material:be48eaddfea9c191",
+      "issue:material:1677c9a183e038b8",
+      "issue:material:5fd0a78b490ac709",
+      "issue:material:ddb3aec94f5404f6",
+      "issue:material:6eb9c2770267aa08",
+      "issue:material:0a13ad04ca09c1f1",
+      "issue:material:5001349d64046d25",
+      "issue:material:ec1d6718852a350d",
+      "issue:material:9b06311946bd3647",
+      "issue:material:05cc5008bfc53745",
+      "issue:material:c387bb9428b6469c",
+      "issue:material:44f5a6c1ea19cc7d",
+      "issue:material:1892bcf521cbb96d",
+      "issue:material:c0d871423245137e",
+      "issue:material:117550c976d9c497",
+      "issue:material:9d6f07d66d38785a"
+    ]
+  },
+  "estate_coverage_policy": {
+    "verifier_input": "https://raw.githubusercontent.com/kody-w/rapp-map/main/estate-map.json",
+    "requirement": "Every load_bearing estate repo must resolve to a repository node.",
+    "enforced_by": "verify_spine.py"
+  },
+  "safety": {
+    "mode": "read_only",
+    "allowed_methods": [
+      "GET",
+      "HEAD"
+    ],
+    "forbidden_actions": [
+      "install",
+      "run",
+      "deploy",
+      "execute",
+      "write"
+    ],
+    "policy": "A crawler may read only entry points marked safe_for_crawl=true. Display-only install/run/deploy text is retained for compatibility and never executed."
+  },
+  "complete": false
+}

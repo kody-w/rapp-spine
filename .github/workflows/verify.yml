@@ -21,6 +21,8 @@ jobs:
           python-version: "3.11"
       - name: Run local contract tests
         run: python3 -m unittest discover -s tests -v
+      - name: Verify generated crawl surfaces
+        run: python3 generate_crawl.py --check
       - name: Verify rendered Spine
         run: python3 render_spine.py --check
       - name: Crawl the live estate
