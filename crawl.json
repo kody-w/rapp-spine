@@ -1,11 +1,11 @@
 {
   "spec": "rapp-spine/1.1",
-  "generated": "2026-07-10",
+  "generated": "2026-07-11",
   "what": "The deterministic exhaustive read-only crawl graph for the RAPP spine. It preserves every rapp-spine/1.0 display field while adding exact typed targets, material requirements, structured gaps, safety metadata, and completion semantics.",
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "2e6bd04a1ffc38d15c5549d322e718e2db43ed38f3f680b36d020b0a10f37bbf"
+      "sha256": "8367f656a89addb9781a8182ec0655e268c0c031cf836e27a9eec50ba51d6560"
     },
     "foundation": {
       "path": "foundation.json",
@@ -157,9 +157,10 @@
     },
     {
       "layer": "network (peers, transports, neighborhoods, federation)",
-      "summary": "Once you have a runtime + identity, how organisms find and talk to each other. The capstone god-spec is rapp-neighborhood-protocol/1.0 — it owns the vocabulary and the rapp-twin-chat/1.0 §6 envelope (delegating the §8 seal to rapp-sealed). Everything else is a §5 transport or a §-profile carrying that same envelope, never a new peer type: rapp-commons-protocol/2.0 (open global town square), rapp-vneighborhood/1.0 (private brandable front-door template), rapp-network/1.0 (project-twin fan-out), rapp-estate/1.1 (operator-wide discovery, 'the network is the backup'), rapp-mcp-spec/1.0 (MCP host onto /chat), rapp-kite ('the string' CDP operator tools), rapp-resident (always-on Azure cloud relay; 'kited is the floor, this is the ceiling').",
+      "summary": "Once you have a runtime + identity, how organisms find and talk to each other. The capstone god-spec is rapp-neighborhood-protocol/1.0 — it owns the vocabulary and the rapp-twin-chat/1.0 §6 envelope (delegating the §8 seal to rapp-sealed). rapp-messaging/1.0 profiles human trust, memory projection, consent, group epochs, and delivery over that existing wire. Everything else is a §5 transport or a §-profile carrying that same envelope, never a new peer type: rapp-commons-protocol/2.0 (open global town square), rapp-vneighborhood/1.0 (private brandable front-door template), rapp-network/1.0 (project-twin fan-out), rapp-estate/1.1 (operator-wide discovery, 'the network is the backup'), rapp-mcp-spec/1.0 (MCP host onto /chat), rapp-kite ('the string' CDP operator tools), rapp-resident (always-on Azure cloud relay; 'kited is the floor, this is the ceiling').",
       "protocols": [
         "rapp-neighborhood-protocol/1.0 (owns rapp-twin-chat/1.0 §6)",
+        "rapp-messaging/1.0 (+ rapp-messaging-imessage/1.0)",
         "rapp-commons-protocol/2.0 (+ rapp-commons-event/1.0)",
         "rapp-vneighborhood/1.0",
         "rapp-network/1.0",
@@ -218,6 +219,14 @@
         "rapp-mcp-spec/1.0"
       ],
       "why": "MCP is TRANSPORT realizing 'Chat Is The Only Wire' onto /chat — serve a folder as tools, bridge a running brainstem as one tool, or serve a static catalog. It reaches the same cartridge, never a new unit."
+    },
+    {
+      "situation": "I need a Rappter to remember everyone across direct and group conversations without leaking confidences, and to honor explicit natural-language consent when a fact may be shared.",
+      "use": [
+        "rapp-messaging/1.0",
+        "rapp-messaging-imessage/1.0 (when the transport is iMessage)"
+      ],
+      "why": "RAPP Messaging defines one global provenance-rich memory graph, per-turn audience projection, familiarity without disclosure, fact-specific consent, group roster epochs, tool authority, and durable inbox/outbox behavior over the existing /chat and signed-event wire."
     },
     {
       "situation": "I want to package ONE capability for a nontechnical user who should never see ports or code.",
@@ -604,6 +613,14 @@
       "entry_point": "NEIGHBORHOOD_PROTOCOL.md in repo. Reference impl: kody-w/vbrainstem (§12); realized by twin_chat_agent.py in rapp-commons (§17). MIT."
     },
     {
+      "spec_id": "rapp-messaging/1.0 (+ rapp-messaging-imessage/1.0)",
+      "repo": "kody-w/rapp-messaging",
+      "layer": "network",
+      "purpose": "Transport-neutral profile for human/Rappter conversation identity, global memory projection, confidentiality, explicit audience-scoped consent, group roster epochs, tool authority, and durable delivery. iMessage is the first implementation-backed transport profile; no new kernel route or peer type.",
+      "when_to_use": "When a Rappter talks with multiple people or groups and must retain full local context while deciding what is appropriate to recall or disclose in each conversation, including consent changes made naturally mid-thread.",
+      "entry_point": "Read SPEC.md and IMESSAGE.md; machine schemas live under schemas/, conformance vectors under vectors/, and OpenRappter PR #28 is the reference implementation."
+    },
+    {
       "spec_id": "(none; operator tooling — 'the string')",
       "repo": "kody-w/rapp-kite",
       "layer": "network",
@@ -957,7 +974,7 @@
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "2e6bd04a1ffc38d15c5549d322e718e2db43ed38f3f680b36d020b0a10f37bbf",
+            "sha256": "8367f656a89addb9781a8182ec0655e268c0c031cf836e27a9eec50ba51d6560",
             "integrity": "sha256"
           }
         ],
@@ -1189,9 +1206,10 @@
         ],
         "display": {
           "layer": "network (peers, transports, neighborhoods, federation)",
-          "summary": "Once you have a runtime + identity, how organisms find and talk to each other. The capstone god-spec is rapp-neighborhood-protocol/1.0 — it owns the vocabulary and the rapp-twin-chat/1.0 §6 envelope (delegating the §8 seal to rapp-sealed). Everything else is a §5 transport or a §-profile carrying that same envelope, never a new peer type: rapp-commons-protocol/2.0 (open global town square), rapp-vneighborhood/1.0 (private brandable front-door template), rapp-network/1.0 (project-twin fan-out), rapp-estate/1.1 (operator-wide discovery, 'the network is the backup'), rapp-mcp-spec/1.0 (MCP host onto /chat), rapp-kite ('the string' CDP operator tools), rapp-resident (always-on Azure cloud relay; 'kited is the floor, this is the ceiling').",
+          "summary": "Once you have a runtime + identity, how organisms find and talk to each other. The capstone god-spec is rapp-neighborhood-protocol/1.0 — it owns the vocabulary and the rapp-twin-chat/1.0 §6 envelope (delegating the §8 seal to rapp-sealed). rapp-messaging/1.0 profiles human trust, memory projection, consent, group epochs, and delivery over that existing wire. Everything else is a §5 transport or a §-profile carrying that same envelope, never a new peer type: rapp-commons-protocol/2.0 (open global town square), rapp-vneighborhood/1.0 (private brandable front-door template), rapp-network/1.0 (project-twin fan-out), rapp-estate/1.1 (operator-wide discovery, 'the network is the backup'), rapp-mcp-spec/1.0 (MCP host onto /chat), rapp-kite ('the string' CDP operator tools), rapp-resident (always-on Azure cloud relay; 'kited is the floor, this is the ceiling').",
           "protocols": [
             "rapp-neighborhood-protocol/1.0 (owns rapp-twin-chat/1.0 §6)",
+            "rapp-messaging/1.0 (+ rapp-messaging-imessage/1.0)",
             "rapp-commons-protocol/2.0 (+ rapp-commons-event/1.0)",
             "rapp-vneighborhood/1.0",
             "rapp-network/1.0",
@@ -2412,6 +2430,64 @@
         }
       },
       {
+        "id": "protocol:kody-w/rapp-messaging/rapp-messaging/1.0",
+        "type": "protocol",
+        "label": "rapp-messaging/1.0 (+ rapp-messaging-imessage/1.0)",
+        "repo": "kody-w/rapp-messaging",
+        "canonical_protocol_identity": "rapp-messaging/1.0",
+        "layer_id": "layer:network",
+        "lifecycle": "active",
+        "status": "unresolved",
+        "materiality": "required",
+        "material_profile": "registry-protocol",
+        "required_source_roles": [
+          "canonical_material"
+        ],
+        "sources": [
+          {
+            "role": "canonical_material",
+            "required": true,
+            "target": null,
+            "availability": "unresolved",
+            "read_only": true,
+            "method": "GET"
+          }
+        ],
+        "entry_points": [
+          {
+            "kind": "repository_read",
+            "target": "https://github.com/kody-w/rapp-messaging",
+            "method": "GET",
+            "read_only": true,
+            "safe_for_crawl": true
+          },
+          {
+            "kind": "display_only",
+            "display": "Read SPEC.md and IMESSAGE.md; machine schemas live under schemas/, conformance vectors under vectors/, and OpenRappter PR #28 is the reference implementation.",
+            "read_only": false,
+            "safe_for_crawl": false,
+            "policy": "never_execute"
+          }
+        ],
+        "conformance": "not_assessed",
+        "aliases": [
+          "kody-w/rapp-messaging",
+          "rapp-messaging",
+          "rapp-messaging-imessage/1.0",
+          "rapp-messaging/1.0",
+          "rapp-messaging/1.0 rapp-messaging-imessage/1.0"
+        ],
+        "display": {
+          "registry_index": 21,
+          "spec_id": "rapp-messaging/1.0 (+ rapp-messaging-imessage/1.0)",
+          "repo": "kody-w/rapp-messaging",
+          "layer": "network",
+          "purpose": "Transport-neutral profile for human/Rappter conversation identity, global memory projection, confidentiality, explicit audience-scoped consent, group roster epochs, tool authority, and durable delivery. iMessage is the first implementation-backed transport profile; no new kernel route or peer type.",
+          "when_to_use": "When a Rappter talks with multiple people or groups and must retain full local context while deciding what is appropriate to recall or disclose in each conversation, including consent changes made naturally mid-thread.",
+          "entry_point": "Read SPEC.md and IMESSAGE.md; machine schemas live under schemas/, conformance vectors under vectors/, and OpenRappter PR #28 is the reference implementation."
+        }
+      },
+      {
         "id": "protocol:kody-w/rapp-kite/entry",
         "type": "protocol",
         "label": "(none; operator tooling — 'the string')",
@@ -2458,7 +2534,7 @@
           "rapp-kite"
         ],
         "display": {
-          "registry_index": 21,
+          "registry_index": 22,
           "spec_id": "(none; operator tooling — 'the string')",
           "repo": "kody-w/rapp-kite",
           "layer": "network",
@@ -2515,7 +2591,7 @@
           "rapp-map"
         ],
         "display": {
-          "registry_index": 22,
+          "registry_index": 23,
           "spec_id": "rapp-ecosystem-spec/1.0 (byte-identical mirror)",
           "repo": "kody-w/rapp-map",
           "layer": "map",
@@ -2571,7 +2647,7 @@
           "rapp-grail-scan/1.0"
         ],
         "display": {
-          "registry_index": 23,
+          "registry_index": 24,
           "spec_id": "rapp-grail-scan/1.0",
           "repo": "kody-w/rapp-god",
           "layer": "map",
@@ -2627,7 +2703,7 @@
           "rapp_docs"
         ],
         "display": {
-          "registry_index": 24,
+          "registry_index": 25,
           "spec_id": "(none; live spec renderer)",
           "repo": "kody-w/rapp_docs",
           "layer": "map",
@@ -2683,7 +2759,7 @@
           "rapp_hub"
         ],
         "display": {
-          "registry_index": 25,
+          "registry_index": 26,
           "spec_id": "(DEPRECATED -> the RAR/RAPP_Store registry path)",
           "repo": "kody-w/RAPP_Hub",
           "layer": "distribution",
@@ -2740,7 +2816,7 @@
           "rapp-estate/1.1 canonical def in kody-w/rapp specs/spec.md"
         ],
         "display": {
-          "registry_index": 26,
+          "registry_index": 27,
           "spec_id": "rapp-estate/1.1 (canonical def in kody-w/RAPP specs/SPEC.md)",
           "repo": "kody-w/rapp-estate",
           "layer": "network",
@@ -2797,7 +2873,7 @@
           "rapp-network/1.0 draft v0"
         ],
         "display": {
-          "registry_index": 27,
+          "registry_index": 28,
           "spec_id": "rapp-network/1.0 (Draft v0)",
           "repo": "kody-w/RAPP-Network",
           "layer": "network",
@@ -2855,7 +2931,7 @@
           "rapp-commons-protocol/2.0 rapp-commons-event/1.0"
         ],
         "display": {
-          "registry_index": 28,
+          "registry_index": 29,
           "spec_id": "rapp-commons-protocol/2.0 (+ rapp-commons-event/1.0)",
           "repo": "kody-w/rapp-commons",
           "layer": "network",
@@ -2911,7 +2987,7 @@
           "rapp-vneighborhood/1.0"
         ],
         "display": {
-          "registry_index": 29,
+          "registry_index": 30,
           "spec_id": "rapp-vneighborhood/1.0",
           "repo": "kody-w/rapp-vneighborhood",
           "layer": "network",
@@ -2968,7 +3044,7 @@
           "none mirror-spec instance kernel-derived one-string change not byte-identical to grail"
         ],
         "display": {
-          "registry_index": 30,
+          "registry_index": 31,
           "spec_id": "(none; Mirror-Spec instance, kernel-derived (one-string change; NOT byte-identical) to grail)",
           "repo": "kody-w/heimdall",
           "layer": "distribution",
@@ -3025,7 +3101,7 @@
           "rapp-resident"
         ],
         "display": {
-          "registry_index": 31,
+          "registry_index": 32,
           "spec_id": "(none; serves rapp-commons-event/1.0 over HTTP)",
           "repo": "kody-w/rapp-resident",
           "layer": "network",
@@ -3081,7 +3157,7 @@
           "rapp-frame/2.0"
         ],
         "display": {
-          "registry_index": 32,
+          "registry_index": 33,
           "spec_id": "rapp-frame/2.0",
           "repo": "kody-w/rapp-frame-net",
           "layer": "leviathan",
@@ -3137,7 +3213,7 @@
           "rapp-hydra/1.0"
         ],
         "display": {
-          "registry_index": 33,
+          "registry_index": 34,
           "spec_id": "rapp-hydra/1.0",
           "repo": "kody-w/rapp-frame-net",
           "layer": "network",
@@ -3200,7 +3276,7 @@
           "rapp_sense_store"
         ],
         "display": {
-          "registry_index": 34,
+          "registry_index": 35,
           "spec_id": "rapp-sense/1.0",
           "repo": "kody-w/RAPP_Sense_Store",
           "role": "Canonical public catalog + spec for RAPP senses (modular per-channel output overlays that drop into a brainstem's utils/senses/); peer to RAR (agents) and RAPP_Store (rapplications)",
@@ -3263,7 +3339,7 @@
           "rapp_store"
         ],
         "display": {
-          "registry_index": 35,
+          "registry_index": 36,
           "spec_id": "rapp-application/1.0",
           "repo": "kody-w/RAPP_Store",
           "role": "Public catalog + canonical spec for rapplications (bundled single-file agent + UI/state/service/twin cartridges); defines bundle layout, manifest schema, gated-rapp federation, and the static Pokedex API.",
@@ -3326,7 +3402,7 @@
           "rappcards-binder/1.0"
         ],
         "display": {
-          "registry_index": 36,
+          "registry_index": 37,
           "spec_id": "rappcards-binder/1.0",
           "repo": "kody-w/RAPPcards",
           "role": "Canonical owner of the portable RAPPcards trading-card standard (card data model, deterministic seed identity, incantation protocol, lossless export, cross-binder federation) — declares rappcards-binder/1.0 + rappcards-peers/1.0 + rappcards-seed-index/1.0",
@@ -3389,7 +3465,7 @@
           "rapp-demos"
         ],
         "display": {
-          "registry_index": 37,
+          "registry_index": 38,
           "spec_id": "rapp-demo/1.0",
           "repo": "kody-w/rapp-demos",
           "role": "Owner of the rapp-demo/1.0 scenario schema and its scan-to-watch synced demo player: an M365-style template where a host walks a text scenario step-by-step and QR/link watchers follow live, read-only, over a rapp-sealed WebRTC channel.",
@@ -3452,7 +3528,7 @@
           "rapp-spine/1.0"
         ],
         "display": {
-          "registry_index": 38,
+          "registry_index": 39,
           "spec_id": "rapp-spine/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "The situational router/index over the full RAPP protocol stack — maps situation→layer→protocol across ~60 repos and ~33 specs; also owns FOUNDATION (foundation.json, the locked content-addressed canonical registry) and the crawlable registry.json",
@@ -3515,7 +3591,7 @@
           "rapp-eternity/1.0"
         ],
         "display": {
-          "registry_index": 39,
+          "registry_index": 40,
           "spec_id": "rapp-eternity/1.0",
           "repo": "kody-w/rapp-eternity",
           "role": "rapp-eternity/1.0 — The Rappid Identity & Ownership Standard",
@@ -3578,7 +3654,7 @@
           "rapp-fleet-chat/1.0"
         ],
         "display": {
-          "registry_index": 40,
+          "registry_index": 41,
           "spec_id": "rapp-fleet-chat/1.0",
           "repo": "kody-w/leviathan",
           "role": "RAPP Fleet-Chat — `rapp-fleet-chat/1.0`",
@@ -3641,7 +3717,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 41,
+          "registry_index": 42,
           "spec_id": "rapp-kernel/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "rapp-kernel/1.0",
@@ -3704,7 +3780,7 @@
           "rapp-metropolis/1.0"
         ],
         "display": {
-          "registry_index": 42,
+          "registry_index": 43,
           "spec_id": "rapp-metropolis/1.0",
           "repo": "kody-w/rapp-estate",
           "role": "rapp-metropolis/1.0",
@@ -3767,7 +3843,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 43,
+          "registry_index": 44,
           "spec_id": "rapp-auth/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "rapp-auth/1.0 — The Brainstem Auth Chain",
@@ -3830,7 +3906,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 44,
+          "registry_index": 45,
           "spec_id": "rapp-kernel-boundary/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "rapp-kernel-boundary/1.0 — The Kernel Network Trust Boundary",
@@ -3893,7 +3969,7 @@
           "rapp-trust/1.0"
         ],
         "display": {
-          "registry_index": 45,
+          "registry_index": 46,
           "spec_id": "rapp-trust/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "Trust & ownership — defers to rapp-eternity/1.0 (content-address identity; keypair optional)",
@@ -3956,7 +4032,7 @@
           "rapp-substrate-trust/1.0"
         ],
         "display": {
-          "registry_index": 46,
+          "registry_index": 47,
           "spec_id": "rapp-substrate-trust/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "The Substrate Trust Model — `rapp-substrate-trust/1.0`",
@@ -4019,7 +4095,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 47,
+          "registry_index": 48,
           "spec_id": "rapp-cubby/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "The Cubby Shelf & the Super-RAR",
@@ -4082,7 +4158,7 @@
           "rapp_store"
         ],
         "display": {
-          "registry_index": 48,
+          "registry_index": 49,
           "spec_id": "rapp-stores/1.0",
           "repo": "kody-w/RAPP_Store",
           "role": "RAPP Stores — The Three-Store Topology",
@@ -4145,7 +4221,7 @@
           "rapp-egg-hub"
         ],
         "display": {
-          "registry_index": 49,
+          "registry_index": 50,
           "spec_id": "brainstem-egg/2.3",
           "repo": "kody-w/rapp-egg-hub",
           "role": "The `.egg` Cartridge Family & Multi-Scale Hatch Contract",
@@ -4208,7 +4284,7 @@
           "rapp-payphone-dial/1.0"
         ],
         "display": {
-          "registry_index": 50,
+          "registry_index": 51,
           "spec_id": "rapp-payphone-dial/1.0",
           "repo": "kody-w/rapp-neighborhood-protocol",
           "role": "PAYPHONE.md",
@@ -4271,7 +4347,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 51,
+          "registry_index": 52,
           "spec_id": "rapp-runtime-parity/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "rapp-runtime-parity/1.0",
@@ -4334,7 +4410,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 52,
+          "registry_index": 53,
           "spec_id": "rapp-canon/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "rapp-canon/1.0 — see kody-w/rapp-spine",
@@ -4397,7 +4473,7 @@
           "rapp-distro/1.0"
         ],
         "display": {
-          "registry_index": 53,
+          "registry_index": 54,
           "spec_id": "rapp-distro/1.0",
           "repo": "kody-w/rapp-distro",
           "role": "The RAPP distro standard — a distro = the unmodified pinned grail kernel + a userland; spawn permissionlessly; freeze CI proves the kernel is unmodified. Grail=rapp-installer; RAPP is the reference distro.",
@@ -4462,7 +4538,7 @@
           "rapp-roadmap/1.0"
         ],
         "display": {
-          "registry_index": 54,
+          "registry_index": 55,
           "spec_id": "rapp-roadmap/1.0",
           "repo": "kody-w/rapp-roadmap",
           "role": "The grounded 5-phase ecosystem roadmap (re-anchored on the metropolis north star).",
@@ -4525,7 +4601,7 @@
           "rapp-roadmap"
         ],
         "display": {
-          "registry_index": 55,
+          "registry_index": 56,
           "spec_id": "rapp-backlog/1.0",
           "repo": "kody-w/rapp-roadmap",
           "role": "The adversarial hardening backlog (165 wrenches + pre-solves).",
@@ -4588,7 +4664,7 @@
           "rar"
         ],
         "display": {
-          "registry_index": 56,
+          "registry_index": 57,
           "spec_id": "rapp-registry/1.0",
           "repo": "kody-w/RAR",
           "layer": "distribution",
@@ -4651,7 +4727,7 @@
           "rapp-burrow/1.0"
         ],
         "display": {
-          "registry_index": 57,
+          "registry_index": 58,
           "spec_id": "rapp-burrow/1.0",
           "repo": "kody-w/rapp-burrow",
           "layer": "distribution",
@@ -5583,6 +5659,43 @@
         "aliases": [
           "kody-w/rapp-mcp",
           "rapp-mcp"
+        ]
+      },
+      {
+        "id": "repo:kody-w/rapp-messaging",
+        "type": "repository",
+        "label": "kody-w/rapp-messaging",
+        "repo": "kody-w/rapp-messaging",
+        "lifecycle": "active",
+        "status": "represented",
+        "materiality": "required",
+        "material_profile": "repository",
+        "required_source_roles": [
+          "repository_identity"
+        ],
+        "sources": [
+          {
+            "role": "repository_identity",
+            "required": true,
+            "target": "https://github.com/kody-w/rapp-messaging",
+            "availability": "declared",
+            "read_only": true,
+            "method": "GET"
+          }
+        ],
+        "entry_points": [
+          {
+            "kind": "repository_read",
+            "target": "https://github.com/kody-w/rapp-messaging",
+            "method": "GET",
+            "read_only": true,
+            "safe_for_crawl": true
+          }
+        ],
+        "conformance": "not_assessed",
+        "aliases": [
+          "kody-w/rapp-messaging",
+          "rapp-messaging"
         ]
       },
       {
@@ -7427,10 +7540,37 @@
         }
       },
       {
+        "id": "route:152a48fe4a72c994",
+        "type": "route",
+        "label": "I need a Rappter to remember everyone across direct and group conversations without leaking confidences, and to honor explicit natural-language consent when a fact may be shared.",
+        "route_index": 5,
+        "target_ids": [
+          "protocol:kody-w/rapp-messaging/rapp-messaging/1.0",
+          "protocol:kody-w/rapp-messaging/rapp-messaging/1.0"
+        ],
+        "lifecycle": "active",
+        "status": "resolved",
+        "materiality": "routing",
+        "material_profile": "route",
+        "required_source_roles": [],
+        "sources": [],
+        "entry_points": [],
+        "conformance": "not_applicable",
+        "aliases": [],
+        "display": {
+          "situation": "I need a Rappter to remember everyone across direct and group conversations without leaking confidences, and to honor explicit natural-language consent when a fact may be shared.",
+          "use": [
+            "rapp-messaging/1.0",
+            "rapp-messaging-imessage/1.0 (when the transport is iMessage)"
+          ],
+          "why": "RAPP Messaging defines one global provenance-rich memory graph, per-turn audience projection, familiarity without disclosure, fact-specific consent, group roster epochs, tool authority, and durable inbox/outbox behavior over the existing /chat and signed-event wire."
+        }
+      },
+      {
         "id": "route:059801a9ef580801",
         "type": "route",
         "label": "I want to package ONE capability for a nontechnical user who should never see ports or code.",
-        "route_index": 5,
+        "route_index": 6,
         "target_ids": [
           "protocol:kody-w/rapp-carts/rapp-cart/1.0"
         ],
@@ -7455,7 +7595,7 @@
         "id": "route:8db38c2bbc41ede2",
         "type": "route",
         "label": "I want to get/share/trade a portable digital twin and have it live locally in ~30s.",
-        "route_index": 6,
+        "route_index": 7,
         "target_ids": [
           "protocol:kody-w/rapp-egg-hub/rapp-rappid-spec/2.0",
           "protocol:kody-w/twin-egg-hatcher/entry"
@@ -7482,7 +7622,7 @@
         "id": "route:e6fdc51df4f3e2af",
         "type": "route",
         "label": "I need an API/registry/catalog/status-badge with zero infrastructure.",
-        "route_index": 7,
+        "route_index": 8,
         "target_ids": [
           "protocol:kody-w/rapp-static-apis/rapp-static-api/1.0"
         ],
@@ -7507,7 +7647,7 @@
         "id": "route:f3213292f2097798",
         "type": "route",
         "label": "I must encrypt neighborhood traffic so a relayed channel is as safe as on-device, across languages.",
-        "route_index": 8,
+        "route_index": 9,
         "target_ids": [
           "protocol:kody-w/rapp-sealed/rapp-sealed/1.0"
         ],
@@ -7532,7 +7672,7 @@
         "id": "route:496c2890a297f467",
         "type": "route",
         "label": "I'm implementing or documenting ANY neighborhood concern — peer, transport, session, sealed channel, agent-in-a-link.",
-        "route_index": 9,
+        "route_index": 10,
         "target_ids": [
           "protocol:kody-w/rapp-neighborhood-protocol/rapp-neighborhood-protocol/1.0",
           "protocol:kody-w/rapp-neighborhood-protocol/rapp-neighborhood-protocol/1.0"
@@ -7559,7 +7699,7 @@
         "id": "route:b9f81fce5948fd34",
         "type": "route",
         "label": "I want an open, cross-estate town square for AIs to broadcast/discover across the whole ecosystem.",
-        "route_index": 10,
+        "route_index": 11,
         "target_ids": [
           "protocol:kody-w/rapp-commons/rapp-commons-protocol/2.0",
           "protocol:kody-w/rapp-commons/rapp-commons-protocol/2.0"
@@ -7586,7 +7726,7 @@
         "id": "route:03168f410f414c50",
         "type": "route",
         "label": "I want my OWN private, brandable, sealed neighborhood (a closed room, not the global square).",
-        "route_index": 11,
+        "route_index": 12,
         "target_ids": [
           "protocol:kody-w/rapp-vneighborhood/rapp-vneighborhood/1.0"
         ],
@@ -7611,7 +7751,7 @@
         "id": "route:a04f62bf726b16c6",
         "type": "route",
         "label": "My browser-tab neighborhood host isn't durable; I need an always-on relay so late joiners still get in.",
-        "route_index": 12,
+        "route_index": 13,
         "target_ids": [
           "protocol:kody-w/rapp-resident/rapp-commons-event/1.0"
         ],
@@ -7636,7 +7776,7 @@
         "id": "route:463459f211a0ef23",
         "type": "route",
         "label": "I have N projects and want one assistant to fan a question out to a per-project twin and aggregate replies.",
-        "route_index": 13,
+        "route_index": 14,
         "target_ids": [
           "protocol:kody-w/rapp-network/rapp-network/1.0"
         ],
@@ -7661,7 +7801,7 @@
         "id": "route:5ced77ee7cc3810f",
         "type": "route",
         "label": "I want others to discover my whole network of twins from just my GitHub handle.",
-        "route_index": 14,
+        "route_index": 15,
         "target_ids": [
           "protocol:kody-w/rapp-estate/rapp-estate/1.1",
           "protocol:kody-w/rapp-estate/rapp-estate/1.1"
@@ -7688,7 +7828,7 @@
         "id": "route:a5db5c336d867fad",
         "type": "route",
         "label": "I want to build a serverless holographic social post owned by a keypair.",
-        "route_index": 15,
+        "route_index": 16,
         "target_ids": [
           "protocol:kody-w/rapp-moment/rapp-moment/1.0"
         ],
@@ -7713,7 +7853,7 @@
         "id": "route:8c363581dfce6e5b",
         "type": "route",
         "label": "I run several brainstem nodes and want one mind to coordinate them as a signed fleet over the canonical /chat wire.",
-        "route_index": 16,
+        "route_index": 17,
         "target_ids": [
           "protocol:kody-w/leviathan/leviathan/1.0"
         ],
@@ -7738,7 +7878,7 @@
         "id": "route:3727d163d21b9d22",
         "type": "route",
         "label": "I want to create/transport ONE operator's full digital being made of many cells across 5 estates.",
-        "route_index": 17,
+        "route_index": 18,
         "target_ids": [
           "protocol:kody-w/rapp_leviathan_factory/entry",
           "protocol:kody-w/wrap_leviathan/entry",
@@ -7767,7 +7907,7 @@
         "id": "route:88e4159f6c384c3d",
         "type": "route",
         "label": "I'm lost in the ~60-repo ecosystem, or need to know whether my copy of a load-bearing file is current.",
-        "route_index": 18,
+        "route_index": 19,
         "target_ids": [
           "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
           "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
@@ -7798,7 +7938,7 @@
         "id": "route:e279449cb92a3800",
         "type": "route",
         "label": "I want the brainstem framed as a sealed game console with a frozen cartridge contract and a curated starter set.",
-        "route_index": 19,
+        "route_index": 20,
         "target_ids": [
           "protocol:kody-w/rappterbox/rappterbox-console-spec/1.0"
         ],
@@ -7823,7 +7963,7 @@
         "id": "route:5d8f21ad5dfb791a",
         "type": "route",
         "label": "A brainstem on a spotty/high-latency/intermittent link (a 'robot on Mars') must act autonomously and re-aim when it reaches the swarm.",
-        "route_index": 20,
+        "route_index": 21,
         "target_ids": [
           "protocol:kody-w/rapp-frame-net/rapp-frame/2.0"
         ],
@@ -7848,7 +7988,7 @@
         "id": "route:f062aec4987f5966",
         "type": "route",
         "label": "I need the swarm/medium to survive a host being taken down, geoblocked, or banned — no single point of failure.",
-        "route_index": 21,
+        "route_index": 22,
         "target_ids": [
           "protocol:kody-w/rapp-frame-net/rapp-hydra/1.0"
         ],
@@ -7873,7 +8013,7 @@
         "id": "route:2ac04bb4e193b2a3",
         "type": "route",
         "label": "What does the governing law say — is this change allowed, and which discipline/article governs it?",
-        "route_index": 22,
+        "route_index": 23,
         "target_ids": [
           "evidence:foundation/law/rapp-constitution%20%28kernel%29@kody-w/rapp",
           "evidence:foundation/law/MASTER_PLAN%20%28why-axis%29@kody-w/rapp"
@@ -7900,7 +8040,7 @@
         "id": "route:5afadf255971f067",
         "type": "route",
         "label": "Where is the canonical, current spec for X — and is my copy authoritative (not drifted)?",
-        "route_index": 23,
+        "route_index": 24,
         "target_ids": [
           "evidence:foundation/spec_corpus/canonical_aggregate@kody-w/rapp-bible",
           "protocol:kody-w/rapp_docs/entry",
@@ -7931,7 +8071,7 @@
         "id": "route:cb3515c2fac02e6b",
         "type": "route",
         "label": "What does the kernel/law actually say, or where is a newly-formalized foundation spec?",
-        "route_index": 24,
+        "route_index": 25,
         "target_ids": [
           "protocol:kody-w/rapp-spine/rapp-kernel/1.0",
           "protocol:kody-w/rapp-spine/rapp-canon/1.0",
@@ -7964,7 +8104,7 @@
         "id": "route:1afe64a4d9fc4176",
         "type": "route",
         "label": "How do neighborhoods/estates aggregate into a metropolis? Or: how does a distro pin the kernel, or fleet talk over /chat?",
-        "route_index": 25,
+        "route_index": 26,
         "target_ids": [
           "protocol:kody-w/rapp-estate/rapp-metropolis/1.0",
           "protocol:kody-w/rapp-distro/rapp-distro/1.0",
@@ -7997,7 +8137,7 @@
         "id": "route:479e607dbe123026",
         "type": "route",
         "label": "Auth chain / network boundary / cubby storage / trust+ownership / substrate signing / the three stores / the egg family — where are these governed?",
-        "route_index": 26,
+        "route_index": 27,
         "target_ids": [
           "protocol:kody-w/rapp-spine/rapp-auth/1.0",
           "protocol:kody-w/rapp-spine/rapp-kernel-boundary/1.0",
@@ -8034,7 +8174,7 @@
         "id": "route:9fbcad68bb263b99",
         "type": "route",
         "label": "What is the roadmap / the long-term hardening backlog for the ecosystem?",
-        "route_index": 27,
+        "route_index": 28,
         "target_ids": [
           "protocol:kody-w/rapp-roadmap/rapp-roadmap/1.0",
           "protocol:kody-w/rapp-roadmap/rapp-backlog/1.0"
@@ -8061,7 +8201,7 @@
         "id": "route:ce618de5cdc58d06",
         "type": "route",
         "label": "I want to PACKAGE/PUBLISH a rapplication bundle or a sense overlay, or handle a holocard; or reach a dark-door neighborhood by dialing a rappid.",
-        "route_index": 28,
+        "route_index": 29,
         "target_ids": [
           "protocol:kody-w/rapp_store/rapp-application/1.0",
           "protocol:kody-w/rapp_sense_store/rapp-sense/1.0",
@@ -8094,7 +8234,7 @@
         "id": "route:ffa9263c820a95cf",
         "type": "route",
         "label": "Where do I PUBLISH or DISCOVER the canonical agent registry (a bare agent.py)?",
-        "route_index": 29,
+        "route_index": 30,
         "target_ids": [
           "protocol:kody-w/rar/rapp-registry/1.0"
         ],
@@ -8119,7 +8259,7 @@
         "id": "route:b03929a1ed8ef06a",
         "type": "route",
         "label": "How do I make the brainstem + its organs survive reboot, and see/control which organs are running?",
-        "route_index": 30,
+        "route_index": 31,
         "target_ids": [
           "protocol:kody-w/rapp-burrow/rapp-burrow/1.0"
         ],
@@ -9186,6 +9326,34 @@
         }
       },
       {
+        "id": "issue:material:020f8e7508a5b340",
+        "type": "issue",
+        "label": "rapp-messaging/1.0 (+ rapp-messaging-imessage/1.0) in kody-w/rapp-messaging has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
+        "lifecycle": "not_applicable",
+        "status": "unresolved",
+        "materiality": "gap",
+        "material_profile": "issue",
+        "required_source_roles": [],
+        "sources": [],
+        "entry_points": [],
+        "conformance": "not_applicable",
+        "aliases": [],
+        "display": {
+          "id": "issue:material:020f8e7508a5b340",
+          "type": "issue",
+          "kind": "material",
+          "summary": "rapp-messaging/1.0 (+ rapp-messaging-imessage/1.0) in kody-w/rapp-messaging has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
+          "severity": "blocking",
+          "blocking": true,
+          "related_node_ids": [
+            "protocol:kody-w/rapp-messaging/rapp-messaging/1.0",
+            "repo:kody-w/rapp-messaging"
+          ],
+          "source": "generated.required_material",
+          "source_role": "canonical_material"
+        }
+      },
+      {
         "id": "issue:material:1677c9a183e038b8",
         "type": "issue",
         "label": "(none; operator tooling — 'the string') in kody-w/rapp-kite has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
@@ -9833,6 +10001,11 @@
       {
         "from": "artifact:registry.json",
         "type": "declares",
+        "to": "protocol:kody-w/rapp-messaging/rapp-messaging/1.0"
+      },
+      {
+        "from": "artifact:registry.json",
+        "type": "declares",
         "to": "protocol:kody-w/rapp-moment/rapp-moment/1.0"
       },
       {
@@ -10444,6 +10617,16 @@
         "from": "issue:material:01cfb1e737509224",
         "type": "affects",
         "to": "repo:kody-w/rapp-brainstem-sdk"
+      },
+      {
+        "from": "issue:material:020f8e7508a5b340",
+        "type": "affects",
+        "to": "protocol:kody-w/rapp-messaging/rapp-messaging/1.0"
+      },
+      {
+        "from": "issue:material:020f8e7508a5b340",
+        "type": "affects",
+        "to": "repo:kody-w/rapp-messaging"
       },
       {
         "from": "issue:material:05cc5008bfc53745",
@@ -11257,6 +11440,21 @@
         "to": "repo:kody-w/rapp-mcp"
       },
       {
+        "from": "protocol:kody-w/rapp-messaging/rapp-messaging/1.0",
+        "type": "has_issue",
+        "to": "issue:material:020f8e7508a5b340"
+      },
+      {
+        "from": "protocol:kody-w/rapp-messaging/rapp-messaging/1.0",
+        "type": "in_layer",
+        "to": "layer:network"
+      },
+      {
+        "from": "protocol:kody-w/rapp-messaging/rapp-messaging/1.0",
+        "type": "owned_by",
+        "to": "repo:kody-w/rapp-messaging"
+      },
+      {
         "from": "protocol:kody-w/rapp-moment/rapp-moment/1.0",
         "type": "has_issue",
         "to": "issue:collision:ca3f2e11b06efea8"
@@ -11747,6 +11945,25 @@
       },
       {
         "from": "route:059801a9ef580801",
+        "type": "uses_artifact",
+        "to": "artifact:registry.json"
+      },
+      {
+        "from": "route:152a48fe4a72c994",
+        "type": "routes_to",
+        "to": "protocol:kody-w/rapp-messaging/rapp-messaging/1.0",
+        "order": 0,
+        "display_target": "rapp-messaging/1.0"
+      },
+      {
+        "from": "route:152a48fe4a72c994",
+        "type": "routes_to",
+        "to": "protocol:kody-w/rapp-messaging/rapp-messaging/1.0",
+        "order": 1,
+        "display_target": "rapp-messaging-imessage/1.0 (when the transport is iMessage)"
+      },
+      {
+        "from": "route:152a48fe4a72c994",
         "type": "uses_artifact",
         "to": "artifact:registry.json"
       },
@@ -12419,6 +12636,11 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "documents_issue",
+        "to": "issue:material:020f8e7508a5b340"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "documents_issue",
         "to": "issue:material:05cc5008bfc53745"
       },
       {
@@ -12615,6 +12837,11 @@
         "from": "spine:rapp-spine%2F1.1",
         "type": "indexes_route",
         "to": "route:059801a9ef580801"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "indexes_route",
+        "to": "route:152a48fe4a72c994"
       },
       {
         "from": "spine:rapp-spine%2F1.1",
@@ -12889,6 +13116,11 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "inventories_repository",
+        "to": "repo:kody-w/rapp-messaging"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "inventories_repository",
         "to": "repo:kody-w/rapp-moment"
       },
       {
@@ -13059,6 +13291,7 @@
       "protocol:kody-w/rapp-moment/rapp-moment/1.0",
       "protocol:kody-w/rapp-dataverse/rapp-dataverse/1.0",
       "protocol:kody-w/rapp-neighborhood-protocol/rapp-neighborhood-protocol/1.0",
+      "protocol:kody-w/rapp-messaging/rapp-messaging/1.0",
       "protocol:kody-w/rapp-kite/entry",
       "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
       "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
@@ -13121,6 +13354,7 @@
       "repo:kody-w/rapp-leviathan-hub",
       "repo:kody-w/rapp-map",
       "repo:kody-w/rapp-mcp",
+      "repo:kody-w/rapp-messaging",
       "repo:kody-w/rapp-moment",
       "repo:kody-w/rapp-neighborhood-protocol",
       "repo:kody-w/rapp-network",
@@ -13166,6 +13400,7 @@
       "route:a3a910356fd3b15f",
       "route:1d3e46640dd04d9c",
       "route:2ba91861b3c84cb2",
+      "route:152a48fe4a72c994",
       "route:059801a9ef580801",
       "route:8db38c2bbc41ede2",
       "route:e6fdc51df4f3e2af",
@@ -13229,6 +13464,7 @@
       "issue:material:8f743fafb9578261",
       "issue:material:2dc434483f7e4a73",
       "issue:material:be48eaddfea9c191",
+      "issue:material:020f8e7508a5b340",
       "issue:material:1677c9a183e038b8",
       "issue:material:5fd0a78b490ac709",
       "issue:material:ddb3aec94f5404f6",
@@ -13285,6 +13521,7 @@
         "protocol:kody-w/rapp-moment/rapp-moment/1.0",
         "protocol:kody-w/rapp-dataverse/rapp-dataverse/1.0",
         "protocol:kody-w/rapp-neighborhood-protocol/rapp-neighborhood-protocol/1.0",
+        "protocol:kody-w/rapp-messaging/rapp-messaging/1.0",
         "protocol:kody-w/rapp-kite/entry",
         "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
         "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
@@ -13347,6 +13584,7 @@
         "repo:kody-w/rapp-leviathan-hub",
         "repo:kody-w/rapp-map",
         "repo:kody-w/rapp-mcp",
+        "repo:kody-w/rapp-messaging",
         "repo:kody-w/rapp-moment",
         "repo:kody-w/rapp-neighborhood-protocol",
         "repo:kody-w/rapp-network",
@@ -13392,6 +13630,7 @@
         "route:a3a910356fd3b15f",
         "route:1d3e46640dd04d9c",
         "route:2ba91861b3c84cb2",
+        "route:152a48fe4a72c994",
         "route:059801a9ef580801",
         "route:8db38c2bbc41ede2",
         "route:e6fdc51df4f3e2af",
@@ -13455,6 +13694,7 @@
         "issue:material:8f743fafb9578261",
         "issue:material:2dc434483f7e4a73",
         "issue:material:be48eaddfea9c191",
+        "issue:material:020f8e7508a5b340",
         "issue:material:1677c9a183e038b8",
         "issue:material:5fd0a78b490ac709",
         "issue:material:ddb3aec94f5404f6",
@@ -13997,6 +14237,20 @@
       "related_node_ids": [
         "protocol:kody-w/rapp-neighborhood-protocol/rapp-neighborhood-protocol/1.0",
         "repo:kody-w/rapp-neighborhood-protocol"
+      ],
+      "source": "generated.required_material",
+      "source_role": "canonical_material"
+    },
+    {
+      "id": "issue:material:020f8e7508a5b340",
+      "type": "issue",
+      "kind": "material",
+      "summary": "rapp-messaging/1.0 (+ rapp-messaging-imessage/1.0) in kody-w/rapp-messaging has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
+      "severity": "blocking",
+      "blocking": true,
+      "related_node_ids": [
+        "protocol:kody-w/rapp-messaging/rapp-messaging/1.0",
+        "repo:kody-w/rapp-messaging"
       ],
       "source": "generated.required_material",
       "source_role": "canonical_material"
