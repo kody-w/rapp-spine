@@ -1,7 +1,7 @@
 {
   "spec": "rapp-index/1.0",
   "name": "RAPP — a medium any agent can ride",
-  "what": "RAPP (Rapid Agent Prototyping Platform) is a local-first AI agent medium. The brainstem is the atom: a single-file server running single-file agents over one /chat wire, GitHub Copilot auth, no API keys. Everything else is static, content-addressed, hydra-served data. Any agent — inside or outside RAPP, human-driven or autonomous — can discover and ride it end-to-end through the callable surfaces below. No SDK, no signup, no API you must own.",
+  "what": "RAPP (Rapid Agent Prototype Platform) is a local-first AI agent medium. The brainstem is the atom: a single-file server running single-file agents over one /chat wire, GitHub Copilot auth, no API keys. Everything else is static, content-addressed, hydra-served data. Any agent — inside or outside RAPP, human-driven or autonomous — can discover and ride it end-to-end through the callable surfaces below. No SDK, no signup, no API you must own.",
   "one_fetch_to_understand_everything": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/registry.json",
   "one_fetch_to_crawl_everything": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/crawl.json",
   "discover": {

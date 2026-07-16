@@ -3,7 +3,7 @@
 > For the deterministic exhaustive source inventory, including explicit unresolved material,
 > read `llms-full.txt` generated from `crawl.json`.
 
-> RAPP (Rapid Agent Prototyping Platform) is a local-first AI agent medium. **The brainstem
+> RAPP (Rapid Agent Prototype Platform) is a local-first AI agent medium. **The brainstem
 > is the atom**: a single-file server that runs single-file agents over one `/chat` wire,
 > authed by GitHub Copilot, no API keys. Everything else is **static, content-addressed,
 > hydra-served data** — so any agent, and any future model, can know and ride it by heart,
