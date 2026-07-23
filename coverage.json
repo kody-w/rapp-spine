@@ -5,7 +5,7 @@
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "8367f656a89addb9781a8182ec0655e268c0c031cf836e27a9eec50ba51d6560"
+      "sha256": "34ed3677d5a99e7094feefcc382184cd8a7b5488338f741b4f22114416286c14"
     },
     "foundation": {
       "path": "foundation.json",
@@ -13,40 +13,40 @@
     }
   },
   "inventory": {
-    "registry_entries_expected": 59,
-    "registry_nodes_represented": 59,
-    "routes_expected": 32,
-    "route_nodes_represented": 32,
-    "route_target_references": 67,
-    "repositories_represented": 47,
+    "registry_entries_expected": 60,
+    "registry_nodes_represented": 60,
+    "routes_expected": 33,
+    "route_nodes_represented": 33,
+    "route_target_references": 70,
+    "repositories_represented": 48,
     "foundation_records_represented": 19
   },
   "graph": {
-    "nodes": 220,
-    "relations": 670,
+    "nodes": 224,
+    "relations": 683,
     "nodes_by_type": {
       "artifact": 2,
       "evidence": 19,
-      "issue": 53,
+      "issue": 54,
       "layer": 7,
-      "protocol": 59,
-      "repository": 47,
-      "route": 32,
+      "protocol": 60,
+      "repository": 48,
+      "route": 33,
       "spine": 1
     },
     "nodes_by_status": {
       "informational": 18,
-      "represented": 45,
-      "resolved": 78,
-      "unresolved": 79
+      "represented": 46,
+      "resolved": 79,
+      "unresolved": 81
     },
     "orphans": [],
     "dangling_relations": []
   },
   "required_material": {
-    "protocols": 59,
+    "protocols": 60,
     "exact_targets": 24,
-    "unresolved": 35,
+    "unresolved": 36,
     "unresolved_node_ids": [
       "protocol:kody-w/rapp/rapp-agent/1.0",
       "protocol:kody-w/communityrapp/entry",
@@ -82,14 +82,15 @@
       "protocol:kody-w/heimdall/entry",
       "protocol:kody-w/rapp-resident/rapp-commons-event/1.0",
       "protocol:kody-w/rapp-frame-net/rapp-frame/2.0",
-      "protocol:kody-w/rapp-frame-net/rapp-hydra/1.0"
+      "protocol:kody-w/rapp-frame-net/rapp-hydra/1.0",
+      "protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0"
     ],
     "complete": false
   },
   "all_required_sources": {
-    "required": 127,
-    "exact_targets": 90,
-    "unresolved": 37,
+    "required": 129,
+    "exact_targets": 91,
+    "unresolved": 38,
     "unresolved_sources": [
       {
         "node_id": "protocol:kody-w/rapp/rapp-agent/1.0",
@@ -232,6 +233,10 @@
         "role": "canonical_material"
       },
       {
+        "node_id": "protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0",
+        "role": "canonical_material"
+      },
+      {
         "node_id": "repo:kody-w/rapp_leviathan_factory",
         "role": "repository_identity"
       },
@@ -243,8 +248,8 @@
     "complete": false
   },
   "known_gaps": {
-    "structured_issues": 53,
-    "blocking": 42,
+    "structured_issues": 54,
+    "blocking": 43,
     "blocking_issue_ids": [
       "issue:security:de7fec630b7d59b0",
       "issue:gap:aae4cfd4841a6e85",
@@ -286,6 +291,7 @@
       "issue:material:44f5a6c1ea19cc7d",
       "issue:material:1892bcf521cbb96d",
       "issue:material:c0d871423245137e",
+      "issue:material:ac11398bc0844ffa",
       "issue:material:117550c976d9c497",
       "issue:material:9d6f07d66d38785a"
     ]

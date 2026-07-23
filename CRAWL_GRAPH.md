@@ -6,11 +6,11 @@
 
 ## Coverage
 
-- Registry nodes: **59 / 59**
-- Route nodes: **32 / 32**
-- Repository nodes: **47**
-- Exact required protocol sources: **24 / 59**
-- Structured issues: **53** (42 blocking)
+- Registry nodes: **60 / 60**
+- Route nodes: **33 / 33**
+- Repository nodes: **48**
+- Exact required protocol sources: **24 / 60**
+- Structured issues: **54** (43 blocking)
 
 ## Exact route targets
 
@@ -83,6 +83,9 @@
 | I want to PACKAGE/PUBLISH a rapplication bundle or a sense overlay, or handle a holocard; or reach a dark-door neighborhood by dialing a rappid. | rapp-payphone-dial/1.0 | `protocol:kody-w/rapp-neighborhood-protocol/rapp-payphone-dial/1.0` |
 | Where do I PUBLISH or DISCOVER the canonical agent registry (a bare agent.py)? | rapp-registry/1.0 | `protocol:kody-w/rar/rapp-registry/1.0` |
 | How do I make the brainstem + its organs survive reboot, and see/control which organs are running? | rapp-burrow/1.0 | `protocol:kody-w/rapp-burrow/rapp-burrow/1.0` |
+| I want the in-browser Copilot (vBrainstem) to run agents on my REAL machine — the ones that need the native OS (pac/az/gh, local files) and can't run in the sandbox. | rapp-burrow-twin/1.0 (kody-w/vbrainstem) | `protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0` |
+| I want the in-browser Copilot (vBrainstem) to run agents on my REAL machine — the ones that need the native OS (pac/az/gh, local files) and can't run in the sandbox. | rapp-neighborhood-protocol/1.0 (kody-w/rapp-neighborhood-protocol) | `protocol:kody-w/rapp-neighborhood-protocol/rapp-neighborhood-protocol/1.0` |
+| I want the in-browser Copilot (vBrainstem) to run agents on my REAL machine — the ones that need the native OS (pac/az/gh, local files) and can't run in the sandbox. | rapp-sealed/1.0 (kody-w/rapp-sealed) | `protocol:kody-w/rapp-sealed/rapp-sealed/1.0` |
 
 ## Full deterministic traversal
 
@@ -157,157 +160,161 @@
 | 67 | `protocol:kody-w/rapp-roadmap/rapp-backlog/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/backlog.json |
 | 68 | `protocol:kody-w/rar/rapp-registry/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/RAR/main/README.md |
 | 69 | `protocol:kody-w/rapp-burrow/rapp-burrow/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-burrow/main/SPEC.md |
-| 70 | `repo:kody-w/communityrapp` | repository | active | represented | required | https://github.com/kody-w/CommunityRAPP |
-| 71 | `repo:kody-w/heimdall` | repository | active | represented | required | https://github.com/kody-w/heimdall |
-| 72 | `repo:kody-w/leviathan` | repository | active | represented | required | https://github.com/kody-w/leviathan |
-| 73 | `repo:kody-w/openrappter` | repository | active | represented | required | https://github.com/kody-w/openrappter |
-| 74 | `repo:kody-w/rapp` | repository | active | represented | required | https://github.com/kody-w/RAPP |
-| 75 | `repo:kody-w/rapp-agents` | repository | active | represented | required | https://github.com/kody-w/rapp-agents |
-| 76 | `repo:kody-w/rapp-bible` | repository | active | represented | required | https://github.com/kody-w/RAPP-Bible |
-| 77 | `repo:kody-w/rapp-brainstem-sdk` | repository | active | represented | required | https://github.com/kody-w/rapp-brainstem-sdk |
-| 78 | `repo:kody-w/rapp-burrow` | repository | active | represented | required | https://github.com/kody-w/rapp-burrow |
-| 79 | `repo:kody-w/rapp-carts` | repository | active | represented | required | https://github.com/kody-w/rapp-carts |
-| 80 | `repo:kody-w/rapp-commons` | repository | active | represented | required | https://github.com/kody-w/rapp-commons |
-| 81 | `repo:kody-w/rapp-dataverse` | repository | active | represented | required | https://github.com/kody-w/rapp-dataverse |
-| 82 | `repo:kody-w/rapp-demos` | repository | active | represented | required | https://github.com/kody-w/rapp-demos |
-| 83 | `repo:kody-w/rapp-distro` | repository | active | represented | required | https://github.com/kody-w/rapp-distro |
-| 84 | `repo:kody-w/rapp-egg-hub` | repository | active | represented | required | https://github.com/kody-w/rapp-egg-hub |
-| 85 | `repo:kody-w/rapp-estate` | repository | active | represented | required | https://github.com/kody-w/rapp-estate |
-| 86 | `repo:kody-w/rapp-eternity` | repository | active | represented | required | https://github.com/kody-w/rapp-eternity |
-| 87 | `repo:kody-w/rapp-frame-net` | repository | active | represented | required | https://github.com/kody-w/rapp-frame-net |
-| 88 | `repo:kody-w/rapp-god` | repository | active | represented | required | https://github.com/kody-w/rapp-god |
-| 89 | `repo:kody-w/rapp-hologram` | repository | active | represented | required | https://github.com/kody-w/rapp-hologram |
-| 90 | `repo:kody-w/rapp-installer` | repository | active | represented | required | https://github.com/kody-w/rapp-installer |
-| 91 | `repo:kody-w/rapp-kite` | repository | active | represented | required | https://github.com/kody-w/rapp-kite |
-| 92 | `repo:kody-w/rapp-leviathan-hub` | repository | active | represented | required | https://github.com/kody-w/rapp-leviathan-hub |
-| 93 | `repo:kody-w/rapp-map` | repository | active | represented | required | https://github.com/kody-w/rapp-map |
-| 94 | `repo:kody-w/rapp-mcp` | repository | active | represented | required | https://github.com/kody-w/rapp-mcp |
-| 95 | `repo:kody-w/rapp-messaging` | repository | active | represented | required | https://github.com/kody-w/rapp-messaging |
-| 96 | `repo:kody-w/rapp-moment` | repository | active | represented | required | https://github.com/kody-w/rapp-moment |
-| 97 | `repo:kody-w/rapp-neighborhood-protocol` | repository | active | represented | required | https://github.com/kody-w/rapp-neighborhood-protocol |
-| 98 | `repo:kody-w/rapp-network` | repository | active | represented | required | https://github.com/kody-w/RAPP-Network |
-| 99 | `repo:kody-w/rapp-oneclick-deploy` | repository | active | represented | required | https://github.com/kody-w/rapp-oneclick-deploy |
-| 100 | `repo:kody-w/rapp-resident` | repository | active | represented | required | https://github.com/kody-w/rapp-resident |
-| 101 | `repo:kody-w/rapp-roadmap` | repository | active | represented | required | https://github.com/kody-w/rapp-roadmap |
-| 102 | `repo:kody-w/rapp-sealed` | repository | active | represented | required | https://github.com/kody-w/rapp-sealed |
-| 103 | `repo:kody-w/rapp-spine` | repository | active | represented | required | https://github.com/kody-w/rapp-spine |
-| 104 | `repo:kody-w/rapp-static-apis` | repository | active | represented | required | https://github.com/kody-w/rapp-static-apis |
-| 105 | `repo:kody-w/rapp-vneighborhood` | repository | active | represented | required | https://github.com/kody-w/rapp-vneighborhood |
-| 106 | `repo:kody-w/rapp_docs` | repository | active | represented | required | https://github.com/kody-w/rapp_docs |
-| 107 | `repo:kody-w/rapp_hub` | repository | active | represented | required | https://github.com/kody-w/RAPP_Hub |
-| 108 | `repo:kody-w/rapp_leviathan_factory` | repository | unpublished | unresolved | required | UNRESOLVED |
-| 109 | `repo:kody-w/rapp_sense_store` | repository | active | represented | required | https://github.com/kody-w/RAPP_Sense_Store |
-| 110 | `repo:kody-w/rapp_store` | repository | active | represented | required | https://github.com/kody-w/RAPP_Store |
-| 111 | `repo:kody-w/rappcards` | repository | active | represented | required | https://github.com/kody-w/RAPPcards |
-| 112 | `repo:kody-w/rappterbook` | repository | active | represented | required | https://github.com/kody-w/rappterbook |
-| 113 | `repo:kody-w/rappterbox` | repository | active | represented | required | https://github.com/kody-w/rappterbox |
-| 114 | `repo:kody-w/rar` | repository | active | represented | required | https://github.com/kody-w/RAR |
-| 115 | `repo:kody-w/twin-egg-hatcher` | repository | active | represented | required | https://github.com/kody-w/twin-egg-hatcher |
-| 116 | `repo:kody-w/wrap_leviathan` | repository | unpublished | unresolved | required | UNRESOLVED |
-| 117 | `evidence:foundation/pillars/rapp-agent/1.0@kody-w/rapp-installer` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-installer/5fbde1776a72715935c3d597a9ddfce28a04032b/rapp_brainstem/brainstem.py |
-| 118 | `evidence:foundation/pillars/leviathan/1.0@kody-w/leviathan` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/leviathan/main/SPEC.md |
-| 119 | `evidence:foundation/pillars/rapp-leviathan-egg/1.0@kody-w/rapp-leviathan-hub` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-leviathan-hub/main/UNIFIED.md |
-| 120 | `evidence:foundation/pillars/rapp-frame/2.0@kody-w/rapp-frame-net` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/SPEC.md |
-| 121 | `evidence:foundation/pillars/rapp-hydra/1.0@kody-w/rapp-frame-net` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/HYDRA.md |
-| 122 | `evidence:foundation/pillars/rapp-spine/1.0@kody-w/rapp-spine` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md |
-| 123 | `evidence:foundation/pillars/rapp-roadmap@kody-w/rapp-roadmap` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/roadmap.json |
-| 124 | `evidence:foundation/law/rapp-constitution%20%28kernel%29@kody-w/rapp` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/RAPP/main/CONSTITUTION.md |
-| 125 | `evidence:foundation/law/MASTER_PLAN%20%28why-axis%29@kody-w/rapp` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/RAPP/main/MASTER_PLAN.md |
-| 126 | `evidence:foundation/law/SPEC%20%28kernel%20wire%20contract%29@kody-w/rapp` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/RAPP/main/specs/SPEC.md |
-| 127 | `evidence:foundation/law/Rappterbook%20Constitution@kody-w/rappterbook` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/rappterbook/main/CONSTITUTION.md |
-| 128 | `evidence:foundation/spec_corpus/canonical_aggregate@kody-w/rapp-bible` | evidence | active | resolved | supporting | https://github.com/kody-w/RAPP-Bible |
-| 129 | `evidence:foundation/spec_corpus/live_stream@kody-w/rapp_docs` | evidence | active | resolved | supporting | https://github.com/kody-w/rapp_docs |
-| 130 | `evidence:foundation/spec_corpus/drift_detector@kody-w/rapp-god` | evidence | active | resolved | supporting | https://github.com/kody-w/rapp-god |
-| 131 | `evidence:foundation/spec_corpus/router@kody-w/rapp-spine` | evidence | active | resolved | supporting | https://raw.githubusercontent.com/kody-w/rapp-spine/main/registry.json |
-| 132 | `evidence:foundation/core_infra/agent_registry@kody-w/rar` | evidence | active | resolved | supporting | https://github.com/kody-w/RAR |
-| 133 | `evidence:foundation/core_infra/egg_spec_origin@kody-w/rappterbook` | evidence | active | resolved | supporting | https://github.com/kody-w/rappterbook |
-| 134 | `evidence:foundation/core_infra/moment_engine@kody-w/rapp-hologram` | evidence | active | resolved | supporting | https://github.com/kody-w/rapp-hologram |
-| 135 | `evidence:foundation/core_infra/eternity_reference_deploy@kody-w/rapp-oneclick-deploy` | evidence | active | resolved | supporting | https://github.com/kody-w/rapp-oneclick-deploy |
-| 136 | `route:d1bab4e9255f37b5` | route | active | resolved | routing | — |
-| 137 | `route:9ee1d7ba7b480968` | route | active | resolved | routing | — |
-| 138 | `route:a3a910356fd3b15f` | route | active | resolved | routing | — |
-| 139 | `route:1d3e46640dd04d9c` | route | active | resolved | routing | — |
-| 140 | `route:2ba91861b3c84cb2` | route | active | resolved | routing | — |
-| 141 | `route:152a48fe4a72c994` | route | active | resolved | routing | — |
-| 142 | `route:059801a9ef580801` | route | active | resolved | routing | — |
-| 143 | `route:8db38c2bbc41ede2` | route | active | resolved | routing | — |
-| 144 | `route:e6fdc51df4f3e2af` | route | active | resolved | routing | — |
-| 145 | `route:f3213292f2097798` | route | active | resolved | routing | — |
-| 146 | `route:496c2890a297f467` | route | active | resolved | routing | — |
-| 147 | `route:b9f81fce5948fd34` | route | active | resolved | routing | — |
-| 148 | `route:03168f410f414c50` | route | active | resolved | routing | — |
-| 149 | `route:a04f62bf726b16c6` | route | active | resolved | routing | — |
-| 150 | `route:463459f211a0ef23` | route | active | resolved | routing | — |
-| 151 | `route:5ced77ee7cc3810f` | route | active | resolved | routing | — |
-| 152 | `route:a5db5c336d867fad` | route | active | resolved | routing | — |
-| 153 | `route:8c363581dfce6e5b` | route | active | resolved | routing | — |
-| 154 | `route:3727d163d21b9d22` | route | active | resolved | routing | — |
-| 155 | `route:88e4159f6c384c3d` | route | active | resolved | routing | — |
-| 156 | `route:e279449cb92a3800` | route | active | resolved | routing | — |
-| 157 | `route:5d8f21ad5dfb791a` | route | active | resolved | routing | — |
-| 158 | `route:f062aec4987f5966` | route | active | resolved | routing | — |
-| 159 | `route:2ac04bb4e193b2a3` | route | active | resolved | routing | — |
-| 160 | `route:5afadf255971f067` | route | active | resolved | routing | — |
-| 161 | `route:cb3515c2fac02e6b` | route | active | resolved | routing | — |
-| 162 | `route:1afe64a4d9fc4176` | route | active | resolved | routing | — |
-| 163 | `route:479e607dbe123026` | route | active | resolved | routing | — |
-| 164 | `route:9fbcad68bb263b99` | route | active | resolved | routing | — |
-| 165 | `route:ce618de5cdc58d06` | route | active | resolved | routing | — |
-| 166 | `route:ffa9263c820a95cf` | route | active | resolved | routing | — |
-| 167 | `route:b03929a1ed8ef06a` | route | active | resolved | routing | — |
-| 168 | `issue:security:de7fec630b7d59b0` | issue | not_applicable | unresolved | gap | — |
-| 169 | `issue:gap:aae4cfd4841a6e85` | issue | not_applicable | unresolved | gap | — |
-| 170 | `issue:collision:be6f1cabcca3c379` | issue | not_applicable | informational | informational | — |
-| 171 | `issue:lifecycle:f8980d46c38b81f5` | issue | not_applicable | informational | informational | — |
-| 172 | `issue:gap:64e5431ba2b4486e` | issue | not_applicable | unresolved | gap | — |
-| 173 | `issue:collision:f5347eee2b439aa7` | issue | not_applicable | informational | informational | — |
-| 174 | `issue:clarification:0f9bdce8fcf3e42e` | issue | not_applicable | informational | informational | — |
-| 175 | `issue:gap:4ca9be907b392155` | issue | not_applicable | unresolved | gap | — |
-| 176 | `issue:clarification:c514ef934d2df0f1` | issue | not_applicable | informational | informational | — |
-| 177 | `issue:collision:26e1b3951eb1920f` | issue | not_applicable | informational | informational | — |
-| 178 | `issue:clarification:fc10140cb8a99330` | issue | not_applicable | informational | informational | — |
-| 179 | `issue:clarification:2d6d88887c6074b9` | issue | not_applicable | informational | informational | — |
-| 180 | `issue:collision:a6ea5c002cb735a4` | issue | not_applicable | informational | informational | — |
-| 181 | `issue:collision:7efea7a02a39856f` | issue | not_applicable | informational | informational | — |
-| 182 | `issue:collision:ca3f2e11b06efea8` | issue | not_applicable | informational | informational | — |
-| 183 | `issue:security:dc174a64279000de` | issue | not_applicable | unresolved | gap | — |
-| 184 | `issue:material:a4ae4a7bb33464d5` | issue | not_applicable | unresolved | gap | — |
-| 185 | `issue:material:6a2042e1ae168bcd` | issue | not_applicable | unresolved | gap | — |
-| 186 | `issue:material:01cfb1e737509224` | issue | not_applicable | unresolved | gap | — |
-| 187 | `issue:material:9b69d4304293566d` | issue | not_applicable | unresolved | gap | — |
-| 188 | `issue:material:783fc2a6445d88e4` | issue | not_applicable | unresolved | gap | — |
-| 189 | `issue:material:5899f4076540cf06` | issue | not_applicable | unresolved | gap | — |
-| 190 | `issue:material:ed93a8e5fe2b6d98` | issue | not_applicable | unresolved | gap | — |
-| 191 | `issue:material:09ae9fd77e876477` | issue | not_applicable | unresolved | gap | — |
-| 192 | `issue:material:e8ef6014c6d9388c` | issue | not_applicable | unresolved | gap | — |
-| 193 | `issue:material:4172a18374adb0fd` | issue | not_applicable | unresolved | gap | — |
-| 194 | `issue:material:859c12f45e2cb368` | issue | not_applicable | unresolved | gap | — |
-| 195 | `issue:material:e8faf0545618570e` | issue | not_applicable | unresolved | gap | — |
-| 196 | `issue:material:56879919da0bbf86` | issue | not_applicable | unresolved | gap | — |
-| 197 | `issue:material:e965f8e88439d6e4` | issue | not_applicable | unresolved | gap | — |
-| 198 | `issue:material:0189b254c5c9f89a` | issue | not_applicable | unresolved | gap | — |
-| 199 | `issue:material:4f8d57ad6c888205` | issue | not_applicable | unresolved | gap | — |
-| 200 | `issue:material:123b48a2a7534ccc` | issue | not_applicable | unresolved | gap | — |
-| 201 | `issue:material:90f715bd3fd0ed1c` | issue | not_applicable | unresolved | gap | — |
-| 202 | `issue:material:8f743fafb9578261` | issue | not_applicable | unresolved | gap | — |
-| 203 | `issue:material:2dc434483f7e4a73` | issue | not_applicable | unresolved | gap | — |
-| 204 | `issue:material:be48eaddfea9c191` | issue | not_applicable | unresolved | gap | — |
-| 205 | `issue:material:020f8e7508a5b340` | issue | not_applicable | unresolved | gap | — |
-| 206 | `issue:material:1677c9a183e038b8` | issue | not_applicable | unresolved | gap | — |
-| 207 | `issue:material:5fd0a78b490ac709` | issue | not_applicable | unresolved | gap | — |
-| 208 | `issue:material:ddb3aec94f5404f6` | issue | not_applicable | unresolved | gap | — |
-| 209 | `issue:material:6eb9c2770267aa08` | issue | not_applicable | unresolved | gap | — |
-| 210 | `issue:material:0a13ad04ca09c1f1` | issue | not_applicable | unresolved | gap | — |
-| 211 | `issue:material:5001349d64046d25` | issue | not_applicable | unresolved | gap | — |
-| 212 | `issue:material:ec1d6718852a350d` | issue | not_applicable | unresolved | gap | — |
-| 213 | `issue:material:9b06311946bd3647` | issue | not_applicable | unresolved | gap | — |
-| 214 | `issue:material:05cc5008bfc53745` | issue | not_applicable | unresolved | gap | — |
-| 215 | `issue:material:c387bb9428b6469c` | issue | not_applicable | unresolved | gap | — |
-| 216 | `issue:material:44f5a6c1ea19cc7d` | issue | not_applicable | unresolved | gap | — |
-| 217 | `issue:material:1892bcf521cbb96d` | issue | not_applicable | unresolved | gap | — |
-| 218 | `issue:material:c0d871423245137e` | issue | not_applicable | unresolved | gap | — |
-| 219 | `issue:material:117550c976d9c497` | issue | not_applicable | unresolved | gap | — |
-| 220 | `issue:material:9d6f07d66d38785a` | issue | not_applicable | unresolved | gap | — |
+| 70 | `protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0` | protocol | active | unresolved | required | UNRESOLVED |
+| 71 | `repo:kody-w/communityrapp` | repository | active | represented | required | https://github.com/kody-w/CommunityRAPP |
+| 72 | `repo:kody-w/heimdall` | repository | active | represented | required | https://github.com/kody-w/heimdall |
+| 73 | `repo:kody-w/leviathan` | repository | active | represented | required | https://github.com/kody-w/leviathan |
+| 74 | `repo:kody-w/openrappter` | repository | active | represented | required | https://github.com/kody-w/openrappter |
+| 75 | `repo:kody-w/rapp` | repository | active | represented | required | https://github.com/kody-w/RAPP |
+| 76 | `repo:kody-w/rapp-agents` | repository | active | represented | required | https://github.com/kody-w/rapp-agents |
+| 77 | `repo:kody-w/rapp-bible` | repository | active | represented | required | https://github.com/kody-w/RAPP-Bible |
+| 78 | `repo:kody-w/rapp-brainstem-sdk` | repository | active | represented | required | https://github.com/kody-w/rapp-brainstem-sdk |
+| 79 | `repo:kody-w/rapp-burrow` | repository | active | represented | required | https://github.com/kody-w/rapp-burrow |
+| 80 | `repo:kody-w/rapp-carts` | repository | active | represented | required | https://github.com/kody-w/rapp-carts |
+| 81 | `repo:kody-w/rapp-commons` | repository | active | represented | required | https://github.com/kody-w/rapp-commons |
+| 82 | `repo:kody-w/rapp-dataverse` | repository | active | represented | required | https://github.com/kody-w/rapp-dataverse |
+| 83 | `repo:kody-w/rapp-demos` | repository | active | represented | required | https://github.com/kody-w/rapp-demos |
+| 84 | `repo:kody-w/rapp-distro` | repository | active | represented | required | https://github.com/kody-w/rapp-distro |
+| 85 | `repo:kody-w/rapp-egg-hub` | repository | active | represented | required | https://github.com/kody-w/rapp-egg-hub |
+| 86 | `repo:kody-w/rapp-estate` | repository | active | represented | required | https://github.com/kody-w/rapp-estate |
+| 87 | `repo:kody-w/rapp-eternity` | repository | active | represented | required | https://github.com/kody-w/rapp-eternity |
+| 88 | `repo:kody-w/rapp-frame-net` | repository | active | represented | required | https://github.com/kody-w/rapp-frame-net |
+| 89 | `repo:kody-w/rapp-god` | repository | active | represented | required | https://github.com/kody-w/rapp-god |
+| 90 | `repo:kody-w/rapp-hologram` | repository | active | represented | required | https://github.com/kody-w/rapp-hologram |
+| 91 | `repo:kody-w/rapp-installer` | repository | active | represented | required | https://github.com/kody-w/rapp-installer |
+| 92 | `repo:kody-w/rapp-kite` | repository | active | represented | required | https://github.com/kody-w/rapp-kite |
+| 93 | `repo:kody-w/rapp-leviathan-hub` | repository | active | represented | required | https://github.com/kody-w/rapp-leviathan-hub |
+| 94 | `repo:kody-w/rapp-map` | repository | active | represented | required | https://github.com/kody-w/rapp-map |
+| 95 | `repo:kody-w/rapp-mcp` | repository | active | represented | required | https://github.com/kody-w/rapp-mcp |
+| 96 | `repo:kody-w/rapp-messaging` | repository | active | represented | required | https://github.com/kody-w/rapp-messaging |
+| 97 | `repo:kody-w/rapp-moment` | repository | active | represented | required | https://github.com/kody-w/rapp-moment |
+| 98 | `repo:kody-w/rapp-neighborhood-protocol` | repository | active | represented | required | https://github.com/kody-w/rapp-neighborhood-protocol |
+| 99 | `repo:kody-w/rapp-network` | repository | active | represented | required | https://github.com/kody-w/RAPP-Network |
+| 100 | `repo:kody-w/rapp-oneclick-deploy` | repository | active | represented | required | https://github.com/kody-w/rapp-oneclick-deploy |
+| 101 | `repo:kody-w/rapp-resident` | repository | active | represented | required | https://github.com/kody-w/rapp-resident |
+| 102 | `repo:kody-w/rapp-roadmap` | repository | active | represented | required | https://github.com/kody-w/rapp-roadmap |
+| 103 | `repo:kody-w/rapp-sealed` | repository | active | represented | required | https://github.com/kody-w/rapp-sealed |
+| 104 | `repo:kody-w/rapp-spine` | repository | active | represented | required | https://github.com/kody-w/rapp-spine |
+| 105 | `repo:kody-w/rapp-static-apis` | repository | active | represented | required | https://github.com/kody-w/rapp-static-apis |
+| 106 | `repo:kody-w/rapp-vneighborhood` | repository | active | represented | required | https://github.com/kody-w/rapp-vneighborhood |
+| 107 | `repo:kody-w/rapp_docs` | repository | active | represented | required | https://github.com/kody-w/rapp_docs |
+| 108 | `repo:kody-w/rapp_hub` | repository | active | represented | required | https://github.com/kody-w/RAPP_Hub |
+| 109 | `repo:kody-w/rapp_leviathan_factory` | repository | unpublished | unresolved | required | UNRESOLVED |
+| 110 | `repo:kody-w/rapp_sense_store` | repository | active | represented | required | https://github.com/kody-w/RAPP_Sense_Store |
+| 111 | `repo:kody-w/rapp_store` | repository | active | represented | required | https://github.com/kody-w/RAPP_Store |
+| 112 | `repo:kody-w/rappcards` | repository | active | represented | required | https://github.com/kody-w/RAPPcards |
+| 113 | `repo:kody-w/rappterbook` | repository | active | represented | required | https://github.com/kody-w/rappterbook |
+| 114 | `repo:kody-w/rappterbox` | repository | active | represented | required | https://github.com/kody-w/rappterbox |
+| 115 | `repo:kody-w/rar` | repository | active | represented | required | https://github.com/kody-w/RAR |
+| 116 | `repo:kody-w/twin-egg-hatcher` | repository | active | represented | required | https://github.com/kody-w/twin-egg-hatcher |
+| 117 | `repo:kody-w/vbrainstem` | repository | active | represented | required | https://github.com/kody-w/vbrainstem |
+| 118 | `repo:kody-w/wrap_leviathan` | repository | unpublished | unresolved | required | UNRESOLVED |
+| 119 | `evidence:foundation/pillars/rapp-agent/1.0@kody-w/rapp-installer` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-installer/5fbde1776a72715935c3d597a9ddfce28a04032b/rapp_brainstem/brainstem.py |
+| 120 | `evidence:foundation/pillars/leviathan/1.0@kody-w/leviathan` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/leviathan/main/SPEC.md |
+| 121 | `evidence:foundation/pillars/rapp-leviathan-egg/1.0@kody-w/rapp-leviathan-hub` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-leviathan-hub/main/UNIFIED.md |
+| 122 | `evidence:foundation/pillars/rapp-frame/2.0@kody-w/rapp-frame-net` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/SPEC.md |
+| 123 | `evidence:foundation/pillars/rapp-hydra/1.0@kody-w/rapp-frame-net` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/HYDRA.md |
+| 124 | `evidence:foundation/pillars/rapp-spine/1.0@kody-w/rapp-spine` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md |
+| 125 | `evidence:foundation/pillars/rapp-roadmap@kody-w/rapp-roadmap` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/roadmap.json |
+| 126 | `evidence:foundation/law/rapp-constitution%20%28kernel%29@kody-w/rapp` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/RAPP/main/CONSTITUTION.md |
+| 127 | `evidence:foundation/law/MASTER_PLAN%20%28why-axis%29@kody-w/rapp` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/RAPP/main/MASTER_PLAN.md |
+| 128 | `evidence:foundation/law/SPEC%20%28kernel%20wire%20contract%29@kody-w/rapp` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/RAPP/main/specs/SPEC.md |
+| 129 | `evidence:foundation/law/Rappterbook%20Constitution@kody-w/rappterbook` | evidence | active | resolved | required | https://raw.githubusercontent.com/kody-w/rappterbook/main/CONSTITUTION.md |
+| 130 | `evidence:foundation/spec_corpus/canonical_aggregate@kody-w/rapp-bible` | evidence | active | resolved | supporting | https://github.com/kody-w/RAPP-Bible |
+| 131 | `evidence:foundation/spec_corpus/live_stream@kody-w/rapp_docs` | evidence | active | resolved | supporting | https://github.com/kody-w/rapp_docs |
+| 132 | `evidence:foundation/spec_corpus/drift_detector@kody-w/rapp-god` | evidence | active | resolved | supporting | https://github.com/kody-w/rapp-god |
+| 133 | `evidence:foundation/spec_corpus/router@kody-w/rapp-spine` | evidence | active | resolved | supporting | https://raw.githubusercontent.com/kody-w/rapp-spine/main/registry.json |
+| 134 | `evidence:foundation/core_infra/agent_registry@kody-w/rar` | evidence | active | resolved | supporting | https://github.com/kody-w/RAR |
+| 135 | `evidence:foundation/core_infra/egg_spec_origin@kody-w/rappterbook` | evidence | active | resolved | supporting | https://github.com/kody-w/rappterbook |
+| 136 | `evidence:foundation/core_infra/moment_engine@kody-w/rapp-hologram` | evidence | active | resolved | supporting | https://github.com/kody-w/rapp-hologram |
+| 137 | `evidence:foundation/core_infra/eternity_reference_deploy@kody-w/rapp-oneclick-deploy` | evidence | active | resolved | supporting | https://github.com/kody-w/rapp-oneclick-deploy |
+| 138 | `route:d1bab4e9255f37b5` | route | active | resolved | routing | — |
+| 139 | `route:9ee1d7ba7b480968` | route | active | resolved | routing | — |
+| 140 | `route:a3a910356fd3b15f` | route | active | resolved | routing | — |
+| 141 | `route:1d3e46640dd04d9c` | route | active | resolved | routing | — |
+| 142 | `route:2ba91861b3c84cb2` | route | active | resolved | routing | — |
+| 143 | `route:152a48fe4a72c994` | route | active | resolved | routing | — |
+| 144 | `route:059801a9ef580801` | route | active | resolved | routing | — |
+| 145 | `route:8db38c2bbc41ede2` | route | active | resolved | routing | — |
+| 146 | `route:e6fdc51df4f3e2af` | route | active | resolved | routing | — |
+| 147 | `route:f3213292f2097798` | route | active | resolved | routing | — |
+| 148 | `route:496c2890a297f467` | route | active | resolved | routing | — |
+| 149 | `route:b9f81fce5948fd34` | route | active | resolved | routing | — |
+| 150 | `route:03168f410f414c50` | route | active | resolved | routing | — |
+| 151 | `route:a04f62bf726b16c6` | route | active | resolved | routing | — |
+| 152 | `route:463459f211a0ef23` | route | active | resolved | routing | — |
+| 153 | `route:5ced77ee7cc3810f` | route | active | resolved | routing | — |
+| 154 | `route:a5db5c336d867fad` | route | active | resolved | routing | — |
+| 155 | `route:8c363581dfce6e5b` | route | active | resolved | routing | — |
+| 156 | `route:3727d163d21b9d22` | route | active | resolved | routing | — |
+| 157 | `route:88e4159f6c384c3d` | route | active | resolved | routing | — |
+| 158 | `route:e279449cb92a3800` | route | active | resolved | routing | — |
+| 159 | `route:5d8f21ad5dfb791a` | route | active | resolved | routing | — |
+| 160 | `route:f062aec4987f5966` | route | active | resolved | routing | — |
+| 161 | `route:2ac04bb4e193b2a3` | route | active | resolved | routing | — |
+| 162 | `route:5afadf255971f067` | route | active | resolved | routing | — |
+| 163 | `route:cb3515c2fac02e6b` | route | active | resolved | routing | — |
+| 164 | `route:1afe64a4d9fc4176` | route | active | resolved | routing | — |
+| 165 | `route:479e607dbe123026` | route | active | resolved | routing | — |
+| 166 | `route:9fbcad68bb263b99` | route | active | resolved | routing | — |
+| 167 | `route:ce618de5cdc58d06` | route | active | resolved | routing | — |
+| 168 | `route:ffa9263c820a95cf` | route | active | resolved | routing | — |
+| 169 | `route:b03929a1ed8ef06a` | route | active | resolved | routing | — |
+| 170 | `route:b19c4de1b61f7260` | route | active | resolved | routing | — |
+| 171 | `issue:security:de7fec630b7d59b0` | issue | not_applicable | unresolved | gap | — |
+| 172 | `issue:gap:aae4cfd4841a6e85` | issue | not_applicable | unresolved | gap | — |
+| 173 | `issue:collision:be6f1cabcca3c379` | issue | not_applicable | informational | informational | — |
+| 174 | `issue:lifecycle:f8980d46c38b81f5` | issue | not_applicable | informational | informational | — |
+| 175 | `issue:gap:64e5431ba2b4486e` | issue | not_applicable | unresolved | gap | — |
+| 176 | `issue:collision:f5347eee2b439aa7` | issue | not_applicable | informational | informational | — |
+| 177 | `issue:clarification:0f9bdce8fcf3e42e` | issue | not_applicable | informational | informational | — |
+| 178 | `issue:gap:4ca9be907b392155` | issue | not_applicable | unresolved | gap | — |
+| 179 | `issue:clarification:c514ef934d2df0f1` | issue | not_applicable | informational | informational | — |
+| 180 | `issue:collision:26e1b3951eb1920f` | issue | not_applicable | informational | informational | — |
+| 181 | `issue:clarification:fc10140cb8a99330` | issue | not_applicable | informational | informational | — |
+| 182 | `issue:clarification:2d6d88887c6074b9` | issue | not_applicable | informational | informational | — |
+| 183 | `issue:collision:a6ea5c002cb735a4` | issue | not_applicable | informational | informational | — |
+| 184 | `issue:collision:7efea7a02a39856f` | issue | not_applicable | informational | informational | — |
+| 185 | `issue:collision:ca3f2e11b06efea8` | issue | not_applicable | informational | informational | — |
+| 186 | `issue:security:dc174a64279000de` | issue | not_applicable | unresolved | gap | — |
+| 187 | `issue:material:a4ae4a7bb33464d5` | issue | not_applicable | unresolved | gap | — |
+| 188 | `issue:material:6a2042e1ae168bcd` | issue | not_applicable | unresolved | gap | — |
+| 189 | `issue:material:01cfb1e737509224` | issue | not_applicable | unresolved | gap | — |
+| 190 | `issue:material:9b69d4304293566d` | issue | not_applicable | unresolved | gap | — |
+| 191 | `issue:material:783fc2a6445d88e4` | issue | not_applicable | unresolved | gap | — |
+| 192 | `issue:material:5899f4076540cf06` | issue | not_applicable | unresolved | gap | — |
+| 193 | `issue:material:ed93a8e5fe2b6d98` | issue | not_applicable | unresolved | gap | — |
+| 194 | `issue:material:09ae9fd77e876477` | issue | not_applicable | unresolved | gap | — |
+| 195 | `issue:material:e8ef6014c6d9388c` | issue | not_applicable | unresolved | gap | — |
+| 196 | `issue:material:4172a18374adb0fd` | issue | not_applicable | unresolved | gap | — |
+| 197 | `issue:material:859c12f45e2cb368` | issue | not_applicable | unresolved | gap | — |
+| 198 | `issue:material:e8faf0545618570e` | issue | not_applicable | unresolved | gap | — |
+| 199 | `issue:material:56879919da0bbf86` | issue | not_applicable | unresolved | gap | — |
+| 200 | `issue:material:e965f8e88439d6e4` | issue | not_applicable | unresolved | gap | — |
+| 201 | `issue:material:0189b254c5c9f89a` | issue | not_applicable | unresolved | gap | — |
+| 202 | `issue:material:4f8d57ad6c888205` | issue | not_applicable | unresolved | gap | — |
+| 203 | `issue:material:123b48a2a7534ccc` | issue | not_applicable | unresolved | gap | — |
+| 204 | `issue:material:90f715bd3fd0ed1c` | issue | not_applicable | unresolved | gap | — |
+| 205 | `issue:material:8f743fafb9578261` | issue | not_applicable | unresolved | gap | — |
+| 206 | `issue:material:2dc434483f7e4a73` | issue | not_applicable | unresolved | gap | — |
+| 207 | `issue:material:be48eaddfea9c191` | issue | not_applicable | unresolved | gap | — |
+| 208 | `issue:material:020f8e7508a5b340` | issue | not_applicable | unresolved | gap | — |
+| 209 | `issue:material:1677c9a183e038b8` | issue | not_applicable | unresolved | gap | — |
+| 210 | `issue:material:5fd0a78b490ac709` | issue | not_applicable | unresolved | gap | — |
+| 211 | `issue:material:ddb3aec94f5404f6` | issue | not_applicable | unresolved | gap | — |
+| 212 | `issue:material:6eb9c2770267aa08` | issue | not_applicable | unresolved | gap | — |
+| 213 | `issue:material:0a13ad04ca09c1f1` | issue | not_applicable | unresolved | gap | — |
+| 214 | `issue:material:5001349d64046d25` | issue | not_applicable | unresolved | gap | — |
+| 215 | `issue:material:ec1d6718852a350d` | issue | not_applicable | unresolved | gap | — |
+| 216 | `issue:material:9b06311946bd3647` | issue | not_applicable | unresolved | gap | — |
+| 217 | `issue:material:05cc5008bfc53745` | issue | not_applicable | unresolved | gap | — |
+| 218 | `issue:material:c387bb9428b6469c` | issue | not_applicable | unresolved | gap | — |
+| 219 | `issue:material:44f5a6c1ea19cc7d` | issue | not_applicable | unresolved | gap | — |
+| 220 | `issue:material:1892bcf521cbb96d` | issue | not_applicable | unresolved | gap | — |
+| 221 | `issue:material:c0d871423245137e` | issue | not_applicable | unresolved | gap | — |
+| 222 | `issue:material:ac11398bc0844ffa` | issue | not_applicable | unresolved | gap | — |
+| 223 | `issue:material:117550c976d9c497` | issue | not_applicable | unresolved | gap | — |
+| 224 | `issue:material:9d6f07d66d38785a` | issue | not_applicable | unresolved | gap | — |
 
 ## Required material gaps
 
@@ -348,6 +355,7 @@
 | `protocol:kody-w/rapp-resident/rapp-commons-event/1.0` | canonical_material | unresolved |
 | `protocol:kody-w/rapp-frame-net/rapp-frame/2.0` | canonical_material | unresolved |
 | `protocol:kody-w/rapp-frame-net/rapp-hydra/1.0` | canonical_material | unresolved |
+| `protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0` | canonical_material | unresolved |
 | `repo:kody-w/rapp_leviathan_factory` | repository_identity | unresolved |
 | `repo:kody-w/wrap_leviathan` | repository_identity | unresolved |
 

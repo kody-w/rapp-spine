@@ -5,7 +5,7 @@
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "8367f656a89addb9781a8182ec0655e268c0c031cf836e27a9eec50ba51d6560"
+      "sha256": "34ed3677d5a99e7094feefcc382184cd8a7b5488338f741b4f22114416286c14"
     },
     "foundation": {
       "path": "foundation.json",
@@ -167,7 +167,8 @@
         "rapp-estate/1.1 (+ rapp-network-beacon/1.1)",
         "rapp-mcp-spec/1.0",
         "rapp-kite (operator tooling)",
-        "rapp-resident (cloud relay)"
+        "rapp-resident (cloud relay)",
+        "rapp-burrow-twin/1.0 (kody-w/vbrainstem; §17 twin, on-device)"
       ]
     },
     {
@@ -441,6 +442,15 @@
         "rapp-burrow/1.0"
       ],
       "why": "The Burrow organ-rapplication supplies launchd persistence and a locally-served PWA control room. Its current organ aggregation uses the legacy /api/agent surface and is non-conformant until migrated to the canonical /chat wire."
+    },
+    {
+      "situation": "I want the in-browser Copilot (vBrainstem) to run agents on my REAL machine — the ones that need the native OS (pac/az/gh, local files) and can't run in the sandbox.",
+      "use": [
+        "rapp-burrow-twin/1.0 (kody-w/vbrainstem)",
+        "rapp-neighborhood-protocol/1.0 (kody-w/rapp-neighborhood-protocol)",
+        "rapp-sealed/1.0 (kody-w/rapp-sealed)"
+      ],
+      "why": "The burrowed daemon is a §17 twin on twin-chat: a one-liner installs a tiny on-device unit with its own ECDSA identity + agents/ that runs native-OS agents; the browser Copilot is its pure controller over a sealed SPAKE2 channel. Chat stays in the browser; only sealed host ops cross to the machine."
     }
   ],
   "registry": [
@@ -915,6 +925,14 @@
       "role": "The ORGAN-RAPPLICATION pattern: a drop-in organ that burrows the brainstem into launchd (persistence for the brainstem + every organ) and serves a locally-exposed PWA pulled from this global repo — the Organ Control Room (operator visibility + enable/disable + observe/live over persistent/monitoring organs).",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-burrow/main/SPEC.md",
       "entry_point": "read SPEC.md in kody-w/rapp-burrow; drop burrow_agent.py into any brainstem agents/"
+    },
+    {
+      "spec_id": "rapp-burrow-twin/1.0",
+      "repo": "kody-w/vbrainstem",
+      "layer": "network",
+      "purpose": "The 'burrowed daemon' — a tiny on-device rapp/1 twin (ECDSA-P256 keyed rappid, own agents/soul/memory) bound to the in-browser vBrainstem GitHub Copilot over a sealed SPAKE2 WebRTC channel. Runs *_agent.py that need the native OS (subprocess to pac/az/gh, local files) which the browser Pyodide sandbox cannot. A §17 controller-pattern unit on twin-chat, NOT a new peer type; serves the kernel/PARITY /chat envelope and posts signed rapp-commons-event/1.0. DISTINCT from rapp-burrow/1.0 (the launchd organ-persistence pattern).",
+      "when_to_use": "When the browser vBrainstem's Copilot must run an agent that needs the real OS on the user's machine — installed by a one-liner (curl … burrow.sh | bash / irm … burrow.ps1 | iex), no full brainstem, paired by an 8-digit SPAKE2 code.",
+      "entry_point": "curl -fsSL https://kody-w.github.io/vbrainstem/burrow.sh | bash  (Windows: irm https://kody-w.github.io/vbrainstem/burrow.ps1 | iex) → ~/.rapp-burrow/burrow.py"
     }
   ],
   "collisions_and_gaps": [
@@ -974,7 +992,7 @@
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "8367f656a89addb9781a8182ec0655e268c0c031cf836e27a9eec50ba51d6560",
+            "sha256": "34ed3677d5a99e7094feefcc382184cd8a7b5488338f741b4f22114416286c14",
             "integrity": "sha256"
           }
         ],
@@ -1216,7 +1234,8 @@
             "rapp-estate/1.1 (+ rapp-network-beacon/1.1)",
             "rapp-mcp-spec/1.0",
             "rapp-kite (operator tooling)",
-            "rapp-resident (cloud relay)"
+            "rapp-resident (cloud relay)",
+            "rapp-burrow-twin/1.0 (kody-w/vbrainstem; §17 twin, on-device)"
           ]
         }
       },
@@ -4737,6 +4756,62 @@
         }
       },
       {
+        "id": "protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0",
+        "type": "protocol",
+        "label": "rapp-burrow-twin/1.0",
+        "repo": "kody-w/vbrainstem",
+        "canonical_protocol_identity": "rapp-burrow-twin/1.0",
+        "layer_id": "layer:network",
+        "lifecycle": "active",
+        "status": "unresolved",
+        "materiality": "required",
+        "material_profile": "registry-protocol",
+        "required_source_roles": [
+          "canonical_material"
+        ],
+        "sources": [
+          {
+            "role": "canonical_material",
+            "required": true,
+            "target": null,
+            "availability": "unresolved",
+            "read_only": true,
+            "method": "GET"
+          }
+        ],
+        "entry_points": [
+          {
+            "kind": "repository_read",
+            "target": "https://github.com/kody-w/vbrainstem",
+            "method": "GET",
+            "read_only": true,
+            "safe_for_crawl": true
+          },
+          {
+            "kind": "display_only",
+            "display": "curl -fsSL https://kody-w.github.io/vbrainstem/burrow.sh | bash  (Windows: irm https://kody-w.github.io/vbrainstem/burrow.ps1 | iex) → ~/.rapp-burrow/burrow.py",
+            "read_only": false,
+            "safe_for_crawl": false,
+            "policy": "never_execute"
+          }
+        ],
+        "conformance": "not_assessed",
+        "aliases": [
+          "kody-w/vbrainstem",
+          "rapp-burrow-twin/1.0",
+          "vbrainstem"
+        ],
+        "display": {
+          "registry_index": 59,
+          "spec_id": "rapp-burrow-twin/1.0",
+          "repo": "kody-w/vbrainstem",
+          "layer": "network",
+          "purpose": "The 'burrowed daemon' — a tiny on-device rapp/1 twin (ECDSA-P256 keyed rappid, own agents/soul/memory) bound to the in-browser vBrainstem GitHub Copilot over a sealed SPAKE2 WebRTC channel. Runs *_agent.py that need the native OS (subprocess to pac/az/gh, local files) which the browser Pyodide sandbox cannot. A §17 controller-pattern unit on twin-chat, NOT a new peer type; serves the kernel/PARITY /chat envelope and posts signed rapp-commons-event/1.0. DISTINCT from rapp-burrow/1.0 (the launchd organ-persistence pattern).",
+          "when_to_use": "When the browser vBrainstem's Copilot must run an agent that needs the real OS on the user's machine — installed by a one-liner (curl … burrow.sh | bash / irm … burrow.ps1 | iex), no full brainstem, paired by an 8-digit SPAKE2 code.",
+          "entry_point": "curl -fsSL https://kody-w.github.io/vbrainstem/burrow.sh | bash  (Windows: irm https://kody-w.github.io/vbrainstem/burrow.ps1 | iex) → ~/.rapp-burrow/burrow.py"
+        }
+      },
+      {
         "id": "repo:kody-w/communityrapp",
         "type": "repository",
         "label": "kody-w/CommunityRAPP",
@@ -6428,6 +6503,43 @@
         "aliases": [
           "kody-w/twin-egg-hatcher",
           "twin-egg-hatcher"
+        ]
+      },
+      {
+        "id": "repo:kody-w/vbrainstem",
+        "type": "repository",
+        "label": "kody-w/vbrainstem",
+        "repo": "kody-w/vbrainstem",
+        "lifecycle": "active",
+        "status": "represented",
+        "materiality": "required",
+        "material_profile": "repository",
+        "required_source_roles": [
+          "repository_identity"
+        ],
+        "sources": [
+          {
+            "role": "repository_identity",
+            "required": true,
+            "target": "https://github.com/kody-w/vbrainstem",
+            "availability": "declared",
+            "read_only": true,
+            "method": "GET"
+          }
+        ],
+        "entry_points": [
+          {
+            "kind": "repository_read",
+            "target": "https://github.com/kody-w/vbrainstem",
+            "method": "GET",
+            "read_only": true,
+            "safe_for_crawl": true
+          }
+        ],
+        "conformance": "not_assessed",
+        "aliases": [
+          "kody-w/vbrainstem",
+          "vbrainstem"
         ]
       },
       {
@@ -8281,6 +8393,35 @@
         }
       },
       {
+        "id": "route:b19c4de1b61f7260",
+        "type": "route",
+        "label": "I want the in-browser Copilot (vBrainstem) to run agents on my REAL machine — the ones that need the native OS (pac/az/gh, local files) and can't run in the sandbox.",
+        "route_index": 32,
+        "target_ids": [
+          "protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0",
+          "protocol:kody-w/rapp-neighborhood-protocol/rapp-neighborhood-protocol/1.0",
+          "protocol:kody-w/rapp-sealed/rapp-sealed/1.0"
+        ],
+        "lifecycle": "active",
+        "status": "resolved",
+        "materiality": "routing",
+        "material_profile": "route",
+        "required_source_roles": [],
+        "sources": [],
+        "entry_points": [],
+        "conformance": "not_applicable",
+        "aliases": [],
+        "display": {
+          "situation": "I want the in-browser Copilot (vBrainstem) to run agents on my REAL machine — the ones that need the native OS (pac/az/gh, local files) and can't run in the sandbox.",
+          "use": [
+            "rapp-burrow-twin/1.0 (kody-w/vbrainstem)",
+            "rapp-neighborhood-protocol/1.0 (kody-w/rapp-neighborhood-protocol)",
+            "rapp-sealed/1.0 (kody-w/rapp-sealed)"
+          ],
+          "why": "The burrowed daemon is a §17 twin on twin-chat: a one-liner installs a tiny on-device unit with its own ECDSA identity + agents/ that runs native-OS agents; the browser Copilot is its pure controller over a sealed SPAKE2 channel. Chat stays in the browser; only sealed host ops cross to the machine."
+        }
+      },
+      {
         "id": "issue:security:de7fec630b7d59b0",
         "type": "issue",
         "label": "LEVIATHAN — the two senses STACK (protocol builds on the being-medium) (the load-bearing collision). (A) Leviathan PROTOCOL (kody-w/leviathan, self-titled SPEC v1.0): ONE external mind coordinates MANY brainstem BODIES; canonical wire = rapp-fleet-chat/1.0 signed twin-chat over /chat. The old injected POST /api/agent route is a non-conformant RCE, not the protocol's future. (B) Wrapped-Organism Leviathan (rapp_leviathan_factory -> wrap_leviathan -> rapp-leviathan-hub/rapp-leviathan-egg/1.0): ONE operator's single digital BEING built of MANY CELLS across 5 estates (Sanctum/Polity/Works/Press/Commons); 'one being, many cells.' NOT orthogonal — a STACK (protocol builds on the being-medium) — a crawler must disambiguate by intent (drive a node fleet vs. mint/ship a being).",
@@ -9718,6 +9859,34 @@
         }
       },
       {
+        "id": "issue:material:ac11398bc0844ffa",
+        "type": "issue",
+        "label": "rapp-burrow-twin/1.0 in kody-w/vbrainstem has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
+        "lifecycle": "not_applicable",
+        "status": "unresolved",
+        "materiality": "gap",
+        "material_profile": "issue",
+        "required_source_roles": [],
+        "sources": [],
+        "entry_points": [],
+        "conformance": "not_applicable",
+        "aliases": [],
+        "display": {
+          "id": "issue:material:ac11398bc0844ffa",
+          "type": "issue",
+          "kind": "material",
+          "summary": "rapp-burrow-twin/1.0 in kody-w/vbrainstem has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
+          "severity": "blocking",
+          "blocking": true,
+          "related_node_ids": [
+            "protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0",
+            "repo:kody-w/vbrainstem"
+          ],
+          "source": "generated.required_material",
+          "source_role": "canonical_material"
+        }
+      },
+      {
         "id": "issue:material:117550c976d9c497",
         "type": "issue",
         "label": "kody-w/rapp_leviathan_factory has no readable standalone repository; repository identity remains required and explicitly unresolved.",
@@ -10157,6 +10326,11 @@
         "from": "artifact:registry.json",
         "type": "declares",
         "to": "protocol:kody-w/twin-egg-hatcher/entry"
+      },
+      {
+        "from": "artifact:registry.json",
+        "type": "declares",
+        "to": "protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0"
       },
       {
         "from": "artifact:registry.json",
@@ -10867,6 +11041,16 @@
         "from": "issue:material:a4ae4a7bb33464d5",
         "type": "affects",
         "to": "repo:kody-w/rapp"
+      },
+      {
+        "from": "issue:material:ac11398bc0844ffa",
+        "type": "affects",
+        "to": "protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0"
+      },
+      {
+        "from": "issue:material:ac11398bc0844ffa",
+        "type": "affects",
+        "to": "repo:kody-w/vbrainstem"
       },
       {
         "from": "issue:material:be48eaddfea9c191",
@@ -11905,6 +12089,21 @@
         "to": "repo:kody-w/twin-egg-hatcher"
       },
       {
+        "from": "protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0",
+        "type": "has_issue",
+        "to": "issue:material:ac11398bc0844ffa"
+      },
+      {
+        "from": "protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0",
+        "type": "in_layer",
+        "to": "layer:network"
+      },
+      {
+        "from": "protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0",
+        "type": "owned_by",
+        "to": "repo:kody-w/vbrainstem"
+      },
+      {
         "from": "protocol:kody-w/wrap_leviathan/entry",
         "type": "has_issue",
         "to": "issue:gap:64e5431ba2b4486e"
@@ -12376,6 +12575,32 @@
         "to": "artifact:registry.json"
       },
       {
+        "from": "route:b19c4de1b61f7260",
+        "type": "routes_to",
+        "to": "protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0",
+        "order": 0,
+        "display_target": "rapp-burrow-twin/1.0 (kody-w/vbrainstem)"
+      },
+      {
+        "from": "route:b19c4de1b61f7260",
+        "type": "routes_to",
+        "to": "protocol:kody-w/rapp-neighborhood-protocol/rapp-neighborhood-protocol/1.0",
+        "order": 1,
+        "display_target": "rapp-neighborhood-protocol/1.0 (kody-w/rapp-neighborhood-protocol)"
+      },
+      {
+        "from": "route:b19c4de1b61f7260",
+        "type": "routes_to",
+        "to": "protocol:kody-w/rapp-sealed/rapp-sealed/1.0",
+        "order": 2,
+        "display_target": "rapp-sealed/1.0 (kody-w/rapp-sealed)"
+      },
+      {
+        "from": "route:b19c4de1b61f7260",
+        "type": "uses_artifact",
+        "to": "artifact:registry.json"
+      },
+      {
         "from": "route:b9f81fce5948fd34",
         "type": "routes_to",
         "to": "protocol:kody-w/rapp-commons/rapp-commons-protocol/2.0",
@@ -12766,6 +12991,11 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "documents_issue",
+        "to": "issue:material:ac11398bc0844ffa"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "documents_issue",
         "to": "issue:material:be48eaddfea9c191"
       },
       {
@@ -12942,6 +13172,11 @@
         "from": "spine:rapp-spine%2F1.1",
         "type": "indexes_route",
         "to": "route:b03929a1ed8ef06a"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "indexes_route",
+        "to": "route:b19c4de1b61f7260"
       },
       {
         "from": "spine:rapp-spine%2F1.1",
@@ -13221,6 +13456,11 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "inventories_repository",
+        "to": "repo:kody-w/vbrainstem"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "inventories_repository",
         "to": "repo:kody-w/wrap_leviathan"
       },
       {
@@ -13329,6 +13569,7 @@
       "protocol:kody-w/rapp-roadmap/rapp-backlog/1.0",
       "protocol:kody-w/rar/rapp-registry/1.0",
       "protocol:kody-w/rapp-burrow/rapp-burrow/1.0",
+      "protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0",
       "repo:kody-w/communityrapp",
       "repo:kody-w/heimdall",
       "repo:kody-w/leviathan",
@@ -13375,6 +13616,7 @@
       "repo:kody-w/rappterbox",
       "repo:kody-w/rar",
       "repo:kody-w/twin-egg-hatcher",
+      "repo:kody-w/vbrainstem",
       "repo:kody-w/wrap_leviathan",
       "evidence:foundation/pillars/rapp-agent/1.0@kody-w/rapp-installer",
       "evidence:foundation/pillars/leviathan/1.0@kody-w/leviathan",
@@ -13427,6 +13669,7 @@
       "route:ce618de5cdc58d06",
       "route:ffa9263c820a95cf",
       "route:b03929a1ed8ef06a",
+      "route:b19c4de1b61f7260",
       "issue:security:de7fec630b7d59b0",
       "issue:gap:aae4cfd4841a6e85",
       "issue:collision:be6f1cabcca3c379",
@@ -13478,6 +13721,7 @@
       "issue:material:44f5a6c1ea19cc7d",
       "issue:material:1892bcf521cbb96d",
       "issue:material:c0d871423245137e",
+      "issue:material:ac11398bc0844ffa",
       "issue:material:117550c976d9c497",
       "issue:material:9d6f07d66d38785a"
     ]
@@ -13559,6 +13803,7 @@
         "protocol:kody-w/rapp-roadmap/rapp-backlog/1.0",
         "protocol:kody-w/rar/rapp-registry/1.0",
         "protocol:kody-w/rapp-burrow/rapp-burrow/1.0",
+        "protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0",
         "repo:kody-w/communityrapp",
         "repo:kody-w/heimdall",
         "repo:kody-w/leviathan",
@@ -13605,6 +13850,7 @@
         "repo:kody-w/rappterbox",
         "repo:kody-w/rar",
         "repo:kody-w/twin-egg-hatcher",
+        "repo:kody-w/vbrainstem",
         "repo:kody-w/wrap_leviathan",
         "evidence:foundation/pillars/rapp-agent/1.0@kody-w/rapp-installer",
         "evidence:foundation/pillars/leviathan/1.0@kody-w/leviathan",
@@ -13657,6 +13903,7 @@
         "route:ce618de5cdc58d06",
         "route:ffa9263c820a95cf",
         "route:b03929a1ed8ef06a",
+        "route:b19c4de1b61f7260",
         "issue:security:de7fec630b7d59b0",
         "issue:gap:aae4cfd4841a6e85",
         "issue:collision:be6f1cabcca3c379",
@@ -13708,6 +13955,7 @@
         "issue:material:44f5a6c1ea19cc7d",
         "issue:material:1892bcf521cbb96d",
         "issue:material:c0d871423245137e",
+        "issue:material:ac11398bc0844ffa",
         "issue:material:117550c976d9c497",
         "issue:material:9d6f07d66d38785a"
       ]
@@ -14433,6 +14681,20 @@
       "related_node_ids": [
         "protocol:kody-w/rapp-frame-net/rapp-hydra/1.0",
         "repo:kody-w/rapp-frame-net"
+      ],
+      "source": "generated.required_material",
+      "source_role": "canonical_material"
+    },
+    {
+      "id": "issue:material:ac11398bc0844ffa",
+      "type": "issue",
+      "kind": "material",
+      "summary": "rapp-burrow-twin/1.0 in kody-w/vbrainstem has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
+      "severity": "blocking",
+      "blocking": true,
+      "related_node_ids": [
+        "protocol:kody-w/vbrainstem/rapp-burrow-twin/1.0",
+        "repo:kody-w/vbrainstem"
       ],
       "source": "generated.required_material",
       "source_role": "canonical_material"
