@@ -378,7 +378,7 @@ class CrawlGraphTests(_SpineFixture, unittest.TestCase):
             if node["type"] == "protocol"
             and node["sources"][0]["availability"] == "unresolved"
         ]
-        self.assertEqual(len(unresolved), 35)
+        self.assertEqual(len(unresolved), 34)
         issues_by_node = defaultdict(list)
         for issue in self.crawl["issues"]:
             for node_id in issue["related_node_ids"]:
@@ -672,7 +672,7 @@ class CrawlGraphTests(_SpineFixture, unittest.TestCase):
         )
         self.assertEqual(
             receipt["completion"]["source_integrity_availability"]["counts"],
-            {"read": 90, "unresolved": 37},
+            {"read": 91, "unresolved": 36},
         )
 
     def test_receipt_separates_all_completion_dimensions(self):
@@ -752,11 +752,11 @@ class GeneratedSurfaceTests(_SpineFixture, unittest.TestCase):
         self.assertEqual(self.coverage, generate_crawl.build_coverage(self.crawl))
         self.assertEqual(self.coverage["inventory"]["registry_nodes_represented"], 59)
         self.assertEqual(self.coverage["inventory"]["routes_expected"], 32)
-        self.assertEqual(self.coverage["required_material"]["exact_targets"], 24)
-        self.assertEqual(self.coverage["required_material"]["unresolved"], 35)
+        self.assertEqual(self.coverage["required_material"]["exact_targets"], 25)
+        self.assertEqual(self.coverage["required_material"]["unresolved"], 34)
         self.assertEqual(self.coverage["all_required_sources"]["required"], 127)
-        self.assertEqual(self.coverage["all_required_sources"]["exact_targets"], 90)
-        self.assertEqual(self.coverage["all_required_sources"]["unresolved"], 37)
+        self.assertEqual(self.coverage["all_required_sources"]["exact_targets"], 91)
+        self.assertEqual(self.coverage["all_required_sources"]["unresolved"], 36)
         self.assertFalse(self.coverage["complete"])
 
     def test_secondary_ai_and_human_surfaces_are_full(self):
@@ -1090,6 +1090,157 @@ class GeneratedSurfaceTests(_SpineFixture, unittest.TestCase):
         self.assertEqual(origin["kind"], "local")
         self.assertTrue(origin["missing"])
         getter.assert_not_called()
+
+
+class ConformanceIsExplicitTests(unittest.TestCase):
+    """Conformance is an evidenced claim, never inferred from prose.
+
+    The classifier used to substring-match five concatenated prose fields, so a verdict
+    could flip on a reword and `conformant` was unreachable by construction.
+    """
+
+    BASE = {
+        "repo": "example/thing",
+        "spec_id": "example-thing/1.0",
+        "raw_url": "https://example.invalid/SPEC.md",
+        "purpose": "",
+        "when_to_use": "",
+        "entry_point": "",
+    }
+
+    def classify(self, **overrides):
+        warnings = []
+        entry = {**self.BASE, **overrides}
+        lifecycle, status, conformance = generate_crawl.classify_protocol(
+            entry, warn=warnings.append
+        )
+        return lifecycle, status, conformance, warnings
+
+    def test_prose_guidance_does_not_flag_an_entry(self):
+        """The regression this change exists to prevent.
+
+        An entry that *advises against* unauthenticated access is giving guidance, not
+        confessing a defect. Prose must not be able to convict it.
+        """
+        _, status, conformance, warnings = self.classify(
+            when_to_use=(
+                "Never expose an unauthenticated route to the network; keep the "
+                "privileged surface loopback-only."
+            )
+        )
+        self.assertEqual(conformance, "not_assessed")
+        self.assertNotEqual(conformance, "nonconformant")
+        self.assertEqual(status, "resolved")
+        # The phrase is still surfaced for a human, but as an advisory, not a verdict.
+        self.assertEqual(len(warnings), 1)
+        self.assertIn("unauthenticated", warnings[0])
+        self.assertIn("example/thing", warnings[0])
+
+    def test_every_legacy_phrase_is_powerless_without_an_explicit_field(self):
+        for phrase in generate_crawl.UNASSESSED_PROSE_SIGNALS:
+            with self.subTest(phrase=phrase):
+                _, _, conformance, _ = self.classify(
+                    purpose=f"Guidance about {phrase} deployments."
+                )
+                self.assertEqual(conformance, "not_assessed")
+
+    def test_absent_field_is_not_assessed_and_silent_when_prose_is_clean(self):
+        _, _, conformance, warnings = self.classify()
+        self.assertEqual(conformance, "not_assessed")
+        self.assertEqual(warnings, [])
+
+    def test_explicit_state_is_honoured(self):
+        _, status, conformance, _ = self.classify(
+            conformance={
+                "state": "conformant",
+                "evidence": "https://example.invalid/assessment.md",
+                "assessed": "2026-08-03",
+            }
+        )
+        self.assertEqual(conformance, "conformant")
+        self.assertEqual(status, "resolved")
+
+    def test_a_verdict_cannot_be_self_declared(self):
+        for state in sorted(generate_crawl.CONFORMANCE_VERDICTS):
+            for missing in ("evidence", "assessed"):
+                payload = {
+                    "state": state,
+                    "evidence": "https://example.invalid/a.md",
+                    "assessed": "2026-08-03",
+                }
+                payload.pop(missing)
+                with self.subTest(state=state, missing=missing):
+                    with self.assertRaises(ValueError) as caught:
+                        self.classify(conformance=payload)
+                    self.assertIn(missing, str(caught.exception))
+
+    def test_malformed_conformance_is_refused_loudly(self):
+        for payload in ("conformant", ["conformant"], {"state": "probably_fine"}, {}):
+            with self.subTest(payload=payload):
+                with self.assertRaises(ValueError):
+                    self.classify(conformance=payload)
+
+    def test_nonconformant_drives_degraded_status(self):
+        _, status, conformance, _ = self.classify(
+            conformance={
+                "state": "nonconformant",
+                "evidence": "https://example.invalid/finding.md",
+                "assessed": "2026-08-03",
+            }
+        )
+        self.assertEqual(conformance, "nonconformant")
+        self.assertEqual(status, "degraded")
+
+
+class RegistryConformanceRecordTests(_SpineFixture, unittest.TestCase):
+    """The two entries whose conformance is asserted in registry.json."""
+
+    def entry(self, repo, layer=None):
+        matches = [
+            item
+            for item in self.spine["registry"]
+            if item["repo"] == repo and (layer is None or item.get("layer") == layer)
+        ]
+        self.assertEqual(len(matches), 1, f"expected exactly one {repo} entry")
+        return matches[0]
+
+    def test_leviathan_keeps_its_nonconformant_verdict_with_evidence(self):
+        """A true positive must survive the move to explicit conformance."""
+        declared = self.entry("kody-w/leviathan", layer="leviathan")["conformance"]
+        self.assertEqual(declared["state"], "nonconformant")
+        self.assertIn("NETWORK_TRUST_BOUNDARY.md", declared["evidence"])
+        self.assertTrue(declared["assessed"])
+
+        node = self.nodes["protocol:kody-w/leviathan/leviathan/1.0"]
+        self.assertEqual(node["conformance"], "nonconformant")
+
+    def test_openrappter_is_not_assessed_rather_than_conformant(self):
+        """Nobody has assessed openrappter, so the graph must not claim it is fine."""
+        entry = self.entry("kody-w/openrappter")
+        self.assertEqual(entry["spec_id"], "openrappter-runtime/1.0")
+        self.assertEqual(entry["conformance"]["state"], "not_assessed")
+        self.assertNotIn("evidence", entry["conformance"])
+        self.assertNotIn("parity target incomplete", entry["when_to_use"].lower())
+
+        node = self.nodes["protocol:kody-w/openrappter/openrappter-runtime/1.0"]
+        self.assertEqual(node["conformance"], "not_assessed")
+        self.assertEqual(node["status"], "resolved")
+
+    def test_every_declared_conformance_object_is_well_formed(self):
+        for entry in self.spine["registry"]:
+            declared = entry.get("conformance")
+            if declared is None:
+                continue
+            with self.subTest(repo=entry["repo"]):
+                self.assertIsInstance(declared, dict)
+                self.assertIn(declared["state"], generate_crawl.NODE_ENUMS["conformance"])
+
+    def test_no_registry_entry_relies_on_prose_for_a_verdict(self):
+        """After this change the estate should have zero unassessed prose signals."""
+        warnings = []
+        for entry in self.spine["registry"]:
+            generate_crawl.classify_protocol(entry, warn=warnings.append)
+        self.assertEqual(warnings, [], "\n".join(warnings))
 
 
 if __name__ == "__main__":

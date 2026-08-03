@@ -9,8 +9,8 @@
 - Registry nodes: **59 / 59**
 - Route nodes: **32 / 32**
 - Repository nodes: **47**
-- Exact required protocol sources: **24 / 59**
-- Structured issues: **53** (42 blocking)
+- Exact required protocol sources: **25 / 59**
+- Structured issues: **52** (41 blocking)
 
 ## Exact route targets
 
@@ -21,7 +21,7 @@
 | I need persistent memory, an always-on cloud body, or a path to Copilot Studio + Teams (Tier 2/3). | CommunityRAPP (Tier-2 Azure Functions) | `protocol:kody-w/communityrapp/entry` |
 | I need persistent memory, an always-on cloud body, or a path to Copilot Studio + Teams (Tier 2/3). | rapp-dataverse/1.0 | `protocol:kody-w/rapp-dataverse/rapp-dataverse/1.0` |
 | I need a brainstem for curl/CI/MCP/scripts with no Flask, no browser, no Copilot subscription. | rapp-brainstem-sdk (vbrainstem_sdk.py) | `protocol:kody-w/rapp-brainstem-sdk/entry` |
-| I want OpenRappter: a consumer-facing, chat-first AI that lives on my machine, hot-loads RAPP agent.py cartridges, and maps RAPP concepts to OpenClaw-compatible experiences. | OpenRappter consumer substrate-distro (RAPP parity target; currently incomplete) | `protocol:kody-w/openrappter/entry` |
+| I want OpenRappter: a consumer-facing, chat-first AI that lives on my machine, hot-loads RAPP agent.py cartridges, and maps RAPP concepts to OpenClaw-compatible experiences. | OpenRappter consumer substrate-distro (RAPP parity target; currently incomplete) | `protocol:kody-w/openrappter/openrappter-runtime/1.0` |
 | An AI in Claude Desktop / Copilot CLI / Cursor needs to use my local agents or my on-device brainstem. | rapp-mcp-spec/1.0 | `protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0` |
 | I need a Rappter to remember everyone across direct and group conversations without leaking confidences, and to honor explicit natural-language consent when a fact may be shared. | rapp-messaging/1.0 | `protocol:kody-w/rapp-messaging/rapp-messaging/1.0` |
 | I need a Rappter to remember everyone across direct and group conversations without leaking confidences, and to honor explicit natural-language consent when a fact may be shared. | rapp-messaging-imessage/1.0 (when the transport is iMessage) | `protocol:kody-w/rapp-messaging/rapp-messaging/1.0` |
@@ -101,7 +101,7 @@
 | 11 | `protocol:kody-w/rapp/rapp-agent/1.0` | protocol | active | unresolved | required | UNRESOLVED |
 | 12 | `protocol:kody-w/communityrapp/entry` | protocol | active | unresolved | required | UNRESOLVED |
 | 13 | `protocol:kody-w/rapp-brainstem-sdk/entry` | protocol | active | unresolved | required | UNRESOLVED |
-| 14 | `protocol:kody-w/openrappter/entry` | protocol | active | unresolved | required | UNRESOLVED |
+| 14 | `protocol:kody-w/openrappter/openrappter-runtime/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/openrappter/main/SPEC.md |
 | 15 | `protocol:kody-w/rappterbox/rappterbox-console-spec/1.0` | protocol | active | unresolved | required | UNRESOLVED |
 | 16 | `protocol:kody-w/rapp-installer/rapp-agent/1.0` | protocol | active | unresolved | required | UNRESOLVED |
 | 17 | `protocol:kody-w/leviathan/leviathan/1.0` | protocol | active | unresolved | required | UNRESOLVED |
@@ -274,40 +274,39 @@
 | 184 | `issue:material:a4ae4a7bb33464d5` | issue | not_applicable | unresolved | gap | — |
 | 185 | `issue:material:6a2042e1ae168bcd` | issue | not_applicable | unresolved | gap | — |
 | 186 | `issue:material:01cfb1e737509224` | issue | not_applicable | unresolved | gap | — |
-| 187 | `issue:material:9b69d4304293566d` | issue | not_applicable | unresolved | gap | — |
-| 188 | `issue:material:783fc2a6445d88e4` | issue | not_applicable | unresolved | gap | — |
-| 189 | `issue:material:5899f4076540cf06` | issue | not_applicable | unresolved | gap | — |
-| 190 | `issue:material:ed93a8e5fe2b6d98` | issue | not_applicable | unresolved | gap | — |
-| 191 | `issue:material:09ae9fd77e876477` | issue | not_applicable | unresolved | gap | — |
-| 192 | `issue:material:e8ef6014c6d9388c` | issue | not_applicable | unresolved | gap | — |
-| 193 | `issue:material:4172a18374adb0fd` | issue | not_applicable | unresolved | gap | — |
-| 194 | `issue:material:859c12f45e2cb368` | issue | not_applicable | unresolved | gap | — |
-| 195 | `issue:material:e8faf0545618570e` | issue | not_applicable | unresolved | gap | — |
-| 196 | `issue:material:56879919da0bbf86` | issue | not_applicable | unresolved | gap | — |
-| 197 | `issue:material:e965f8e88439d6e4` | issue | not_applicable | unresolved | gap | — |
-| 198 | `issue:material:0189b254c5c9f89a` | issue | not_applicable | unresolved | gap | — |
-| 199 | `issue:material:4f8d57ad6c888205` | issue | not_applicable | unresolved | gap | — |
-| 200 | `issue:material:123b48a2a7534ccc` | issue | not_applicable | unresolved | gap | — |
-| 201 | `issue:material:90f715bd3fd0ed1c` | issue | not_applicable | unresolved | gap | — |
-| 202 | `issue:material:8f743fafb9578261` | issue | not_applicable | unresolved | gap | — |
-| 203 | `issue:material:2dc434483f7e4a73` | issue | not_applicable | unresolved | gap | — |
-| 204 | `issue:material:be48eaddfea9c191` | issue | not_applicable | unresolved | gap | — |
-| 205 | `issue:material:020f8e7508a5b340` | issue | not_applicable | unresolved | gap | — |
-| 206 | `issue:material:1677c9a183e038b8` | issue | not_applicable | unresolved | gap | — |
-| 207 | `issue:material:5fd0a78b490ac709` | issue | not_applicable | unresolved | gap | — |
-| 208 | `issue:material:ddb3aec94f5404f6` | issue | not_applicable | unresolved | gap | — |
-| 209 | `issue:material:6eb9c2770267aa08` | issue | not_applicable | unresolved | gap | — |
-| 210 | `issue:material:0a13ad04ca09c1f1` | issue | not_applicable | unresolved | gap | — |
-| 211 | `issue:material:5001349d64046d25` | issue | not_applicable | unresolved | gap | — |
-| 212 | `issue:material:ec1d6718852a350d` | issue | not_applicable | unresolved | gap | — |
-| 213 | `issue:material:9b06311946bd3647` | issue | not_applicable | unresolved | gap | — |
-| 214 | `issue:material:05cc5008bfc53745` | issue | not_applicable | unresolved | gap | — |
-| 215 | `issue:material:c387bb9428b6469c` | issue | not_applicable | unresolved | gap | — |
-| 216 | `issue:material:44f5a6c1ea19cc7d` | issue | not_applicable | unresolved | gap | — |
-| 217 | `issue:material:1892bcf521cbb96d` | issue | not_applicable | unresolved | gap | — |
-| 218 | `issue:material:c0d871423245137e` | issue | not_applicable | unresolved | gap | — |
-| 219 | `issue:material:117550c976d9c497` | issue | not_applicable | unresolved | gap | — |
-| 220 | `issue:material:9d6f07d66d38785a` | issue | not_applicable | unresolved | gap | — |
+| 187 | `issue:material:783fc2a6445d88e4` | issue | not_applicable | unresolved | gap | — |
+| 188 | `issue:material:5899f4076540cf06` | issue | not_applicable | unresolved | gap | — |
+| 189 | `issue:material:ed93a8e5fe2b6d98` | issue | not_applicable | unresolved | gap | — |
+| 190 | `issue:material:09ae9fd77e876477` | issue | not_applicable | unresolved | gap | — |
+| 191 | `issue:material:e8ef6014c6d9388c` | issue | not_applicable | unresolved | gap | — |
+| 192 | `issue:material:4172a18374adb0fd` | issue | not_applicable | unresolved | gap | — |
+| 193 | `issue:material:859c12f45e2cb368` | issue | not_applicable | unresolved | gap | — |
+| 194 | `issue:material:e8faf0545618570e` | issue | not_applicable | unresolved | gap | — |
+| 195 | `issue:material:56879919da0bbf86` | issue | not_applicable | unresolved | gap | — |
+| 196 | `issue:material:e965f8e88439d6e4` | issue | not_applicable | unresolved | gap | — |
+| 197 | `issue:material:0189b254c5c9f89a` | issue | not_applicable | unresolved | gap | — |
+| 198 | `issue:material:4f8d57ad6c888205` | issue | not_applicable | unresolved | gap | — |
+| 199 | `issue:material:123b48a2a7534ccc` | issue | not_applicable | unresolved | gap | — |
+| 200 | `issue:material:90f715bd3fd0ed1c` | issue | not_applicable | unresolved | gap | — |
+| 201 | `issue:material:8f743fafb9578261` | issue | not_applicable | unresolved | gap | — |
+| 202 | `issue:material:2dc434483f7e4a73` | issue | not_applicable | unresolved | gap | — |
+| 203 | `issue:material:be48eaddfea9c191` | issue | not_applicable | unresolved | gap | — |
+| 204 | `issue:material:020f8e7508a5b340` | issue | not_applicable | unresolved | gap | — |
+| 205 | `issue:material:1677c9a183e038b8` | issue | not_applicable | unresolved | gap | — |
+| 206 | `issue:material:5fd0a78b490ac709` | issue | not_applicable | unresolved | gap | — |
+| 207 | `issue:material:ddb3aec94f5404f6` | issue | not_applicable | unresolved | gap | — |
+| 208 | `issue:material:6eb9c2770267aa08` | issue | not_applicable | unresolved | gap | — |
+| 209 | `issue:material:0a13ad04ca09c1f1` | issue | not_applicable | unresolved | gap | — |
+| 210 | `issue:material:5001349d64046d25` | issue | not_applicable | unresolved | gap | — |
+| 211 | `issue:material:ec1d6718852a350d` | issue | not_applicable | unresolved | gap | — |
+| 212 | `issue:material:9b06311946bd3647` | issue | not_applicable | unresolved | gap | — |
+| 213 | `issue:material:05cc5008bfc53745` | issue | not_applicable | unresolved | gap | — |
+| 214 | `issue:material:c387bb9428b6469c` | issue | not_applicable | unresolved | gap | — |
+| 215 | `issue:material:44f5a6c1ea19cc7d` | issue | not_applicable | unresolved | gap | — |
+| 216 | `issue:material:1892bcf521cbb96d` | issue | not_applicable | unresolved | gap | — |
+| 217 | `issue:material:c0d871423245137e` | issue | not_applicable | unresolved | gap | — |
+| 218 | `issue:material:117550c976d9c497` | issue | not_applicable | unresolved | gap | — |
+| 219 | `issue:material:9d6f07d66d38785a` | issue | not_applicable | unresolved | gap | — |
 
 ## Required material gaps
 
@@ -316,7 +315,6 @@
 | `protocol:kody-w/rapp/rapp-agent/1.0` | canonical_material | unresolved |
 | `protocol:kody-w/communityrapp/entry` | canonical_material | unresolved |
 | `protocol:kody-w/rapp-brainstem-sdk/entry` | canonical_material | unresolved |
-| `protocol:kody-w/openrappter/entry` | canonical_material | unresolved |
 | `protocol:kody-w/rappterbox/rappterbox-console-spec/1.0` | canonical_material | unresolved |
 | `protocol:kody-w/rapp-installer/rapp-agent/1.0` | canonical_material | unresolved |
 | `protocol:kody-w/leviathan/leviathan/1.0` | canonical_material | unresolved |

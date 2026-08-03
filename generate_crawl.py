@@ -6,6 +6,7 @@ import copy
 import hashlib
 import json
 import re
+import sys
 from collections import Counter, defaultdict, deque
 from pathlib import Path
 from urllib.parse import quote
@@ -252,11 +253,80 @@ def evidence_aliases(record):
     return sorted(alias for alias in aliases if alias)
 
 
-def classify_protocol(entry):
+# A conformance verdict is an explicit, evidenced claim recorded in registry.json.
+# It is never inferred from prose. These phrases used to *decide* conformance by bare
+# substring match over five concatenated prose fields, which meant a verdict could flip
+# silently on a reword and nothing could ever be marked conformant. They now decide
+# nothing: they only raise an advisory when an entry reads as nonconformant and nobody
+# has actually assessed it, so a true positive is surfaced rather than lost.
+UNASSESSED_PROSE_SIGNALS = (
+    "non-conformant",
+    "nonconformant",
+    "parity target incomplete",
+    "known phase-1 rce",
+    "unauthenticated",
+)
+
+# States that assert something about an implementation, and so must carry evidence.
+CONFORMANCE_VERDICTS = {"conformant", "nonconformant"}
+
+
+def _default_warn(message):
+    print(f"warning: {message}", file=sys.stderr)
+
+
+def read_conformance(entry, text, warn=_default_warn):
+    """Resolve an entry's conformance from its explicit `conformance` field.
+
+    Absent means `not_assessed` -- the honest default. Nobody has assessed it, so the
+    graph says so rather than guessing from adjectives.
+    """
+    label = f"{entry.get('repo', '?')} ({entry.get('spec_id', '?')})"
+    declared = entry.get("conformance")
+
+    if declared is None:
+        hits = sorted({p for p in UNASSESSED_PROSE_SIGNALS if p in text})
+        if hits and warn is not None:
+            warn(
+                f"registry entry {label} has no explicit `conformance` field, but its "
+                f"prose contains {', '.join(repr(h) for h in hits)}. Prose no longer "
+                f"decides conformance. If this is a real finding, record it as "
+                f"conformance.state with evidence; it is reported as not_assessed."
+            )
+        return "not_assessed"
+
+    if not isinstance(declared, dict):
+        raise ValueError(
+            f"registry entry {label}: `conformance` must be an object with a `state` "
+            f"key, not {type(declared).__name__}"
+        )
+
+    state = declared.get("state")
+    if state not in NODE_ENUMS["conformance"]:
+        raise ValueError(
+            f"registry entry {label}: conformance.state {state!r} is not one of "
+            f"{sorted(NODE_ENUMS['conformance'])}"
+        )
+
+    if state in CONFORMANCE_VERDICTS:
+        for field in ("evidence", "assessed"):
+            if not str(declared.get(field) or "").strip():
+                raise ValueError(
+                    f"registry entry {label}: conformance.state {state!r} is a verdict "
+                    f"and requires a non-empty `{field}`. A verdict must say what it "
+                    f"rests on and when it was made; it cannot be self-declared."
+                )
+    return state
+
+
+def classify_protocol(entry, warn=_default_warn):
     text = " ".join(
         str(entry.get(key, ""))
         for key in ("spec_id", "purpose", "role", "when_to_use", "entry_point")
     ).lower()
+    # Lifecycle still reads prose. That is deliberate and out of scope here: it is a
+    # weaker, descriptive claim (has this been published / superseded?) rather than a
+    # verdict on whether an implementation obeys a spec.
     if any(word in text for word in ("unpublished", "not found / 404", "repo 404", "standalone repo 404")):
         lifecycle = "unpublished"
     elif any(word in text for word in ("deprecated", "archived", "superseded", "moved ->")):
@@ -264,23 +334,14 @@ def classify_protocol(entry):
     else:
         lifecycle = "active"
 
-    nonconformant = any(
-        phrase in text
-        for phrase in (
-            "non-conformant",
-            "nonconformant",
-            "parity target incomplete",
-            "known phase-1 rce",
-            "unauthenticated",
-        )
-    )
+    conformance = read_conformance(entry, text, warn)
+
     if not entry.get("raw_url"):
         status = "unresolved"
-    elif nonconformant:
+    elif conformance == "nonconformant":
         status = "degraded"
     else:
         status = "resolved"
-    conformance = "nonconformant" if nonconformant else "not_assessed"
     return lifecycle, status, conformance
 
 

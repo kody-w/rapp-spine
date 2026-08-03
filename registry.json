@@ -395,12 +395,16 @@
       "entry_point": "python3 vbrainstem_sdk.py serve --port 7173 (also: run @kody-w/<agent> '...', agents --grep, eval)"
     },
     {
-      "spec_id": "(none; consumer RAPP substrate-distro, parity target incomplete)",
+      "spec_id": "openrappter-runtime/1.0",
       "repo": "kody-w/openrappter",
       "layer": "runtime",
       "purpose": "The consumer-facing RAPP machine AI: an OpenClaw-class local experience built to preserve the RAPP /chat loop and hot-load the same drop-in *_agent.py cartridges, while translating RAPP concepts to and from OpenClaw-compatible UI, channel, and skill surfaces. OpenRappter is chat-first: natural language over /chat creates and configures the experience; UI views render conversation and state rather than defining capability through forms. It may use its own Python+TypeScript implementation architecture; brainstem.py remains the reference kernel shape, not a file OpenRappter must vendor. Local state lives under ~/.openrappter/, while prompts and channel payloads may leave the machine for the configured provider. The lineage was running by Groundhog Day 2025, before its first public release.",
-      "when_to_use": "When you want the full consumer AI living on a machine \u2014 daemon, desktop/web UI, channels, memory, and OpenClaw interoperability \u2014 while retaining RAPP cartridge compatibility. Current releases are a parity target, not yet a conformant replacement for the reference kernel.",
-      "entry_point": "curl -fsSL https://kody-w.github.io/openrappter/install.sh | bash (or hand skills.md to any AI agent to self-install)"
+      "when_to_use": "When you want the full consumer AI living on a machine \u2014 daemon, desktop/web UI, channels, memory, and OpenClaw interoperability \u2014 while retaining RAPP cartridge compatibility. Its runtime contract is published as openrappter-runtime/1.0 in SPEC.md; it has not been independently assessed against the reference kernel.",
+      "entry_point": "curl -fsSL https://kody-w.github.io/openrappter/install.sh | bash (or hand skills.md to any AI agent to self-install)",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/openrappter/main/SPEC.md",
+      "conformance": {
+        "state": "not_assessed"
+      }
     },
     {
       "spec_id": "rappterbox-console-spec/1.0",
@@ -424,7 +428,13 @@
       "layer": "leviathan",
       "purpose": "The Leviathan PROTOCOL \u2014 language-agnostic contract for driving a FLEET of brainstem BODY nodes from ONE external MIND. (Meaning A \u2014 NOT the Wrapped-Organism being.) The canonical wire is rapp-fleet-chat/1.0 signed twin-chat over /chat. Frozen Result taxonomy: ok/down/timeout/missing/error/bad_response.",
       "when_to_use": "You run several brainstem nodes and want one mind to coordinate them through signed fleet-chat events over the canonical /chat boundary. The old direct no-LLM route is a documented RCE and is not the conformant path.",
-      "entry_point": "CANONICAL: use rapp-fleet-chat/1.0 signed twin-chat events over /chat (read FLEET_CHAT.md). LEGACY ONLY: flock_endpoint.py injects unauthenticated /api/agent and is non-conformant; do not expose or deploy it as the canonical fleet wire."
+      "entry_point": "CANONICAL: use rapp-fleet-chat/1.0 signed twin-chat events over /chat (read FLEET_CHAT.md). LEGACY ONLY: flock_endpoint.py injects unauthenticated /api/agent and is non-conformant; do not expose or deploy it as the canonical fleet wire.",
+      "conformance": {
+        "state": "nonconformant",
+        "evidence": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/NETWORK_TRUST_BOUNDARY.md#6-the-apiagent-rce--named-and-closed",
+        "assessed": "2026-08-03",
+        "note": "NETWORK_TRUST_BOUNDARY.md section 6 / R7: flock_endpoint.py injects an unauthenticated /api/agent route, bypassing the /chat wire and the section 4.1 gate. R7 is unmet until Leviathan stops registering it."
+      }
     },
     {
       "spec_id": "rapp-leviathan-egg/1.0",

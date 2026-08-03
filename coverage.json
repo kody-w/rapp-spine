@@ -5,7 +5,7 @@
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "8367f656a89addb9781a8182ec0655e268c0c031cf836e27a9eec50ba51d6560"
+      "sha256": "d2c2974e2c48117551099ebe9bc11ce621e8788b7fafb024fa059f851f76044b"
     },
     "foundation": {
       "path": "foundation.json",
@@ -22,12 +22,12 @@
     "foundation_records_represented": 19
   },
   "graph": {
-    "nodes": 220,
-    "relations": 670,
+    "nodes": 219,
+    "relations": 666,
     "nodes_by_type": {
       "artifact": 2,
       "evidence": 19,
-      "issue": 53,
+      "issue": 52,
       "layer": 7,
       "protocol": 59,
       "repository": 47,
@@ -37,21 +37,20 @@
     "nodes_by_status": {
       "informational": 18,
       "represented": 45,
-      "resolved": 78,
-      "unresolved": 79
+      "resolved": 79,
+      "unresolved": 77
     },
     "orphans": [],
     "dangling_relations": []
   },
   "required_material": {
     "protocols": 59,
-    "exact_targets": 24,
-    "unresolved": 35,
+    "exact_targets": 25,
+    "unresolved": 34,
     "unresolved_node_ids": [
       "protocol:kody-w/rapp/rapp-agent/1.0",
       "protocol:kody-w/communityrapp/entry",
       "protocol:kody-w/rapp-brainstem-sdk/entry",
-      "protocol:kody-w/openrappter/entry",
       "protocol:kody-w/rappterbox/rappterbox-console-spec/1.0",
       "protocol:kody-w/rapp-installer/rapp-agent/1.0",
       "protocol:kody-w/leviathan/leviathan/1.0",
@@ -88,8 +87,8 @@
   },
   "all_required_sources": {
     "required": 127,
-    "exact_targets": 90,
-    "unresolved": 37,
+    "exact_targets": 91,
+    "unresolved": 36,
     "unresolved_sources": [
       {
         "node_id": "protocol:kody-w/rapp/rapp-agent/1.0",
@@ -101,10 +100,6 @@
       },
       {
         "node_id": "protocol:kody-w/rapp-brainstem-sdk/entry",
-        "role": "canonical_material"
-      },
-      {
-        "node_id": "protocol:kody-w/openrappter/entry",
         "role": "canonical_material"
       },
       {
@@ -243,8 +238,8 @@
     "complete": false
   },
   "known_gaps": {
-    "structured_issues": 53,
-    "blocking": 42,
+    "structured_issues": 52,
+    "blocking": 41,
     "blocking_issue_ids": [
       "issue:security:de7fec630b7d59b0",
       "issue:gap:aae4cfd4841a6e85",
@@ -254,7 +249,6 @@
       "issue:material:a4ae4a7bb33464d5",
       "issue:material:6a2042e1ae168bcd",
       "issue:material:01cfb1e737509224",
-      "issue:material:9b69d4304293566d",
       "issue:material:783fc2a6445d88e4",
       "issue:material:5899f4076540cf06",
       "issue:material:ed93a8e5fe2b6d98",

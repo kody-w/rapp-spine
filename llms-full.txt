@@ -7,7 +7,7 @@
 003 | unresolved | canonical_material | protocol:kody-w/rapp/rapp-agent/1.0 | UNRESOLVED
 004 | unresolved | canonical_material | protocol:kody-w/communityrapp/entry | UNRESOLVED
 005 | unresolved | canonical_material | protocol:kody-w/rapp-brainstem-sdk/entry | UNRESOLVED
-006 | unresolved | canonical_material | protocol:kody-w/openrappter/entry | UNRESOLVED
+006 | declared | canonical_material | protocol:kody-w/openrappter/openrappter-runtime/1.0 | https://raw.githubusercontent.com/kody-w/openrappter/main/SPEC.md
 007 | unresolved | canonical_material | protocol:kody-w/rappterbox/rappterbox-console-spec/1.0 | UNRESOLVED
 008 | unresolved | canonical_material | protocol:kody-w/rapp-installer/rapp-agent/1.0 | UNRESOLVED
 009 | unresolved | canonical_material | protocol:kody-w/leviathan/leviathan/1.0 | UNRESOLVED
