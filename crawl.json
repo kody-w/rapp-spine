@@ -1,11 +1,11 @@
 {
   "spec": "rapp-spine/1.1",
-  "generated": "2026-07-11",
+  "generated": "2026-08-04",
   "what": "The deterministic exhaustive read-only crawl graph for the RAPP spine. It preserves every rapp-spine/1.0 display field while adding exact typed targets, material requirements, structured gaps, safety metadata, and completion semantics.",
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "d2c2974e2c48117551099ebe9bc11ce621e8788b7fafb024fa059f851f76044b"
+      "sha256": "352b776dd4872dda23687eae3da3e5fb4a4968edcf7d27ffe19408f2fb15ab2c"
     },
     "foundation": {
       "path": "foundation.json",
@@ -89,7 +89,7 @@
   "layers": [
     {
       "layer": "kernel",
-      "summary": "The kernel + its governance: the frozen single-file brainstem (rapp-agent/1.0, GRAIL=kody-w/rapp-installer; kody-w/RAPP is the reference distro pinning it via rapp-distro/1.0). Specs: rapp-kernel/1.0, rapp-auth/1.0, rapp-kernel-boundary/1.0, rapp-runtime-parity/1.0, rapp-canon/1.0, rapp-cubby/1.0, rapp-trust/1.0, rapp-substrate-trust/1.0, rapp-eternity/1.0 (identity), rapp-distro/1.0 (distros), rapp-fleet-chat/1.0 (fleet over /chat), rapp-metropolis/1.0, rapp-stores/1.0, brainstem-egg/2.3. The kernel never breaks userspace.",
+      "summary": "The kernel + its governance: the frozen single-file brainstem (rapp-agent/1.0, GRAIL=kody-w/rapp-installer; kody-w/RAPP is the reference distro pinning it via rapp-distro/1.0). Specs: rapp-kernel/1.0, rapp-auth/1.0, rapp-kernel-boundary/1.0, rapp-runtime-parity/1.0, rapp-canon/1.0, rapp-cubby/1.0, rapp-trust/1.0, rapp-substrate-trust/1.0, rapp-distro/1.0 (distros), rapp-fleet-chat/1.0 (fleet over /chat), rapp-metropolis/1.0, rapp-stores/1.0, brainstem-egg/2.3. The kernel never breaks userspace.",
       "protocols": [
         "brainstem-egg/2.3",
         "rapp-auth/1.0",
@@ -97,7 +97,6 @@
         "rapp-canon/1.0",
         "rapp-cubby/1.0",
         "rapp-distro/1.0",
-        "rapp-eternity/1.0",
         "rapp-fleet-chat/1.0",
         "rapp-kernel-boundary/1.0",
         "rapp-kernel/1.0",
@@ -115,7 +114,7 @@
       "protocols": [
         "rapp-ecosystem-spec/1.0 (rapp-map)",
         "rapp-grail-scan/1.0 (rapp-god)",
-        "rapp-eternity/1.0 (owned by kody-w/rapp-eternity; mirrored in RAPP-Bible)",
+        "rapp/1 (identity authority — kody-w/rapp-1 SPEC.md §6; RAPP-Bible mirrors the RETIRED rapp-eternity/1.0 narrative, which is history, not current law)",
         "rapp_docs (live renderer, no slug)"
       ]
     },
@@ -148,11 +147,12 @@
     },
     {
       "layer": "identity (who an agent IS + confidentiality)",
-      "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood §8). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp-eternity/1.0: a sha256 content-address (PKI-FREE); gh-collaborator is the default ownership; a keypair is OPTIONAL sovereignty, NEVER required. The rappid string itself (rappid:@owner/slug:64hex, rapp-eternity/1.0) underpins both but is owned by kody-w/rapp-eternity (RAPP-Bible holds a mirror) — an organizational seam.",
+      "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood §8). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp/1 §6, in kody-w/rapp-1 — SPEC.md pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b). §6.1 leaves the STRING untouched: rappid:@owner/slug:64hex is still the only conformant form, so nothing that merely EMITS a rappid is broken. §6.2 changed MINTING: the 64-hex tail is minted exactly ONCE and is then immutable — keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER) — and a producer MUST NOT derive the tail from owner/slug or any name. Keys stay OPTIONAL (keyless minting is a first-class branch), so gh-collaborator remains the default ownership and a keypair remains sovereignty, NEVER a requirement. rapp-eternity/1.0 — which taught the sha256 CONTENT-ADDRESS tail — is RETIRED as of 2026-07-17 (kody-w/rapp-eternity commit 9c970a1e; its SPEC.md is now a tombstone reading 'RETIRED · SUBORDINATE TO RAPP · NON-NORMATIVE'). Read it as history; never cite it as current or as a compatibility authority. Anything still COMPUTING a tail by hashing its own content is now non-conformant even though the emitted string still looks right.",
       "protocols": [
+        "rapp/1 (canonical identity — §6 of kody-w/rapp-1 SPEC.md; also owns canonicalization, content addressing, the frame, the wire and the egg)",
         "rapp-sealed/1.0",
         "rapp-moment/1.0",
-        "rapp-eternity/1.0 (rappid string; cross-ref to map layer)"
+        "rapp-eternity/1.0 (RETIRED 2026-07-17 — historical record only)"
       ]
     },
     {
@@ -307,7 +307,7 @@
       "use": [
         "rapp-moment/1.0"
       ],
-      "why": "A Moment is a post + exact UTC instant + 100-frame organism, all static CDN data; identity = the rappid sha256 content-address (rapp-eternity/1.0); an OPTIONAL ECDSA P-256 keypair may sign for ownership (never required). Engine is rapp-hologram. NOTE: PolyForm-NC + trademarked marks, unlike the MIT cluster."
+      "why": "A Moment is a post + exact UTC instant + 100-frame organism, all static CDN data; an OPTIONAL ECDSA P-256 keypair may sign for ownership (never required). Engine is rapp-hologram. IDENTITY CAVEAT: rapp-moment/1.0 SPEC.md still defers its whole identity model to the RETIRED rapp-eternity/1.0 sha256 content-address — a dangling normative reference. The live rule is rapp/1 §6.2 mint-once (kody-w/rapp-1); the emitted rappid:@owner/slug:64hex string is unchanged, but deriving the tail from content is no longer conformant. NOTE: PolyForm-NC + trademarked marks, unlike the MIT cluster."
     },
     {
       "situation": "I run several brainstem nodes and want one mind to coordinate them as a signed fleet over the canonical /chat wire.",
@@ -330,7 +330,7 @@
       "use": [
         "rapp-map (rapp-ecosystem-spec/1.0)",
         "rapp-god (rapp-grail-scan/1.0)",
-        "RAPP-Bible (rapp-eternity/1.0)",
+        "RAPP-Bible (synthesized narrative)",
         "rapp_docs"
       ],
       "why": "Crawl the map layer first: rapp-map = WHERE a concept lives; rapp-god = every-version drift observatory + content-addressed fallback frames; RAPP-Bible = synthesized human narrative; rapp_docs = live raw spec text. When the legs disagree, ecosystem-spec.json wins."
@@ -379,11 +379,11 @@
       "use": [
         "rapp-kernel/1.0",
         "rapp-canon/1.0",
-        "rapp-eternity/1.0",
+        "rapp/1",
         "rapp-distro/1.0",
         "rapp-fleet-chat/1.0"
       ],
-      "why": "The kernel/governance vertebra: the frozen ABI + the constitution + identity + the distro model + the canonical fleet wire. Grail=rapp-installer; RAPP is a distro."
+      "why": "The kernel/governance vertebra: the frozen ABI + the constitution + identity (rapp/1 §6 mint-once, in kody-w/rapp-1 — NOT the retired rapp-eternity/1.0) + the distro model + the canonical fleet wire. Grail=rapp-installer; RAPP is a distro."
     },
     {
       "situation": "How do neighborhoods/estates aggregate into a metropolis? Or: how does a distro pin the kernel, or fleet talk over /chat?",
@@ -392,9 +392,9 @@
         "rapp-distro/1.0",
         "rapp-fleet-chat/1.0",
         "rapp-runtime-parity/1.0",
-        "rapp-eternity/1.0"
+        "rapp/1"
       ],
-      "why": "The kernel/governance vertebra's load-bearing specs: metropolis mesh composition, the distro pin model, the canonical fleet wire, T1/T2 runtime parity, and PKI-free identity."
+      "why": "The kernel/governance vertebra's load-bearing specs: metropolis mesh composition, the distro pin model, the canonical fleet wire, T1/T2 runtime parity, and rapp/1 §6 mint-once identity (keyless minting keeps the default PKI-free; a keypair is still optional)."
     },
     {
       "situation": "Auth chain / network boundary / cubby storage / trust+ownership / substrate signing / the three stores / the egg family — where are these governed?",
@@ -602,7 +602,7 @@
       "spec_id": "rapp-moment/1.0",
       "repo": "kody-w/rapp-moment",
       "layer": "identity",
-      "purpose": "Standard for a serverless cryptographic living social primitive: a 'Moment' is simultaneously a post, an exact UTC instant, and a 100-frame holographic organism — all static CDN data, identity = the rappid sha256 content-address (rapp-eternity/1.0); an OPTIONAL ECDSA P-256 keypair may sign for ownership (never required). Implementation-free; engine lives in kody-w/rapp-hologram.",
+      "purpose": "Standard for a serverless cryptographic living social primitive: a 'Moment' is simultaneously a post, an exact UTC instant, and a 100-frame holographic organism — all static CDN data; an OPTIONAL ECDSA P-256 keypair may sign for ownership (never required). Implementation-free; engine lives in kody-w/rapp-hologram. IDENTITY CAVEAT: SPEC.md line 6 still defers the entire identity model to the RETIRED rapp-eternity/1.0 sha256 content-address. The live authority is rapp/1 §6 (kody-w/rapp-1): the rappid string is unchanged, but §6.2 mint-once replaces content-derived tails.",
       "when_to_use": "When building an interoperable backend-free client for the holographic social network (mint/play/own/embed Moments), or you need the normative wire format + conformance rules.",
       "entry_point": "SPEC.md + CONFORMANCE.md in repo. Reference engine: kody-w/rapp-hologram. Play: ?m=<base64url(JSON)>; dial: ?dial=<pk>. License: PolyForm-NC 1.0.0 + trademarked marks (NOT MIT)."
     },
@@ -775,12 +775,21 @@
       "layer": "map"
     },
     {
+      "spec_id": "rapp/1",
+      "repo": "kody-w/rapp-1",
+      "purpose": "rapp/1 (RAPP Protocol Suite, rev-5) — the unified normative specification and the CANONICAL identity authority. §6 owns the rappid: §6.1 the unchanged rappid:@owner/slug:64hex grammar, §6.2 mint-once minting (keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER); a producer MUST NOT derive the tail from owner/slug or any name), §6.3 canonicalize-on-read and the owner-authorized re-anchor. It also owns §4 canonicalization (JCS), §5 domain-separated content addressing, §7 the frame, §8 the wire, §9 the egg and §10 detached-JWS signatures. It takes over from rapp-eternity/1.0 (retired 2026-07-17) and consolidates rapp-frame/2.0, rapp-frame/2.1, rapp-rappid-spec/2.0, rapp-protocol/1.0 and the scattered egg specs.",
+      "when_to_use": "Whenever you mint, read, canonicalize or verify a rappid — §6 is the CANONICAL identity authority for the estate, in place of the RETIRED rapp-eternity/1.0. Emitters of rappid:@owner/slug:64hex are unaffected, because §6.1 keeps that grammar verbatim; MINTERS that hash their own content to build the 64-hex tail no longer conform and must move to §6.2 mint-once. Also the place to look for the frame, the wire, the egg and content addressing.",
+      "entry_point": "read SPEC.md §6 in kody-w/rapp-1. Pinned authority: kody-w/rapp-1@6723c7add2aed36bb68992fc71a56b0a4bd5ad81 — SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b (the same pin rapp-map/RAPP1_AUTHORITY.json records; structural pin only).",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-1/6723c7add2aed36bb68992fc71a56b0a4bd5ad81/SPEC.md",
+      "layer": "identity"
+    },
+    {
       "spec_id": "rapp-eternity/1.0",
       "repo": "kody-w/rapp-eternity",
-      "role": "rapp-eternity/1.0 — The Rappid Identity & Ownership Standard",
+      "role": "rapp-eternity/1.0 — RETIRED historical identity standard, superseded by rapp/1 §6 in kody-w/rapp-1. Retired 2026-07-17 (commit 9c970a1e, then 17bb6d21); SPEC.md is now a tombstone declaring itself 'RETIRED · SUBORDINATE TO RAPP · NON-NORMATIVE'. Its content-address minting rule and its estate-wide identity authority are both withdrawn. Read for history; do not implement it, cite it as current, or treat it as a compatibility authority.",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-eternity/main/SPEC.md",
-      "entry_point": "read SPEC.md in kody-w/rapp-eternity",
-      "layer": "kernel"
+      "entry_point": "read SPEC.md in kody-w/rapp-eternity for the historical record only — the live identity authority is SPEC.md §6 in kody-w/rapp-1",
+      "layer": "identity"
     },
     {
       "spec_id": "rapp-fleet-chat/1.0",
@@ -825,7 +834,7 @@
     {
       "spec_id": "rapp-trust/1.0",
       "repo": "kody-w/rapp-spine",
-      "role": "Trust & ownership — defers to rapp-eternity/1.0 (content-address identity; keypair optional)",
+      "role": "Trust & ownership — defers identity to rapp/1 §6 (mint-once; keyless or keyed; keypair still optional). Its three-layer model (L0 keyless identity / L1 gh-collaborator default / L2 optional keypair) is unaffected, but the rapp-eternity/1.0 content-address minting rule it quoted is retired.",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/TRUST_AND_OWNERSHIP.md",
       "entry_point": "read specs/TRUST_AND_OWNERSHIP.md in kody-w/rapp-spine",
       "layer": "kernel"
@@ -833,7 +842,7 @@
     {
       "spec_id": "rapp-substrate-trust/1.0",
       "repo": "kody-w/rapp-spine",
-      "role": "The Substrate Trust Model — `rapp-substrate-trust/1.0`",
+      "role": "The Substrate Trust Model — `rapp-substrate-trust/1.0`. Consumes identity only; its identity deferral now reads rapp/1 §6, not the retired rapp-eternity/1.0.",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/SUBSTRATE_TRUST.md",
       "entry_point": "read specs/SUBSTRATE_TRUST.md in kody-w/rapp-spine",
       "layer": "kernel"
@@ -937,13 +946,14 @@
     "ALIAS, NOT A PROTOCOL: 'rapp-twin-chat/1.0' is an ALIAS for §6 of rapp-neighborhood-protocol/1.0, not a standalone spec. rapp-commons-protocol/2.0 and rapp-vneighborhood/1.0 are PROFILES/APPS on top of it; MCP is just another §5 transport carrying the same §6 envelope. None of these are new peer types.",
     "'rappter*' NAMING CLUSTER: OpenRappter is the intended consumer RAPP substrate-distro and RAPP<->OpenClaw Rosetta stone (current parity incomplete; data root ~/.openrappter); rappterbox is a console re-skin on ~/.brainstem; rappter is the 404 Wrapped Organism Spec home; rappterbook (+~25 rappterbook-*/rappter-* repos) is the social estate. They are distinct roles. OpenRappter must converge on the frozen /chat behavior and drop-in agent.py ABI without turning OpenClaw-shaped compatibility surfaces into new RAPP protocol authorities.",
     "'kite' NAMING CLUSTER: rapp-kite (the operator 'string' — CDP tooling) is distinct from kite-mark (visual identity repo) and rapp-kited-twin (canonical kite-mark SVG). Three 'kite' things; only rapp-kite is the transport operator.",
-    "RAPPID IDENTITY REPRESENTATIONAL SEAMS: multiple on-the-wire forms coexist — rappid:<birth-slug>:<64hex> (rapp-egg-hub v2.0), rappid:@owner/slug:<64hex> (rapp-eternity/1.0 canonical), rappid:v2:<kind>:@owner/slug:<hex> (rapp-estate), rappid:v3:<base64url(SHA-256(pub))> (rapp-commons). rapp-commons' event SCHEMA and its PROTOCOL.md even show different forms. Rule (per the compatibility contract): READ all legacy forms forever, EMIT only canonical, join on the hash — never rewrite identity in place.",
-    "ETERNITY HOME (resolved): rapp-eternity/1.0 and the canonical rappid:@owner/slug:64hex identity standard are owned by kody-w/rapp-eternity; RAPP-Bible is a narrative mirror, not the owner. Identity is cross-referenced from the map/kernel layers even though sealing and Moment profiles live in the identity layer.",
+    "RAPPID IDENTITY REPRESENTATIONAL SEAMS: multiple on-the-wire forms coexist — rappid:<birth-slug>:<64hex> (rapp-egg-hub v2.0), rappid:@owner/slug:<64hex> (canonical, now rapp/1 §6.1 — formerly attributed to the retired rapp-eternity/1.0; the grammar is byte-identical, only its owner moved), rappid:v2:<kind>:@owner/slug:<hex> (rapp-estate), rappid:v3:<base64url(SHA-256(pub))> (rapp-commons). rapp-commons' event SCHEMA and its PROTOCOL.md even show different forms. Rule (per the compatibility contract): READ all legacy forms forever, EMIT only canonical, join on the hash — never rewrite identity in place.",
+    "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
     "'DRIFT TRIANGLE' IS A MISNOMER — it has FOUR legs (the @rapp/rapp agent, rapp-god, rapp-map, RAPP-Bible) anchored on ecosystem-spec.json; when any leg disagrees with the JSON, the JSON wins. rapp-map and rapp-god both carry byte-identical mirrors of ecosystem-spec.json, so divergence between them IS the detectable drift signal.",
     "OVERLAP — distribution catalogs: rapp-agents (flat public agent stack + RappLoader) overlaps RAR (curated content-addressed registry); rapp-egg-hub (twin .egg hub) overlaps twin-egg-hatcher (generic hatcher) and rapp-carts (the unifying cartridge abstraction). They are complementary (stack vs registry; hub-distribution vs hatch-tool vs user-facing unit), not duplicates — but a crawler should pick by role, not by nearest match.",
     "OVERLAP — map renderers: RAPP-Bible (synthesized, PINNED v1.0.0 human narrative — can itself drift), rapp_docs (live raw passthrough, always-current, zero copies), and rapp-map (index of WHERE, not the TEXT) cover overlapping ground with different jobs. Use rapp_docs for current spec text, Bible for narrative onboarding, rapp-map for location.",
     "LICENSE COLLISION: most of the cluster is MIT (rapp-sealed, rapp-dataverse, rapp-neighborhood-protocol, rapp-kite, rapp-static-apis, rapp-agents). BUT kody-w/RAPP and rappterbox are source-available All-Rights-Reserved, and rapp-moment/1.0 is PolyForm-Noncommercial 1.0.0 + trademarked marks ('RAPP', 'Holographic Moment(s)'). A consumer/redistributor must check per-repo terms, not assume MIT.",
-    "SECURITY GAP: the Leviathan fleet protocol's POST /api/agent/<name> route is UNAUTHENTICATED — a shell-capable agent on any body = fleet-wide RCE from one request. It is explicitly LAN/trusted-subnet only; there is no auth layer in the spec. Also the canonical fleet wire is now rapp-fleet-chat/1.0 (signed twin-chat over /chat); the legacy /api/agent route is the Phase-1 RCE."
+    "SECURITY GAP: the Leviathan fleet protocol's POST /api/agent/<name> route is UNAUTHENTICATED — a shell-capable agent on any body = fleet-wide RCE from one request. It is explicitly LAN/trusted-subnet only; there is no auth layer in the spec. Also the canonical fleet wire is now rapp-fleet-chat/1.0 (signed twin-chat over /chat); the legacy /api/agent route is the Phase-1 RCE.",
+    "DANGLING IDENTITY DEFERRALS AFTER THE ETERNITY RETIREMENT (open, tracked): three live documents still defer their identity model to the retired rapp-eternity/1.0 and have not been amended by their owners. (1) kody-w/rapp-moment SPEC.md line 6 — 'Identity defers to rapp-eternity/1.0 (the sole identity standard). A Moment's rappid is the PKI-free SHA-256 content-address of its canonical body' — exactly the rule §6.2 retires; tracked upstream as kody-w/rapp-moment#2. (2) kody-w/rapp-egg-hub EGG_FAMILY.md:209 cites the 'eternity standard' for the canonical string form; lower urgency, because §6.1 preserves that form unchanged. (3) this repo's own specs/TRUST_AND_OWNERSHIP.md and specs/SUBSTRATE_TRUST.md carried the same deferral; both now open with a retirement notice and point every cross-reference, depends-on and see-also at rapp/1 §6. Their two superseded content-address minting sentences (TRUST_AND_OWNERSHIP §1 and Rule §7) are preserved verbatim and flagged inline as historical rather than rewritten, because restating a normative rule is a versioned amendment for the spec owner, not a registry refresh. One open question rides along: rapp-trust/1.0's sig_suite ladder (none → ed25519 → ecdsa-p256 → reserved-PQ) was attributed to rapp-eternity/1.0, but rapp/1 §10 defines no sig_suite field — it specifies detached-JWS alg EdDSA/ES256 instead. The ladder therefore has no upstream owner today and is recorded here rather than silently re-homed."
   ],
   "graph": {
     "spec": "rapp-crawl-graph/1.0",
@@ -984,7 +994,7 @@
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "d2c2974e2c48117551099ebe9bc11ce621e8788b7fafb024fa059f851f76044b",
+            "sha256": "352b776dd4872dda23687eae3da3e5fb4a4968edcf7d27ffe19408f2fb15ab2c",
             "integrity": "sha256"
           }
         ],
@@ -1058,7 +1068,7 @@
         ],
         "display": {
           "layer": "kernel",
-          "summary": "The kernel + its governance: the frozen single-file brainstem (rapp-agent/1.0, GRAIL=kody-w/rapp-installer; kody-w/RAPP is the reference distro pinning it via rapp-distro/1.0). Specs: rapp-kernel/1.0, rapp-auth/1.0, rapp-kernel-boundary/1.0, rapp-runtime-parity/1.0, rapp-canon/1.0, rapp-cubby/1.0, rapp-trust/1.0, rapp-substrate-trust/1.0, rapp-eternity/1.0 (identity), rapp-distro/1.0 (distros), rapp-fleet-chat/1.0 (fleet over /chat), rapp-metropolis/1.0, rapp-stores/1.0, brainstem-egg/2.3. The kernel never breaks userspace.",
+          "summary": "The kernel + its governance: the frozen single-file brainstem (rapp-agent/1.0, GRAIL=kody-w/rapp-installer; kody-w/RAPP is the reference distro pinning it via rapp-distro/1.0). Specs: rapp-kernel/1.0, rapp-auth/1.0, rapp-kernel-boundary/1.0, rapp-runtime-parity/1.0, rapp-canon/1.0, rapp-cubby/1.0, rapp-trust/1.0, rapp-substrate-trust/1.0, rapp-distro/1.0 (distros), rapp-fleet-chat/1.0 (fleet over /chat), rapp-metropolis/1.0, rapp-stores/1.0, brainstem-egg/2.3. The kernel never breaks userspace.",
           "protocols": [
             "brainstem-egg/2.3",
             "rapp-auth/1.0",
@@ -1066,7 +1076,6 @@
             "rapp-canon/1.0",
             "rapp-cubby/1.0",
             "rapp-distro/1.0",
-            "rapp-eternity/1.0",
             "rapp-fleet-chat/1.0",
             "rapp-kernel-boundary/1.0",
             "rapp-kernel/1.0",
@@ -1102,7 +1111,7 @@
           "protocols": [
             "rapp-ecosystem-spec/1.0 (rapp-map)",
             "rapp-grail-scan/1.0 (rapp-god)",
-            "rapp-eternity/1.0 (owned by kody-w/rapp-eternity; mirrored in RAPP-Bible)",
+            "rapp/1 (identity authority — kody-w/rapp-1 SPEC.md §6; RAPP-Bible mirrors the RETIRED rapp-eternity/1.0 narrative, which is history, not current law)",
             "rapp_docs (live renderer, no slug)"
           ]
         }
@@ -1189,11 +1198,12 @@
         ],
         "display": {
           "layer": "identity (who an agent IS + confidentiality)",
-          "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood §8). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp-eternity/1.0: a sha256 content-address (PKI-FREE); gh-collaborator is the default ownership; a keypair is OPTIONAL sovereignty, NEVER required. The rappid string itself (rappid:@owner/slug:64hex, rapp-eternity/1.0) underpins both but is owned by kody-w/rapp-eternity (RAPP-Bible holds a mirror) — an organizational seam.",
+          "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood §8). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp/1 §6, in kody-w/rapp-1 — SPEC.md pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b). §6.1 leaves the STRING untouched: rappid:@owner/slug:64hex is still the only conformant form, so nothing that merely EMITS a rappid is broken. §6.2 changed MINTING: the 64-hex tail is minted exactly ONCE and is then immutable — keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER) — and a producer MUST NOT derive the tail from owner/slug or any name. Keys stay OPTIONAL (keyless minting is a first-class branch), so gh-collaborator remains the default ownership and a keypair remains sovereignty, NEVER a requirement. rapp-eternity/1.0 — which taught the sha256 CONTENT-ADDRESS tail — is RETIRED as of 2026-07-17 (kody-w/rapp-eternity commit 9c970a1e; its SPEC.md is now a tombstone reading 'RETIRED · SUBORDINATE TO RAPP · NON-NORMATIVE'). Read it as history; never cite it as current or as a compatibility authority. Anything still COMPUTING a tail by hashing its own content is now non-conformant even though the emitted string still looks right.",
           "protocols": [
+            "rapp/1 (canonical identity — §6 of kody-w/rapp-1 SPEC.md; also owns canonicalization, content addressing, the frame, the wire and the egg)",
             "rapp-sealed/1.0",
             "rapp-moment/1.0",
-            "rapp-eternity/1.0 (rappid string; cross-ref to map layer)"
+            "rapp-eternity/1.0 (RETIRED 2026-07-17 — historical record only)"
           ]
         }
       },
@@ -2337,7 +2347,7 @@
           "spec_id": "rapp-moment/1.0",
           "repo": "kody-w/rapp-moment",
           "layer": "identity",
-          "purpose": "Standard for a serverless cryptographic living social primitive: a 'Moment' is simultaneously a post, an exact UTC instant, and a 100-frame holographic organism — all static CDN data, identity = the rappid sha256 content-address (rapp-eternity/1.0); an OPTIONAL ECDSA P-256 keypair may sign for ownership (never required). Implementation-free; engine lives in kody-w/rapp-hologram.",
+          "purpose": "Standard for a serverless cryptographic living social primitive: a 'Moment' is simultaneously a post, an exact UTC instant, and a 100-frame holographic organism — all static CDN data; an OPTIONAL ECDSA P-256 keypair may sign for ownership (never required). Implementation-free; engine lives in kody-w/rapp-hologram. IDENTITY CAVEAT: SPEC.md line 6 still defers the entire identity model to the RETIRED rapp-eternity/1.0 sha256 content-address. The live authority is rapp/1 §6 (kody-w/rapp-1): the rappid string is unchanged, but §6.2 mint-once replaces content-derived tails.",
           "when_to_use": "When building an interoperable backend-free client for the holographic social network (mint/play/own/embed Moments), or you need the normative wire format + conformance rules.",
           "entry_point": "SPEC.md + CONFORMANCE.md in repo. Reference engine: kody-w/rapp-hologram. Play: ?m=<base64url(JSON)>; dial: ?dial=<pk>. License: PolyForm-NC 1.0.0 + trademarked marks (NOT MIT)."
         }
@@ -3565,13 +3575,77 @@
         }
       },
       {
+        "id": "protocol:kody-w/rapp-1/rapp/1",
+        "type": "protocol",
+        "label": "rapp/1",
+        "repo": "kody-w/rapp-1",
+        "canonical_protocol_identity": "rapp/1",
+        "layer_id": "layer:identity",
+        "lifecycle": "active",
+        "status": "resolved",
+        "materiality": "required",
+        "material_profile": "registry-protocol",
+        "required_source_roles": [
+          "canonical_material"
+        ],
+        "sources": [
+          {
+            "role": "canonical_material",
+            "required": true,
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-1/6723c7add2aed36bb68992fc71a56b0a4bd5ad81/SPEC.md",
+            "availability": "declared",
+            "read_only": true,
+            "method": "GET"
+          }
+        ],
+        "entry_points": [
+          {
+            "kind": "canonical_read",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-1/6723c7add2aed36bb68992fc71a56b0a4bd5ad81/SPEC.md",
+            "method": "GET",
+            "read_only": true,
+            "safe_for_crawl": true
+          },
+          {
+            "kind": "repository_read",
+            "target": "https://github.com/kody-w/rapp-1",
+            "method": "GET",
+            "read_only": true,
+            "safe_for_crawl": true
+          },
+          {
+            "kind": "display_only",
+            "display": "read SPEC.md §6 in kody-w/rapp-1. Pinned authority: kody-w/rapp-1@6723c7add2aed36bb68992fc71a56b0a4bd5ad81 — SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b (the same pin rapp-map/RAPP1_AUTHORITY.json records; structural pin only).",
+            "read_only": false,
+            "safe_for_crawl": false,
+            "policy": "never_execute"
+          }
+        ],
+        "conformance": "not_assessed",
+        "aliases": [
+          "kody-w/rapp-1",
+          "rapp-1",
+          "rapp/1"
+        ],
+        "display": {
+          "registry_index": 40,
+          "spec_id": "rapp/1",
+          "repo": "kody-w/rapp-1",
+          "purpose": "rapp/1 (RAPP Protocol Suite, rev-5) — the unified normative specification and the CANONICAL identity authority. §6 owns the rappid: §6.1 the unchanged rappid:@owner/slug:64hex grammar, §6.2 mint-once minting (keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER); a producer MUST NOT derive the tail from owner/slug or any name), §6.3 canonicalize-on-read and the owner-authorized re-anchor. It also owns §4 canonicalization (JCS), §5 domain-separated content addressing, §7 the frame, §8 the wire, §9 the egg and §10 detached-JWS signatures. It takes over from rapp-eternity/1.0 (retired 2026-07-17) and consolidates rapp-frame/2.0, rapp-frame/2.1, rapp-rappid-spec/2.0, rapp-protocol/1.0 and the scattered egg specs.",
+          "when_to_use": "Whenever you mint, read, canonicalize or verify a rappid — §6 is the CANONICAL identity authority for the estate, in place of the RETIRED rapp-eternity/1.0. Emitters of rappid:@owner/slug:64hex are unaffected, because §6.1 keeps that grammar verbatim; MINTERS that hash their own content to build the 64-hex tail no longer conform and must move to §6.2 mint-once. Also the place to look for the frame, the wire, the egg and content addressing.",
+          "entry_point": "read SPEC.md §6 in kody-w/rapp-1. Pinned authority: kody-w/rapp-1@6723c7add2aed36bb68992fc71a56b0a4bd5ad81 — SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b (the same pin rapp-map/RAPP1_AUTHORITY.json records; structural pin only).",
+          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-1/6723c7add2aed36bb68992fc71a56b0a4bd5ad81/SPEC.md",
+          "layer": "identity"
+        }
+      },
+      {
         "id": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
         "type": "protocol",
         "label": "rapp-eternity/1.0",
         "repo": "kody-w/rapp-eternity",
         "canonical_protocol_identity": "rapp-eternity/1.0",
-        "layer_id": "layer:kernel",
-        "lifecycle": "active",
+        "layer_id": "layer:identity",
+        "lifecycle": "deprecated",
         "status": "resolved",
         "materiality": "required",
         "material_profile": "registry-protocol",
@@ -3605,7 +3679,7 @@
           },
           {
             "kind": "display_only",
-            "display": "read SPEC.md in kody-w/rapp-eternity",
+            "display": "read SPEC.md in kody-w/rapp-eternity for the historical record only — the live identity authority is SPEC.md §6 in kody-w/rapp-1",
             "read_only": false,
             "safe_for_crawl": false,
             "policy": "never_execute"
@@ -3618,13 +3692,13 @@
           "rapp-eternity/1.0"
         ],
         "display": {
-          "registry_index": 40,
+          "registry_index": 41,
           "spec_id": "rapp-eternity/1.0",
           "repo": "kody-w/rapp-eternity",
-          "role": "rapp-eternity/1.0 — The Rappid Identity & Ownership Standard",
+          "role": "rapp-eternity/1.0 — RETIRED historical identity standard, superseded by rapp/1 §6 in kody-w/rapp-1. Retired 2026-07-17 (commit 9c970a1e, then 17bb6d21); SPEC.md is now a tombstone declaring itself 'RETIRED · SUBORDINATE TO RAPP · NON-NORMATIVE'. Its content-address minting rule and its estate-wide identity authority are both withdrawn. Read for history; do not implement it, cite it as current, or treat it as a compatibility authority.",
           "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-eternity/main/SPEC.md",
-          "entry_point": "read SPEC.md in kody-w/rapp-eternity",
-          "layer": "kernel"
+          "entry_point": "read SPEC.md in kody-w/rapp-eternity for the historical record only — the live identity authority is SPEC.md §6 in kody-w/rapp-1",
+          "layer": "identity"
         }
       },
       {
@@ -3681,7 +3755,7 @@
           "rapp-fleet-chat/1.0"
         ],
         "display": {
-          "registry_index": 41,
+          "registry_index": 42,
           "spec_id": "rapp-fleet-chat/1.0",
           "repo": "kody-w/leviathan",
           "role": "RAPP Fleet-Chat — `rapp-fleet-chat/1.0`",
@@ -3744,7 +3818,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 42,
+          "registry_index": 43,
           "spec_id": "rapp-kernel/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "rapp-kernel/1.0",
@@ -3807,7 +3881,7 @@
           "rapp-metropolis/1.0"
         ],
         "display": {
-          "registry_index": 43,
+          "registry_index": 44,
           "spec_id": "rapp-metropolis/1.0",
           "repo": "kody-w/rapp-estate",
           "role": "rapp-metropolis/1.0",
@@ -3870,7 +3944,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 44,
+          "registry_index": 45,
           "spec_id": "rapp-auth/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "rapp-auth/1.0 — The Brainstem Auth Chain",
@@ -3933,7 +4007,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 45,
+          "registry_index": 46,
           "spec_id": "rapp-kernel-boundary/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "rapp-kernel-boundary/1.0 — The Kernel Network Trust Boundary",
@@ -3996,10 +4070,10 @@
           "rapp-trust/1.0"
         ],
         "display": {
-          "registry_index": 46,
+          "registry_index": 47,
           "spec_id": "rapp-trust/1.0",
           "repo": "kody-w/rapp-spine",
-          "role": "Trust & ownership — defers to rapp-eternity/1.0 (content-address identity; keypair optional)",
+          "role": "Trust & ownership — defers identity to rapp/1 §6 (mint-once; keyless or keyed; keypair still optional). Its three-layer model (L0 keyless identity / L1 gh-collaborator default / L2 optional keypair) is unaffected, but the rapp-eternity/1.0 content-address minting rule it quoted is retired.",
           "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/TRUST_AND_OWNERSHIP.md",
           "entry_point": "read specs/TRUST_AND_OWNERSHIP.md in kody-w/rapp-spine",
           "layer": "kernel"
@@ -4059,10 +4133,10 @@
           "rapp-substrate-trust/1.0"
         ],
         "display": {
-          "registry_index": 47,
+          "registry_index": 48,
           "spec_id": "rapp-substrate-trust/1.0",
           "repo": "kody-w/rapp-spine",
-          "role": "The Substrate Trust Model — `rapp-substrate-trust/1.0`",
+          "role": "The Substrate Trust Model — `rapp-substrate-trust/1.0`. Consumes identity only; its identity deferral now reads rapp/1 §6, not the retired rapp-eternity/1.0.",
           "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/SUBSTRATE_TRUST.md",
           "entry_point": "read specs/SUBSTRATE_TRUST.md in kody-w/rapp-spine",
           "layer": "kernel"
@@ -4122,7 +4196,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 48,
+          "registry_index": 49,
           "spec_id": "rapp-cubby/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "The Cubby Shelf & the Super-RAR",
@@ -4185,7 +4259,7 @@
           "rapp_store"
         ],
         "display": {
-          "registry_index": 49,
+          "registry_index": 50,
           "spec_id": "rapp-stores/1.0",
           "repo": "kody-w/RAPP_Store",
           "role": "RAPP Stores — The Three-Store Topology",
@@ -4248,7 +4322,7 @@
           "rapp-egg-hub"
         ],
         "display": {
-          "registry_index": 50,
+          "registry_index": 51,
           "spec_id": "brainstem-egg/2.3",
           "repo": "kody-w/rapp-egg-hub",
           "role": "The `.egg` Cartridge Family & Multi-Scale Hatch Contract",
@@ -4311,7 +4385,7 @@
           "rapp-payphone-dial/1.0"
         ],
         "display": {
-          "registry_index": 51,
+          "registry_index": 52,
           "spec_id": "rapp-payphone-dial/1.0",
           "repo": "kody-w/rapp-neighborhood-protocol",
           "role": "PAYPHONE.md",
@@ -4374,7 +4448,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 52,
+          "registry_index": 53,
           "spec_id": "rapp-runtime-parity/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "rapp-runtime-parity/1.0",
@@ -4437,7 +4511,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 53,
+          "registry_index": 54,
           "spec_id": "rapp-canon/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "rapp-canon/1.0 — see kody-w/rapp-spine",
@@ -4500,7 +4574,7 @@
           "rapp-distro/1.0"
         ],
         "display": {
-          "registry_index": 54,
+          "registry_index": 55,
           "spec_id": "rapp-distro/1.0",
           "repo": "kody-w/rapp-distro",
           "role": "The RAPP distro standard — a distro = the unmodified pinned grail kernel + a userland; spawn permissionlessly; freeze CI proves the kernel is unmodified. Grail=rapp-installer; RAPP is the reference distro.",
@@ -4565,7 +4639,7 @@
           "rapp-roadmap/1.0"
         ],
         "display": {
-          "registry_index": 55,
+          "registry_index": 56,
           "spec_id": "rapp-roadmap/1.0",
           "repo": "kody-w/rapp-roadmap",
           "role": "The grounded 5-phase ecosystem roadmap (re-anchored on the metropolis north star).",
@@ -4628,7 +4702,7 @@
           "rapp-roadmap"
         ],
         "display": {
-          "registry_index": 56,
+          "registry_index": 57,
           "spec_id": "rapp-backlog/1.0",
           "repo": "kody-w/rapp-roadmap",
           "role": "The adversarial hardening backlog (165 wrenches + pre-solves).",
@@ -4691,7 +4765,7 @@
           "rar"
         ],
         "display": {
-          "registry_index": 57,
+          "registry_index": 58,
           "spec_id": "rapp-registry/1.0",
           "repo": "kody-w/RAR",
           "layer": "distribution",
@@ -4754,7 +4828,7 @@
           "rapp-burrow/1.0"
         ],
         "display": {
-          "registry_index": 58,
+          "registry_index": 59,
           "spec_id": "rapp-burrow/1.0",
           "repo": "kody-w/rapp-burrow",
           "layer": "distribution",
@@ -4946,6 +5020,43 @@
         "aliases": [
           "kody-w/rapp",
           "rapp"
+        ]
+      },
+      {
+        "id": "repo:kody-w/rapp-1",
+        "type": "repository",
+        "label": "kody-w/rapp-1",
+        "repo": "kody-w/rapp-1",
+        "lifecycle": "active",
+        "status": "represented",
+        "materiality": "required",
+        "material_profile": "repository",
+        "required_source_roles": [
+          "repository_identity"
+        ],
+        "sources": [
+          {
+            "role": "repository_identity",
+            "required": true,
+            "target": "https://github.com/kody-w/rapp-1",
+            "availability": "declared",
+            "read_only": true,
+            "method": "GET"
+          }
+        ],
+        "entry_points": [
+          {
+            "kind": "repository_read",
+            "target": "https://github.com/kody-w/rapp-1",
+            "method": "GET",
+            "read_only": true,
+            "safe_for_crawl": true
+          }
+        ],
+        "conformance": "not_assessed",
+        "aliases": [
+          "kody-w/rapp-1",
+          "rapp-1"
         ]
       },
       {
@@ -7873,7 +7984,7 @@
           "use": [
             "rapp-moment/1.0"
           ],
-          "why": "A Moment is a post + exact UTC instant + 100-frame organism, all static CDN data; identity = the rappid sha256 content-address (rapp-eternity/1.0); an OPTIONAL ECDSA P-256 keypair may sign for ownership (never required). Engine is rapp-hologram. NOTE: PolyForm-NC + trademarked marks, unlike the MIT cluster."
+          "why": "A Moment is a post + exact UTC instant + 100-frame organism, all static CDN data; an OPTIONAL ECDSA P-256 keypair may sign for ownership (never required). Engine is rapp-hologram. IDENTITY CAVEAT: rapp-moment/1.0 SPEC.md still defers its whole identity model to the RETIRED rapp-eternity/1.0 sha256 content-address — a dangling normative reference. The live rule is rapp/1 §6.2 mint-once (kody-w/rapp-1); the emitted rappid:@owner/slug:64hex string is unchanged, but deriving the tail from content is no longer conformant. NOTE: PolyForm-NC + trademarked marks, unlike the MIT cluster."
         }
       },
       {
@@ -7955,7 +8066,7 @@
           "use": [
             "rapp-map (rapp-ecosystem-spec/1.0)",
             "rapp-god (rapp-grail-scan/1.0)",
-            "RAPP-Bible (rapp-eternity/1.0)",
+            "RAPP-Bible (synthesized narrative)",
             "rapp_docs"
           ],
           "why": "Crawl the map layer first: rapp-map = WHERE a concept lives; rapp-god = every-version drift observatory + content-addressed fallback frames; RAPP-Bible = synthesized human narrative; rapp_docs = live raw spec text. When the legs disagree, ecosystem-spec.json wins."
@@ -8102,7 +8213,7 @@
         "target_ids": [
           "protocol:kody-w/rapp-spine/rapp-kernel/1.0",
           "protocol:kody-w/rapp-spine/rapp-canon/1.0",
-          "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
+          "protocol:kody-w/rapp-1/rapp/1",
           "protocol:kody-w/rapp-distro/rapp-distro/1.0",
           "protocol:kody-w/leviathan/rapp-fleet-chat/1.0"
         ],
@@ -8120,11 +8231,11 @@
           "use": [
             "rapp-kernel/1.0",
             "rapp-canon/1.0",
-            "rapp-eternity/1.0",
+            "rapp/1",
             "rapp-distro/1.0",
             "rapp-fleet-chat/1.0"
           ],
-          "why": "The kernel/governance vertebra: the frozen ABI + the constitution + identity + the distro model + the canonical fleet wire. Grail=rapp-installer; RAPP is a distro."
+          "why": "The kernel/governance vertebra: the frozen ABI + the constitution + identity (rapp/1 §6 mint-once, in kody-w/rapp-1 — NOT the retired rapp-eternity/1.0) + the distro model + the canonical fleet wire. Grail=rapp-installer; RAPP is a distro."
         }
       },
       {
@@ -8137,7 +8248,7 @@
           "protocol:kody-w/rapp-distro/rapp-distro/1.0",
           "protocol:kody-w/leviathan/rapp-fleet-chat/1.0",
           "protocol:kody-w/rapp-spine/rapp-runtime-parity/1.0",
-          "protocol:kody-w/rapp-eternity/rapp-eternity/1.0"
+          "protocol:kody-w/rapp-1/rapp/1"
         ],
         "lifecycle": "active",
         "status": "resolved",
@@ -8155,9 +8266,9 @@
             "rapp-distro/1.0",
             "rapp-fleet-chat/1.0",
             "rapp-runtime-parity/1.0",
-            "rapp-eternity/1.0"
+            "rapp/1"
           ],
-          "why": "The kernel/governance vertebra's load-bearing specs: metropolis mesh composition, the distro pin model, the canonical fleet wire, T1/T2 runtime parity, and PKI-free identity."
+          "why": "The kernel/governance vertebra's load-bearing specs: metropolis mesh composition, the distro pin model, the canonical fleet wire, T1/T2 runtime parity, and rapp/1 §6 mint-once identity (keyless minting keeps the default PKI-free; a keypair is still optional)."
         }
       },
       {
@@ -8576,9 +8687,9 @@
         }
       },
       {
-        "id": "issue:collision:26e1b3951eb1920f",
+        "id": "issue:collision:1a5b56ac037ab2b1",
         "type": "issue",
-        "label": "RAPPID IDENTITY REPRESENTATIONAL SEAMS: multiple on-the-wire forms coexist — rappid:<birth-slug>:<64hex> (rapp-egg-hub v2.0), rappid:@owner/slug:<64hex> (rapp-eternity/1.0 canonical), rappid:v2:<kind>:@owner/slug:<hex> (rapp-estate), rappid:v3:<base64url(SHA-256(pub))> (rapp-commons). rapp-commons' event SCHEMA and its PROTOCOL.md even show different forms. Rule (per the compatibility contract): READ all legacy forms forever, EMIT only canonical, join on the hash — never rewrite identity in place.",
+        "label": "RAPPID IDENTITY REPRESENTATIONAL SEAMS: multiple on-the-wire forms coexist — rappid:<birth-slug>:<64hex> (rapp-egg-hub v2.0), rappid:@owner/slug:<64hex> (canonical, now rapp/1 §6.1 — formerly attributed to the retired rapp-eternity/1.0; the grammar is byte-identical, only its owner moved), rappid:v2:<kind>:@owner/slug:<hex> (rapp-estate), rappid:v3:<base64url(SHA-256(pub))> (rapp-commons). rapp-commons' event SCHEMA and its PROTOCOL.md even show different forms. Rule (per the compatibility contract): READ all legacy forms forever, EMIT only canonical, join on the hash — never rewrite identity in place.",
         "lifecycle": "not_applicable",
         "status": "informational",
         "materiality": "informational",
@@ -8589,10 +8700,10 @@
         "conformance": "not_applicable",
         "aliases": [],
         "display": {
-          "id": "issue:collision:26e1b3951eb1920f",
+          "id": "issue:collision:1a5b56ac037ab2b1",
           "type": "issue",
           "kind": "collision",
-          "summary": "RAPPID IDENTITY REPRESENTATIONAL SEAMS: multiple on-the-wire forms coexist — rappid:<birth-slug>:<64hex> (rapp-egg-hub v2.0), rappid:@owner/slug:<64hex> (rapp-eternity/1.0 canonical), rappid:v2:<kind>:@owner/slug:<hex> (rapp-estate), rappid:v3:<base64url(SHA-256(pub))> (rapp-commons). rapp-commons' event SCHEMA and its PROTOCOL.md even show different forms. Rule (per the compatibility contract): READ all legacy forms forever, EMIT only canonical, join on the hash — never rewrite identity in place.",
+          "summary": "RAPPID IDENTITY REPRESENTATIONAL SEAMS: multiple on-the-wire forms coexist — rappid:<birth-slug>:<64hex> (rapp-egg-hub v2.0), rappid:@owner/slug:<64hex> (canonical, now rapp/1 §6.1 — formerly attributed to the retired rapp-eternity/1.0; the grammar is byte-identical, only its owner moved), rappid:v2:<kind>:@owner/slug:<hex> (rapp-estate), rappid:v3:<base64url(SHA-256(pub))> (rapp-commons). rapp-commons' event SCHEMA and its PROTOCOL.md even show different forms. Rule (per the compatibility contract): READ all legacy forms forever, EMIT only canonical, join on the hash — never rewrite identity in place.",
           "severity": "advisory",
           "blocking": false,
           "related_node_ids": [
@@ -8602,9 +8713,9 @@
         }
       },
       {
-        "id": "issue:clarification:fc10140cb8a99330",
+        "id": "issue:clarification:9256aa44a3f53509",
         "type": "issue",
-        "label": "ETERNITY HOME (resolved): rapp-eternity/1.0 and the canonical rappid:@owner/slug:64hex identity standard are owned by kody-w/rapp-eternity; RAPP-Bible is a narrative mirror, not the owner. Identity is cross-referenced from the map/kernel layers even though sealing and Moment profiles live in the identity layer.",
+        "label": "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
         "lifecycle": "not_applicable",
         "status": "informational",
         "materiality": "informational",
@@ -8615,14 +8726,16 @@
         "conformance": "not_applicable",
         "aliases": [],
         "display": {
-          "id": "issue:clarification:fc10140cb8a99330",
+          "id": "issue:clarification:9256aa44a3f53509",
           "type": "issue",
           "kind": "clarification",
-          "summary": "ETERNITY HOME (resolved): rapp-eternity/1.0 and the canonical rappid:@owner/slug:64hex identity standard are owned by kody-w/rapp-eternity; RAPP-Bible is a narrative mirror, not the owner. Identity is cross-referenced from the map/kernel layers even though sealing and Moment profiles live in the identity layer.",
+          "summary": "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
           "severity": "advisory",
           "blocking": false,
           "related_node_ids": [
+            "protocol:kody-w/rapp-1/rapp/1",
             "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
+            "repo:kody-w/rapp-1",
             "repo:kody-w/rapp-eternity"
           ],
           "source": "registry.collisions_and_gaps"
@@ -8760,6 +8873,38 @@
           "related_node_ids": [
             "protocol:kody-w/leviathan/leviathan/1.0",
             "protocol:kody-w/leviathan/rapp-fleet-chat/1.0"
+          ],
+          "source": "registry.collisions_and_gaps"
+        }
+      },
+      {
+        "id": "issue:clarification:29f0ff618cf3db54",
+        "type": "issue",
+        "label": "DANGLING IDENTITY DEFERRALS AFTER THE ETERNITY RETIREMENT (open, tracked): three live documents still defer their identity model to the retired rapp-eternity/1.0 and have not been amended by their owners. (1) kody-w/rapp-moment SPEC.md line 6 — 'Identity defers to rapp-eternity/1.0 (the sole identity standard). A Moment's rappid is the PKI-free SHA-256 content-address of its canonical body' — exactly the rule §6.2 retires; tracked upstream as kody-w/rapp-moment#2. (2) kody-w/rapp-egg-hub EGG_FAMILY.md:209 cites the 'eternity standard' for the canonical string form; lower urgency, because §6.1 preserves that form unchanged. (3) this repo's own specs/TRUST_AND_OWNERSHIP.md and specs/SUBSTRATE_TRUST.md carried the same deferral; both now open with a retirement notice and point every cross-reference, depends-on and see-also at rapp/1 §6. Their two superseded content-address minting sentences (TRUST_AND_OWNERSHIP §1 and Rule §7) are preserved verbatim and flagged inline as historical rather than rewritten, because restating a normative rule is a versioned amendment for the spec owner, not a registry refresh. One open question rides along: rapp-trust/1.0's sig_suite ladder (none → ed25519 → ecdsa-p256 → reserved-PQ) was attributed to rapp-eternity/1.0, but rapp/1 §10 defines no sig_suite field — it specifies detached-JWS alg EdDSA/ES256 instead. The ladder therefore has no upstream owner today and is recorded here rather than silently re-homed.",
+        "lifecycle": "not_applicable",
+        "status": "informational",
+        "materiality": "informational",
+        "material_profile": "issue",
+        "required_source_roles": [],
+        "sources": [],
+        "entry_points": [],
+        "conformance": "not_applicable",
+        "aliases": [],
+        "display": {
+          "id": "issue:clarification:29f0ff618cf3db54",
+          "type": "issue",
+          "kind": "clarification",
+          "summary": "DANGLING IDENTITY DEFERRALS AFTER THE ETERNITY RETIREMENT (open, tracked): three live documents still defer their identity model to the retired rapp-eternity/1.0 and have not been amended by their owners. (1) kody-w/rapp-moment SPEC.md line 6 — 'Identity defers to rapp-eternity/1.0 (the sole identity standard). A Moment's rappid is the PKI-free SHA-256 content-address of its canonical body' — exactly the rule §6.2 retires; tracked upstream as kody-w/rapp-moment#2. (2) kody-w/rapp-egg-hub EGG_FAMILY.md:209 cites the 'eternity standard' for the canonical string form; lower urgency, because §6.1 preserves that form unchanged. (3) this repo's own specs/TRUST_AND_OWNERSHIP.md and specs/SUBSTRATE_TRUST.md carried the same deferral; both now open with a retirement notice and point every cross-reference, depends-on and see-also at rapp/1 §6. Their two superseded content-address minting sentences (TRUST_AND_OWNERSHIP §1 and Rule §7) are preserved verbatim and flagged inline as historical rather than rewritten, because restating a normative rule is a versioned amendment for the spec owner, not a registry refresh. One open question rides along: rapp-trust/1.0's sig_suite ladder (none → ed25519 → ecdsa-p256 → reserved-PQ) was attributed to rapp-eternity/1.0, but rapp/1 §10 defines no sig_suite field — it specifies detached-JWS alg EdDSA/ES256 instead. The ladder therefore has no upstream owner today and is recorded here rather than silently re-homed.",
+          "severity": "advisory",
+          "blocking": false,
+          "related_node_ids": [
+            "protocol:kody-w/rapp-egg-hub/brainstem-egg/2.3",
+            "protocol:kody-w/rapp-egg-hub/rapp-rappid-spec/2.0",
+            "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
+            "protocol:kody-w/rapp-moment/rapp-moment/1.0",
+            "protocol:kody-w/rapp-spine/rapp-trust/1.0",
+            "repo:kody-w/rapp-egg-hub",
+            "repo:kody-w/rapp-moment"
           ],
           "source": "registry.collisions_and_gaps"
         }
@@ -9895,6 +10040,11 @@
       {
         "from": "artifact:registry.json",
         "type": "declares",
+        "to": "protocol:kody-w/rapp-1/rapp/1"
+      },
+      {
+        "from": "artifact:registry.json",
+        "type": "declares",
         "to": "protocol:kody-w/rapp-agents/entry"
       },
       {
@@ -10368,9 +10518,64 @@
         "to": "protocol:kody-w/rapp-vneighborhood/rapp-vneighborhood/1.0"
       },
       {
+        "from": "issue:clarification:29f0ff618cf3db54",
+        "type": "affects",
+        "to": "protocol:kody-w/rapp-egg-hub/brainstem-egg/2.3"
+      },
+      {
+        "from": "issue:clarification:29f0ff618cf3db54",
+        "type": "affects",
+        "to": "protocol:kody-w/rapp-egg-hub/rapp-rappid-spec/2.0"
+      },
+      {
+        "from": "issue:clarification:29f0ff618cf3db54",
+        "type": "affects",
+        "to": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0"
+      },
+      {
+        "from": "issue:clarification:29f0ff618cf3db54",
+        "type": "affects",
+        "to": "protocol:kody-w/rapp-moment/rapp-moment/1.0"
+      },
+      {
+        "from": "issue:clarification:29f0ff618cf3db54",
+        "type": "affects",
+        "to": "protocol:kody-w/rapp-spine/rapp-trust/1.0"
+      },
+      {
+        "from": "issue:clarification:29f0ff618cf3db54",
+        "type": "affects",
+        "to": "repo:kody-w/rapp-egg-hub"
+      },
+      {
+        "from": "issue:clarification:29f0ff618cf3db54",
+        "type": "affects",
+        "to": "repo:kody-w/rapp-moment"
+      },
+      {
         "from": "issue:clarification:2d6d88887c6074b9",
         "type": "affects",
         "to": "spine:rapp-spine%2F1.1"
+      },
+      {
+        "from": "issue:clarification:9256aa44a3f53509",
+        "type": "affects",
+        "to": "protocol:kody-w/rapp-1/rapp/1"
+      },
+      {
+        "from": "issue:clarification:9256aa44a3f53509",
+        "type": "affects",
+        "to": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0"
+      },
+      {
+        "from": "issue:clarification:9256aa44a3f53509",
+        "type": "affects",
+        "to": "repo:kody-w/rapp-1"
+      },
+      {
+        "from": "issue:clarification:9256aa44a3f53509",
+        "type": "affects",
+        "to": "repo:kody-w/rapp-eternity"
       },
       {
         "from": "issue:clarification:c514ef934d2df0f1",
@@ -10378,17 +10583,7 @@
         "to": "spine:rapp-spine%2F1.1"
       },
       {
-        "from": "issue:clarification:fc10140cb8a99330",
-        "type": "affects",
-        "to": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0"
-      },
-      {
-        "from": "issue:clarification:fc10140cb8a99330",
-        "type": "affects",
-        "to": "repo:kody-w/rapp-eternity"
-      },
-      {
-        "from": "issue:collision:26e1b3951eb1920f",
+        "from": "issue:collision:1a5b56ac037ab2b1",
         "type": "affects",
         "to": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0"
       },
@@ -11084,6 +11279,21 @@
         "to": "repo:kody-w/openrappter"
       },
       {
+        "from": "protocol:kody-w/rapp-1/rapp/1",
+        "type": "has_issue",
+        "to": "issue:clarification:9256aa44a3f53509"
+      },
+      {
+        "from": "protocol:kody-w/rapp-1/rapp/1",
+        "type": "in_layer",
+        "to": "layer:identity"
+      },
+      {
+        "from": "protocol:kody-w/rapp-1/rapp/1",
+        "type": "owned_by",
+        "to": "repo:kody-w/rapp-1"
+      },
+      {
         "from": "protocol:kody-w/rapp-agents/entry",
         "type": "has_issue",
         "to": "issue:material:123b48a2a7534ccc"
@@ -11200,6 +11410,11 @@
       },
       {
         "from": "protocol:kody-w/rapp-egg-hub/brainstem-egg/2.3",
+        "type": "has_issue",
+        "to": "issue:clarification:29f0ff618cf3db54"
+      },
+      {
+        "from": "protocol:kody-w/rapp-egg-hub/brainstem-egg/2.3",
         "type": "in_layer",
         "to": "layer:kernel"
       },
@@ -11207,6 +11422,11 @@
         "from": "protocol:kody-w/rapp-egg-hub/brainstem-egg/2.3",
         "type": "owned_by",
         "to": "repo:kody-w/rapp-egg-hub"
+      },
+      {
+        "from": "protocol:kody-w/rapp-egg-hub/rapp-rappid-spec/2.0",
+        "type": "has_issue",
+        "to": "issue:clarification:29f0ff618cf3db54"
       },
       {
         "from": "protocol:kody-w/rapp-egg-hub/rapp-rappid-spec/2.0",
@@ -11251,17 +11471,22 @@
       {
         "from": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
         "type": "has_issue",
-        "to": "issue:clarification:fc10140cb8a99330"
+        "to": "issue:clarification:29f0ff618cf3db54"
       },
       {
         "from": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
         "type": "has_issue",
-        "to": "issue:collision:26e1b3951eb1920f"
+        "to": "issue:clarification:9256aa44a3f53509"
+      },
+      {
+        "from": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
+        "type": "has_issue",
+        "to": "issue:collision:1a5b56ac037ab2b1"
       },
       {
         "from": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
         "type": "in_layer",
-        "to": "layer:kernel"
+        "to": "layer:identity"
       },
       {
         "from": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
@@ -11437,6 +11662,11 @@
         "from": "protocol:kody-w/rapp-messaging/rapp-messaging/1.0",
         "type": "owned_by",
         "to": "repo:kody-w/rapp-messaging"
+      },
+      {
+        "from": "protocol:kody-w/rapp-moment/rapp-moment/1.0",
+        "type": "has_issue",
+        "to": "issue:clarification:29f0ff618cf3db54"
       },
       {
         "from": "protocol:kody-w/rapp-moment/rapp-moment/1.0",
@@ -11647,6 +11877,11 @@
         "from": "protocol:kody-w/rapp-spine/rapp-substrate-trust/1.0",
         "type": "owned_by",
         "to": "repo:kody-w/rapp-spine"
+      },
+      {
+        "from": "protocol:kody-w/rapp-spine/rapp-trust/1.0",
+        "type": "has_issue",
+        "to": "issue:clarification:29f0ff618cf3db54"
       },
       {
         "from": "protocol:kody-w/rapp-spine/rapp-trust/1.0",
@@ -11982,9 +12217,9 @@
       {
         "from": "route:1afe64a4d9fc4176",
         "type": "routes_to",
-        "to": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
+        "to": "protocol:kody-w/rapp-1/rapp/1",
         "order": 4,
-        "display_target": "rapp-eternity/1.0"
+        "display_target": "rapp/1"
       },
       {
         "from": "route:1afe64a4d9fc4176",
@@ -12228,7 +12463,7 @@
         "type": "routes_to",
         "to": "evidence:foundation/spec_corpus/canonical_aggregate@kody-w/rapp-bible",
         "order": 2,
-        "display_target": "RAPP-Bible (rapp-eternity/1.0)"
+        "display_target": "RAPP-Bible (synthesized narrative)"
       },
       {
         "from": "route:88e4159f6c384c3d",
@@ -12395,9 +12630,9 @@
       {
         "from": "route:cb3515c2fac02e6b",
         "type": "routes_to",
-        "to": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
+        "to": "protocol:kody-w/rapp-1/rapp/1",
         "order": 2,
-        "display_target": "rapp-eternity/1.0"
+        "display_target": "rapp/1"
       },
       {
         "from": "route:cb3515c2fac02e6b",
@@ -12545,7 +12780,17 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "documents_issue",
+        "to": "issue:clarification:29f0ff618cf3db54"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "documents_issue",
         "to": "issue:clarification:2d6d88887c6074b9"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "documents_issue",
+        "to": "issue:clarification:9256aa44a3f53509"
       },
       {
         "from": "spine:rapp-spine%2F1.1",
@@ -12555,12 +12800,7 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "documents_issue",
-        "to": "issue:clarification:fc10140cb8a99330"
-      },
-      {
-        "from": "spine:rapp-spine%2F1.1",
-        "type": "documents_issue",
-        "to": "issue:collision:26e1b3951eb1920f"
+        "to": "issue:collision:1a5b56ac037ab2b1"
       },
       {
         "from": "spine:rapp-spine%2F1.1",
@@ -12995,6 +13235,11 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "inventories_repository",
+        "to": "repo:kody-w/rapp-1"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "inventories_repository",
         "to": "repo:kody-w/rapp-agents"
       },
       {
@@ -13289,6 +13534,7 @@
       "protocol:kody-w/rappcards/rappcards-binder/1.0",
       "protocol:kody-w/rapp-demos/rapp-demo/1.0",
       "protocol:kody-w/rapp-spine/rapp-spine/1.0",
+      "protocol:kody-w/rapp-1/rapp/1",
       "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
       "protocol:kody-w/leviathan/rapp-fleet-chat/1.0",
       "protocol:kody-w/rapp-spine/rapp-kernel/1.0",
@@ -13313,6 +13559,7 @@
       "repo:kody-w/leviathan",
       "repo:kody-w/openrappter",
       "repo:kody-w/rapp",
+      "repo:kody-w/rapp-1",
       "repo:kody-w/rapp-agents",
       "repo:kody-w/rapp-bible",
       "repo:kody-w/rapp-brainstem-sdk",
@@ -13415,13 +13662,14 @@
       "issue:clarification:0f9bdce8fcf3e42e",
       "issue:gap:4ca9be907b392155",
       "issue:clarification:c514ef934d2df0f1",
-      "issue:collision:26e1b3951eb1920f",
-      "issue:clarification:fc10140cb8a99330",
+      "issue:collision:1a5b56ac037ab2b1",
+      "issue:clarification:9256aa44a3f53509",
       "issue:clarification:2d6d88887c6074b9",
       "issue:collision:a6ea5c002cb735a4",
       "issue:collision:7efea7a02a39856f",
       "issue:collision:ca3f2e11b06efea8",
       "issue:security:dc174a64279000de",
+      "issue:clarification:29f0ff618cf3db54",
       "issue:material:a4ae4a7bb33464d5",
       "issue:material:6a2042e1ae168bcd",
       "issue:material:01cfb1e737509224",
@@ -13518,6 +13766,7 @@
         "protocol:kody-w/rappcards/rappcards-binder/1.0",
         "protocol:kody-w/rapp-demos/rapp-demo/1.0",
         "protocol:kody-w/rapp-spine/rapp-spine/1.0",
+        "protocol:kody-w/rapp-1/rapp/1",
         "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
         "protocol:kody-w/leviathan/rapp-fleet-chat/1.0",
         "protocol:kody-w/rapp-spine/rapp-kernel/1.0",
@@ -13542,6 +13791,7 @@
         "repo:kody-w/leviathan",
         "repo:kody-w/openrappter",
         "repo:kody-w/rapp",
+        "repo:kody-w/rapp-1",
         "repo:kody-w/rapp-agents",
         "repo:kody-w/rapp-bible",
         "repo:kody-w/rapp-brainstem-sdk",
@@ -13644,13 +13894,14 @@
         "issue:clarification:0f9bdce8fcf3e42e",
         "issue:gap:4ca9be907b392155",
         "issue:clarification:c514ef934d2df0f1",
-        "issue:collision:26e1b3951eb1920f",
-        "issue:clarification:fc10140cb8a99330",
+        "issue:collision:1a5b56ac037ab2b1",
+        "issue:clarification:9256aa44a3f53509",
         "issue:clarification:2d6d88887c6074b9",
         "issue:collision:a6ea5c002cb735a4",
         "issue:collision:7efea7a02a39856f",
         "issue:collision:ca3f2e11b06efea8",
         "issue:security:dc174a64279000de",
+        "issue:clarification:29f0ff618cf3db54",
         "issue:material:a4ae4a7bb33464d5",
         "issue:material:6a2042e1ae168bcd",
         "issue:material:01cfb1e737509224",
@@ -13834,10 +14085,10 @@
       "source": "registry.collisions_and_gaps"
     },
     {
-      "id": "issue:collision:26e1b3951eb1920f",
+      "id": "issue:collision:1a5b56ac037ab2b1",
       "type": "issue",
       "kind": "collision",
-      "summary": "RAPPID IDENTITY REPRESENTATIONAL SEAMS: multiple on-the-wire forms coexist — rappid:<birth-slug>:<64hex> (rapp-egg-hub v2.0), rappid:@owner/slug:<64hex> (rapp-eternity/1.0 canonical), rappid:v2:<kind>:@owner/slug:<hex> (rapp-estate), rappid:v3:<base64url(SHA-256(pub))> (rapp-commons). rapp-commons' event SCHEMA and its PROTOCOL.md even show different forms. Rule (per the compatibility contract): READ all legacy forms forever, EMIT only canonical, join on the hash — never rewrite identity in place.",
+      "summary": "RAPPID IDENTITY REPRESENTATIONAL SEAMS: multiple on-the-wire forms coexist — rappid:<birth-slug>:<64hex> (rapp-egg-hub v2.0), rappid:@owner/slug:<64hex> (canonical, now rapp/1 §6.1 — formerly attributed to the retired rapp-eternity/1.0; the grammar is byte-identical, only its owner moved), rappid:v2:<kind>:@owner/slug:<hex> (rapp-estate), rappid:v3:<base64url(SHA-256(pub))> (rapp-commons). rapp-commons' event SCHEMA and its PROTOCOL.md even show different forms. Rule (per the compatibility contract): READ all legacy forms forever, EMIT only canonical, join on the hash — never rewrite identity in place.",
       "severity": "advisory",
       "blocking": false,
       "related_node_ids": [
@@ -13846,14 +14097,16 @@
       "source": "registry.collisions_and_gaps"
     },
     {
-      "id": "issue:clarification:fc10140cb8a99330",
+      "id": "issue:clarification:9256aa44a3f53509",
       "type": "issue",
       "kind": "clarification",
-      "summary": "ETERNITY HOME (resolved): rapp-eternity/1.0 and the canonical rappid:@owner/slug:64hex identity standard are owned by kody-w/rapp-eternity; RAPP-Bible is a narrative mirror, not the owner. Identity is cross-referenced from the map/kernel layers even though sealing and Moment profiles live in the identity layer.",
+      "summary": "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
       "severity": "advisory",
       "blocking": false,
       "related_node_ids": [
+        "protocol:kody-w/rapp-1/rapp/1",
         "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
+        "repo:kody-w/rapp-1",
         "repo:kody-w/rapp-eternity"
       ],
       "source": "registry.collisions_and_gaps"
@@ -13921,6 +14174,24 @@
       "related_node_ids": [
         "protocol:kody-w/leviathan/leviathan/1.0",
         "protocol:kody-w/leviathan/rapp-fleet-chat/1.0"
+      ],
+      "source": "registry.collisions_and_gaps"
+    },
+    {
+      "id": "issue:clarification:29f0ff618cf3db54",
+      "type": "issue",
+      "kind": "clarification",
+      "summary": "DANGLING IDENTITY DEFERRALS AFTER THE ETERNITY RETIREMENT (open, tracked): three live documents still defer their identity model to the retired rapp-eternity/1.0 and have not been amended by their owners. (1) kody-w/rapp-moment SPEC.md line 6 — 'Identity defers to rapp-eternity/1.0 (the sole identity standard). A Moment's rappid is the PKI-free SHA-256 content-address of its canonical body' — exactly the rule §6.2 retires; tracked upstream as kody-w/rapp-moment#2. (2) kody-w/rapp-egg-hub EGG_FAMILY.md:209 cites the 'eternity standard' for the canonical string form; lower urgency, because §6.1 preserves that form unchanged. (3) this repo's own specs/TRUST_AND_OWNERSHIP.md and specs/SUBSTRATE_TRUST.md carried the same deferral; both now open with a retirement notice and point every cross-reference, depends-on and see-also at rapp/1 §6. Their two superseded content-address minting sentences (TRUST_AND_OWNERSHIP §1 and Rule §7) are preserved verbatim and flagged inline as historical rather than rewritten, because restating a normative rule is a versioned amendment for the spec owner, not a registry refresh. One open question rides along: rapp-trust/1.0's sig_suite ladder (none → ed25519 → ecdsa-p256 → reserved-PQ) was attributed to rapp-eternity/1.0, but rapp/1 §10 defines no sig_suite field — it specifies detached-JWS alg EdDSA/ES256 instead. The ladder therefore has no upstream owner today and is recorded here rather than silently re-homed.",
+      "severity": "advisory",
+      "blocking": false,
+      "related_node_ids": [
+        "protocol:kody-w/rapp-egg-hub/brainstem-egg/2.3",
+        "protocol:kody-w/rapp-egg-hub/rapp-rappid-spec/2.0",
+        "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
+        "protocol:kody-w/rapp-moment/rapp-moment/1.0",
+        "protocol:kody-w/rapp-spine/rapp-trust/1.0",
+        "repo:kody-w/rapp-egg-hub",
+        "repo:kody-w/rapp-moment"
       ],
       "source": "registry.collisions_and_gaps"
     },

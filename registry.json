@@ -1,7 +1,7 @@
 {
   "spec": "rapp-spine/1.0",
   "what": "A situational router over the full RAPP protocol stack. Fetch this, match your situation against `router`, follow to the protocol's entry_point. This is not a new protocol \u2014 it routes to existing ones.",
-  "generated": "2026-07-11",
+  "generated": "2026-08-04",
   "layers_order": [
     "kernel",
     "map",
@@ -15,7 +15,7 @@
   "layers": [
     {
       "layer": "kernel",
-      "summary": "The kernel + its governance: the frozen single-file brainstem (rapp-agent/1.0, GRAIL=kody-w/rapp-installer; kody-w/RAPP is the reference distro pinning it via rapp-distro/1.0). Specs: rapp-kernel/1.0, rapp-auth/1.0, rapp-kernel-boundary/1.0, rapp-runtime-parity/1.0, rapp-canon/1.0, rapp-cubby/1.0, rapp-trust/1.0, rapp-substrate-trust/1.0, rapp-eternity/1.0 (identity), rapp-distro/1.0 (distros), rapp-fleet-chat/1.0 (fleet over /chat), rapp-metropolis/1.0, rapp-stores/1.0, brainstem-egg/2.3. The kernel never breaks userspace.",
+      "summary": "The kernel + its governance: the frozen single-file brainstem (rapp-agent/1.0, GRAIL=kody-w/rapp-installer; kody-w/RAPP is the reference distro pinning it via rapp-distro/1.0). Specs: rapp-kernel/1.0, rapp-auth/1.0, rapp-kernel-boundary/1.0, rapp-runtime-parity/1.0, rapp-canon/1.0, rapp-cubby/1.0, rapp-trust/1.0, rapp-substrate-trust/1.0, rapp-distro/1.0 (distros), rapp-fleet-chat/1.0 (fleet over /chat), rapp-metropolis/1.0, rapp-stores/1.0, brainstem-egg/2.3. The kernel never breaks userspace.",
       "protocols": [
         "brainstem-egg/2.3",
         "rapp-auth/1.0",
@@ -23,7 +23,6 @@
         "rapp-canon/1.0",
         "rapp-cubby/1.0",
         "rapp-distro/1.0",
-        "rapp-eternity/1.0",
         "rapp-fleet-chat/1.0",
         "rapp-kernel-boundary/1.0",
         "rapp-kernel/1.0",
@@ -41,7 +40,7 @@
       "protocols": [
         "rapp-ecosystem-spec/1.0 (rapp-map)",
         "rapp-grail-scan/1.0 (rapp-god)",
-        "rapp-eternity/1.0 (owned by kody-w/rapp-eternity; mirrored in RAPP-Bible)",
+        "rapp/1 (identity authority \u2014 kody-w/rapp-1 SPEC.md \u00a76; RAPP-Bible mirrors the RETIRED rapp-eternity/1.0 narrative, which is history, not current law)",
         "rapp_docs (live renderer, no slug)"
       ]
     },
@@ -74,11 +73,12 @@
     },
     {
       "layer": "identity (who an agent IS + confidentiality)",
-      "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood \u00a78). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp-eternity/1.0: a sha256 content-address (PKI-FREE); gh-collaborator is the default ownership; a keypair is OPTIONAL sovereignty, NEVER required. The rappid string itself (rappid:@owner/slug:64hex, rapp-eternity/1.0) underpins both but is owned by kody-w/rapp-eternity (RAPP-Bible holds a mirror) \u2014 an organizational seam.",
+      "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood \u00a78). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp/1 \u00a76, in kody-w/rapp-1 \u2014 SPEC.md pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b). \u00a76.1 leaves the STRING untouched: rappid:@owner/slug:64hex is still the only conformant form, so nothing that merely EMITS a rappid is broken. \u00a76.2 changed MINTING: the 64-hex tail is minted exactly ONCE and is then immutable \u2014 keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER) \u2014 and a producer MUST NOT derive the tail from owner/slug or any name. Keys stay OPTIONAL (keyless minting is a first-class branch), so gh-collaborator remains the default ownership and a keypair remains sovereignty, NEVER a requirement. rapp-eternity/1.0 \u2014 which taught the sha256 CONTENT-ADDRESS tail \u2014 is RETIRED as of 2026-07-17 (kody-w/rapp-eternity commit 9c970a1e; its SPEC.md is now a tombstone reading 'RETIRED \u00b7 SUBORDINATE TO RAPP \u00b7 NON-NORMATIVE'). Read it as history; never cite it as current or as a compatibility authority. Anything still COMPUTING a tail by hashing its own content is now non-conformant even though the emitted string still looks right.",
       "protocols": [
+        "rapp/1 (canonical identity \u2014 \u00a76 of kody-w/rapp-1 SPEC.md; also owns canonicalization, content addressing, the frame, the wire and the egg)",
         "rapp-sealed/1.0",
         "rapp-moment/1.0",
-        "rapp-eternity/1.0 (rappid string; cross-ref to map layer)"
+        "rapp-eternity/1.0 (RETIRED 2026-07-17 \u2014 historical record only)"
       ]
     },
     {
@@ -233,7 +233,7 @@
       "use": [
         "rapp-moment/1.0"
       ],
-      "why": "A Moment is a post + exact UTC instant + 100-frame organism, all static CDN data; identity = the rappid sha256 content-address (rapp-eternity/1.0); an OPTIONAL ECDSA P-256 keypair may sign for ownership (never required). Engine is rapp-hologram. NOTE: PolyForm-NC + trademarked marks, unlike the MIT cluster."
+      "why": "A Moment is a post + exact UTC instant + 100-frame organism, all static CDN data; an OPTIONAL ECDSA P-256 keypair may sign for ownership (never required). Engine is rapp-hologram. IDENTITY CAVEAT: rapp-moment/1.0 SPEC.md still defers its whole identity model to the RETIRED rapp-eternity/1.0 sha256 content-address \u2014 a dangling normative reference. The live rule is rapp/1 \u00a76.2 mint-once (kody-w/rapp-1); the emitted rappid:@owner/slug:64hex string is unchanged, but deriving the tail from content is no longer conformant. NOTE: PolyForm-NC + trademarked marks, unlike the MIT cluster."
     },
     {
       "situation": "I run several brainstem nodes and want one mind to coordinate them as a signed fleet over the canonical /chat wire.",
@@ -256,7 +256,7 @@
       "use": [
         "rapp-map (rapp-ecosystem-spec/1.0)",
         "rapp-god (rapp-grail-scan/1.0)",
-        "RAPP-Bible (rapp-eternity/1.0)",
+        "RAPP-Bible (synthesized narrative)",
         "rapp_docs"
       ],
       "why": "Crawl the map layer first: rapp-map = WHERE a concept lives; rapp-god = every-version drift observatory + content-addressed fallback frames; RAPP-Bible = synthesized human narrative; rapp_docs = live raw spec text. When the legs disagree, ecosystem-spec.json wins."
@@ -305,11 +305,11 @@
       "use": [
         "rapp-kernel/1.0",
         "rapp-canon/1.0",
-        "rapp-eternity/1.0",
+        "rapp/1",
         "rapp-distro/1.0",
         "rapp-fleet-chat/1.0"
       ],
-      "why": "The kernel/governance vertebra: the frozen ABI + the constitution + identity + the distro model + the canonical fleet wire. Grail=rapp-installer; RAPP is a distro."
+      "why": "The kernel/governance vertebra: the frozen ABI + the constitution + identity (rapp/1 \u00a76 mint-once, in kody-w/rapp-1 \u2014 NOT the retired rapp-eternity/1.0) + the distro model + the canonical fleet wire. Grail=rapp-installer; RAPP is a distro."
     },
     {
       "situation": "How do neighborhoods/estates aggregate into a metropolis? Or: how does a distro pin the kernel, or fleet talk over /chat?",
@@ -318,9 +318,9 @@
         "rapp-distro/1.0",
         "rapp-fleet-chat/1.0",
         "rapp-runtime-parity/1.0",
-        "rapp-eternity/1.0"
+        "rapp/1"
       ],
-      "why": "The kernel/governance vertebra's load-bearing specs: metropolis mesh composition, the distro pin model, the canonical fleet wire, T1/T2 runtime parity, and PKI-free identity."
+      "why": "The kernel/governance vertebra's load-bearing specs: metropolis mesh composition, the distro pin model, the canonical fleet wire, T1/T2 runtime parity, and rapp/1 \u00a76 mint-once identity (keyless minting keeps the default PKI-free; a keypair is still optional)."
     },
     {
       "situation": "Auth chain / network boundary / cubby storage / trust+ownership / substrate signing / the three stores / the egg family \u2014 where are these governed?",
@@ -528,7 +528,7 @@
       "spec_id": "rapp-moment/1.0",
       "repo": "kody-w/rapp-moment",
       "layer": "identity",
-      "purpose": "Standard for a serverless cryptographic living social primitive: a 'Moment' is simultaneously a post, an exact UTC instant, and a 100-frame holographic organism \u2014 all static CDN data, identity = the rappid sha256 content-address (rapp-eternity/1.0); an OPTIONAL ECDSA P-256 keypair may sign for ownership (never required). Implementation-free; engine lives in kody-w/rapp-hologram.",
+      "purpose": "Standard for a serverless cryptographic living social primitive: a 'Moment' is simultaneously a post, an exact UTC instant, and a 100-frame holographic organism \u2014 all static CDN data; an OPTIONAL ECDSA P-256 keypair may sign for ownership (never required). Implementation-free; engine lives in kody-w/rapp-hologram. IDENTITY CAVEAT: SPEC.md line 6 still defers the entire identity model to the RETIRED rapp-eternity/1.0 sha256 content-address. The live authority is rapp/1 \u00a76 (kody-w/rapp-1): the rappid string is unchanged, but \u00a76.2 mint-once replaces content-derived tails.",
       "when_to_use": "When building an interoperable backend-free client for the holographic social network (mint/play/own/embed Moments), or you need the normative wire format + conformance rules.",
       "entry_point": "SPEC.md + CONFORMANCE.md in repo. Reference engine: kody-w/rapp-hologram. Play: ?m=<base64url(JSON)>; dial: ?dial=<pk>. License: PolyForm-NC 1.0.0 + trademarked marks (NOT MIT)."
     },
@@ -701,12 +701,21 @@
       "layer": "map"
     },
     {
+      "spec_id": "rapp/1",
+      "repo": "kody-w/rapp-1",
+      "purpose": "rapp/1 (RAPP Protocol Suite, rev-5) \u2014 the unified normative specification and the CANONICAL identity authority. \u00a76 owns the rappid: \u00a76.1 the unchanged rappid:@owner/slug:64hex grammar, \u00a76.2 mint-once minting (keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER); a producer MUST NOT derive the tail from owner/slug or any name), \u00a76.3 canonicalize-on-read and the owner-authorized re-anchor. It also owns \u00a74 canonicalization (JCS), \u00a75 domain-separated content addressing, \u00a77 the frame, \u00a78 the wire, \u00a79 the egg and \u00a710 detached-JWS signatures. It takes over from rapp-eternity/1.0 (retired 2026-07-17) and consolidates rapp-frame/2.0, rapp-frame/2.1, rapp-rappid-spec/2.0, rapp-protocol/1.0 and the scattered egg specs.",
+      "when_to_use": "Whenever you mint, read, canonicalize or verify a rappid \u2014 \u00a76 is the CANONICAL identity authority for the estate, in place of the RETIRED rapp-eternity/1.0. Emitters of rappid:@owner/slug:64hex are unaffected, because \u00a76.1 keeps that grammar verbatim; MINTERS that hash their own content to build the 64-hex tail no longer conform and must move to \u00a76.2 mint-once. Also the place to look for the frame, the wire, the egg and content addressing.",
+      "entry_point": "read SPEC.md \u00a76 in kody-w/rapp-1. Pinned authority: kody-w/rapp-1@6723c7add2aed36bb68992fc71a56b0a4bd5ad81 \u2014 SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b (the same pin rapp-map/RAPP1_AUTHORITY.json records; structural pin only).",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-1/6723c7add2aed36bb68992fc71a56b0a4bd5ad81/SPEC.md",
+      "layer": "identity"
+    },
+    {
       "spec_id": "rapp-eternity/1.0",
       "repo": "kody-w/rapp-eternity",
-      "role": "rapp-eternity/1.0 \u2014 The Rappid Identity & Ownership Standard",
+      "role": "rapp-eternity/1.0 \u2014 RETIRED historical identity standard, superseded by rapp/1 \u00a76 in kody-w/rapp-1. Retired 2026-07-17 (commit 9c970a1e, then 17bb6d21); SPEC.md is now a tombstone declaring itself 'RETIRED \u00b7 SUBORDINATE TO RAPP \u00b7 NON-NORMATIVE'. Its content-address minting rule and its estate-wide identity authority are both withdrawn. Read for history; do not implement it, cite it as current, or treat it as a compatibility authority.",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-eternity/main/SPEC.md",
-      "entry_point": "read SPEC.md in kody-w/rapp-eternity",
-      "layer": "kernel"
+      "entry_point": "read SPEC.md in kody-w/rapp-eternity for the historical record only \u2014 the live identity authority is SPEC.md \u00a76 in kody-w/rapp-1",
+      "layer": "identity"
     },
     {
       "spec_id": "rapp-fleet-chat/1.0",
@@ -751,7 +760,7 @@
     {
       "spec_id": "rapp-trust/1.0",
       "repo": "kody-w/rapp-spine",
-      "role": "Trust & ownership \u2014 defers to rapp-eternity/1.0 (content-address identity; keypair optional)",
+      "role": "Trust & ownership \u2014 defers identity to rapp/1 \u00a76 (mint-once; keyless or keyed; keypair still optional). Its three-layer model (L0 keyless identity / L1 gh-collaborator default / L2 optional keypair) is unaffected, but the rapp-eternity/1.0 content-address minting rule it quoted is retired.",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/TRUST_AND_OWNERSHIP.md",
       "entry_point": "read specs/TRUST_AND_OWNERSHIP.md in kody-w/rapp-spine",
       "layer": "kernel"
@@ -759,7 +768,7 @@
     {
       "spec_id": "rapp-substrate-trust/1.0",
       "repo": "kody-w/rapp-spine",
-      "role": "The Substrate Trust Model \u2014 `rapp-substrate-trust/1.0`",
+      "role": "The Substrate Trust Model \u2014 `rapp-substrate-trust/1.0`. Consumes identity only; its identity deferral now reads rapp/1 \u00a76, not the retired rapp-eternity/1.0.",
       "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/SUBSTRATE_TRUST.md",
       "entry_point": "read specs/SUBSTRATE_TRUST.md in kody-w/rapp-spine",
       "layer": "kernel"
@@ -863,12 +872,13 @@
     "ALIAS, NOT A PROTOCOL: 'rapp-twin-chat/1.0' is an ALIAS for \u00a76 of rapp-neighborhood-protocol/1.0, not a standalone spec. rapp-commons-protocol/2.0 and rapp-vneighborhood/1.0 are PROFILES/APPS on top of it; MCP is just another \u00a75 transport carrying the same \u00a76 envelope. None of these are new peer types.",
     "'rappter*' NAMING CLUSTER: OpenRappter is the intended consumer RAPP substrate-distro and RAPP<->OpenClaw Rosetta stone (current parity incomplete; data root ~/.openrappter); rappterbox is a console re-skin on ~/.brainstem; rappter is the 404 Wrapped Organism Spec home; rappterbook (+~25 rappterbook-*/rappter-* repos) is the social estate. They are distinct roles. OpenRappter must converge on the frozen /chat behavior and drop-in agent.py ABI without turning OpenClaw-shaped compatibility surfaces into new RAPP protocol authorities.",
     "'kite' NAMING CLUSTER: rapp-kite (the operator 'string' \u2014 CDP tooling) is distinct from kite-mark (visual identity repo) and rapp-kited-twin (canonical kite-mark SVG). Three 'kite' things; only rapp-kite is the transport operator.",
-    "RAPPID IDENTITY REPRESENTATIONAL SEAMS: multiple on-the-wire forms coexist \u2014 rappid:<birth-slug>:<64hex> (rapp-egg-hub v2.0), rappid:@owner/slug:<64hex> (rapp-eternity/1.0 canonical), rappid:v2:<kind>:@owner/slug:<hex> (rapp-estate), rappid:v3:<base64url(SHA-256(pub))> (rapp-commons). rapp-commons' event SCHEMA and its PROTOCOL.md even show different forms. Rule (per the compatibility contract): READ all legacy forms forever, EMIT only canonical, join on the hash \u2014 never rewrite identity in place.",
-    "ETERNITY HOME (resolved): rapp-eternity/1.0 and the canonical rappid:@owner/slug:64hex identity standard are owned by kody-w/rapp-eternity; RAPP-Bible is a narrative mirror, not the owner. Identity is cross-referenced from the map/kernel layers even though sealing and Moment profiles live in the identity layer.",
+    "RAPPID IDENTITY REPRESENTATIONAL SEAMS: multiple on-the-wire forms coexist \u2014 rappid:<birth-slug>:<64hex> (rapp-egg-hub v2.0), rappid:@owner/slug:<64hex> (canonical, now rapp/1 \u00a76.1 \u2014 formerly attributed to the retired rapp-eternity/1.0; the grammar is byte-identical, only its owner moved), rappid:v2:<kind>:@owner/slug:<hex> (rapp-estate), rappid:v3:<base64url(SHA-256(pub))> (rapp-commons). rapp-commons' event SCHEMA and its PROTOCOL.md even show different forms. Rule (per the compatibility contract): READ all legacy forms forever, EMIT only canonical, join on the hash \u2014 never rewrite identity in place.",
+    "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 \u00a76 in kody-w/rapp-1, pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b) \u2014 the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: \u00a76.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while \u00a76.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name \u2014 so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
     "'DRIFT TRIANGLE' IS A MISNOMER \u2014 it has FOUR legs (the @rapp/rapp agent, rapp-god, rapp-map, RAPP-Bible) anchored on ecosystem-spec.json; when any leg disagrees with the JSON, the JSON wins. rapp-map and rapp-god both carry byte-identical mirrors of ecosystem-spec.json, so divergence between them IS the detectable drift signal.",
     "OVERLAP \u2014 distribution catalogs: rapp-agents (flat public agent stack + RappLoader) overlaps RAR (curated content-addressed registry); rapp-egg-hub (twin .egg hub) overlaps twin-egg-hatcher (generic hatcher) and rapp-carts (the unifying cartridge abstraction). They are complementary (stack vs registry; hub-distribution vs hatch-tool vs user-facing unit), not duplicates \u2014 but a crawler should pick by role, not by nearest match.",
     "OVERLAP \u2014 map renderers: RAPP-Bible (synthesized, PINNED v1.0.0 human narrative \u2014 can itself drift), rapp_docs (live raw passthrough, always-current, zero copies), and rapp-map (index of WHERE, not the TEXT) cover overlapping ground with different jobs. Use rapp_docs for current spec text, Bible for narrative onboarding, rapp-map for location.",
     "LICENSE COLLISION: most of the cluster is MIT (rapp-sealed, rapp-dataverse, rapp-neighborhood-protocol, rapp-kite, rapp-static-apis, rapp-agents). BUT kody-w/RAPP and rappterbox are source-available All-Rights-Reserved, and rapp-moment/1.0 is PolyForm-Noncommercial 1.0.0 + trademarked marks ('RAPP', 'Holographic Moment(s)'). A consumer/redistributor must check per-repo terms, not assume MIT.",
-    "SECURITY GAP: the Leviathan fleet protocol's POST /api/agent/<name> route is UNAUTHENTICATED \u2014 a shell-capable agent on any body = fleet-wide RCE from one request. It is explicitly LAN/trusted-subnet only; there is no auth layer in the spec. Also the canonical fleet wire is now rapp-fleet-chat/1.0 (signed twin-chat over /chat); the legacy /api/agent route is the Phase-1 RCE."
+    "SECURITY GAP: the Leviathan fleet protocol's POST /api/agent/<name> route is UNAUTHENTICATED \u2014 a shell-capable agent on any body = fleet-wide RCE from one request. It is explicitly LAN/trusted-subnet only; there is no auth layer in the spec. Also the canonical fleet wire is now rapp-fleet-chat/1.0 (signed twin-chat over /chat); the legacy /api/agent route is the Phase-1 RCE.",
+    "DANGLING IDENTITY DEFERRALS AFTER THE ETERNITY RETIREMENT (open, tracked): three live documents still defer their identity model to the retired rapp-eternity/1.0 and have not been amended by their owners. (1) kody-w/rapp-moment SPEC.md line 6 \u2014 'Identity defers to rapp-eternity/1.0 (the sole identity standard). A Moment's rappid is the PKI-free SHA-256 content-address of its canonical body' \u2014 exactly the rule \u00a76.2 retires; tracked upstream as kody-w/rapp-moment#2. (2) kody-w/rapp-egg-hub EGG_FAMILY.md:209 cites the 'eternity standard' for the canonical string form; lower urgency, because \u00a76.1 preserves that form unchanged. (3) this repo's own specs/TRUST_AND_OWNERSHIP.md and specs/SUBSTRATE_TRUST.md carried the same deferral; both now open with a retirement notice and point every cross-reference, depends-on and see-also at rapp/1 \u00a76. Their two superseded content-address minting sentences (TRUST_AND_OWNERSHIP \u00a71 and Rule \u00a77) are preserved verbatim and flagged inline as historical rather than rewritten, because restating a normative rule is a versioned amendment for the spec owner, not a registry refresh. One open question rides along: rapp-trust/1.0's sig_suite ladder (none \u2192 ed25519 \u2192 ecdsa-p256 \u2192 reserved-PQ) was attributed to rapp-eternity/1.0, but rapp/1 \u00a710 defines no sig_suite field \u2014 it specifies detached-JWS alg EdDSA/ES256 instead. The ladder therefore has no upstream owner today and is recorded here rather than silently re-homed."
   ]
 }

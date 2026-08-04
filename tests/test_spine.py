@@ -474,7 +474,7 @@ class CrawlGraphTests(_SpineFixture, unittest.TestCase):
         visited_protocols = sum(
             self.nodes[node_id]["type"] == "protocol" for node_id in plan["node_ids"]
         )
-        self.assertEqual(visited_protocols, 59)
+        self.assertEqual(visited_protocols, 60)
         self.assertGreater(plan["batch_count"], 1)
         required_roles = Counter(
             source["role"] for source in plan["read_targets"] if source["required"]
@@ -484,9 +484,9 @@ class CrawlGraphTests(_SpineFixture, unittest.TestCase):
             Counter(
                 {
                     "authoritative_input": 2,
-                    "canonical_material": 59,
+                    "canonical_material": 60,
                     "integrity_evidence": 11,
-                    "repository_identity": 47,
+                    "repository_identity": 48,
                     "supporting_evidence": 8,
                 }
             ),
@@ -602,13 +602,13 @@ class CrawlGraphTests(_SpineFixture, unittest.TestCase):
             receipt["completion"]["inventory_graph_coverage"]["complete"]
         )
         sources = receipt["completion"]["source_integrity_availability"]
-        self.assertEqual(sources["expected_required_sources"], 127)
+        self.assertEqual(sources["expected_required_sources"], 129)
         self.assertEqual(
             sources["visited_required_sources"],
             sum(source["required"] for source in plan["read_targets"]),
         )
-        self.assertEqual(sum(sources["counts"].values()), 127)
-        self.assertEqual(sum(sources["integrity"].values()), 127)
+        self.assertEqual(sum(sources["counts"].values()), 129)
+        self.assertEqual(sum(sources["integrity"].values()), 129)
         self.assertEqual(
             sources["integrity"]["not_checkable"],
             sources["counts"]["not_read"],
@@ -672,7 +672,7 @@ class CrawlGraphTests(_SpineFixture, unittest.TestCase):
         )
         self.assertEqual(
             receipt["completion"]["source_integrity_availability"]["counts"],
-            {"read": 91, "unresolved": 36},
+            {"read": 93, "unresolved": 36},
         )
 
     def test_receipt_separates_all_completion_dimensions(self):
@@ -750,12 +750,12 @@ class GeneratedSurfaceTests(_SpineFixture, unittest.TestCase):
 
     def test_coverage_matches_graph(self):
         self.assertEqual(self.coverage, generate_crawl.build_coverage(self.crawl))
-        self.assertEqual(self.coverage["inventory"]["registry_nodes_represented"], 59)
+        self.assertEqual(self.coverage["inventory"]["registry_nodes_represented"], 60)
         self.assertEqual(self.coverage["inventory"]["routes_expected"], 32)
-        self.assertEqual(self.coverage["required_material"]["exact_targets"], 25)
+        self.assertEqual(self.coverage["required_material"]["exact_targets"], 26)
         self.assertEqual(self.coverage["required_material"]["unresolved"], 34)
-        self.assertEqual(self.coverage["all_required_sources"]["required"], 127)
-        self.assertEqual(self.coverage["all_required_sources"]["exact_targets"], 91)
+        self.assertEqual(self.coverage["all_required_sources"]["required"], 129)
+        self.assertEqual(self.coverage["all_required_sources"]["exact_targets"], 93)
         self.assertEqual(self.coverage["all_required_sources"]["unresolved"], 36)
         self.assertFalse(self.coverage["complete"])
 
@@ -864,7 +864,7 @@ class GeneratedSurfaceTests(_SpineFixture, unittest.TestCase):
             capture_output=True,
         )
         self.assertEqual(json.loads(layer.stdout)[0]["layer"].split(" ", 1)[0], "network")
-        self.assertEqual(len(json.loads(collisions.stdout)), 16)
+        self.assertEqual(len(json.loads(collisions.stdout)), 17)
 
     def test_local_mode_maps_canonical_artifact_urls_to_local_files(self):
         self.assertEqual(
