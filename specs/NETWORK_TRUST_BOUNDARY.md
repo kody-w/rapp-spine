@@ -126,6 +126,16 @@ Why this is a security property, not just taste: every new privileged route is a
 
 Corollary: **route injection is forbidden.** No accessory, plugin, or "fleet" layer may register an additional Flask route on the kernel app — most especially not an unauthenticated one. This is exactly the Leviathan failure mode, named and closed next.
 
+### 5.1 Response fields are egress too (normative)
+
+§3 classifies **routes**. It does not classify **response fields** — and one of them carries agent output straight back across the boundary.
+
+`agent_logs` (`rapp-runtime-parity/1.0` §2.3) is the newline-joined set of tool result strings, returned in the `/chat` response envelope. Whatever an agent returns from `perform()` is copied into it verbatim. So for any organism holding private state behind its wire, `agent_logs` is a **second egress path**, parallel to `response` and invisible in the model's prose.
+
+> **R6.1.** `agent_logs` is an egress surface. An agent fronting a private organ **MUST** return only disclosure-safe material (`rapp-runtime-parity/1.0` §2.3.1). Containment **MUST NOT** be attempted by dropping, blanking, or truncating `agent_logs` — that shape is frozen and tooling depends on it. A body whose `/chat` gate is correct per §4.1 can still leak through this field; the gate answers *who may call*, not *what comes back*.
+
+This matters most for the topology §5 encourages: a controller reaching a peer body only over `/chat`. The route surface can be perfectly closed while the peer still returns raw organ contents in `agent_logs` to every authorized caller.
+
 ---
 
 ## 6. The `/api/agent` RCE — named and closed
@@ -186,6 +196,7 @@ A kernel/instance is **conformant with `rapp-kernel-boundary/1.0`** iff:
 4. **C4 — No new/injected privileged routes.** The privileged route set equals §3.2; no accessory registers an additional route (esp. no unauth `/api/agent`). (Test: diff live route table against §3.2 + §3.1.) *A Leviathan deployment currently FAILS C4 — `/api/agent` is injected.*
 5. **C5 — Token binding.** When `BRAINSTEM_AGENT_TOKEN` is set, only the matching bearer passes the gate from non-loopback, attributed to a `rapp-trust` principal; writes are recorded against it.
 6. **C6 — Public-safe stays open & clean.** `/health`, `/version`, `/` answer any origin and contain no secrets.
+7. **C7 — Organ output is disclosure-safe.** An agent fronting private state returns only disclosure-safe material. (Test: plant a canary string inside the private store, ask the body a question that retrieves it over `/chat`, assert the canary appears in **neither** `response` **nor** `agent_logs`.) Containment lives in the agent, not in the envelope — see §5.1 and `rapp-runtime-parity/1.0` §2.3.1.
 
 ### 9.1 Reference conformance test (C2)
 
@@ -240,3 +251,4 @@ Result: one mind drives many bodies, fleet messaging works, the throttle is side
 ## 11. Changelog
 
 - **1.0** — Initial canonical boundary. Establishes loopback default (`BRAINSTEM_BIND` opt-in), the §3 route trust classification, the §4.1 privileged-route gate, Art. XXV as a security invariant forbidding new/injected privileged routes, the named closure of Leviathan's `/api/agent` via signed `/chat` twin-chat events, and the optional `BRAINSTEM_AGENT_TOKEN` bound to a `rapp-trust/1.0` principal. **Specifies (does not yet implement)** the closure of `rapp-roadmap` Phase 1: Phase 1 remains **OPEN** until R1 (loopback default) and R7 (no injected `/api/agent`) land in the grail and a distro pins the tag. Until then the kernel still binds `0.0.0.0` and the unauthenticated `/api/agent` is still live.
+  - **Amendment (§5.1, R6.1, C7).** Classifies `agent_logs` as an **egress surface**, not just a response shape. §3 classifies routes; it said nothing about response fields, so a body could pass the §4.1 gate and still return raw private-organ output to every authorized caller. Containment is placed in the agent (`rapp-runtime-parity/1.0` §2.3.1) and explicitly **not** in blanking the envelope, whose shape is frozen. Adds conformance check C7 (canary in the private store must appear in neither `response` nor `agent_logs`). No wire change.
