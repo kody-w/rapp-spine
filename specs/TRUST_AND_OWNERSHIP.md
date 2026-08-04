@@ -6,9 +6,47 @@
 
 > **Identity costs nothing. Trust is GitHub. Sovereignty is optional.**
 >
-> A rappid is a PKI-free SHA-256 content-address — it exists with zero keys. The **default** authority to act in a namespace is *GitHub collaborator status* (`sig_suite: none`). A keypair is an **opt-in** durability upgrade, **never** a requirement. No component may reject an actor for lacking a key.
+> A rappid is a 256-bit identity minted once per `rapp/1` §6.2 — it exists with zero keys. The **default** authority to act in a namespace is *GitHub collaborator status* (`sig_suite: none`). A keypair is an **opt-in** durability upgrade, **never** a requirement. No component may reject an actor for lacking a key.
 
-**Authority:** this file. **Constitutional anchors:** Art. XXV ("`/chat` is the only wire"), Art. XXXIV.5 (rappid invariants), MASTER_PLAN Part Deux §3 (no mandatory PKI) and §4 (un-shutdownable). **Normative cross-refs:** `rapp-eternity/1.0` (Eternity identity), `rapp-moment/1.0` §6 (keypair-bound ownership, deed chains), `rapp-eternity/1.0` §2 (the canonical rappid string), the RAPP **compatibility contract** (read-all-legacy / emit-canonical / hash-is-join-key).
+**Authority:** this file. **Constitutional anchors:** Art. XXV ("`/chat` is the only wire"), Art. XXXIV.5 (rappid invariants), MASTER_PLAN Part Deux §3 (no mandatory PKI) and §4 (un-shutdownable). **Normative cross-refs:** `rapp/1` §6 (identity — the canonical authority, in `kody-w/rapp-1`), `rapp/1` §6.1 (the canonical rappid string), `rapp-moment/1.0` §6 (keypair-bound ownership, deed chains), the RAPP **compatibility contract** (read-all-legacy / emit-canonical / hash-is-join-key). `rapp-eternity/1.0`, cited throughout this document as the identity authority, was **retired** on 2026-07-17 — see the notice below.
+
+> ### ⚠ Identity-authority retirement notice (recorded 2026-08-04, not yet a versioned amendment)
+>
+> This document defers its **entire identity model** to another spec and names
+> `rapp-eternity/1.0` as that spec. **`rapp-eternity/1.0` was retired to a tombstone on
+> 2026-07-17** (`kody-w/rapp-eternity` commit `9c970a1e`, then `17bb6d21`); its `SPEC.md` now
+> declares itself *"RETIRED · SUBORDINATE TO RAPP · NON-NORMATIVE"*. Every deferral below
+> therefore reads through to:
+>
+> **`rapp/1` §6 — `kody-w/rapp-1`, `SPEC.md` pinned at
+> `6723c7add2aed36bb68992fc71a56b0a4bd5ad81` (41880 bytes, sha256
+> `6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b`).**
+>
+> **What this spec's own model keeps.** Everything. The three-layer stack — L0 keyless
+> identity, L1 gh-collaborator default, L2 optional keypair sovereignty — is unaffected:
+> `rapp/1` §6.2 makes **keyless** minting a first-class branch, so a rappid still costs no
+> keys and no component may require one. The canonical string is unchanged, so nothing that
+> reads or emits `rappid:@owner/slug:<64hex>` breaks.
+>
+> **What is superseded.** Exactly one claim: the **minting rule**. §1 below states that the
+> *sole* minting rule is the `rapp-eternity/1.0` **content-address** (`sha256` over the
+> canonical body), *"never randomly minted (there is no `uuid4`)"*. `rapp/1` §6.2 replaces
+> that with **mint-once**: `tail = Hb("rapp/1:rappid", uuid4_octets)` (keyless) or
+> `Hb("rapp/1:rappid", SPKI_DER)` (keyed), minted exactly once and thereafter immutable, and
+> *"a producer **MUST NOT** derive the tail from owner/slug or any name."* Read the
+> content-address sentences below as **historical**.
+>
+> **One clause needs naming explicitly.** "Identity is **never** key-derived" (§1, §7, §7-de-conflict)
+> is *also* retired: `rapp/1` §6.2 permits a **keyed** mint, `tail = Hb("rapp/1:rappid", SPKI_DER)`.
+> What survives is the part that mattered — a keyed mint is never *required*, keyless is a
+> first-class branch, and no component may reject an actor for lacking a key.
+>
+> **One question left open, deliberately.** The `sig_suite` ladder
+> (`none → ed25519 → ecdsa-p256 → reserved-PQ`) is attributed below to `rapp-eternity/1.0`,
+> but `rapp/1` §10 defines **no** `sig_suite` field — it specifies detached-JWS with
+> `alg` ∈ {`EdDSA`, `ES256`}. The ladder therefore has no upstream owner today. Re-homing it
+> is a normative decision for the spec owner, not a registry refresh, so it is **recorded**
+> in `registry.json` → `collisions_and_gaps` rather than silently reassigned here.
 
 Keywords **MUST**, **MUST NOT**, **SHOULD**, **MAY** are used per RFC 2119.
 
@@ -24,7 +62,7 @@ Out of scope (see §13 Non-goals): payload encryption, substrate write-path auth
 
 ## §1 — Identity is PKI-free (the rappid)
 
-A **rappid** is a globally-resolvable, self-locating address whose identity component is a 256-bit SHA-256 hash. Canonical form (per `rapp-eternity/1.0` §2, locked 2026-06-03):
+A **rappid** is a globally-resolvable, self-locating address whose identity component is a 256-bit SHA-256 hash. Canonical form (per `rapp/1` §6.1; unchanged from `rapp-eternity/1.0` §2, locked 2026-06-03):
 
 ```
 rappid:@<owner>/<slug>:<64-hex-no-dashes>
@@ -36,7 +74,14 @@ rappid:@<owner>/<slug>:<64-hex-no-dashes>
 
 **The load-bearing fact of this spec:** a rappid is fully-formed with **zero keys**. The **sole** minting rule is the `rapp-eternity/1.0` content-address: `sha256` over the **canonical body** of the thing being identified. Identity is **never** key-derived (there is no `sha256("moment:"+pk)`, no `sha256("keeper:"+pubx)`) and **never** randomly minted (there is no `uuid4`); it is always the deterministic content hash, reproducible from the body alone. **A keypair is never an input to minting an identity.** Identity precedes, and is independent of, any signature.
 
-> Cross-ref: identity format, minting, and invariants are governed by `rapp-eternity/1.0` (the SOLE identity standard). Eternal ids are published in the Eternity hub (`rapp-egg-hub`). This spec **does not redefine identity** — it **defers the identity model entirely to `rapp-eternity/1.0`** — and defines only **authority over** an identity.
+> **Retired rule (see the notice above).** The *content-address* minting rule stated in the
+> paragraph above is **historical**. Live rule: `rapp/1` §6.2 **mint-once** —
+> `tail = Hb("rapp/1:rappid", uuid4_octets)` keyless or `Hb("rapp/1:rappid", SPKI_DER)` keyed,
+> minted once and immutable, and a producer **MUST NOT** derive the tail from owner/slug or any
+> name. The *load-bearing* half of the paragraph survives verbatim: a rappid is still fully-formed
+> with **zero keys**, and a keypair is still never required to mint or own one.
+
+> Cross-ref: identity format, minting, and invariants are governed by `rapp/1` §6 (the canonical identity standard, in `kody-w/rapp-1`), which took over from the retired `rapp-eternity/1.0` on 2026-07-17. Eternal ids are published in the Eternity hub (`rapp-egg-hub`). This spec **does not redefine identity** — it **defers the identity model entirely to `rapp/1` §6** — and defines only **authority over** an identity.
 
 ---
 
@@ -46,7 +91,7 @@ Trust in RAPP is a strict, additive stack. Each layer is independently sufficien
 
 | Layer | Question it answers | Mechanism | Required? |
 |------|--------------------|-----------|-----------|
-| **L0 — Identity** | "Who/what is this?" | SHA-256 content-address (the rappid, per `rapp-eternity/1.0`) | Always present, PKI-free |
+| **L0 — Identity** | "Who/what is this?" | The rappid, per `rapp/1` §6 (mint-once, §6.2) | Always present; keyless (PKI-free) by default |
 | **L1 — Default authority** | "May this actor act under this rappid?" | **GitHub collaborator** status on the home repo (`sig_suite: none`) | Default; **no signature** |
 | **L2 — Sovereign authority** | "Can ownership be proven without GitHub?" | **Optional keypair** binding (`sig_suite` = a signing suite on the eternity ladder, e.g. `ed25519` / `ecdsa-p256`) | **Opt-in only**; never required |
 
@@ -135,13 +180,19 @@ This is the de-confliction an LLM training on this corpus must learn: "no PKI" i
 
 ## §7 — De-conflicting the rapp-moment binding
 
-`rapp-moment/1.0` §6.1 reads a Moment's ownership *profile* through a public key and a zookeeper through a public key. Read naively this looks like it **mandates** a keypair. It does not — and, per `rapp-eternity/1.0`, the eternal *identity* is **never** key-derived. To de-conflict canon explicitly:
+`rapp-moment/1.0` §6.1 reads a Moment's ownership *profile* through a public key and a zookeeper through a public key. Read naively this looks like it **mandates** a keypair. It does not — and, per `rapp/1` §6.2, a keyless mint is a first-class branch, so a key is **never required** to hold an identity. To de-conflict canon explicitly:
 
-- **The keypair-bound public key is the OPTIONAL, sovereign PROFILE of ownership**, used when an owner has chosen sovereignty (a zookeeper key). The eternal rappid itself is always the `rapp-eternity/1.0` content-address over the canonical body; the *key* enters only at the ownership/transfer layer (§6.2 deeds), never at the minting layer.
+- **The keypair-bound public key is the OPTIONAL, sovereign PROFILE of ownership**, used when an owner has chosen sovereignty (a zookeeper key). The rappid itself is minted once per `rapp/1` §6.2 and is thereafter immutable; the *key* enters only at the ownership/transfer layer (§6.2 deeds), never as a precondition of holding an identity.
 - **A keyless Moment is fully valid.** Its authority is the L1 default — the gh-collaborator who committed it to the home repo. It has `sig_suite: none`, no `sig`, no `pub`. It is owned, ownable, and tradeable via repo-collaborator grants/PR-consent rather than deed-chain signatures.
-- Therefore `rapp-moment/1.0` is **a profile of `rapp-trust/1.0`, not an exception to it.** "To own a moment sovereignly, sign it" is the *sovereign* path (L2); "commit a moment as a collaborator" is the *default* path (L1). Both reference the same eternal, PKI-free, content-addressed identity.
+- Therefore `rapp-moment/1.0` is **a profile of `rapp-trust/1.0`, not an exception to it.** "To own a moment sovereignly, sign it" is the *sovereign* path (L2); "commit a moment as a collaborator" is the *default* path (L1). Both reference the same immutable, keyless-by-default `rapp/1` §6 identity.
 
 **Rule §7.** *No spec may make a key-derived id the way to mint or own. Identity minting is content-address-only (`rapp-eternity/1.0`); any public key is the optional-sovereignty path layered on top, and every door MUST have a keyless, gh-collaborator default.*
+
+> **Retired clause (see the notice at the top).** "Content-address-only" is historical: `rapp/1`
+> §6.2 mints once from `uuid4` octets (keyless) or SPKI DER (keyed). The rule's **point** stands
+> unchanged and is what §6.2 preserves — no spec may *require* a key to mint or own, and every
+> door MUST still have a keyless, gh-collaborator default. Restated for `rapp/1`: *no spec may
+> make a keyed mint the only way to mint or own.*
 
 ---
 
@@ -173,7 +224,7 @@ Added to the door's `rappid.json` record (all optional; absence ⇒ pure L1 defa
 
 ```jsonc
 {
-  "schema": "rapp-eternity/1.0",
+  "schema": "rapp-eternity/1.0",      // legacy record-schema value; rapp-eternity/1.0 is retired (2026-07-17) but per the compatibility contract this value MUST still be READ forever. Re-versioning it is a wire change for the spec owner, not an errata.
   "rappid": "rappid:@kody-w/wildhaven:9f1c…<64hex>",
   // --- rapp-trust/1.0 fields (all optional) ---
   "sig_suite": "ecdsa-p256",          // ladder: none|ed25519|ecdsa-p256|reserved-PQ; absent OR unrecognized ⇒ treat as "none"
@@ -189,7 +240,7 @@ Added to the door's `rappid.json` record (all optional; absence ⇒ pure L1 defa
 
 ## §11 — Worked example
 
-**Setup.** Kody plants the door `rappid:@kody-w/wildhaven:9f1c…<64hex>` (its hash is the `rapp-eternity/1.0` content-address over Wildhaven's canonical body). He does **not** mint a key. `rappter1` wants to act as the Wildhaven gate twin.
+**Setup.** Kody plants the door `rappid:@kody-w/wildhaven:9f1c…<64hex>` (its 64-hex tail was minted once per `rapp/1` §6.2, keyless). He does **not** mint a key. `rappter1` wants to act as the Wildhaven gate twin.
 
 **Day 1 — pure default (L1).**
 1. `rappter1` opens a PR adding an agent to `github.com/kody-w/wildhaven`. Kody merges it → PR-consent grants L1.
@@ -197,7 +248,7 @@ Added to the door's `rappid.json` record (all optional; absence ⇒ pure L1 defa
 3. The verifier runs §5: `P.sig` absent → skip L2. `rappter1` is now a collaborator (merged PR) on the home repo → **L1 true → authorize.** No key existed at any point. (Honors §3.)
 
 **Month 2 — opt-in sovereignty (L2).**
-4. Kody decides Wildhaven must survive him. In the browser he mints a keypair on an eternity-ladder suite (e.g. ECDSA P-256), publishes the public JWK to `rappid.json#owner_key`, sets `sig_suite: "ecdsa-p256"`, commits. The Wildhaven rappid is unchanged — minting was content-address-only, so the identity hash does not move when a key is added.
+4. Kody decides Wildhaven must survive him. In the browser he mints a keypair on an eternity-ladder suite (e.g. ECDSA P-256), publishes the public JWK to `rappid.json#owner_key`, sets `sig_suite: "ecdsa-p256"`, commits. The Wildhaven rappid is unchanged — `rapp/1` §6.2 mints the tail exactly once and it is thereafter immutable, so the identity hash does not move when a key is added.
 5. Wildhaven moments are now signed. A market ranks them by **distinct verified signers** — ungameable.
 
 **Year 3 — GitHub takes the repo down.**
@@ -207,7 +258,7 @@ Added to the door's `rappid.json` record (all optional; absence ⇒ pure L1 defa
 **Edge — forgery attempt.**
 8. An attacker sends an event claiming to be Wildhaven with a bogus `sig` under a recognized suite. §5 clause 4: `P.sig` present, suite recognized, but `verify` false → **deny** (hard failure). A *missing* sig, or a sig under an *unrecognized* suite, simply falls through to L1 — and a non-collaborator there is denied by absence-of-grant, a different, softer path.
 
-**The lesson the corpus must encode:** Wildhaven was a real, owned, tradeable identity on Day 1 with **no cryptography**, minted purely as a content-address. The key was an *upgrade Kody chose*, and that choice is what let Wildhaven outlive GitHub. Optionality is the bridge between "no mandatory PKI" and "un-shutdownable."
+**The lesson the corpus must encode:** Wildhaven was a real, owned, tradeable identity on Day 1 with **no cryptography**, minted through the keyless branch. The key was an *upgrade Kody chose*, and that choice is what let Wildhaven outlive GitHub. Optionality is the bridge between "no mandatory PKI" and "un-shutdownable."
 
 ---
 
@@ -215,7 +266,7 @@ Added to the door's `rappid.json` record (all optional; absence ⇒ pure L1 defa
 
 A component is `rapp-trust/1.0`-conformant iff:
 
-- [ ] It mints/accepts identities with **zero keys** as `rapp-eternity/1.0` content-addresses (L0 PKI-free; never key-derived, never random).
+- [ ] It mints/accepts identities with **zero keys** via the `rapp/1` §6.2 keyless branch, `Hb("rapp/1:rappid", uuid4_octets)` (L0 PKI-free by default; a keyed mint is permitted but never required, and the tail is **never** derived from owner/slug or any name).
 - [ ] It treats **gh-collaborator + unsigned** as fully authoritative (Rule L1).
 - [ ] It **never requires** a key to mint, own, act-as, or trust (Rule L2.a).
 - [ ] It **never denies** an actor solely for lacking a key (Rule L2.b).
@@ -232,15 +283,16 @@ A component is `rapp-trust/1.0`-conformant iff:
 - **Not an encryption codec.** Confidentiality/sealing of payloads is `rapp-sealed/1.0`. `rapp-trust` covers *who may act*, not *who may read*.
 - **Not substrate write-path authorization.** Raw git/GitHub permission enforcement (branch protection, push rules) is `rapp-substrate-trust/1.0`. `rapp-trust` consumes the substrate's collaborator graph; it does not police it.
 - **Not agent code trust / sandboxing.** Whether an agent's *code* is safe to run is a separate concern (kernel ABI / drop-in conformance), not this authority model.
-- **Not identity minting rules.** Format, minting (content-address only), lineage, and invariants of the rappid string are `rapp-eternity/1.0` and `rapp-eternity/1.0` §2. This spec defers the identity model entirely to `rapp-eternity/1.0`.
+- **Not identity minting rules.** Format, minting, lineage, and invariants of the rappid string are `rapp/1` §6 (§6.1 grammar, §6.2 mint-once, §6.3 canonicalize-on-read). This spec defers the identity model entirely to `rapp/1` §6; the retired `rapp-eternity/1.0` held that role until 2026-07-17.
 
 ---
 
 ## §14 — Changelog & cross-references
 
 - **1.0** (2026-06-28) — initial canonical formalization of the signing-optional trust & ownership model. Names the three-layer stack (L0 identity / L1 gh-collaborator default / L2 optional keypair sovereignty), the normative verifier, the `sig_suite` eternity ladder (`none → ed25519 → ecdsa-p256 → reserved-PQ`, growable, unknown-suite = skip-as-absent), and the MASTER_PLAN §3↔§4 reconciliation via optional sovereignty. Defers identity minting entirely to `rapp-eternity/1.0` (content-address only) and de-conflicts the `rapp-moment/1.0` keypair ownership profile as an optional layer rather than a minting rule.
+- **1.0 errata** (2026-08-04) — **no normative change to this spec's own model.** Records that the spec this document defers identity to, `rapp-eternity/1.0`, was retired to a tombstone on 2026-07-17, and repoints every deferral at `rapp/1` §6 in `kody-w/rapp-1` (pinned `6723c7add2aed36bb68992fc71a56b0a4bd5ad81`, sha256 `6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b`). The three-layer stack, the keyless default, and the §7 no-mandatory-key rule are unaffected; the *content-address* minting sentences (§1, §7) are marked historical against `rapp/1` §6.2 mint-once. The `sig_suite` ladder's ownership is left **open** — `rapp/1` §10 defines no `sig_suite` — and is tracked in `rapp-spine/registry.json` → `collisions_and_gaps` rather than re-homed here. A real re-homing needs a version bump by the spec owner.
 
-**See also:** `rapp-eternity/1.0` (the SOLE identity standard) · `rapp-eternity/1.0` §2 (canonical rappid string) · `rapp-moment/1.0` §6 (keypair ownership, deed chains) · `rapp-commons-event/1.0` + `rapp-resident` (signed twin-chat events) · `rapp-sealed/1.0` (encryption, non-goal) · `rapp-substrate-trust/1.0` (substrate write-path, non-goal) · `CONSTITUTION.md` Art. XXV, Art. XXXIV.5 · `MASTER_PLAN.md` Part Deux §3, §4 · the RAPP compatibility contract.
+**See also:** `rapp/1` §6 (the canonical identity standard, `kody-w/rapp-1`) · `rapp/1` §6.1 (canonical rappid string) · `rapp-eternity/1.0` (RETIRED 2026-07-17 — historical predecessor, non-normative) · `rapp-moment/1.0` §6 (keypair ownership, deed chains) · `rapp-commons-event/1.0` + `rapp-resident` (signed twin-chat events) · `rapp-sealed/1.0` (encryption, non-goal) · `rapp-substrate-trust/1.0` (substrate write-path, non-goal) · `CONSTITUTION.md` Art. XXV, Art. XXXIV.5 · `MASTER_PLAN.md` Part Deux §3, §4 · the RAPP compatibility contract.
 
 ---
 

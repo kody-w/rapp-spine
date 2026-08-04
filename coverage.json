@@ -1,11 +1,11 @@
 {
   "spec": "rapp-spine-coverage/1.0",
   "source_spec": "rapp-spine/1.1",
-  "generated": "2026-07-11",
+  "generated": "2026-08-04",
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "d2c2974e2c48117551099ebe9bc11ce621e8788b7fafb024fa059f851f76044b"
+      "sha256": "577edf6d64928b51fed18cef80a66bcdc19b61f37e88f68d863f50275a2c4f88"
     },
     "foundation": {
       "path": "foundation.json",
@@ -13,39 +13,39 @@
     }
   },
   "inventory": {
-    "registry_entries_expected": 59,
-    "registry_nodes_represented": 59,
+    "registry_entries_expected": 60,
+    "registry_nodes_represented": 60,
     "routes_expected": 32,
     "route_nodes_represented": 32,
     "route_target_references": 67,
-    "repositories_represented": 47,
+    "repositories_represented": 48,
     "foundation_records_represented": 19
   },
   "graph": {
-    "nodes": 219,
-    "relations": 666,
+    "nodes": 222,
+    "relations": 690,
     "nodes_by_type": {
       "artifact": 2,
       "evidence": 19,
-      "issue": 52,
+      "issue": 53,
       "layer": 7,
-      "protocol": 59,
-      "repository": 47,
+      "protocol": 60,
+      "repository": 48,
       "route": 32,
       "spine": 1
     },
     "nodes_by_status": {
-      "informational": 18,
-      "represented": 45,
-      "resolved": 79,
+      "informational": 19,
+      "represented": 46,
+      "resolved": 80,
       "unresolved": 77
     },
     "orphans": [],
     "dangling_relations": []
   },
   "required_material": {
-    "protocols": 59,
-    "exact_targets": 25,
+    "protocols": 60,
+    "exact_targets": 26,
     "unresolved": 34,
     "unresolved_node_ids": [
       "protocol:kody-w/rapp/rapp-agent/1.0",
@@ -86,8 +86,8 @@
     "complete": false
   },
   "all_required_sources": {
-    "required": 127,
-    "exact_targets": 91,
+    "required": 129,
+    "exact_targets": 93,
     "unresolved": 36,
     "unresolved_sources": [
       {
@@ -238,13 +238,13 @@
     "complete": false
   },
   "known_gaps": {
-    "structured_issues": 52,
+    "structured_issues": 53,
     "blocking": 41,
     "blocking_issue_ids": [
       "issue:security:de7fec630b7d59b0",
       "issue:gap:aae4cfd4841a6e85",
-      "issue:gap:64e5431ba2b4486e",
-      "issue:gap:4ca9be907b392155",
+      "issue:gap:cc846e33726d84ba",
+      "issue:gap:e63bf54e87fb17bd",
       "issue:security:dc174a64279000de",
       "issue:material:a4ae4a7bb33464d5",
       "issue:material:6a2042e1ae168bcd",

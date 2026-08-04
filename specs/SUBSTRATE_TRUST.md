@@ -11,10 +11,32 @@
 | layer | identity (authority + authorization) |
 | home | [kody-w/rapp-spine](https://github.com/kody-w/rapp-spine) → `specs/SUBSTRATE_TRUST.md` |
 | status | locked / 1.0 |
-| depends on | `rapp-trust/1.0` (actor identity + authority set), `rapp-eternity/1.0` (rappid sha256 content-address) |
+| depends on | `rapp-trust/1.0` (actor identity + authority set), `rapp/1` §6 (the rappid — grammar §6.1, mint-once §6.2) |
 | delegates to | `rapp-frame/2.0` (the wire / event transport), `rapp-sealed/1.0` (payload confidentiality codec) |
 | constitution | Art. XXV — "chat is the only wire"; the substrate is the only **persistence + consent** plane |
 | keywords in this doc | MUST / MUST NOT / SHOULD / MAY interpreted per RFC 2119 |
+
+> ### ⚠ Identity-authority retirement notice (recorded 2026-08-04, not yet a versioned amendment)
+>
+> This spec **consumes** identity and defines none of its own. It names `rapp-eternity/1.0` as the
+> owner of the rappid and of the `sig_suite` ladder. **`rapp-eternity/1.0` was retired to a
+> tombstone on 2026-07-17** (`kody-w/rapp-eternity` commit `9c970a1e`, then `17bb6d21`). Every
+> identity deferral below now reads through to **`rapp/1` §6 — `kody-w/rapp-1`, `SPEC.md` pinned at
+> `6723c7add2aed36bb68992fc71a56b0a4bd5ad81` (41880 bytes, sha256
+> `6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b`).**
+>
+> Nothing in this spec's own model changes: the rappid string `rappid:@owner/slug:<64hex>` is
+> byte-identical under `rapp/1` §6.1, keypair binding stays **optional and purely additive**, and
+> `none` (gh-collaborator) remains the default path. The one superseded claim is the description of
+> the rappid as a *content-address*: `rapp/1` §6.2 mints the tail **once** from `uuid4` octets or
+> SPKI DER and forbids deriving it from any name. Read "sha256 content-address" below as
+> historical; sha256 pinning of *published canon bytes* (§5) is `rapp/1` §5 content addressing and
+> is unaffected.
+>
+> **Open, deliberately:** `rapp/1` §10 defines **no** `sig_suite` field (it specifies detached-JWS
+> `alg` ∈ {`EdDSA`, `ES256`}), so the `none → ed25519 → ecdsa-p256 → reserved-PQ` ladder this spec
+> draws from has no upstream owner today. That is recorded in `rapp-spine/registry.json` →
+> `collisions_and_gaps` rather than silently re-homed here.
 
 ---
 
@@ -56,7 +78,7 @@ This is the whole model. Everything below is the precise reading of these four l
   `rapp-sealed/1.0` sealed payload; the substrate itself offers no read-side access control.
 - Pinning: a publish at an immutable `ref` (a tag or a commit sha) is **stable canon**; a
   publish at a moving branch (`main`) is **rolling canon**. Verifiers that need integrity
-  SHOULD pin to a sha and MAY verify a `rapp-eternity/1.0` sha256 content-address over the bytes.
+  SHOULD pin to a sha and MAY verify a `rapp/1` §5 domain-separated sha256 address over the bytes.
 - **Read authority is universal and unconditional.** There is no "private read" in this
   model. If something must be unreadable, it must be sealed, not hidden.
 
@@ -163,12 +185,13 @@ codec, and schema belong to the cited owning specs.
 - **Bridge to `rapp-trust/1.0`.** This spec supplies the *substrate facts* (who appended, who merged,
   who is a collaborator); `rapp-trust/1.0` is the policy layer that decides *what those facts authorize*.
   The default policy is **gh-collaborator**: authority = collaborator membership, attribution = the login.
-- **Identity defers to `rapp-eternity/1.0`.** This spec defines no identity string and no signing
-  scheme of its own; identity-the-string (the `rappid` sha256 content-address) and the canonical
-  **`sig_suite` ladder** are owned exclusively by `rapp-eternity/1.0`. This spec only *consumes*
-  them.
-- **Optional rappid keypair binding.** A payload MAY additionally carry a `rapp-eternity/1.0` rappid
-  (`rappid:@owner/slug:<64hex>`, a PKI-free sha256 content-address) and an **optional** keypair
+- **Identity defers to `rapp/1` §6.** This spec defines no identity string and no signing
+  scheme of its own; identity-the-string (the `rappid`) is owned exclusively by `rapp/1` §6 — which
+  took over from the retired `rapp-eternity/1.0` on 2026-07-17 — and the canonical
+  **`sig_suite` ladder** is inherited from that retired spec and currently has no upstream owner
+  (see the notice above). This spec only *consumes* them.
+- **Optional rappid keypair binding.** A payload MAY additionally carry a `rapp/1` §6.1 rappid
+  (`rappid:@owner/slug:<64hex>`; keyless minting per §6.2 keeps it PKI-free) and an **optional** keypair
   signature over the payload bytes. The signature's `sig_suite` MUST be drawn from the
   `rapp-eternity/1.0` ladder — `none` → `ed25519` → `ecdsa-p256` → reserved-PQ — where `none` is the
   gh-collaborator default and `ed25519` is a canonical keypair suite on the rapp-eternity ladder (none → ed25519 → ecdsa-p256 → reserved-PQ); a verifier treats a
@@ -194,8 +217,8 @@ these fields' meaning:
     "state": "proposed",                // "proposed" | "accepted"
     "acl_repo": "kody-w/rappterbook",   // the canon repo whose authority set governs this write
     "consent": null,                    // null while proposed; the merge ref/sha once accepted
-    "rappid": null,                     // optional: rappid:@owner/slug:<64hex> (rapp-eternity/1.0)
-    "sig_suite": "none"                 // rapp-eternity/1.0 ladder: "none" (gh-collaborator default) | "ed25519" | "ecdsa-p256" | reserved-PQ
+    "rappid": null,                     // optional: rappid:@owner/slug:<64hex> (rapp/1 §6.1)
+    "sig_suite": "none"                 // inherited ladder: "none" (gh-collaborator default) | "ed25519" | "ecdsa-p256" | reserved-PQ
   }
 }
 ```
@@ -240,10 +263,10 @@ these fields' meaning:
   into views. This spec owns *only the authorization state* of each event (`proposed`/`accepted`,
   attribution, consent). A frame implementation MUST carry / be able to derive the §5 annotation;
   it MUST NOT promote a `proposed` event to a materialized canonical view without consent.
-- **With `rapp-eternity/1.0`** — supplies the PKI-free `rappid` content-address used for optional binding
-  and for pinning published canon by sha256, **and owns the canonical `sig_suite` ladder** this spec's
-  optional signatures draw from. Identity-the-string and the suite ladder live there; authority-the-decision
-  lives here.
+- **With `rapp/1` §6** — supplies the `rappid` used for optional binding, and `rapp/1` §5 supplies the
+  domain-separated sha256 addressing used to pin published canon. Identity-the-string lives there;
+  authority-the-decision lives here. (Before 2026-07-17 this row read `rapp-eternity/1.0`, which is
+  now retired; the `sig_suite` ladder it also owned has no upstream owner — see the notice above.)
 - **With `rapp-sealed/1.0`** — when a published or appended payload must be confidential, it is a sealed
   envelope; this spec's "no secrets in publish" rule (§2.1) is satisfied by sealing, not by hiding.
 - **With the metropolis tier (mesh-composition)** — neighborhoods compose into estate→metropolis by each
@@ -320,9 +343,10 @@ This spec defines **authorization semantics only**. It explicitly does **not** d
   `rapp-twin-chat/1.0`). This spec only annotates each such event's trust state.
 - **The sealed payload codec.** Confidentiality is `rapp-sealed/1.0` (AES-256-GCM sealed envelope). This
   spec only mandates *that* secrets are sealed-not-published, never *how*.
-- **The rappid string format / keypair suites.** Identity-the-string, its content-addressing, and the
-  canonical `sig_suite` ladder are `rapp-eternity/1.0`; this spec only *consumes* a rappid and a ladder
-  suite for optional binding.
+- **The rappid string format / keypair suites.** Identity-the-string, its addressing, and its minting
+  rules are `rapp/1` §6 (§5 for content addressing); the canonical `sig_suite` ladder came from the
+  retired `rapp-eternity/1.0` and has no upstream owner today. This spec only *consumes* a rappid and a
+  ladder suite for optional binding.
 - **The mesh-composition / metropolis tier.** How neighborhoods are wired into estate→metropolis is its
   own spec; this one supplies the trust substrate it stands on.
 - **`/chat` and the agent ABI.** Untouched. This is a read of GitHub realized by agents + CI, never an
