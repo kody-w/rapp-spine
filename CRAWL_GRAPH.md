@@ -138,7 +138,7 @@
 | 48 | `protocol:kody-w/rappcards/rappcards-binder/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/RAPPcards/main/SPEC.md |
 | 49 | `protocol:kody-w/rapp-demos/rapp-demo/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-demos/main/README.md |
 | 50 | `protocol:kody-w/rapp-spine/rapp-spine/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-spine/main/SPINE.md |
-| 51 | `protocol:kody-w/rapp-1/rapp/1` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-1/6723c7add2aed36bb68992fc71a56b0a4bd5ad81/SPEC.md |
+| 51 | `protocol:kody-w/rapp-1/rapp/1` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-1/d2cd5abed48d3f52b86bbb975ac3558286d1db41/SPEC.md |
 | 52 | `protocol:kody-w/rapp-eternity/rapp-eternity/1.0` | protocol | deprecated | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-eternity/main/SPEC.md |
 | 53 | `protocol:kody-w/leviathan/rapp-fleet-chat/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/leviathan/main/FLEET_CHAT.md |
 | 54 | `protocol:kody-w/rapp-spine/rapp-kernel/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/KERNEL.md |
@@ -267,7 +267,7 @@
 | 177 | `issue:gap:e63bf54e87fb17bd` | issue | not_applicable | unresolved | gap | — |
 | 178 | `issue:clarification:c514ef934d2df0f1` | issue | not_applicable | informational | informational | — |
 | 179 | `issue:collision:1a5b56ac037ab2b1` | issue | not_applicable | informational | informational | — |
-| 180 | `issue:clarification:9256aa44a3f53509` | issue | not_applicable | informational | informational | — |
+| 180 | `issue:clarification:220dfd2b4ec2bc52` | issue | not_applicable | informational | informational | — |
 | 181 | `issue:clarification:2d6d88887c6074b9` | issue | not_applicable | informational | informational | — |
 | 182 | `issue:collision:a6ea5c002cb735a4` | issue | not_applicable | informational | informational | — |
 | 183 | `issue:collision:7efea7a02a39856f` | issue | not_applicable | informational | informational | — |

@@ -5,7 +5,7 @@
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "577edf6d64928b51fed18cef80a66bcdc19b61f37e88f68d863f50275a2c4f88"
+      "sha256": "f55cdb454d1f7e8244bd28fe53b8a84cf8a9c4ab15f8002c9eedf2d197d1a409"
     },
     "foundation": {
       "path": "foundation.json",
@@ -147,7 +147,7 @@
     },
     {
       "layer": "identity (who an agent IS + confidentiality)",
-      "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood §8). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp/1 §6, in kody-w/rapp-1 — SPEC.md pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b). §6.1 leaves the STRING untouched: rappid:@owner/slug:64hex is still the only conformant form, so nothing that merely EMITS a rappid is broken. §6.2 changed MINTING: the 64-hex tail is minted exactly ONCE and is then immutable — keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER) — and a producer MUST NOT derive the tail from owner/slug or any name. Keys stay OPTIONAL (keyless minting is a first-class branch), so gh-collaborator remains the default ownership and a keypair remains sovereignty, NEVER a requirement. rapp-eternity/1.0 — which taught the sha256 CONTENT-ADDRESS tail — is RETIRED as of 2026-07-17 (kody-w/rapp-eternity commit 9c970a1e; its SPEC.md is now a tombstone reading 'RETIRED · SUBORDINATE TO RAPP · NON-NORMATIVE'). Read it as history; never cite it as current or as a compatibility authority. Anything still COMPUTING a tail by hashing its own content is now non-conformant even though the emitted string still looks right.",
+      "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood §8). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp/1 §6, in kody-w/rapp-1 — SPEC.md pinned at d2cd5abed48d3f52b86bbb975ac3558286d1db41 (41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a). §6.1 leaves the STRING untouched: rappid:@owner/slug:64hex is still the only conformant form, so nothing that merely EMITS a rappid is broken. §6.2 changed MINTING: the 64-hex tail is minted exactly ONCE and is then immutable — keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER) — and a producer MUST NOT derive the tail from owner/slug or any name. Keys stay OPTIONAL (keyless minting is a first-class branch), so gh-collaborator remains the default ownership and a keypair remains sovereignty, NEVER a requirement. rapp-eternity/1.0 — which taught the sha256 CONTENT-ADDRESS tail — is RETIRED as of 2026-07-17 (kody-w/rapp-eternity commit 9c970a1e; its SPEC.md is now a tombstone reading 'RETIRED · SUBORDINATE TO RAPP · NON-NORMATIVE'). Read it as history; never cite it as current or as a compatibility authority. Anything still COMPUTING a tail by hashing its own content is now non-conformant even though the emitted string still looks right.",
       "protocols": [
         "rapp/1 (canonical identity — §6 of kody-w/rapp-1 SPEC.md; also owns canonicalization, content addressing, the frame, the wire and the egg)",
         "rapp-sealed/1.0",
@@ -779,8 +779,8 @@
       "repo": "kody-w/rapp-1",
       "purpose": "rapp/1 (RAPP Protocol Suite, rev-5) — the unified normative specification and the CANONICAL identity authority. §6 owns the rappid: §6.1 the unchanged rappid:@owner/slug:64hex grammar, §6.2 mint-once minting (keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER); a producer MUST NOT derive the tail from owner/slug or any name), §6.3 canonicalize-on-read and the owner-authorized re-anchor. It also owns §4 canonicalization (JCS), §5 domain-separated content addressing, §7 the frame, §8 the wire, §9 the egg and §10 detached-JWS signatures. It takes over from rapp-eternity/1.0 (retired 2026-07-17) and consolidates rapp-frame/2.0, rapp-frame/2.1, rapp-rappid-spec/2.0, rapp-protocol/1.0 and the scattered egg specs.",
       "when_to_use": "Whenever you mint, read, canonicalize or verify a rappid — §6 is the CANONICAL identity authority for the estate, in place of the RETIRED rapp-eternity/1.0. Emitters of rappid:@owner/slug:64hex are unaffected, because §6.1 keeps that grammar verbatim; MINTERS that hash their own content to build the 64-hex tail no longer conform and must move to §6.2 mint-once. Also the place to look for the frame, the wire, the egg and content addressing.",
-      "entry_point": "read SPEC.md §6 in kody-w/rapp-1. Pinned authority: kody-w/rapp-1@6723c7add2aed36bb68992fc71a56b0a4bd5ad81 — SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b (the same pin rapp-map/RAPP1_AUTHORITY.json records; structural pin only).",
-      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-1/6723c7add2aed36bb68992fc71a56b0a4bd5ad81/SPEC.md",
+      "entry_point": "read SPEC.md §6 in kody-w/rapp-1. Pinned authority: kody-w/rapp-1@d2cd5abed48d3f52b86bbb975ac3558286d1db41 — SPEC.md, 41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a (the same pin rapp-map/RAPP1_AUTHORITY.json records; structural pin only).",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-1/d2cd5abed48d3f52b86bbb975ac3558286d1db41/SPEC.md",
       "layer": "identity"
     },
     {
@@ -947,7 +947,7 @@
     "'rappter*' NAMING CLUSTER: OpenRappter is the intended consumer RAPP substrate-distro and RAPP<->OpenClaw Rosetta stone (current parity incomplete; data root ~/.openrappter); rappterbox is a console re-skin on ~/.brainstem; rappter is the standalone Wrapped Organism Spec home and EXISTS but is PRIVATE (an anonymous crawl reads it as 404); the readable copy of that spec is on the kody-w/rappterbook branch worktree-wrapped-organism; rappterbook (+~25 rappterbook-*/rappter-* repos) is the social estate. They are distinct roles. OpenRappter must converge on the frozen /chat behavior and drop-in agent.py ABI without turning OpenClaw-shaped compatibility surfaces into new RAPP protocol authorities.",
     "'kite' NAMING CLUSTER: rapp-kite (the operator 'string' — CDP tooling) is distinct from kite-mark (visual identity repo) and rapp-kited-twin (canonical kite-mark SVG). Three 'kite' things; only rapp-kite is the transport operator.",
     "RAPPID IDENTITY REPRESENTATIONAL SEAMS: multiple on-the-wire forms coexist — rappid:<birth-slug>:<64hex> (rapp-egg-hub v2.0), rappid:@owner/slug:<64hex> (canonical, now rapp/1 §6.1 — formerly attributed to the retired rapp-eternity/1.0; the grammar is byte-identical, only its owner moved), rappid:v2:<kind>:@owner/slug:<hex> (rapp-estate), rappid:v3:<base64url(SHA-256(pub))> (rapp-commons). rapp-commons' event SCHEMA and its PROTOCOL.md even show different forms. Rule (per the compatibility contract): READ all legacy forms forever, EMIT only canonical, join on the hash — never rewrite identity in place.",
-    "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
+    "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at d2cd5abed48d3f52b86bbb975ac3558286d1db41 (SPEC.md, 41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
     "'DRIFT TRIANGLE' IS A MISNOMER — it has FOUR legs (the @rapp/rapp agent, rapp-god, rapp-map, RAPP-Bible) anchored on ecosystem-spec.json; when any leg disagrees with the JSON, the JSON wins. rapp-map and rapp-god both carry byte-identical mirrors of ecosystem-spec.json, so divergence between them IS the detectable drift signal.",
     "OVERLAP — distribution catalogs: rapp-agents (flat public agent stack + RappLoader) overlaps RAR (curated content-addressed registry); rapp-egg-hub (twin .egg hub) overlaps twin-egg-hatcher (generic hatcher) and rapp-carts (the unifying cartridge abstraction). They are complementary (stack vs registry; hub-distribution vs hatch-tool vs user-facing unit), not duplicates — but a crawler should pick by role, not by nearest match.",
     "OVERLAP — map renderers: RAPP-Bible (synthesized, PINNED v1.0.0 human narrative — can itself drift), rapp_docs (live raw passthrough, always-current, zero copies), and rapp-map (index of WHERE, not the TEXT) cover overlapping ground with different jobs. Use rapp_docs for current spec text, Bible for narrative onboarding, rapp-map for location.",
@@ -994,7 +994,7 @@
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "577edf6d64928b51fed18cef80a66bcdc19b61f37e88f68d863f50275a2c4f88",
+            "sha256": "f55cdb454d1f7e8244bd28fe53b8a84cf8a9c4ab15f8002c9eedf2d197d1a409",
             "integrity": "sha256"
           }
         ],
@@ -1198,7 +1198,7 @@
         ],
         "display": {
           "layer": "identity (who an agent IS + confidentiality)",
-          "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood §8). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp/1 §6, in kody-w/rapp-1 — SPEC.md pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b). §6.1 leaves the STRING untouched: rappid:@owner/slug:64hex is still the only conformant form, so nothing that merely EMITS a rappid is broken. §6.2 changed MINTING: the 64-hex tail is minted exactly ONCE and is then immutable — keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER) — and a producer MUST NOT derive the tail from owner/slug or any name. Keys stay OPTIONAL (keyless minting is a first-class branch), so gh-collaborator remains the default ownership and a keypair remains sovereignty, NEVER a requirement. rapp-eternity/1.0 — which taught the sha256 CONTENT-ADDRESS tail — is RETIRED as of 2026-07-17 (kody-w/rapp-eternity commit 9c970a1e; its SPEC.md is now a tombstone reading 'RETIRED · SUBORDINATE TO RAPP · NON-NORMATIVE'). Read it as history; never cite it as current or as a compatibility authority. Anything still COMPUTING a tail by hashing its own content is now non-conformant even though the emitted string still looks right.",
+          "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood §8). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp/1 §6, in kody-w/rapp-1 — SPEC.md pinned at d2cd5abed48d3f52b86bbb975ac3558286d1db41 (41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a). §6.1 leaves the STRING untouched: rappid:@owner/slug:64hex is still the only conformant form, so nothing that merely EMITS a rappid is broken. §6.2 changed MINTING: the 64-hex tail is minted exactly ONCE and is then immutable — keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER) — and a producer MUST NOT derive the tail from owner/slug or any name. Keys stay OPTIONAL (keyless minting is a first-class branch), so gh-collaborator remains the default ownership and a keypair remains sovereignty, NEVER a requirement. rapp-eternity/1.0 — which taught the sha256 CONTENT-ADDRESS tail — is RETIRED as of 2026-07-17 (kody-w/rapp-eternity commit 9c970a1e; its SPEC.md is now a tombstone reading 'RETIRED · SUBORDINATE TO RAPP · NON-NORMATIVE'). Read it as history; never cite it as current or as a compatibility authority. Anything still COMPUTING a tail by hashing its own content is now non-conformant even though the emitted string still looks right.",
           "protocols": [
             "rapp/1 (canonical identity — §6 of kody-w/rapp-1 SPEC.md; also owns canonicalization, content addressing, the frame, the wire and the egg)",
             "rapp-sealed/1.0",
@@ -3592,7 +3592,7 @@
           {
             "role": "canonical_material",
             "required": true,
-            "target": "https://raw.githubusercontent.com/kody-w/rapp-1/6723c7add2aed36bb68992fc71a56b0a4bd5ad81/SPEC.md",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-1/d2cd5abed48d3f52b86bbb975ac3558286d1db41/SPEC.md",
             "availability": "declared",
             "read_only": true,
             "method": "GET"
@@ -3601,7 +3601,7 @@
         "entry_points": [
           {
             "kind": "canonical_read",
-            "target": "https://raw.githubusercontent.com/kody-w/rapp-1/6723c7add2aed36bb68992fc71a56b0a4bd5ad81/SPEC.md",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-1/d2cd5abed48d3f52b86bbb975ac3558286d1db41/SPEC.md",
             "method": "GET",
             "read_only": true,
             "safe_for_crawl": true
@@ -3615,7 +3615,7 @@
           },
           {
             "kind": "display_only",
-            "display": "read SPEC.md §6 in kody-w/rapp-1. Pinned authority: kody-w/rapp-1@6723c7add2aed36bb68992fc71a56b0a4bd5ad81 — SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b (the same pin rapp-map/RAPP1_AUTHORITY.json records; structural pin only).",
+            "display": "read SPEC.md §6 in kody-w/rapp-1. Pinned authority: kody-w/rapp-1@d2cd5abed48d3f52b86bbb975ac3558286d1db41 — SPEC.md, 41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a (the same pin rapp-map/RAPP1_AUTHORITY.json records; structural pin only).",
             "read_only": false,
             "safe_for_crawl": false,
             "policy": "never_execute"
@@ -3633,8 +3633,8 @@
           "repo": "kody-w/rapp-1",
           "purpose": "rapp/1 (RAPP Protocol Suite, rev-5) — the unified normative specification and the CANONICAL identity authority. §6 owns the rappid: §6.1 the unchanged rappid:@owner/slug:64hex grammar, §6.2 mint-once minting (keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER); a producer MUST NOT derive the tail from owner/slug or any name), §6.3 canonicalize-on-read and the owner-authorized re-anchor. It also owns §4 canonicalization (JCS), §5 domain-separated content addressing, §7 the frame, §8 the wire, §9 the egg and §10 detached-JWS signatures. It takes over from rapp-eternity/1.0 (retired 2026-07-17) and consolidates rapp-frame/2.0, rapp-frame/2.1, rapp-rappid-spec/2.0, rapp-protocol/1.0 and the scattered egg specs.",
           "when_to_use": "Whenever you mint, read, canonicalize or verify a rappid — §6 is the CANONICAL identity authority for the estate, in place of the RETIRED rapp-eternity/1.0. Emitters of rappid:@owner/slug:64hex are unaffected, because §6.1 keeps that grammar verbatim; MINTERS that hash their own content to build the 64-hex tail no longer conform and must move to §6.2 mint-once. Also the place to look for the frame, the wire, the egg and content addressing.",
-          "entry_point": "read SPEC.md §6 in kody-w/rapp-1. Pinned authority: kody-w/rapp-1@6723c7add2aed36bb68992fc71a56b0a4bd5ad81 — SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b (the same pin rapp-map/RAPP1_AUTHORITY.json records; structural pin only).",
-          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-1/6723c7add2aed36bb68992fc71a56b0a4bd5ad81/SPEC.md",
+          "entry_point": "read SPEC.md §6 in kody-w/rapp-1. Pinned authority: kody-w/rapp-1@d2cd5abed48d3f52b86bbb975ac3558286d1db41 — SPEC.md, 41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a (the same pin rapp-map/RAPP1_AUTHORITY.json records; structural pin only).",
+          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-1/d2cd5abed48d3f52b86bbb975ac3558286d1db41/SPEC.md",
           "layer": "identity"
         }
       },
@@ -8716,9 +8716,9 @@
         }
       },
       {
-        "id": "issue:clarification:9256aa44a3f53509",
+        "id": "issue:clarification:220dfd2b4ec2bc52",
         "type": "issue",
-        "label": "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
+        "label": "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at d2cd5abed48d3f52b86bbb975ac3558286d1db41 (SPEC.md, 41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
         "lifecycle": "not_applicable",
         "status": "informational",
         "materiality": "informational",
@@ -8729,10 +8729,10 @@
         "conformance": "not_applicable",
         "aliases": [],
         "display": {
-          "id": "issue:clarification:9256aa44a3f53509",
+          "id": "issue:clarification:220dfd2b4ec2bc52",
           "type": "issue",
           "kind": "clarification",
-          "summary": "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
+          "summary": "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at d2cd5abed48d3f52b86bbb975ac3558286d1db41 (SPEC.md, 41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
           "severity": "advisory",
           "blocking": false,
           "related_node_ids": [
@@ -10521,6 +10521,26 @@
         "to": "protocol:kody-w/rapp-vneighborhood/rapp-vneighborhood/1.0"
       },
       {
+        "from": "issue:clarification:220dfd2b4ec2bc52",
+        "type": "affects",
+        "to": "protocol:kody-w/rapp-1/rapp/1"
+      },
+      {
+        "from": "issue:clarification:220dfd2b4ec2bc52",
+        "type": "affects",
+        "to": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0"
+      },
+      {
+        "from": "issue:clarification:220dfd2b4ec2bc52",
+        "type": "affects",
+        "to": "repo:kody-w/rapp-1"
+      },
+      {
+        "from": "issue:clarification:220dfd2b4ec2bc52",
+        "type": "affects",
+        "to": "repo:kody-w/rapp-eternity"
+      },
+      {
         "from": "issue:clarification:29f0ff618cf3db54",
         "type": "affects",
         "to": "protocol:kody-w/rapp-egg-hub/brainstem-egg/2.3"
@@ -10559,26 +10579,6 @@
         "from": "issue:clarification:2d6d88887c6074b9",
         "type": "affects",
         "to": "spine:rapp-spine%2F1.1"
-      },
-      {
-        "from": "issue:clarification:9256aa44a3f53509",
-        "type": "affects",
-        "to": "protocol:kody-w/rapp-1/rapp/1"
-      },
-      {
-        "from": "issue:clarification:9256aa44a3f53509",
-        "type": "affects",
-        "to": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0"
-      },
-      {
-        "from": "issue:clarification:9256aa44a3f53509",
-        "type": "affects",
-        "to": "repo:kody-w/rapp-1"
-      },
-      {
-        "from": "issue:clarification:9256aa44a3f53509",
-        "type": "affects",
-        "to": "repo:kody-w/rapp-eternity"
       },
       {
         "from": "issue:clarification:c514ef934d2df0f1",
@@ -11299,7 +11299,7 @@
       {
         "from": "protocol:kody-w/rapp-1/rapp/1",
         "type": "has_issue",
-        "to": "issue:clarification:9256aa44a3f53509"
+        "to": "issue:clarification:220dfd2b4ec2bc52"
       },
       {
         "from": "protocol:kody-w/rapp-1/rapp/1",
@@ -11489,12 +11489,12 @@
       {
         "from": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
         "type": "has_issue",
-        "to": "issue:clarification:29f0ff618cf3db54"
+        "to": "issue:clarification:220dfd2b4ec2bc52"
       },
       {
         "from": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
         "type": "has_issue",
-        "to": "issue:clarification:9256aa44a3f53509"
+        "to": "issue:clarification:29f0ff618cf3db54"
       },
       {
         "from": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
@@ -12803,17 +12803,17 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "documents_issue",
+        "to": "issue:clarification:220dfd2b4ec2bc52"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "documents_issue",
         "to": "issue:clarification:29f0ff618cf3db54"
       },
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "documents_issue",
         "to": "issue:clarification:2d6d88887c6074b9"
-      },
-      {
-        "from": "spine:rapp-spine%2F1.1",
-        "type": "documents_issue",
-        "to": "issue:clarification:9256aa44a3f53509"
       },
       {
         "from": "spine:rapp-spine%2F1.1",
@@ -13686,7 +13686,7 @@
       "issue:gap:e63bf54e87fb17bd",
       "issue:clarification:c514ef934d2df0f1",
       "issue:collision:1a5b56ac037ab2b1",
-      "issue:clarification:9256aa44a3f53509",
+      "issue:clarification:220dfd2b4ec2bc52",
       "issue:clarification:2d6d88887c6074b9",
       "issue:collision:a6ea5c002cb735a4",
       "issue:collision:7efea7a02a39856f",
@@ -13918,7 +13918,7 @@
         "issue:gap:e63bf54e87fb17bd",
         "issue:clarification:c514ef934d2df0f1",
         "issue:collision:1a5b56ac037ab2b1",
-        "issue:clarification:9256aa44a3f53509",
+        "issue:clarification:220dfd2b4ec2bc52",
         "issue:clarification:2d6d88887c6074b9",
         "issue:collision:a6ea5c002cb735a4",
         "issue:collision:7efea7a02a39856f",
@@ -14123,10 +14123,10 @@
       "source": "registry.collisions_and_gaps"
     },
     {
-      "id": "issue:clarification:9256aa44a3f53509",
+      "id": "issue:clarification:220dfd2b4ec2bc52",
       "type": "issue",
       "kind": "clarification",
-      "summary": "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
+      "summary": "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at d2cd5abed48d3f52b86bbb975ac3558286d1db41 (SPEC.md, 41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
       "severity": "advisory",
       "blocking": false,
       "related_node_ids": [
