@@ -1243,5 +1243,41 @@ class RegistryConformanceRecordTests(_SpineFixture, unittest.TestCase):
         self.assertEqual(warnings, [], "\n".join(warnings))
 
 
+class DisclosureSurfaceRules(unittest.TestCase):
+    """`agent_logs` carries agent output back across the organism boundary.
+
+    The rule that keeps a private organ contained lives in prose, so guard it:
+    a body can satisfy every route-level control in NETWORK_TRUST_BOUNDARY.md
+    and still leak through this field.
+    """
+
+    @classmethod
+    def setUpClass(cls):
+        cls.parity = (ROOT / "specs" / "PARITY.md").read_text(encoding="utf-8")
+        cls.boundary = (
+            ROOT / "specs" / "NETWORK_TRUST_BOUNDARY.md"
+        ).read_text(encoding="utf-8")
+
+    def test_parity_states_the_disclosure_rule_normatively(self):
+        self.assertIn("#### 2.3.1", self.parity)
+        self.assertIn("**R-P1.**", self.parity)
+        self.assertIn("private organ", self.parity)
+
+    def test_parity_forbids_hiding_leaks_by_blanking_the_envelope(self):
+        self.assertIn("Blanking `agent_logs` is not a fix.", self.parity)
+
+    def test_boundary_classifies_agent_logs_as_egress(self):
+        self.assertIn("### 5.1", self.boundary)
+        self.assertIn("**R6.1.**", self.boundary)
+        self.assertIn("egress surface", self.boundary)
+
+    def test_boundary_declares_the_canary_conformance_check(self):
+        self.assertIn("C7 — Organ output is disclosure-safe", self.boundary)
+
+    def test_the_two_specs_cross_reference_each_other(self):
+        self.assertIn("rapp-runtime-parity/1.0` §2.3.1", self.boundary)
+        self.assertIn("§2.4", self.parity)
+
+
 if __name__ == "__main__":
     unittest.main()

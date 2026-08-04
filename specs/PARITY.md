@@ -152,6 +152,31 @@ For each `tool_call` the runtime:
 execution order. The shape is part of the contract: tooling (e.g. Flight Recorder,
 rapp-god) reads it.
 
+#### 2.3.1 Disclosure safety of `perform()` output (normative)
+
+The string an agent returns from `perform()` **leaves the organism**. It is copied
+verbatim into two places: the tool message handed to the model, and `agent_logs` in the
+`/chat` response envelope (§2.4) — which is returned to whoever called the wire.
+
+> **R-P1.** An agent that fronts a **private organ** — a local vault, a memory store, a
+> credentialed backend, any state the caller is not entitled to — **MUST** return only
+> material that is safe to disclose to the caller of `/chat`. The agent is the containment
+> boundary, because it is the only component upstream of *both* egress paths.
+
+Two consequences worth stating plainly, because both have been gotten wrong:
+
+- **Constraining the model is not containment.** A soul, system context, or careful prose
+  redaction shapes `response` only. Anything the agent already emitted is present in
+  `agent_logs` regardless of what the model then says — the leak is invisible in the
+  natural-language answer.
+- **Blanking `agent_logs` is not a fix.** Its shape is frozen by §2.3 and §2.4 and tooling
+  depends on it; a runtime that drops, truncates, or nulls it to hide organ output is
+  **non-conformant**. Fix the agent, not the envelope.
+
+A conformant private-organ adapter therefore returns a **bounded, structured projection**
+(identifiers, citations, disclosure-safe excerpts) rather than raw retrieval output,
+internal paths, or credentials.
+
 ### 2.4 The `/chat` response envelope
 
 On success (`200`):
