@@ -5,7 +5,7 @@
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "352b776dd4872dda23687eae3da3e5fb4a4968edcf7d27ffe19408f2fb15ab2c"
+      "sha256": "577edf6d64928b51fed18cef80a66bcdc19b61f37e88f68d863f50275a2c4f88"
     },
     "foundation": {
       "path": "foundation.json",
@@ -23,7 +23,7 @@
   },
   "graph": {
     "nodes": 222,
-    "relations": 686,
+    "relations": 690,
     "nodes_by_type": {
       "artifact": 2,
       "evidence": 19,
@@ -243,8 +243,8 @@
     "blocking_issue_ids": [
       "issue:security:de7fec630b7d59b0",
       "issue:gap:aae4cfd4841a6e85",
-      "issue:gap:64e5431ba2b4486e",
-      "issue:gap:4ca9be907b392155",
+      "issue:gap:cc846e33726d84ba",
+      "issue:gap:e63bf54e87fb17bd",
       "issue:security:dc174a64279000de",
       "issue:material:a4ae4a7bb33464d5",
       "issue:material:6a2042e1ae168bcd",

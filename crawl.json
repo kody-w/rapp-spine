@@ -5,7 +5,7 @@
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "352b776dd4872dda23687eae3da3e5fb4a4968edcf7d27ffe19408f2fb15ab2c"
+      "sha256": "577edf6d64928b51fed18cef80a66bcdc19b61f37e88f68d863f50275a2c4f88"
     },
     "foundation": {
       "path": "foundation.json",
@@ -172,13 +172,13 @@
     },
     {
       "layer": "leviathan (multicellular beings — COLLISION LAYER)",
-      "summary": "Many parts acting as one organism. The two senses STACK (protocol builds on the being-medium). (A) The Leviathan PROTOCOL coordinates many brainstem bodies; its canonical wire is rapp-fleet-chat/1.0 signed twin-chat over /chat. The legacy injected POST /api/agent/<name> implementation remains a known Phase-1 RCE and is non-conformant. (B) The Wrapped-Organism Leviathan (rapp_leviathan_factory -> wrap_leviathan -> rapp-leviathan-hub) is one operator's digital being built of many cells across 5 estates (Sanctum/Polity/Works/Press/Commons = soul/will/hands/eyes/mouth). The cell-protocol underpinning (B) is the Wrapped Organism Spec, advertised at kody-w/rappterbook (live — owns EGG_SPEC.md; the standalone Wrapped-Organism spec repo kody-w/rappter is 404 — see rappterbook) — currently 404.",
+      "summary": "Many parts acting as one organism. The two senses STACK (protocol builds on the being-medium). (A) The Leviathan PROTOCOL coordinates many brainstem bodies; its canonical wire is rapp-fleet-chat/1.0 signed twin-chat over /chat. The legacy injected POST /api/agent/<name> implementation remains a known Phase-1 RCE and is non-conformant. (B) The Wrapped-Organism Leviathan (rapp_leviathan_factory -> wrap_leviathan -> rapp-leviathan-hub) is one operator's digital being built of many cells across 5 estates (Sanctum/Polity/Works/Press/Commons = soul/will/hands/eyes/mouth). The cell-protocol underpinning (B) is the Wrapped Organism Spec, and its status was re-checked on 2026-08-04: it is UNPUBLISHED, not missing. kody-w/rappterbook's default branch tracks neither WRAPPED_ORGANISM_SPEC.md nor scripts/wrapped_organism/ (zero matching tracked paths on main), but both exist on that same repo's unmerged branch worktree-wrapped-organism — docs/WRAPPED_ORGANISM_SPEC.md fetches HTTP 200, 29891 bytes, sha256 9c9674bab36de2be… at pinned tip 51636f596070. The repo attribution is therefore sound (rappterbook's main really does own EGG_SPEC.md); what is wrong is calling the spec 404. The standalone spec repo kody-w/rappter also exists — it is PRIVATE (created 2026-03-10, last push 2026-05-17), which an anonymous crawl reports as 404. Both are visibility/merge gaps, not lost documents.",
       "protocols": [
         "leviathan SPEC v1.0 — FLEET protocol: one mind, many signed /chat BODIES",
         "rapp-leviathan-egg/1.0 — BEING egg (distribution-layer hub)",
         "rapp_leviathan_factory (mint inert 5-estate tree; agent in RAR)",
         "wrap_leviathan (wire stage — UNPUBLISHED/404)",
-        "WRAPPED_ORGANISM_SPEC.md (kody-w/rappterbook (live — owns EGG_SPEC.md; the standalone Wrapped-Organism spec repo kody-w/rappter is 404 — see rappterbook) — 404, no slug)"
+        "WRAPPED_ORGANISM_SPEC.md — UNPUBLISHED: kody-w/rappterbook branch worktree-wrapped-organism only, not on main; no document slug, defines the cell manifest wire schema rapp-cell/1.0"
       ]
     }
   ],
@@ -535,12 +535,12 @@
       "entry_point": "NOT FOUND / 404. Use leviathan_hub hatch instead."
     },
     {
-      "spec_id": "(WRAPPED_ORGANISM_SPEC.md; unslugged; repo 404 — gap)",
+      "spec_id": "(WRAPPED_ORGANISM_SPEC.md — self-titled 'The Wrapped Organism, RAPP Cell Architecture' v1.0; no document-level slug; UNPUBLISHED — branch-only)",
       "repo": "kody-w/rappterbook",
       "layer": "leviathan",
-      "purpose": "Advertised home of WRAPPED_ORGANISM_SPEC.md — constitutional spec for the cell-protocol multicellular pattern underpinning every Wrapped-Organism Leviathan (one stateless brainstem, one cell protocol, hierarchical transcript routing, infinite depth). kody-w/rappterbook is live (owns EGG_SPEC.md); the standalone spec repo kody-w/rappter is 404. [NOTE: the Wrapped-Organism cell runtime; the standalone spec repo is 404 — see rappterbook)]",
-      "when_to_use": "When you need the canonical Wrapped Organism / cell-protocol definition. Spec URL is dead; 404 gap — no surviving runtime at the cited path is kody-w/rappterbook/scripts/wrapped_organism/.",
-      "entry_point": "404. Reference cell runtime: kody-w/rappterbook/scripts/wrapped_organism/ (runtime + retrofit + tests)."
+      "purpose": "Home of WRAPPED_ORGANISM_SPEC.md — constitutional spec for the cell-protocol multicellular pattern underpinning every Wrapped-Organism Leviathan (one stateless brainstem, one cell protocol, hierarchical transcript routing, infinite depth); the document defines the cell manifest wire schema rapp-cell/1.0. VERIFIED 2026-08-04: the spec is UNPUBLISHED on this repo's default branch — main tracks neither WRAPPED_ORGANISM_SPEC.md nor scripts/wrapped_organism/ — but it is NOT missing. Both live on the repo's unmerged branch worktree-wrapped-organism, added by commit 8969007f091c957f31d48755adeaaea48869353f on 2026-05-16, branch tip 51636f596070630b0aab81fc4c7b1855850e9f0d on 2026-05-17. rappterbook's main does own EGG_SPEC.md, so attributing the Wrapped-Organism work to this repo is correct; only the 404 framing was wrong. The standalone spec repo kody-w/rappter likewise exists and is PRIVATE (created 2026-03-10, last push 2026-05-17), which an anonymous crawl reads as 404.",
+      "when_to_use": "When you need the canonical Wrapped Organism / cell-protocol definition. It is readable today, but only off the default branch: docs/WRAPPED_ORGANISM_SPEC.md on kody-w/rappterbook@worktree-wrapped-organism (HTTP 200, 29891 bytes, sha256 9c9674bab36de2bee7a9bbead76e2384f58d9aab5de17499c1cda24d9d9a0abb at the pinned tip). Treat it as UNPUBLISHED until that branch merges — the spine deliberately records no raw_url for it, because a branch that has never reached main is not a canonical publication and must not be pinned as one.",
+      "entry_point": "read the UNPUBLISHED branch pin https://raw.githubusercontent.com/kody-w/rappterbook/51636f596070630b0aab81fc4c7b1855850e9f0d/docs/WRAPPED_ORGANISM_SPEC.md . Reference cell runtime on the same branch: scripts/wrapped_organism/ (__init__.py, cell.py, retrofit.py) plus tests/test_wrapped_organism.py. None of these paths exist on main."
     },
     {
       "spec_id": "rapp-static-api/1.0",
@@ -941,10 +941,10 @@
     "KERNEL TAG HYGIENE: current grail release commit/version is 0.6.16, but brainstem-v0.6.16 is missing and brainstem-v0.6.15 is lightweight rather than annotated. foundation.json pins the immutable 0.6.16 commit SHA directly. Do not move legacy refs; the next release must cut a new annotated brainstem-vX.Y.Z tag and restore VERSION == latest tag.",
     "PORT + ROOT COLLISION: kody-w/RAPP, kody-w/rapp-installer, AND kody-w/rappterbox all install to ~/.brainstem and bind 127.0.0.1:7071. The three cannot coexist on one machine; CommunityRAPP also lands on 7071 locally (or 7072 scaffolded). Project-local RAPP uses :7072+.",
     "DEPRECATIONS: kody-w/rapp-installer is THE GRAIL/kernel of record; kody-w/RAPP is a downstream DISTRO that pins the unmodified kernel (rapp-distro/1.0). kody-w/RAPP_Hub is ARCHIVED (superseded by the RAR + RAPP_Store registry path). Treat rapp-installer as the kernel grail, RAPP as its reference distro, RAPP_Hub as archived.",
-    "MISSING / 404 PROTOCOLS (gaps): (1) The Wrapped Organism Spec — advertised home kody-w/rappterbook (live — owns EGG_SPEC.md; the standalone Wrapped-Organism spec repo kody-w/rappter is 404 — see rappterbook) is 404, no version slug; only a reference runtime survives at kody-w/rappterbook/scripts/wrapped_organism/. (2) kody-w/wrap_leviathan ships NO code anywhere reachable — its wiring stage is aspirational; leviathan_hub `hatch` covers it today. (3) kody-w/rapp_leviathan_factory has no standalone repo (404) — the canonical artifact is a RAR agent (v0.2.0).",
+    "MISSING / 404 PROTOCOLS (gaps): (1) The Wrapped Organism Spec — RECLASSIFIED 2026-08-04: UNPUBLISHED, not 404. kody-w/rappterbook's default branch tracks zero paths matching wrapped_organism, but the spec and its reference runtime both exist on that repo's unmerged branch worktree-wrapped-organism: docs/WRAPPED_ORGANISM_SPEC.md fetches HTTP 200 (29891 bytes, sha256 9c9674bab36de2be…, pinned tip 51636f596070), alongside scripts/wrapped_organism/ and tests/test_wrapped_organism.py, added 2026-05-16 by 8969007f091c. The standalone repo kody-w/rappter also exists and is PRIVATE, not absent. So this is a merge-and-visibility gap, not a lost document, and it closes by merging the branch or opening rappter — not by hunting for a missing file. Retained here because the canonical spec is still unreachable from any default branch. (2) kody-w/wrap_leviathan ships NO code anywhere reachable — its wiring stage is aspirational; leviathan_hub `hatch` covers it today. (3) kody-w/rapp_leviathan_factory has no standalone repo (404) — the canonical artifact is a RAR agent (v0.2.0).",
     "SEALING COLLISION: rapp-sealed/1.0 is the CANONICAL codec (PBKDF2-SHA256 salt 'rapp-neighborhood-5a/1', 210000 iters -> AES-256-GCM). rapp-vneighborhood/1.0 uses a DIFFERENT front-door PIN-seal variant (PBKDF2-SHA256(PIN, salt 'rapp-vneighborhood:'+channel, 100000) -> AES-GCM). Two incompatible schemes; never assume a vneighborhood channel is rapp-sealed bytes.",
     "ALIAS, NOT A PROTOCOL: 'rapp-twin-chat/1.0' is an ALIAS for §6 of rapp-neighborhood-protocol/1.0, not a standalone spec. rapp-commons-protocol/2.0 and rapp-vneighborhood/1.0 are PROFILES/APPS on top of it; MCP is just another §5 transport carrying the same §6 envelope. None of these are new peer types.",
-    "'rappter*' NAMING CLUSTER: OpenRappter is the intended consumer RAPP substrate-distro and RAPP<->OpenClaw Rosetta stone (current parity incomplete; data root ~/.openrappter); rappterbox is a console re-skin on ~/.brainstem; rappter is the 404 Wrapped Organism Spec home; rappterbook (+~25 rappterbook-*/rappter-* repos) is the social estate. They are distinct roles. OpenRappter must converge on the frozen /chat behavior and drop-in agent.py ABI without turning OpenClaw-shaped compatibility surfaces into new RAPP protocol authorities.",
+    "'rappter*' NAMING CLUSTER: OpenRappter is the intended consumer RAPP substrate-distro and RAPP<->OpenClaw Rosetta stone (current parity incomplete; data root ~/.openrappter); rappterbox is a console re-skin on ~/.brainstem; rappter is the standalone Wrapped Organism Spec home and EXISTS but is PRIVATE (an anonymous crawl reads it as 404); the readable copy of that spec is on the kody-w/rappterbook branch worktree-wrapped-organism; rappterbook (+~25 rappterbook-*/rappter-* repos) is the social estate. They are distinct roles. OpenRappter must converge on the frozen /chat behavior and drop-in agent.py ABI without turning OpenClaw-shaped compatibility surfaces into new RAPP protocol authorities.",
     "'kite' NAMING CLUSTER: rapp-kite (the operator 'string' — CDP tooling) is distinct from kite-mark (visual identity repo) and rapp-kited-twin (canonical kite-mark SVG). Three 'kite' things; only rapp-kite is the transport operator.",
     "RAPPID IDENTITY REPRESENTATIONAL SEAMS: multiple on-the-wire forms coexist — rappid:<birth-slug>:<64hex> (rapp-egg-hub v2.0), rappid:@owner/slug:<64hex> (canonical, now rapp/1 §6.1 — formerly attributed to the retired rapp-eternity/1.0; the grammar is byte-identical, only its owner moved), rappid:v2:<kind>:@owner/slug:<hex> (rapp-estate), rappid:v3:<base64url(SHA-256(pub))> (rapp-commons). rapp-commons' event SCHEMA and its PROTOCOL.md even show different forms. Rule (per the compatibility contract): READ all legacy forms forever, EMIT only canonical, join on the hash — never rewrite identity in place.",
     "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
@@ -994,7 +994,7 @@
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "352b776dd4872dda23687eae3da3e5fb4a4968edcf7d27ffe19408f2fb15ab2c",
+            "sha256": "577edf6d64928b51fed18cef80a66bcdc19b61f37e88f68d863f50275a2c4f88",
             "integrity": "sha256"
           }
         ],
@@ -1259,13 +1259,13 @@
         ],
         "display": {
           "layer": "leviathan (multicellular beings — COLLISION LAYER)",
-          "summary": "Many parts acting as one organism. The two senses STACK (protocol builds on the being-medium). (A) The Leviathan PROTOCOL coordinates many brainstem bodies; its canonical wire is rapp-fleet-chat/1.0 signed twin-chat over /chat. The legacy injected POST /api/agent/<name> implementation remains a known Phase-1 RCE and is non-conformant. (B) The Wrapped-Organism Leviathan (rapp_leviathan_factory -> wrap_leviathan -> rapp-leviathan-hub) is one operator's digital being built of many cells across 5 estates (Sanctum/Polity/Works/Press/Commons = soul/will/hands/eyes/mouth). The cell-protocol underpinning (B) is the Wrapped Organism Spec, advertised at kody-w/rappterbook (live — owns EGG_SPEC.md; the standalone Wrapped-Organism spec repo kody-w/rappter is 404 — see rappterbook) — currently 404.",
+          "summary": "Many parts acting as one organism. The two senses STACK (protocol builds on the being-medium). (A) The Leviathan PROTOCOL coordinates many brainstem bodies; its canonical wire is rapp-fleet-chat/1.0 signed twin-chat over /chat. The legacy injected POST /api/agent/<name> implementation remains a known Phase-1 RCE and is non-conformant. (B) The Wrapped-Organism Leviathan (rapp_leviathan_factory -> wrap_leviathan -> rapp-leviathan-hub) is one operator's digital being built of many cells across 5 estates (Sanctum/Polity/Works/Press/Commons = soul/will/hands/eyes/mouth). The cell-protocol underpinning (B) is the Wrapped Organism Spec, and its status was re-checked on 2026-08-04: it is UNPUBLISHED, not missing. kody-w/rappterbook's default branch tracks neither WRAPPED_ORGANISM_SPEC.md nor scripts/wrapped_organism/ (zero matching tracked paths on main), but both exist on that same repo's unmerged branch worktree-wrapped-organism — docs/WRAPPED_ORGANISM_SPEC.md fetches HTTP 200, 29891 bytes, sha256 9c9674bab36de2be… at pinned tip 51636f596070. The repo attribution is therefore sound (rappterbook's main really does own EGG_SPEC.md); what is wrong is calling the spec 404. The standalone spec repo kody-w/rappter also exists — it is PRIVATE (created 2026-03-10, last push 2026-05-17), which an anonymous crawl reports as 404. Both are visibility/merge gaps, not lost documents.",
           "protocols": [
             "leviathan SPEC v1.0 — FLEET protocol: one mind, many signed /chat BODIES",
             "rapp-leviathan-egg/1.0 — BEING egg (distribution-layer hub)",
             "rapp_leviathan_factory (mint inert 5-estate tree; agent in RAR)",
             "wrap_leviathan (wire stage — UNPUBLISHED/404)",
-            "WRAPPED_ORGANISM_SPEC.md (kody-w/rappterbook (live — owns EGG_SPEC.md; the standalone Wrapped-Organism spec repo kody-w/rappter is 404 — see rappterbook) — 404, no slug)"
+            "WRAPPED_ORGANISM_SPEC.md — UNPUBLISHED: kody-w/rappterbook branch worktree-wrapped-organism only, not on main; no document slug, defines the cell manifest wire schema rapp-cell/1.0"
           ]
         }
       },
@@ -1851,7 +1851,7 @@
       {
         "id": "protocol:kody-w/rappterbook/entry",
         "type": "protocol",
-        "label": "(WRAPPED_ORGANISM_SPEC.md; unslugged; repo 404 — gap)",
+        "label": "(WRAPPED_ORGANISM_SPEC.md — self-titled 'The Wrapped Organism, RAPP Cell Architecture' v1.0; no document-level slug; UNPUBLISHED — branch-only)",
         "repo": "kody-w/rappterbook",
         "canonical_protocol_identity": "entry",
         "layer_id": "layer:leviathan",
@@ -1882,7 +1882,7 @@
           },
           {
             "kind": "display_only",
-            "display": "404. Reference cell runtime: kody-w/rappterbook/scripts/wrapped_organism/ (runtime + retrofit + tests).",
+            "display": "read the UNPUBLISHED branch pin https://raw.githubusercontent.com/kody-w/rappterbook/51636f596070630b0aab81fc4c7b1855850e9f0d/docs/WRAPPED_ORGANISM_SPEC.md . Reference cell runtime on the same branch: scripts/wrapped_organism/ (__init__.py, cell.py, retrofit.py) plus tests/test_wrapped_organism.py. None of these paths exist on main.",
             "read_only": false,
             "safe_for_crawl": false,
             "policy": "never_execute"
@@ -1892,16 +1892,16 @@
         "aliases": [
           "kody-w/rappterbook",
           "rappterbook",
-          "wrapped_organism_spec.md unslugged repo 404 gap"
+          "wrapped_organism_spec.md self-titled the wrapped organism rapp cell architecture v1.0 no document-level slug unpublished branch-only"
         ],
         "display": {
           "registry_index": 10,
-          "spec_id": "(WRAPPED_ORGANISM_SPEC.md; unslugged; repo 404 — gap)",
+          "spec_id": "(WRAPPED_ORGANISM_SPEC.md — self-titled 'The Wrapped Organism, RAPP Cell Architecture' v1.0; no document-level slug; UNPUBLISHED — branch-only)",
           "repo": "kody-w/rappterbook",
           "layer": "leviathan",
-          "purpose": "Advertised home of WRAPPED_ORGANISM_SPEC.md — constitutional spec for the cell-protocol multicellular pattern underpinning every Wrapped-Organism Leviathan (one stateless brainstem, one cell protocol, hierarchical transcript routing, infinite depth). kody-w/rappterbook is live (owns EGG_SPEC.md); the standalone spec repo kody-w/rappter is 404. [NOTE: the Wrapped-Organism cell runtime; the standalone spec repo is 404 — see rappterbook)]",
-          "when_to_use": "When you need the canonical Wrapped Organism / cell-protocol definition. Spec URL is dead; 404 gap — no surviving runtime at the cited path is kody-w/rappterbook/scripts/wrapped_organism/.",
-          "entry_point": "404. Reference cell runtime: kody-w/rappterbook/scripts/wrapped_organism/ (runtime + retrofit + tests)."
+          "purpose": "Home of WRAPPED_ORGANISM_SPEC.md — constitutional spec for the cell-protocol multicellular pattern underpinning every Wrapped-Organism Leviathan (one stateless brainstem, one cell protocol, hierarchical transcript routing, infinite depth); the document defines the cell manifest wire schema rapp-cell/1.0. VERIFIED 2026-08-04: the spec is UNPUBLISHED on this repo's default branch — main tracks neither WRAPPED_ORGANISM_SPEC.md nor scripts/wrapped_organism/ — but it is NOT missing. Both live on the repo's unmerged branch worktree-wrapped-organism, added by commit 8969007f091c957f31d48755adeaaea48869353f on 2026-05-16, branch tip 51636f596070630b0aab81fc4c7b1855850e9f0d on 2026-05-17. rappterbook's main does own EGG_SPEC.md, so attributing the Wrapped-Organism work to this repo is correct; only the 404 framing was wrong. The standalone spec repo kody-w/rappter likewise exists and is PRIVATE (created 2026-03-10, last push 2026-05-17), which an anonymous crawl reads as 404.",
+          "when_to_use": "When you need the canonical Wrapped Organism / cell-protocol definition. It is readable today, but only off the default branch: docs/WRAPPED_ORGANISM_SPEC.md on kody-w/rappterbook@worktree-wrapped-organism (HTTP 200, 29891 bytes, sha256 9c9674bab36de2bee7a9bbead76e2384f58d9aab5de17499c1cda24d9d9a0abb at the pinned tip). Treat it as UNPUBLISHED until that branch merges — the spine deliberately records no raw_url for it, because a branch that has never reached main is not a canonical publication and must not be pinned as one.",
+          "entry_point": "read the UNPUBLISHED branch pin https://raw.githubusercontent.com/kody-w/rappterbook/51636f596070630b0aab81fc4c7b1855850e9f0d/docs/WRAPPED_ORGANISM_SPEC.md . Reference cell runtime on the same branch: scripts/wrapped_organism/ (__init__.py, cell.py, retrofit.py) plus tests/test_wrapped_organism.py. None of these paths exist on main."
         }
       },
       {
@@ -8547,9 +8547,9 @@
         }
       },
       {
-        "id": "issue:gap:64e5431ba2b4486e",
+        "id": "issue:gap:cc846e33726d84ba",
         "type": "issue",
-        "label": "MISSING / 404 PROTOCOLS (gaps): (1) The Wrapped Organism Spec — advertised home kody-w/rappterbook (live — owns EGG_SPEC.md; the standalone Wrapped-Organism spec repo kody-w/rappter is 404 — see rappterbook) is 404, no version slug; only a reference runtime survives at kody-w/rappterbook/scripts/wrapped_organism/. (2) kody-w/wrap_leviathan ships NO code anywhere reachable — its wiring stage is aspirational; leviathan_hub `hatch` covers it today. (3) kody-w/rapp_leviathan_factory has no standalone repo (404) — the canonical artifact is a RAR agent (v0.2.0).",
+        "label": "MISSING / 404 PROTOCOLS (gaps): (1) The Wrapped Organism Spec — RECLASSIFIED 2026-08-04: UNPUBLISHED, not 404. kody-w/rappterbook's default branch tracks zero paths matching wrapped_organism, but the spec and its reference runtime both exist on that repo's unmerged branch worktree-wrapped-organism: docs/WRAPPED_ORGANISM_SPEC.md fetches HTTP 200 (29891 bytes, sha256 9c9674bab36de2be…, pinned tip 51636f596070), alongside scripts/wrapped_organism/ and tests/test_wrapped_organism.py, added 2026-05-16 by 8969007f091c. The standalone repo kody-w/rappter also exists and is PRIVATE, not absent. So this is a merge-and-visibility gap, not a lost document, and it closes by merging the branch or opening rappter — not by hunting for a missing file. Retained here because the canonical spec is still unreachable from any default branch. (2) kody-w/wrap_leviathan ships NO code anywhere reachable — its wiring stage is aspirational; leviathan_hub `hatch` covers it today. (3) kody-w/rapp_leviathan_factory has no standalone repo (404) — the canonical artifact is a RAR agent (v0.2.0).",
         "lifecycle": "not_applicable",
         "status": "unresolved",
         "materiality": "gap",
@@ -8560,10 +8560,10 @@
         "conformance": "not_applicable",
         "aliases": [],
         "display": {
-          "id": "issue:gap:64e5431ba2b4486e",
+          "id": "issue:gap:cc846e33726d84ba",
           "type": "issue",
           "kind": "gap",
-          "summary": "MISSING / 404 PROTOCOLS (gaps): (1) The Wrapped Organism Spec — advertised home kody-w/rappterbook (live — owns EGG_SPEC.md; the standalone Wrapped-Organism spec repo kody-w/rappter is 404 — see rappterbook) is 404, no version slug; only a reference runtime survives at kody-w/rappterbook/scripts/wrapped_organism/. (2) kody-w/wrap_leviathan ships NO code anywhere reachable — its wiring stage is aspirational; leviathan_hub `hatch` covers it today. (3) kody-w/rapp_leviathan_factory has no standalone repo (404) — the canonical artifact is a RAR agent (v0.2.0).",
+          "summary": "MISSING / 404 PROTOCOLS (gaps): (1) The Wrapped Organism Spec — RECLASSIFIED 2026-08-04: UNPUBLISHED, not 404. kody-w/rappterbook's default branch tracks zero paths matching wrapped_organism, but the spec and its reference runtime both exist on that repo's unmerged branch worktree-wrapped-organism: docs/WRAPPED_ORGANISM_SPEC.md fetches HTTP 200 (29891 bytes, sha256 9c9674bab36de2be…, pinned tip 51636f596070), alongside scripts/wrapped_organism/ and tests/test_wrapped_organism.py, added 2026-05-16 by 8969007f091c. The standalone repo kody-w/rappter also exists and is PRIVATE, not absent. So this is a merge-and-visibility gap, not a lost document, and it closes by merging the branch or opening rappter — not by hunting for a missing file. Retained here because the canonical spec is still unreachable from any default branch. (2) kody-w/wrap_leviathan ships NO code anywhere reachable — its wiring stage is aspirational; leviathan_hub `hatch` covers it today. (3) kody-w/rapp_leviathan_factory has no standalone repo (404) — the canonical artifact is a RAR agent (v0.2.0).",
           "severity": "blocking",
           "blocking": true,
           "related_node_ids": [
@@ -8635,9 +8635,9 @@
         }
       },
       {
-        "id": "issue:gap:4ca9be907b392155",
+        "id": "issue:gap:e63bf54e87fb17bd",
         "type": "issue",
-        "label": "'rappter*' NAMING CLUSTER: OpenRappter is the intended consumer RAPP substrate-distro and RAPP<->OpenClaw Rosetta stone (current parity incomplete; data root ~/.openrappter); rappterbox is a console re-skin on ~/.brainstem; rappter is the 404 Wrapped Organism Spec home; rappterbook (+~25 rappterbook-*/rappter-* repos) is the social estate. They are distinct roles. OpenRappter must converge on the frozen /chat behavior and drop-in agent.py ABI without turning OpenClaw-shaped compatibility surfaces into new RAPP protocol authorities.",
+        "label": "'rappter*' NAMING CLUSTER: OpenRappter is the intended consumer RAPP substrate-distro and RAPP<->OpenClaw Rosetta stone (current parity incomplete; data root ~/.openrappter); rappterbox is a console re-skin on ~/.brainstem; rappter is the standalone Wrapped Organism Spec home and EXISTS but is PRIVATE (an anonymous crawl reads it as 404); the readable copy of that spec is on the kody-w/rappterbook branch worktree-wrapped-organism; rappterbook (+~25 rappterbook-*/rappter-* repos) is the social estate. They are distinct roles. OpenRappter must converge on the frozen /chat behavior and drop-in agent.py ABI without turning OpenClaw-shaped compatibility surfaces into new RAPP protocol authorities.",
         "lifecycle": "not_applicable",
         "status": "unresolved",
         "materiality": "gap",
@@ -8648,14 +8648,17 @@
         "conformance": "not_applicable",
         "aliases": [],
         "display": {
-          "id": "issue:gap:4ca9be907b392155",
+          "id": "issue:gap:e63bf54e87fb17bd",
           "type": "issue",
           "kind": "gap",
-          "summary": "'rappter*' NAMING CLUSTER: OpenRappter is the intended consumer RAPP substrate-distro and RAPP<->OpenClaw Rosetta stone (current parity incomplete; data root ~/.openrappter); rappterbox is a console re-skin on ~/.brainstem; rappter is the 404 Wrapped Organism Spec home; rappterbook (+~25 rappterbook-*/rappter-* repos) is the social estate. They are distinct roles. OpenRappter must converge on the frozen /chat behavior and drop-in agent.py ABI without turning OpenClaw-shaped compatibility surfaces into new RAPP protocol authorities.",
+          "summary": "'rappter*' NAMING CLUSTER: OpenRappter is the intended consumer RAPP substrate-distro and RAPP<->OpenClaw Rosetta stone (current parity incomplete; data root ~/.openrappter); rappterbox is a console re-skin on ~/.brainstem; rappter is the standalone Wrapped Organism Spec home and EXISTS but is PRIVATE (an anonymous crawl reads it as 404); the readable copy of that spec is on the kody-w/rappterbook branch worktree-wrapped-organism; rappterbook (+~25 rappterbook-*/rappter-* repos) is the social estate. They are distinct roles. OpenRappter must converge on the frozen /chat behavior and drop-in agent.py ABI without turning OpenClaw-shaped compatibility surfaces into new RAPP protocol authorities.",
           "severity": "blocking",
           "blocking": true,
           "related_node_ids": [
-            "spine:rapp-spine%2F1.1"
+            "evidence:foundation/core_infra/egg_spec_origin@kody-w/rappterbook",
+            "evidence:foundation/law/Rappterbook%20Constitution@kody-w/rappterbook",
+            "protocol:kody-w/rappterbook/entry",
+            "repo:kody-w/rappterbook"
           ],
           "source": "registry.collisions_and_gaps"
         }
@@ -9164,7 +9167,7 @@
       {
         "id": "issue:material:859c12f45e2cb368",
         "type": "issue",
-        "label": "(WRAPPED_ORGANISM_SPEC.md; unslugged; repo 404 — gap) in kody-w/rappterbook has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
+        "label": "(WRAPPED_ORGANISM_SPEC.md — self-titled 'The Wrapped Organism, RAPP Cell Architecture' v1.0; no document-level slug; UNPUBLISHED — branch-only) in kody-w/rappterbook has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
         "lifecycle": "not_applicable",
         "status": "unresolved",
         "materiality": "gap",
@@ -9178,7 +9181,7 @@
           "id": "issue:material:859c12f45e2cb368",
           "type": "issue",
           "kind": "material",
-          "summary": "(WRAPPED_ORGANISM_SPEC.md; unslugged; repo 404 — gap) in kody-w/rappterbook has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
+          "summary": "(WRAPPED_ORGANISM_SPEC.md — self-titled 'The Wrapped Organism, RAPP Cell Architecture' v1.0; no document-level slug; UNPUBLISHED — branch-only) in kody-w/rappterbook has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
           "severity": "blocking",
           "blocking": true,
           "related_node_ids": [
@@ -10688,54 +10691,69 @@
         "to": "protocol:kody-w/rapp-vneighborhood/rapp-vneighborhood/1.0"
       },
       {
-        "from": "issue:gap:4ca9be907b392155",
+        "from": "issue:gap:aae4cfd4841a6e85",
         "type": "affects",
         "to": "spine:rapp-spine%2F1.1"
       },
       {
-        "from": "issue:gap:64e5431ba2b4486e",
+        "from": "issue:gap:cc846e33726d84ba",
         "type": "affects",
         "to": "evidence:foundation/core_infra/egg_spec_origin@kody-w/rappterbook"
       },
       {
-        "from": "issue:gap:64e5431ba2b4486e",
+        "from": "issue:gap:cc846e33726d84ba",
         "type": "affects",
         "to": "evidence:foundation/law/Rappterbook%20Constitution@kody-w/rappterbook"
       },
       {
-        "from": "issue:gap:64e5431ba2b4486e",
+        "from": "issue:gap:cc846e33726d84ba",
         "type": "affects",
         "to": "protocol:kody-w/rapp_leviathan_factory/entry"
       },
       {
-        "from": "issue:gap:64e5431ba2b4486e",
+        "from": "issue:gap:cc846e33726d84ba",
         "type": "affects",
         "to": "protocol:kody-w/rappterbook/entry"
       },
       {
-        "from": "issue:gap:64e5431ba2b4486e",
+        "from": "issue:gap:cc846e33726d84ba",
         "type": "affects",
         "to": "protocol:kody-w/wrap_leviathan/entry"
       },
       {
-        "from": "issue:gap:64e5431ba2b4486e",
+        "from": "issue:gap:cc846e33726d84ba",
         "type": "affects",
         "to": "repo:kody-w/rapp_leviathan_factory"
       },
       {
-        "from": "issue:gap:64e5431ba2b4486e",
+        "from": "issue:gap:cc846e33726d84ba",
         "type": "affects",
         "to": "repo:kody-w/rappterbook"
       },
       {
-        "from": "issue:gap:64e5431ba2b4486e",
+        "from": "issue:gap:cc846e33726d84ba",
         "type": "affects",
         "to": "repo:kody-w/wrap_leviathan"
       },
       {
-        "from": "issue:gap:aae4cfd4841a6e85",
+        "from": "issue:gap:e63bf54e87fb17bd",
         "type": "affects",
-        "to": "spine:rapp-spine%2F1.1"
+        "to": "evidence:foundation/core_infra/egg_spec_origin@kody-w/rappterbook"
+      },
+      {
+        "from": "issue:gap:e63bf54e87fb17bd",
+        "type": "affects",
+        "to": "evidence:foundation/law/Rappterbook%20Constitution@kody-w/rappterbook"
+      },
+      {
+        "from": "issue:gap:e63bf54e87fb17bd",
+        "type": "affects",
+        "to": "protocol:kody-w/rappterbook/entry"
+      },
+      {
+        "from": "issue:gap:e63bf54e87fb17bd",
+        "type": "affects",
+        "to": "repo:kody-w/rappterbook"
       },
       {
         "from": "issue:lifecycle:f8980d46c38b81f5",
@@ -12001,7 +12019,7 @@
       {
         "from": "protocol:kody-w/rapp_leviathan_factory/entry",
         "type": "has_issue",
-        "to": "issue:gap:64e5431ba2b4486e"
+        "to": "issue:gap:cc846e33726d84ba"
       },
       {
         "from": "protocol:kody-w/rapp_leviathan_factory/entry",
@@ -12061,7 +12079,12 @@
       {
         "from": "protocol:kody-w/rappterbook/entry",
         "type": "has_issue",
-        "to": "issue:gap:64e5431ba2b4486e"
+        "to": "issue:gap:cc846e33726d84ba"
+      },
+      {
+        "from": "protocol:kody-w/rappterbook/entry",
+        "type": "has_issue",
+        "to": "issue:gap:e63bf54e87fb17bd"
       },
       {
         "from": "protocol:kody-w/rappterbook/entry",
@@ -12126,7 +12149,7 @@
       {
         "from": "protocol:kody-w/wrap_leviathan/entry",
         "type": "has_issue",
-        "to": "issue:gap:64e5431ba2b4486e"
+        "to": "issue:gap:cc846e33726d84ba"
       },
       {
         "from": "protocol:kody-w/wrap_leviathan/entry",
@@ -12830,17 +12853,17 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "documents_issue",
-        "to": "issue:gap:4ca9be907b392155"
-      },
-      {
-        "from": "spine:rapp-spine%2F1.1",
-        "type": "documents_issue",
-        "to": "issue:gap:64e5431ba2b4486e"
-      },
-      {
-        "from": "spine:rapp-spine%2F1.1",
-        "type": "documents_issue",
         "to": "issue:gap:aae4cfd4841a6e85"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "documents_issue",
+        "to": "issue:gap:cc846e33726d84ba"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "documents_issue",
+        "to": "issue:gap:e63bf54e87fb17bd"
       },
       {
         "from": "spine:rapp-spine%2F1.1",
@@ -13657,10 +13680,10 @@
       "issue:gap:aae4cfd4841a6e85",
       "issue:collision:be6f1cabcca3c379",
       "issue:lifecycle:f8980d46c38b81f5",
-      "issue:gap:64e5431ba2b4486e",
+      "issue:gap:cc846e33726d84ba",
       "issue:collision:f5347eee2b439aa7",
       "issue:clarification:0f9bdce8fcf3e42e",
-      "issue:gap:4ca9be907b392155",
+      "issue:gap:e63bf54e87fb17bd",
       "issue:clarification:c514ef934d2df0f1",
       "issue:collision:1a5b56ac037ab2b1",
       "issue:clarification:9256aa44a3f53509",
@@ -13889,10 +13912,10 @@
         "issue:gap:aae4cfd4841a6e85",
         "issue:collision:be6f1cabcca3c379",
         "issue:lifecycle:f8980d46c38b81f5",
-        "issue:gap:64e5431ba2b4486e",
+        "issue:gap:cc846e33726d84ba",
         "issue:collision:f5347eee2b439aa7",
         "issue:clarification:0f9bdce8fcf3e42e",
-        "issue:gap:4ca9be907b392155",
+        "issue:gap:e63bf54e87fb17bd",
         "issue:clarification:c514ef934d2df0f1",
         "issue:collision:1a5b56ac037ab2b1",
         "issue:clarification:9256aa44a3f53509",
@@ -14015,10 +14038,10 @@
       "source": "registry.collisions_and_gaps"
     },
     {
-      "id": "issue:gap:64e5431ba2b4486e",
+      "id": "issue:gap:cc846e33726d84ba",
       "type": "issue",
       "kind": "gap",
-      "summary": "MISSING / 404 PROTOCOLS (gaps): (1) The Wrapped Organism Spec — advertised home kody-w/rappterbook (live — owns EGG_SPEC.md; the standalone Wrapped-Organism spec repo kody-w/rappter is 404 — see rappterbook) is 404, no version slug; only a reference runtime survives at kody-w/rappterbook/scripts/wrapped_organism/. (2) kody-w/wrap_leviathan ships NO code anywhere reachable — its wiring stage is aspirational; leviathan_hub `hatch` covers it today. (3) kody-w/rapp_leviathan_factory has no standalone repo (404) — the canonical artifact is a RAR agent (v0.2.0).",
+      "summary": "MISSING / 404 PROTOCOLS (gaps): (1) The Wrapped Organism Spec — RECLASSIFIED 2026-08-04: UNPUBLISHED, not 404. kody-w/rappterbook's default branch tracks zero paths matching wrapped_organism, but the spec and its reference runtime both exist on that repo's unmerged branch worktree-wrapped-organism: docs/WRAPPED_ORGANISM_SPEC.md fetches HTTP 200 (29891 bytes, sha256 9c9674bab36de2be…, pinned tip 51636f596070), alongside scripts/wrapped_organism/ and tests/test_wrapped_organism.py, added 2026-05-16 by 8969007f091c. The standalone repo kody-w/rappter also exists and is PRIVATE, not absent. So this is a merge-and-visibility gap, not a lost document, and it closes by merging the branch or opening rappter — not by hunting for a missing file. Retained here because the canonical spec is still unreachable from any default branch. (2) kody-w/wrap_leviathan ships NO code anywhere reachable — its wiring stage is aspirational; leviathan_hub `hatch` covers it today. (3) kody-w/rapp_leviathan_factory has no standalone repo (404) — the canonical artifact is a RAR agent (v0.2.0).",
       "severity": "blocking",
       "blocking": true,
       "related_node_ids": [
@@ -14061,14 +14084,17 @@
       "source": "registry.collisions_and_gaps"
     },
     {
-      "id": "issue:gap:4ca9be907b392155",
+      "id": "issue:gap:e63bf54e87fb17bd",
       "type": "issue",
       "kind": "gap",
-      "summary": "'rappter*' NAMING CLUSTER: OpenRappter is the intended consumer RAPP substrate-distro and RAPP<->OpenClaw Rosetta stone (current parity incomplete; data root ~/.openrappter); rappterbox is a console re-skin on ~/.brainstem; rappter is the 404 Wrapped Organism Spec home; rappterbook (+~25 rappterbook-*/rappter-* repos) is the social estate. They are distinct roles. OpenRappter must converge on the frozen /chat behavior and drop-in agent.py ABI without turning OpenClaw-shaped compatibility surfaces into new RAPP protocol authorities.",
+      "summary": "'rappter*' NAMING CLUSTER: OpenRappter is the intended consumer RAPP substrate-distro and RAPP<->OpenClaw Rosetta stone (current parity incomplete; data root ~/.openrappter); rappterbox is a console re-skin on ~/.brainstem; rappter is the standalone Wrapped Organism Spec home and EXISTS but is PRIVATE (an anonymous crawl reads it as 404); the readable copy of that spec is on the kody-w/rappterbook branch worktree-wrapped-organism; rappterbook (+~25 rappterbook-*/rappter-* repos) is the social estate. They are distinct roles. OpenRappter must converge on the frozen /chat behavior and drop-in agent.py ABI without turning OpenClaw-shaped compatibility surfaces into new RAPP protocol authorities.",
       "severity": "blocking",
       "blocking": true,
       "related_node_ids": [
-        "spine:rapp-spine%2F1.1"
+        "evidence:foundation/core_infra/egg_spec_origin@kody-w/rappterbook",
+        "evidence:foundation/law/Rappterbook%20Constitution@kody-w/rappterbook",
+        "protocol:kody-w/rappterbook/entry",
+        "repo:kody-w/rappterbook"
       ],
       "source": "registry.collisions_and_gaps"
     },
@@ -14325,7 +14351,7 @@
       "id": "issue:material:859c12f45e2cb368",
       "type": "issue",
       "kind": "material",
-      "summary": "(WRAPPED_ORGANISM_SPEC.md; unslugged; repo 404 — gap) in kody-w/rappterbook has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
+      "summary": "(WRAPPED_ORGANISM_SPEC.md — self-titled 'The Wrapped Organism, RAPP Cell Architecture' v1.0; no document-level slug; UNPUBLISHED — branch-only) in kody-w/rappterbook has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
       "severity": "blocking",
       "blocking": true,
       "related_node_ids": [
