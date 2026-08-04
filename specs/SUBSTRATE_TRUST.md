@@ -22,8 +22,8 @@
 > owner of the rappid and of the `sig_suite` ladder. **`rapp-eternity/1.0` was retired to a
 > tombstone on 2026-07-17** (`kody-w/rapp-eternity` commit `9c970a1e`, then `17bb6d21`). Every
 > identity deferral below now reads through to **`rapp/1` §6 — `kody-w/rapp-1`, `SPEC.md` pinned at
-> `6723c7add2aed36bb68992fc71a56b0a4bd5ad81` (41880 bytes, sha256
-> `6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b`).**
+> `d2cd5abed48d3f52b86bbb975ac3558286d1db41` (41952 bytes, sha256
+> `cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a`).**
 >
 > Nothing in this spec's own model changes: the rappid string `rappid:@owner/slug:<64hex>` is
 > byte-identical under `rapp/1` §6.1, keypair binding stays **optional and purely additive**, and

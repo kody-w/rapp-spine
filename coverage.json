@@ -5,7 +5,7 @@
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "577edf6d64928b51fed18cef80a66bcdc19b61f37e88f68d863f50275a2c4f88"
+      "sha256": "f55cdb454d1f7e8244bd28fe53b8a84cf8a9c4ab15f8002c9eedf2d197d1a409"
     },
     "foundation": {
       "path": "foundation.json",

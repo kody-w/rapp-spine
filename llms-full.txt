@@ -44,7 +44,7 @@
 040 | declared | canonical_material | protocol:kody-w/rappcards/rappcards-binder/1.0 | https://raw.githubusercontent.com/kody-w/RAPPcards/main/SPEC.md
 041 | declared | canonical_material | protocol:kody-w/rapp-demos/rapp-demo/1.0 | https://raw.githubusercontent.com/kody-w/rapp-demos/main/README.md
 042 | declared | canonical_material | protocol:kody-w/rapp-spine/rapp-spine/1.0 | https://raw.githubusercontent.com/kody-w/rapp-spine/main/SPINE.md
-043 | declared | canonical_material | protocol:kody-w/rapp-1/rapp/1 | https://raw.githubusercontent.com/kody-w/rapp-1/6723c7add2aed36bb68992fc71a56b0a4bd5ad81/SPEC.md
+043 | declared | canonical_material | protocol:kody-w/rapp-1/rapp/1 | https://raw.githubusercontent.com/kody-w/rapp-1/d2cd5abed48d3f52b86bbb975ac3558286d1db41/SPEC.md
 044 | declared | canonical_material | protocol:kody-w/rapp-eternity/rapp-eternity/1.0 | https://raw.githubusercontent.com/kody-w/rapp-eternity/main/SPEC.md
 045 | declared | canonical_material | protocol:kody-w/leviathan/rapp-fleet-chat/1.0 | https://raw.githubusercontent.com/kody-w/leviathan/main/FLEET_CHAT.md
 046 | declared | canonical_material | protocol:kody-w/rapp-spine/rapp-kernel/1.0 | https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/KERNEL.md
