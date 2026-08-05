@@ -1,13 +1,13 @@
 {
   "spec": "rapp-foundation/1.0",
-  "what": "The locked, content-addressed canonical registry of the RAPP foundation pillars. Fetch over the hydra, verify sha256 against this, then build ON the wire (agents/cartridges/profiles) \u2014 never into the kernel. rapp-god watches copies against these hashes (its own observatory has known-open lag \u2014 see estate-map known-open) for drift.",
+  "what": "The locked, content-addressed canonical registry of the RAPP foundation pillars. Fetch over the hydra, verify sha256 against this, then build ON the wire (agents/cartridges/profiles) — never into the kernel. rapp-god watches copies against these hashes (its own observatory has known-open lag — see estate-map known-open) for drift.",
   "doctrine": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md",
   "generated": "2026-07-10",
   "pillars": [
     {
       "spec": "rapp-agent/1.0",
       "repo": "kody-w/rapp-installer",
-      "role": "kernel \u2014 the atom",
+      "role": "kernel — the atom",
       "locked": true,
       "version": "0.6.16",
       "commit": "5fbde1776a72715935c3d597a9ddfce28a04032b",
@@ -19,51 +19,57 @@
     {
       "spec": "leviathan/1.0",
       "repo": "kody-w/leviathan",
-      "role": "fleet \u2014 one mind, many bodies (sync/LAN)",
+      "role": "fleet — one mind, many bodies (sync/LAN)",
       "locked": true,
-      "raw_url": "https://raw.githubusercontent.com/kody-w/leviathan/main/SPEC.md",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/leviathan/42d02ad1b041b328540b30d54c7b2a68b9d961aa/SPEC.md",
       "sha256": "3e6679f192b67c8eb30b92f0fda23ff8b3a3a800e75d0772bc8c6e32733c5453",
-      "canonical_wire_note": "Fleet ORCHESTRATION concept. The canonical fleet WIRE is rapp-fleet-chat/1.0 (signed twin-chat events over /chat, Art XXV). The legacy POST /api/agent route is the Phase-1 RCE (LAN-only, to retire)."
+      "canonical_wire_note": "Fleet ORCHESTRATION concept. The canonical fleet WIRE is rapp-fleet-chat/1.0 (signed twin-chat events over /chat, Art XXV). The legacy POST /api/agent route is the Phase-1 RCE (LAN-only, to retire).",
+      "commit": "42d02ad1b041b328540b30d54c7b2a68b9d961aa"
     },
     {
       "spec": "rapp-leviathan-egg/1.0",
       "repo": "kody-w/rapp-leviathan-hub",
-      "role": "being \u2014 many cells, one organism (portable)",
+      "role": "being — many cells, one organism (portable)",
       "locked": true,
-      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-leviathan-hub/main/UNIFIED.md",
-      "sha256": "60eb87dc018fd55151c2a87369b051da9d1c010c53c3927980a11e9f3f804a18"
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-leviathan-hub/bfefc798b9b3ce49c4b9c941830607e21aa8e623/UNIFIED.md",
+      "sha256": "60eb87dc018fd55151c2a87369b051da9d1c010c53c3927980a11e9f3f804a18",
+      "commit": "bfefc798b9b3ce49c4b9c941830607e21aa8e623"
     },
     {
       "spec": "rapp-frame/2.0",
       "repo": "kody-w/rapp-frame-net",
-      "role": "planet \u2014 many fleets, async, over GitHub",
+      "role": "planet — many fleets, async, over GitHub",
       "locked": true,
-      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/SPEC.md",
-      "sha256": "98b8f7a1a550257528c30e51631574a1dcc700e40079ee4dae00b5f5eae8862c"
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/ad6f24801716f48e11bd453fe1525dd3cedd3e63/SPEC.md",
+      "sha256": "ac089da5089d4d8f344de1673d40b386c119094dbd5a309cd799488c4d26e264",
+      "commit": "ad6f24801716f48e11bd453fe1525dd3cedd3e63"
     },
     {
       "spec": "rapp-hydra/1.0",
       "repo": "kody-w/rapp-frame-net",
-      "role": "survival \u2014 many heads, one body; unkillable static medium",
+      "role": "survival — many heads, one body; unkillable static medium",
       "locked": true,
-      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/HYDRA.md",
-      "sha256": "6a6de8ae6ffed90b244aef3f0c5c2791c6e97cc05811b1cd11240d7c7900ed7e"
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/ad6f24801716f48e11bd453fe1525dd3cedd3e63/HYDRA.md",
+      "sha256": "03bd47b4f2f2765e85fc6811343c121afe0cade79f32dd5596ae8c3774e2430e",
+      "commit": "ad6f24801716f48e11bd453fe1525dd3cedd3e63"
     },
     {
       "spec": "rapp-spine/1.0",
       "repo": "kody-w/rapp-spine",
       "role": "router + foundation registry",
       "locked": true,
-      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md",
-      "sha256": "d75f0cc04bab6ac981a98d8137304a32ab52a33ca2f9e3585c5eee80da89e6b3"
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/4da46b1b4f0d1abac3db445b51f8a46d5614726d/FOUNDATION.md",
+      "sha256": "d75f0cc04bab6ac981a98d8137304a32ab52a33ca2f9e3585c5eee80da89e6b3",
+      "commit": "4da46b1b4f0d1abac3db445b51f8a46d5614726d"
     },
     {
       "spec": "rapp-roadmap",
       "repo": "kody-w/rapp-roadmap",
       "role": "how we build from here (kernel stays locked)",
       "locked": true,
-      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/roadmap.json",
-      "sha256": "b904a9d4342c264eb92a386c434471bddd90c4af878338a2a689f7b66d50daf7"
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-roadmap/9fbff6e88f6c37cdc5a2f9fe61733af13dfb4bb0/roadmap.json",
+      "sha256": "b904a9d4342c264eb92a386c434471bddd90c4af878338a2a689f7b66d50daf7",
+      "commit": "9fbff6e88f6c37cdc5a2f9fe61733af13dfb4bb0"
     }
   ],
   "law": [
@@ -71,50 +77,54 @@
       "doc": "rapp-constitution (kernel)",
       "repo": "kody-w/RAPP",
       "role": "the authoring discipline that keeps the wire contract shippable for a decade (Article 0: the file IS the agent IS the contract)",
-      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/main/CONSTITUTION.md",
-      "sha256": "53cb10592cf44ea04e8f1fab443aaf09bab610f298203555e959e13f19330f11",
-      "locked": true
+      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/fa9c592519931ea1a73c8bd57cf4dc47343f4ced/CONSTITUTION.md",
+      "sha256": "e457568b989deea488ff44ce632ba0d2b5bde4dcc4866744120ba7e0af7acc90",
+      "locked": true,
+      "commit": "fa9c592519931ea1a73c8bd57cf4dc47343f4ced"
     },
     {
       "doc": "MASTER_PLAN (why-axis)",
       "repo": "kody-w/RAPP",
       "role": "the first-principles north star; when the Constitution and the Master Plan disagree, the Master Plan wins",
-      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/main/MASTER_PLAN.md",
-      "sha256": "eea0cccd176281128324e1138709e427cf245af6482ee46f4be91a14daefa758",
-      "locked": true
+      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/fa9c592519931ea1a73c8bd57cf4dc47343f4ced/MASTER_PLAN.md",
+      "sha256": "a093bbb4d8f053bc8e7de5535efb5214d6aa5c0284ecc05487d1fce8e714b831",
+      "locked": true,
+      "commit": "fa9c592519931ea1a73c8bd57cf4dc47343f4ced"
     },
     {
       "doc": "SPEC (kernel wire contract)",
       "repo": "kody-w/RAPP",
       "role": "the wire contract the Constitution protects",
-      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/main/specs/SPEC.md",
-      "sha256": "fbc3a05b428b2674c6c1868f8e09813603df578925066aaf8c83885676ebdfe2",
-      "locked": true
+      "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/fa9c592519931ea1a73c8bd57cf4dc47343f4ced/specs/SPEC.md",
+      "sha256": "934e440c7e493d41a04c4328f115e77e4e9a4624eef5f3d61a4c10e369373987",
+      "locked": true,
+      "commit": "fa9c592519931ea1a73c8bd57cf4dc47343f4ced"
     },
     {
       "doc": "Rappterbook Constitution",
       "repo": "kody-w/rappterbook",
       "role": "governance for the social-network estate",
-      "raw_url": "https://raw.githubusercontent.com/kody-w/rappterbook/main/CONSTITUTION.md",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rappterbook/cf097cfbaa748c8d65724c8838511b61d51cbfdf/CONSTITUTION.md",
       "sha256": "4240bb128a34938a8bc77f233e06d7d0214805b3afcd6f601692982aa7270845",
-      "locked": true
+      "locked": true,
+      "commit": "cf097cfbaa748c8d65724c8838511b61d51cbfdf"
     }
   ],
   "spec_corpus": [
     {
       "role": "canonical_aggregate",
       "repo": "kody-w/RAPP-Bible",
-      "url": "https://github.com/kody-w/RAPP-Bible \u2014 one repo, every RAPP spec, every entry point"
+      "url": "https://github.com/kody-w/RAPP-Bible — one repo, every RAPP spec, every entry point"
     },
     {
       "role": "live_stream",
       "repo": "kody-w/rapp_docs",
-      "url": "https://github.com/kody-w/rapp_docs \u2014 every spec streamed live from each home repo's raw data, no copies"
+      "url": "https://github.com/kody-w/rapp_docs — every spec streamed live from each home repo's raw data, no copies"
     },
     {
       "role": "drift_detector",
       "repo": "kody-w/rapp-god",
-      "url": "https://github.com/kody-w/rapp-god \u2014 god's-eye map + live canonical-integrity / cross-repo drift detector"
+      "url": "https://github.com/kody-w/rapp-god — god's-eye map + live canonical-integrity / cross-repo drift detector"
     },
     {
       "role": "router",
