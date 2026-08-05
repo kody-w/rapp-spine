@@ -9,7 +9,7 @@
     },
     "foundation": {
       "path": "foundation.json",
-      "sha256": "18748997a9f49c1f592f95798443a4a4a3034520a578ac363758ab79527bd0cd"
+      "sha256": "2c5478ccc22f0827390a6a061f465fd2e4915ffe31649f5ea4227f97cdb3d899"
     }
   },
   "safety": {
@@ -1031,7 +1031,7 @@
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "18748997a9f49c1f592f95798443a4a4a3034520a578ac363758ab79527bd0cd",
+            "sha256": "2c5478ccc22f0827390a6a061f465fd2e4915ffe31649f5ea4227f97cdb3d899",
             "integrity": "sha256"
           }
         ],
@@ -4604,9 +4604,7 @@
             "target": "https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/roadmap.json",
             "availability": "declared",
             "read_only": true,
-            "method": "GET",
-            "sha256": "b904a9d4342c264eb92a386c434471bddd90c4af878338a2a689f7b66d50daf7",
-            "integrity": "sha256"
+            "method": "GET"
           }
         ],
         "entry_points": [
@@ -6671,7 +6669,7 @@
           {
             "role": "integrity_evidence",
             "required": true,
-            "target": "https://raw.githubusercontent.com/kody-w/leviathan/main/SPEC.md",
+            "target": "https://raw.githubusercontent.com/kody-w/leviathan/42d02ad1b041b328540b30d54c7b2a68b9d961aa/SPEC.md",
             "availability": "declared",
             "read_only": true,
             "method": "GET",
@@ -6682,7 +6680,7 @@
         "entry_points": [
           {
             "kind": "evidence_read",
-            "target": "https://raw.githubusercontent.com/kody-w/leviathan/main/SPEC.md",
+            "target": "https://raw.githubusercontent.com/kody-w/leviathan/42d02ad1b041b328540b30d54c7b2a68b9d961aa/SPEC.md",
             "method": "GET",
             "read_only": true,
             "safe_for_crawl": true
@@ -6701,9 +6699,10 @@
           "repo": "kody-w/leviathan",
           "role": "fleet — one mind, many bodies (sync/LAN)",
           "locked": true,
-          "raw_url": "https://raw.githubusercontent.com/kody-w/leviathan/main/SPEC.md",
+          "raw_url": "https://raw.githubusercontent.com/kody-w/leviathan/42d02ad1b041b328540b30d54c7b2a68b9d961aa/SPEC.md",
           "sha256": "3e6679f192b67c8eb30b92f0fda23ff8b3a3a800e75d0772bc8c6e32733c5453",
-          "canonical_wire_note": "Fleet ORCHESTRATION concept. The canonical fleet WIRE is rapp-fleet-chat/1.0 (signed twin-chat events over /chat, Art XXV). The legacy POST /api/agent route is the Phase-1 RCE (LAN-only, to retire)."
+          "canonical_wire_note": "Fleet ORCHESTRATION concept. The canonical fleet WIRE is rapp-fleet-chat/1.0 (signed twin-chat events over /chat, Art XXV). The legacy POST /api/agent route is the Phase-1 RCE (LAN-only, to retire).",
+          "commit": "42d02ad1b041b328540b30d54c7b2a68b9d961aa"
         }
       },
       {
@@ -6724,7 +6723,7 @@
           {
             "role": "integrity_evidence",
             "required": true,
-            "target": "https://raw.githubusercontent.com/kody-w/rapp-leviathan-hub/main/UNIFIED.md",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-leviathan-hub/bfefc798b9b3ce49c4b9c941830607e21aa8e623/UNIFIED.md",
             "availability": "declared",
             "read_only": true,
             "method": "GET",
@@ -6735,7 +6734,7 @@
         "entry_points": [
           {
             "kind": "evidence_read",
-            "target": "https://raw.githubusercontent.com/kody-w/rapp-leviathan-hub/main/UNIFIED.md",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-leviathan-hub/bfefc798b9b3ce49c4b9c941830607e21aa8e623/UNIFIED.md",
             "method": "GET",
             "read_only": true,
             "safe_for_crawl": true
@@ -6754,8 +6753,9 @@
           "repo": "kody-w/rapp-leviathan-hub",
           "role": "being — many cells, one organism (portable)",
           "locked": true,
-          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-leviathan-hub/main/UNIFIED.md",
-          "sha256": "60eb87dc018fd55151c2a87369b051da9d1c010c53c3927980a11e9f3f804a18"
+          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-leviathan-hub/bfefc798b9b3ce49c4b9c941830607e21aa8e623/UNIFIED.md",
+          "sha256": "60eb87dc018fd55151c2a87369b051da9d1c010c53c3927980a11e9f3f804a18",
+          "commit": "bfefc798b9b3ce49c4b9c941830607e21aa8e623"
         }
       },
       {
@@ -6776,18 +6776,18 @@
           {
             "role": "integrity_evidence",
             "required": true,
-            "target": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/SPEC.md",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/ad6f24801716f48e11bd453fe1525dd3cedd3e63/SPEC.md",
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "98b8f7a1a550257528c30e51631574a1dcc700e40079ee4dae00b5f5eae8862c",
+            "sha256": "ac089da5089d4d8f344de1673d40b386c119094dbd5a309cd799488c4d26e264",
             "integrity": "sha256"
           }
         ],
         "entry_points": [
           {
             "kind": "evidence_read",
-            "target": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/SPEC.md",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/ad6f24801716f48e11bd453fe1525dd3cedd3e63/SPEC.md",
             "method": "GET",
             "read_only": true,
             "safe_for_crawl": true
@@ -6806,8 +6806,9 @@
           "repo": "kody-w/rapp-frame-net",
           "role": "planet — many fleets, async, over GitHub",
           "locked": true,
-          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/SPEC.md",
-          "sha256": "98b8f7a1a550257528c30e51631574a1dcc700e40079ee4dae00b5f5eae8862c"
+          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/ad6f24801716f48e11bd453fe1525dd3cedd3e63/SPEC.md",
+          "sha256": "ac089da5089d4d8f344de1673d40b386c119094dbd5a309cd799488c4d26e264",
+          "commit": "ad6f24801716f48e11bd453fe1525dd3cedd3e63"
         }
       },
       {
@@ -6828,18 +6829,18 @@
           {
             "role": "integrity_evidence",
             "required": true,
-            "target": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/HYDRA.md",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/ad6f24801716f48e11bd453fe1525dd3cedd3e63/HYDRA.md",
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "6a6de8ae6ffed90b244aef3f0c5c2791c6e97cc05811b1cd11240d7c7900ed7e",
+            "sha256": "03bd47b4f2f2765e85fc6811343c121afe0cade79f32dd5596ae8c3774e2430e",
             "integrity": "sha256"
           }
         ],
         "entry_points": [
           {
             "kind": "evidence_read",
-            "target": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/HYDRA.md",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/ad6f24801716f48e11bd453fe1525dd3cedd3e63/HYDRA.md",
             "method": "GET",
             "read_only": true,
             "safe_for_crawl": true
@@ -6858,8 +6859,9 @@
           "repo": "kody-w/rapp-frame-net",
           "role": "survival — many heads, one body; unkillable static medium",
           "locked": true,
-          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/main/HYDRA.md",
-          "sha256": "6a6de8ae6ffed90b244aef3f0c5c2791c6e97cc05811b1cd11240d7c7900ed7e"
+          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-frame-net/ad6f24801716f48e11bd453fe1525dd3cedd3e63/HYDRA.md",
+          "sha256": "03bd47b4f2f2765e85fc6811343c121afe0cade79f32dd5596ae8c3774e2430e",
+          "commit": "ad6f24801716f48e11bd453fe1525dd3cedd3e63"
         }
       },
       {
@@ -6880,7 +6882,7 @@
           {
             "role": "integrity_evidence",
             "required": true,
-            "target": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-spine/4da46b1b4f0d1abac3db445b51f8a46d5614726d/FOUNDATION.md",
             "availability": "declared",
             "read_only": true,
             "method": "GET",
@@ -6891,7 +6893,7 @@
         "entry_points": [
           {
             "kind": "evidence_read",
-            "target": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-spine/4da46b1b4f0d1abac3db445b51f8a46d5614726d/FOUNDATION.md",
             "method": "GET",
             "read_only": true,
             "safe_for_crawl": true
@@ -6910,8 +6912,9 @@
           "repo": "kody-w/rapp-spine",
           "role": "router + foundation registry",
           "locked": true,
-          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md",
-          "sha256": "d75f0cc04bab6ac981a98d8137304a32ab52a33ca2f9e3585c5eee80da89e6b3"
+          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-spine/4da46b1b4f0d1abac3db445b51f8a46d5614726d/FOUNDATION.md",
+          "sha256": "d75f0cc04bab6ac981a98d8137304a32ab52a33ca2f9e3585c5eee80da89e6b3",
+          "commit": "4da46b1b4f0d1abac3db445b51f8a46d5614726d"
         }
       },
       {
@@ -6932,7 +6935,7 @@
           {
             "role": "integrity_evidence",
             "required": true,
-            "target": "https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/roadmap.json",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-roadmap/9fbff6e88f6c37cdc5a2f9fe61733af13dfb4bb0/roadmap.json",
             "availability": "declared",
             "read_only": true,
             "method": "GET",
@@ -6943,7 +6946,7 @@
         "entry_points": [
           {
             "kind": "evidence_read",
-            "target": "https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/roadmap.json",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-roadmap/9fbff6e88f6c37cdc5a2f9fe61733af13dfb4bb0/roadmap.json",
             "method": "GET",
             "read_only": true,
             "safe_for_crawl": true
@@ -6961,8 +6964,9 @@
           "repo": "kody-w/rapp-roadmap",
           "role": "how we build from here (kernel stays locked)",
           "locked": true,
-          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-roadmap/main/roadmap.json",
-          "sha256": "b904a9d4342c264eb92a386c434471bddd90c4af878338a2a689f7b66d50daf7"
+          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-roadmap/9fbff6e88f6c37cdc5a2f9fe61733af13dfb4bb0/roadmap.json",
+          "sha256": "b904a9d4342c264eb92a386c434471bddd90c4af878338a2a689f7b66d50daf7",
+          "commit": "9fbff6e88f6c37cdc5a2f9fe61733af13dfb4bb0"
         }
       },
       {
@@ -6983,18 +6987,18 @@
           {
             "role": "integrity_evidence",
             "required": true,
-            "target": "https://raw.githubusercontent.com/kody-w/RAPP/main/CONSTITUTION.md",
+            "target": "https://raw.githubusercontent.com/kody-w/RAPP/fa9c592519931ea1a73c8bd57cf4dc47343f4ced/CONSTITUTION.md",
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "53cb10592cf44ea04e8f1fab443aaf09bab610f298203555e959e13f19330f11",
+            "sha256": "e457568b989deea488ff44ce632ba0d2b5bde4dcc4866744120ba7e0af7acc90",
             "integrity": "sha256"
           }
         ],
         "entry_points": [
           {
             "kind": "evidence_read",
-            "target": "https://raw.githubusercontent.com/kody-w/RAPP/main/CONSTITUTION.md",
+            "target": "https://raw.githubusercontent.com/kody-w/RAPP/fa9c592519931ea1a73c8bd57cf4dc47343f4ced/CONSTITUTION.md",
             "method": "GET",
             "read_only": true,
             "safe_for_crawl": true
@@ -7013,9 +7017,10 @@
           "doc": "rapp-constitution (kernel)",
           "repo": "kody-w/RAPP",
           "role": "the authoring discipline that keeps the wire contract shippable for a decade (Article 0: the file IS the agent IS the contract)",
-          "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/main/CONSTITUTION.md",
-          "sha256": "53cb10592cf44ea04e8f1fab443aaf09bab610f298203555e959e13f19330f11",
-          "locked": true
+          "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/fa9c592519931ea1a73c8bd57cf4dc47343f4ced/CONSTITUTION.md",
+          "sha256": "e457568b989deea488ff44ce632ba0d2b5bde4dcc4866744120ba7e0af7acc90",
+          "locked": true,
+          "commit": "fa9c592519931ea1a73c8bd57cf4dc47343f4ced"
         }
       },
       {
@@ -7036,18 +7041,18 @@
           {
             "role": "integrity_evidence",
             "required": true,
-            "target": "https://raw.githubusercontent.com/kody-w/RAPP/main/MASTER_PLAN.md",
+            "target": "https://raw.githubusercontent.com/kody-w/RAPP/fa9c592519931ea1a73c8bd57cf4dc47343f4ced/MASTER_PLAN.md",
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "eea0cccd176281128324e1138709e427cf245af6482ee46f4be91a14daefa758",
+            "sha256": "a093bbb4d8f053bc8e7de5535efb5214d6aa5c0284ecc05487d1fce8e714b831",
             "integrity": "sha256"
           }
         ],
         "entry_points": [
           {
             "kind": "evidence_read",
-            "target": "https://raw.githubusercontent.com/kody-w/RAPP/main/MASTER_PLAN.md",
+            "target": "https://raw.githubusercontent.com/kody-w/RAPP/fa9c592519931ea1a73c8bd57cf4dc47343f4ced/MASTER_PLAN.md",
             "method": "GET",
             "read_only": true,
             "safe_for_crawl": true
@@ -7066,9 +7071,10 @@
           "doc": "MASTER_PLAN (why-axis)",
           "repo": "kody-w/RAPP",
           "role": "the first-principles north star; when the Constitution and the Master Plan disagree, the Master Plan wins",
-          "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/main/MASTER_PLAN.md",
-          "sha256": "eea0cccd176281128324e1138709e427cf245af6482ee46f4be91a14daefa758",
-          "locked": true
+          "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/fa9c592519931ea1a73c8bd57cf4dc47343f4ced/MASTER_PLAN.md",
+          "sha256": "a093bbb4d8f053bc8e7de5535efb5214d6aa5c0284ecc05487d1fce8e714b831",
+          "locked": true,
+          "commit": "fa9c592519931ea1a73c8bd57cf4dc47343f4ced"
         }
       },
       {
@@ -7089,18 +7095,18 @@
           {
             "role": "integrity_evidence",
             "required": true,
-            "target": "https://raw.githubusercontent.com/kody-w/RAPP/main/specs/SPEC.md",
+            "target": "https://raw.githubusercontent.com/kody-w/RAPP/fa9c592519931ea1a73c8bd57cf4dc47343f4ced/specs/SPEC.md",
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "fbc3a05b428b2674c6c1868f8e09813603df578925066aaf8c83885676ebdfe2",
+            "sha256": "934e440c7e493d41a04c4328f115e77e4e9a4624eef5f3d61a4c10e369373987",
             "integrity": "sha256"
           }
         ],
         "entry_points": [
           {
             "kind": "evidence_read",
-            "target": "https://raw.githubusercontent.com/kody-w/RAPP/main/specs/SPEC.md",
+            "target": "https://raw.githubusercontent.com/kody-w/RAPP/fa9c592519931ea1a73c8bd57cf4dc47343f4ced/specs/SPEC.md",
             "method": "GET",
             "read_only": true,
             "safe_for_crawl": true
@@ -7119,9 +7125,10 @@
           "doc": "SPEC (kernel wire contract)",
           "repo": "kody-w/RAPP",
           "role": "the wire contract the Constitution protects",
-          "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/main/specs/SPEC.md",
-          "sha256": "fbc3a05b428b2674c6c1868f8e09813603df578925066aaf8c83885676ebdfe2",
-          "locked": true
+          "raw_url": "https://raw.githubusercontent.com/kody-w/RAPP/fa9c592519931ea1a73c8bd57cf4dc47343f4ced/specs/SPEC.md",
+          "sha256": "934e440c7e493d41a04c4328f115e77e4e9a4624eef5f3d61a4c10e369373987",
+          "locked": true,
+          "commit": "fa9c592519931ea1a73c8bd57cf4dc47343f4ced"
         }
       },
       {
@@ -7142,7 +7149,7 @@
           {
             "role": "integrity_evidence",
             "required": true,
-            "target": "https://raw.githubusercontent.com/kody-w/rappterbook/main/CONSTITUTION.md",
+            "target": "https://raw.githubusercontent.com/kody-w/rappterbook/cf097cfbaa748c8d65724c8838511b61d51cbfdf/CONSTITUTION.md",
             "availability": "declared",
             "read_only": true,
             "method": "GET",
@@ -7153,7 +7160,7 @@
         "entry_points": [
           {
             "kind": "evidence_read",
-            "target": "https://raw.githubusercontent.com/kody-w/rappterbook/main/CONSTITUTION.md",
+            "target": "https://raw.githubusercontent.com/kody-w/rappterbook/cf097cfbaa748c8d65724c8838511b61d51cbfdf/CONSTITUTION.md",
             "method": "GET",
             "read_only": true,
             "safe_for_crawl": true
@@ -7171,9 +7178,10 @@
           "doc": "Rappterbook Constitution",
           "repo": "kody-w/rappterbook",
           "role": "governance for the social-network estate",
-          "raw_url": "https://raw.githubusercontent.com/kody-w/rappterbook/main/CONSTITUTION.md",
+          "raw_url": "https://raw.githubusercontent.com/kody-w/rappterbook/cf097cfbaa748c8d65724c8838511b61d51cbfdf/CONSTITUTION.md",
           "sha256": "4240bb128a34938a8bc77f233e06d7d0214805b3afcd6f601692982aa7270845",
-          "locked": true
+          "locked": true,
+          "commit": "cf097cfbaa748c8d65724c8838511b61d51cbfdf"
         }
       },
       {
@@ -11785,11 +11793,6 @@
         "from": "protocol:kody-w/rapp-roadmap/rapp-roadmap/1.0",
         "type": "owned_by",
         "to": "repo:kody-w/rapp-roadmap"
-      },
-      {
-        "from": "protocol:kody-w/rapp-roadmap/rapp-roadmap/1.0",
-        "type": "supported_by",
-        "to": "evidence:foundation/pillars/rapp-roadmap@kody-w/rapp-roadmap"
       },
       {
         "from": "protocol:kody-w/rapp-sealed/rapp-sealed/1.0",

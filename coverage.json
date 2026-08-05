@@ -9,7 +9,7 @@
     },
     "foundation": {
       "path": "foundation.json",
-      "sha256": "18748997a9f49c1f592f95798443a4a4a3034520a578ac363758ab79527bd0cd"
+      "sha256": "2c5478ccc22f0827390a6a061f465fd2e4915ffe31649f5ea4227f97cdb3d899"
     }
   },
   "inventory": {
@@ -23,7 +23,7 @@
   },
   "graph": {
     "nodes": 222,
-    "relations": 690,
+    "relations": 689,
     "nodes_by_type": {
       "artifact": 2,
       "evidence": 19,
