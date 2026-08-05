@@ -369,6 +369,24 @@ def receipt_source_results(crawl_document, plan, fetched):
     return results
 
 
+def _estate_map_usable(estate):
+    """Accept either key the estate map has used for its repository list.
+
+    rapp-map regenerated estate-map.json from rapp-estate-map/1.0 to 2.0 and
+    renamed `repos` to `members` (92 records -> 522). This checker required
+    `repos`, so I0 began failing here for a change made in another repository,
+    with nothing announcing it. See #12 and kody-w/rapp-map#15.
+
+    Reading both is the honest fix. A consumer should not go red because a
+    producer added a synonym, and this deliberately does NOT depend on how the
+    rapp-map governance question is resolved -- it stays correct whether that
+    file is restored to 1.0 or kept at 2.0.
+    """
+    if not isinstance(estate, dict):
+        return False
+    return any(isinstance(estate.get(key), list) for key in ("repos", "members"))
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser()
     parser.add_argument("--local", action="store_true", help="prefer checked-in spine sources")
@@ -423,7 +441,7 @@ def main(argv=None):
     )
 
     inputs = {
-        "estate_map": isinstance(estate, dict) and isinstance(estate.get("repos"), list),
+        "estate_map": _estate_map_usable(estate),
         "registry": isinstance(registry, dict) and isinstance(registry.get("registry"), list),
         "foundation": isinstance(foundation, dict)
         and isinstance(foundation.get("pillars"), list),

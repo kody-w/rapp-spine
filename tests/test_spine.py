@@ -1281,3 +1281,33 @@ class DisclosureSurfaceRules(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class EstateMapShapeToleranceTests(unittest.TestCase):
+    """I0 must accept either key the estate map has used, and nothing else.
+
+    rapp-map regenerated estate-map.json from rapp-estate-map/1.0 to 2.0 and
+    renamed `repos` to `members`. This checker required `repos`, so I0 started
+    failing here for a change made in another repository (see #12 and
+    kody-w/rapp-map#15).
+
+    Both halves are tested on purpose. Widening an input check is exactly the
+    kind of fix that quietly turns into "accepts anything", and an invariant
+    that cannot fail is worse than the one it replaced.
+    """
+
+    def test_accepts_both_known_shapes(self):
+        self.assertTrue(verify_spine._estate_map_usable({"repos": [1, 2]}))
+        self.assertTrue(verify_spine._estate_map_usable({"members": [1]}))
+
+    def test_still_refuses_everything_else(self):
+        for bad, why in [
+            ({"repos": "not-a-list"}, "repos present but not a list"),
+            ({"members": {}}, "members present but not a list"),
+            ({"other": [1]}, "neither key present"),
+            ({}, "empty mapping"),
+            (None, "not a mapping"),
+            ("a string", "wrong type entirely"),
+        ]:
+            with self.subTest(why=why):
+                self.assertFalse(verify_spine._estate_map_usable(bad))
