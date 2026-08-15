@@ -132,6 +132,21 @@ class SpineContractTests(_SpineFixture, unittest.TestCase):
         counts = Counter(entry["spec_id"] for entry in self.spine["registry"])
         self.assertFalse({spec: count for spec, count in counts.items() if count > 1})
 
+    def test_retired_metropolis_uses_pinned_historical_material(self):
+        entry = next(
+            entry
+            for entry in self.spine["registry"]
+            if entry["spec_id"] == "rapp-metropolis/1.0"
+        )
+        self.assertIn("RETIRED and DEPRECATED", entry["role"])
+        self.assertIn(
+            "/24c8fdc1e770c790b98724002d719d515d5e5465/",
+            entry["raw_url"],
+        )
+        node = self.nodes["protocol:kody-w/rapp-estate/rapp-metropolis/1.0"]
+        self.assertEqual(node["lifecycle"], "deprecated")
+        self.assertEqual(node["sources"][0]["target"], entry["raw_url"])
+
 
 class CrawlGraphTests(_SpineFixture, unittest.TestCase):
     def test_typed_node_ids_are_unique_and_complete(self):
