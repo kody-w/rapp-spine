@@ -5,7 +5,7 @@
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "577edf6d64928b51fed18cef80a66bcdc19b61f37e88f68d863f50275a2c4f88"
+      "sha256": "db5df6a56ef610107b358469d523bf89e55d47674474923b6ddfdb3d1fa00de9"
     },
     "foundation": {
       "path": "foundation.json",
@@ -89,7 +89,7 @@
   "layers": [
     {
       "layer": "kernel",
-      "summary": "The kernel + its governance: the frozen single-file brainstem (rapp-agent/1.0, GRAIL=kody-w/rapp-installer; kody-w/RAPP is the reference distro pinning it via rapp-distro/1.0). Specs: rapp-kernel/1.0, rapp-auth/1.0, rapp-kernel-boundary/1.0, rapp-runtime-parity/1.0, rapp-canon/1.0, rapp-cubby/1.0, rapp-trust/1.0, rapp-substrate-trust/1.0, rapp-distro/1.0 (distros), rapp-fleet-chat/1.0 (fleet over /chat), rapp-metropolis/1.0, rapp-stores/1.0, brainstem-egg/2.3. The kernel never breaks userspace.",
+      "summary": "The kernel + its governance: the frozen single-file brainstem (rapp-agent/1.0, GRAIL=kody-w/rapp-installer; kody-w/RAPP is the reference distro pinning it via rapp-distro/1.0). Specs: rapp-kernel/1.0, rapp-auth/1.0, rapp-kernel-boundary/1.0, rapp-runtime-parity/1.0, rapp-canon/1.0, rapp-cubby/1.0, rapp-trust/1.0, rapp-substrate-trust/1.0, rapp-distro/1.0 (distros), rapp-fleet-chat/1.0 (fleet over /chat), rapp-stores/1.0, brainstem-egg/2.3. The retired rapp-metropolis/1.0 proposal remains indexed only as pinned historical material. The kernel never breaks userspace.",
       "protocols": [
         "brainstem-egg/2.3",
         "rapp-auth/1.0",
@@ -386,7 +386,7 @@
       "why": "The kernel/governance vertebra: the frozen ABI + the constitution + identity (rapp/1 §6 mint-once, in kody-w/rapp-1 — NOT the retired rapp-eternity/1.0) + the distro model + the canonical fleet wire. Grail=rapp-installer; RAPP is a distro."
     },
     {
-      "situation": "How do neighborhoods/estates aggregate into a metropolis? Or: how does a distro pin the kernel, or fleet talk over /chat?",
+      "situation": "What did the retired metropolis proposal say about neighborhood/estate aggregation? Or: how does a distro pin the kernel, or fleet talk over /chat?",
       "use": [
         "rapp-metropolis/1.0",
         "rapp-distro/1.0",
@@ -394,7 +394,7 @@
         "rapp-runtime-parity/1.0",
         "rapp/1"
       ],
-      "why": "The kernel/governance vertebra's load-bearing specs: metropolis mesh composition, the distro pin model, the canonical fleet wire, T1/T2 runtime parity, and rapp/1 §6 mint-once identity (keyless minting keeps the default PKI-free; a keypair is still optional)."
+      "why": "The metropolis item is deprecated historical context, pinned to its last self-declaring bytes; it is not a current protocol authority. The live items are the distro pin model, the canonical fleet wire, T1/T2 runtime parity, and rapp/1 §6 mint-once identity (keyless minting keeps the default PKI-free; a keypair is still optional)."
     },
     {
       "situation": "Auth chain / network boundary / cubby storage / trust+ownership / substrate signing / the three stores / the egg family — where are these governed?",
@@ -810,9 +810,9 @@
     {
       "spec_id": "rapp-metropolis/1.0",
       "repo": "kody-w/rapp-estate",
-      "role": "rapp-metropolis/1.0",
-      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-estate/main/METROPOLIS.md",
-      "entry_point": "read METROPOLIS.md in kody-w/rapp-estate",
+      "role": "rapp-metropolis/1.0 — RETIRED and DEPRECATED historical mesh-composition proposal. The live main/METROPOLIS.md path is a retirement notice and explicitly publishes no protocol authority; these immutable baseline bytes are retained for audit and history only.",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-estate/24c8fdc1e770c790b98724002d719d515d5e5465/METROPOLIS.md",
+      "entry_point": "read the pinned historical METROPOLIS.md only to audit the retired proposal; do not implement it as current",
       "layer": "kernel"
     },
     {
@@ -994,7 +994,7 @@
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "577edf6d64928b51fed18cef80a66bcdc19b61f37e88f68d863f50275a2c4f88",
+            "sha256": "db5df6a56ef610107b358469d523bf89e55d47674474923b6ddfdb3d1fa00de9",
             "integrity": "sha256"
           }
         ],
@@ -1068,7 +1068,7 @@
         ],
         "display": {
           "layer": "kernel",
-          "summary": "The kernel + its governance: the frozen single-file brainstem (rapp-agent/1.0, GRAIL=kody-w/rapp-installer; kody-w/RAPP is the reference distro pinning it via rapp-distro/1.0). Specs: rapp-kernel/1.0, rapp-auth/1.0, rapp-kernel-boundary/1.0, rapp-runtime-parity/1.0, rapp-canon/1.0, rapp-cubby/1.0, rapp-trust/1.0, rapp-substrate-trust/1.0, rapp-distro/1.0 (distros), rapp-fleet-chat/1.0 (fleet over /chat), rapp-metropolis/1.0, rapp-stores/1.0, brainstem-egg/2.3. The kernel never breaks userspace.",
+          "summary": "The kernel + its governance: the frozen single-file brainstem (rapp-agent/1.0, GRAIL=kody-w/rapp-installer; kody-w/RAPP is the reference distro pinning it via rapp-distro/1.0). Specs: rapp-kernel/1.0, rapp-auth/1.0, rapp-kernel-boundary/1.0, rapp-runtime-parity/1.0, rapp-canon/1.0, rapp-cubby/1.0, rapp-trust/1.0, rapp-substrate-trust/1.0, rapp-distro/1.0 (distros), rapp-fleet-chat/1.0 (fleet over /chat), rapp-stores/1.0, brainstem-egg/2.3. The retired rapp-metropolis/1.0 proposal remains indexed only as pinned historical material. The kernel never breaks userspace.",
           "protocols": [
             "brainstem-egg/2.3",
             "rapp-auth/1.0",
@@ -3834,7 +3834,7 @@
         "repo": "kody-w/rapp-estate",
         "canonical_protocol_identity": "rapp-metropolis/1.0",
         "layer_id": "layer:kernel",
-        "lifecycle": "active",
+        "lifecycle": "deprecated",
         "status": "resolved",
         "materiality": "required",
         "material_profile": "registry-protocol",
@@ -3845,7 +3845,7 @@
           {
             "role": "canonical_material",
             "required": true,
-            "target": "https://raw.githubusercontent.com/kody-w/rapp-estate/main/METROPOLIS.md",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-estate/24c8fdc1e770c790b98724002d719d515d5e5465/METROPOLIS.md",
             "availability": "declared",
             "read_only": true,
             "method": "GET"
@@ -3854,7 +3854,7 @@
         "entry_points": [
           {
             "kind": "canonical_read",
-            "target": "https://raw.githubusercontent.com/kody-w/rapp-estate/main/METROPOLIS.md",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-estate/24c8fdc1e770c790b98724002d719d515d5e5465/METROPOLIS.md",
             "method": "GET",
             "read_only": true,
             "safe_for_crawl": true
@@ -3868,7 +3868,7 @@
           },
           {
             "kind": "display_only",
-            "display": "read METROPOLIS.md in kody-w/rapp-estate",
+            "display": "read the pinned historical METROPOLIS.md only to audit the retired proposal; do not implement it as current",
             "read_only": false,
             "safe_for_crawl": false,
             "policy": "never_execute"
@@ -3884,9 +3884,9 @@
           "registry_index": 44,
           "spec_id": "rapp-metropolis/1.0",
           "repo": "kody-w/rapp-estate",
-          "role": "rapp-metropolis/1.0",
-          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-estate/main/METROPOLIS.md",
-          "entry_point": "read METROPOLIS.md in kody-w/rapp-estate",
+          "role": "rapp-metropolis/1.0 — RETIRED and DEPRECATED historical mesh-composition proposal. The live main/METROPOLIS.md path is a retirement notice and explicitly publishes no protocol authority; these immutable baseline bytes are retained for audit and history only.",
+          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-estate/24c8fdc1e770c790b98724002d719d515d5e5465/METROPOLIS.md",
+          "entry_point": "read the pinned historical METROPOLIS.md only to audit the retired proposal; do not implement it as current",
           "layer": "kernel"
         }
       },
@@ -8247,9 +8247,9 @@
         }
       },
       {
-        "id": "route:1afe64a4d9fc4176",
+        "id": "route:4f94b5b35eefb099",
         "type": "route",
-        "label": "How do neighborhoods/estates aggregate into a metropolis? Or: how does a distro pin the kernel, or fleet talk over /chat?",
+        "label": "What did the retired metropolis proposal say about neighborhood/estate aggregation? Or: how does a distro pin the kernel, or fleet talk over /chat?",
         "route_index": 26,
         "target_ids": [
           "protocol:kody-w/rapp-estate/rapp-metropolis/1.0",
@@ -8268,7 +8268,7 @@
         "conformance": "not_applicable",
         "aliases": [],
         "display": {
-          "situation": "How do neighborhoods/estates aggregate into a metropolis? Or: how does a distro pin the kernel, or fleet talk over /chat?",
+          "situation": "What did the retired metropolis proposal say about neighborhood/estate aggregation? Or: how does a distro pin the kernel, or fleet talk over /chat?",
           "use": [
             "rapp-metropolis/1.0",
             "rapp-distro/1.0",
@@ -8276,7 +8276,7 @@
             "rapp-runtime-parity/1.0",
             "rapp/1"
           ],
-          "why": "The kernel/governance vertebra's load-bearing specs: metropolis mesh composition, the distro pin model, the canonical fleet wire, T1/T2 runtime parity, and rapp/1 §6 mint-once identity (keyless minting keeps the default PKI-free; a keypair is still optional)."
+          "why": "The metropolis item is deprecated historical context, pinned to its last self-declaring bytes; it is not a current protocol authority. The live items are the distro pin model, the canonical fleet wire, T1/T2 runtime parity, and rapp/1 §6 mint-once identity (keyless minting keeps the default PKI-free; a keypair is still optional)."
         }
       },
       {
@@ -12213,46 +12213,6 @@
         "to": "artifact:registry.json"
       },
       {
-        "from": "route:1afe64a4d9fc4176",
-        "type": "routes_to",
-        "to": "protocol:kody-w/rapp-estate/rapp-metropolis/1.0",
-        "order": 0,
-        "display_target": "rapp-metropolis/1.0"
-      },
-      {
-        "from": "route:1afe64a4d9fc4176",
-        "type": "routes_to",
-        "to": "protocol:kody-w/rapp-distro/rapp-distro/1.0",
-        "order": 1,
-        "display_target": "rapp-distro/1.0"
-      },
-      {
-        "from": "route:1afe64a4d9fc4176",
-        "type": "routes_to",
-        "to": "protocol:kody-w/leviathan/rapp-fleet-chat/1.0",
-        "order": 2,
-        "display_target": "rapp-fleet-chat/1.0"
-      },
-      {
-        "from": "route:1afe64a4d9fc4176",
-        "type": "routes_to",
-        "to": "protocol:kody-w/rapp-spine/rapp-runtime-parity/1.0",
-        "order": 3,
-        "display_target": "rapp-runtime-parity/1.0"
-      },
-      {
-        "from": "route:1afe64a4d9fc4176",
-        "type": "routes_to",
-        "to": "protocol:kody-w/rapp-1/rapp/1",
-        "order": 4,
-        "display_target": "rapp/1"
-      },
-      {
-        "from": "route:1afe64a4d9fc4176",
-        "type": "uses_artifact",
-        "to": "artifact:registry.json"
-      },
-      {
         "from": "route:1d3e46640dd04d9c",
         "type": "routes_to",
         "to": "protocol:kody-w/openrappter/openrappter-runtime/1.0",
@@ -12403,6 +12363,46 @@
       },
       {
         "from": "route:496c2890a297f467",
+        "type": "uses_artifact",
+        "to": "artifact:registry.json"
+      },
+      {
+        "from": "route:4f94b5b35eefb099",
+        "type": "routes_to",
+        "to": "protocol:kody-w/rapp-estate/rapp-metropolis/1.0",
+        "order": 0,
+        "display_target": "rapp-metropolis/1.0"
+      },
+      {
+        "from": "route:4f94b5b35eefb099",
+        "type": "routes_to",
+        "to": "protocol:kody-w/rapp-distro/rapp-distro/1.0",
+        "order": 1,
+        "display_target": "rapp-distro/1.0"
+      },
+      {
+        "from": "route:4f94b5b35eefb099",
+        "type": "routes_to",
+        "to": "protocol:kody-w/leviathan/rapp-fleet-chat/1.0",
+        "order": 2,
+        "display_target": "rapp-fleet-chat/1.0"
+      },
+      {
+        "from": "route:4f94b5b35eefb099",
+        "type": "routes_to",
+        "to": "protocol:kody-w/rapp-spine/rapp-runtime-parity/1.0",
+        "order": 3,
+        "display_target": "rapp-runtime-parity/1.0"
+      },
+      {
+        "from": "route:4f94b5b35eefb099",
+        "type": "routes_to",
+        "to": "protocol:kody-w/rapp-1/rapp/1",
+        "order": 4,
+        "display_target": "rapp/1"
+      },
+      {
+        "from": "route:4f94b5b35eefb099",
         "type": "uses_artifact",
         "to": "artifact:registry.json"
       },
@@ -13091,11 +13091,6 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "indexes_route",
-        "to": "route:1afe64a4d9fc4176"
-      },
-      {
-        "from": "spine:rapp-spine%2F1.1",
-        "type": "indexes_route",
         "to": "route:1d3e46640dd04d9c"
       },
       {
@@ -13127,6 +13122,11 @@
         "from": "spine:rapp-spine%2F1.1",
         "type": "indexes_route",
         "to": "route:496c2890a297f467"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "indexes_route",
+        "to": "route:4f94b5b35eefb099"
       },
       {
         "from": "spine:rapp-spine%2F1.1",
@@ -13673,7 +13673,7 @@
       "route:2ac04bb4e193b2a3",
       "route:5afadf255971f067",
       "route:cb3515c2fac02e6b",
-      "route:1afe64a4d9fc4176",
+      "route:4f94b5b35eefb099",
       "route:479e607dbe123026",
       "route:9fbcad68bb263b99",
       "route:ce618de5cdc58d06",
@@ -13905,7 +13905,7 @@
         "route:2ac04bb4e193b2a3",
         "route:5afadf255971f067",
         "route:cb3515c2fac02e6b",
-        "route:1afe64a4d9fc4176",
+        "route:4f94b5b35eefb099",
         "route:479e607dbe123026",
         "route:9fbcad68bb263b99",
         "route:ce618de5cdc58d06",

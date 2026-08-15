@@ -62,11 +62,11 @@
 | What does the kernel/law actually say, or where is a newly-formalized foundation spec? | rapp/1 | `protocol:kody-w/rapp-1/rapp/1` |
 | What does the kernel/law actually say, or where is a newly-formalized foundation spec? | rapp-distro/1.0 | `protocol:kody-w/rapp-distro/rapp-distro/1.0` |
 | What does the kernel/law actually say, or where is a newly-formalized foundation spec? | rapp-fleet-chat/1.0 | `protocol:kody-w/leviathan/rapp-fleet-chat/1.0` |
-| How do neighborhoods/estates aggregate into a metropolis? Or: how does a distro pin the kernel, or fleet talk over /chat? | rapp-metropolis/1.0 | `protocol:kody-w/rapp-estate/rapp-metropolis/1.0` |
-| How do neighborhoods/estates aggregate into a metropolis? Or: how does a distro pin the kernel, or fleet talk over /chat? | rapp-distro/1.0 | `protocol:kody-w/rapp-distro/rapp-distro/1.0` |
-| How do neighborhoods/estates aggregate into a metropolis? Or: how does a distro pin the kernel, or fleet talk over /chat? | rapp-fleet-chat/1.0 | `protocol:kody-w/leviathan/rapp-fleet-chat/1.0` |
-| How do neighborhoods/estates aggregate into a metropolis? Or: how does a distro pin the kernel, or fleet talk over /chat? | rapp-runtime-parity/1.0 | `protocol:kody-w/rapp-spine/rapp-runtime-parity/1.0` |
-| How do neighborhoods/estates aggregate into a metropolis? Or: how does a distro pin the kernel, or fleet talk over /chat? | rapp/1 | `protocol:kody-w/rapp-1/rapp/1` |
+| What did the retired metropolis proposal say about neighborhood/estate aggregation? Or: how does a distro pin the kernel, or fleet talk over /chat? | rapp-metropolis/1.0 | `protocol:kody-w/rapp-estate/rapp-metropolis/1.0` |
+| What did the retired metropolis proposal say about neighborhood/estate aggregation? Or: how does a distro pin the kernel, or fleet talk over /chat? | rapp-distro/1.0 | `protocol:kody-w/rapp-distro/rapp-distro/1.0` |
+| What did the retired metropolis proposal say about neighborhood/estate aggregation? Or: how does a distro pin the kernel, or fleet talk over /chat? | rapp-fleet-chat/1.0 | `protocol:kody-w/leviathan/rapp-fleet-chat/1.0` |
+| What did the retired metropolis proposal say about neighborhood/estate aggregation? Or: how does a distro pin the kernel, or fleet talk over /chat? | rapp-runtime-parity/1.0 | `protocol:kody-w/rapp-spine/rapp-runtime-parity/1.0` |
+| What did the retired metropolis proposal say about neighborhood/estate aggregation? Or: how does a distro pin the kernel, or fleet talk over /chat? | rapp/1 | `protocol:kody-w/rapp-1/rapp/1` |
 | Auth chain / network boundary / cubby storage / trust+ownership / substrate signing / the three stores / the egg family — where are these governed? | rapp-auth/1.0 | `protocol:kody-w/rapp-spine/rapp-auth/1.0` |
 | Auth chain / network boundary / cubby storage / trust+ownership / substrate signing / the three stores / the egg family — where are these governed? | rapp-kernel-boundary/1.0 | `protocol:kody-w/rapp-spine/rapp-kernel-boundary/1.0` |
 | Auth chain / network boundary / cubby storage / trust+ownership / substrate signing / the three stores / the egg family — where are these governed? | rapp-cubby/1.0 | `protocol:kody-w/rapp-spine/rapp-cubby/1.0` |
@@ -142,7 +142,7 @@
 | 52 | `protocol:kody-w/rapp-eternity/rapp-eternity/1.0` | protocol | deprecated | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-eternity/main/SPEC.md |
 | 53 | `protocol:kody-w/leviathan/rapp-fleet-chat/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/leviathan/main/FLEET_CHAT.md |
 | 54 | `protocol:kody-w/rapp-spine/rapp-kernel/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/KERNEL.md |
-| 55 | `protocol:kody-w/rapp-estate/rapp-metropolis/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-estate/main/METROPOLIS.md |
+| 55 | `protocol:kody-w/rapp-estate/rapp-metropolis/1.0` | protocol | deprecated | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-estate/24c8fdc1e770c790b98724002d719d515d5e5465/METROPOLIS.md |
 | 56 | `protocol:kody-w/rapp-spine/rapp-auth/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/AUTH_CHAIN.md |
 | 57 | `protocol:kody-w/rapp-spine/rapp-kernel-boundary/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/NETWORK_TRUST_BOUNDARY.md |
 | 58 | `protocol:kody-w/rapp-spine/rapp-trust/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/TRUST_AND_OWNERSHIP.md |
@@ -251,7 +251,7 @@
 | 161 | `route:2ac04bb4e193b2a3` | route | active | resolved | routing | — |
 | 162 | `route:5afadf255971f067` | route | active | resolved | routing | — |
 | 163 | `route:cb3515c2fac02e6b` | route | active | resolved | routing | — |
-| 164 | `route:1afe64a4d9fc4176` | route | active | resolved | routing | — |
+| 164 | `route:4f94b5b35eefb099` | route | active | resolved | routing | — |
 | 165 | `route:479e607dbe123026` | route | active | resolved | routing | — |
 | 166 | `route:9fbcad68bb263b99` | route | active | resolved | routing | — |
 | 167 | `route:ce618de5cdc58d06` | route | active | resolved | routing | — |

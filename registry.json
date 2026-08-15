@@ -15,7 +15,7 @@
   "layers": [
     {
       "layer": "kernel",
-      "summary": "The kernel + its governance: the frozen single-file brainstem (rapp-agent/1.0, GRAIL=kody-w/rapp-installer; kody-w/RAPP is the reference distro pinning it via rapp-distro/1.0). Specs: rapp-kernel/1.0, rapp-auth/1.0, rapp-kernel-boundary/1.0, rapp-runtime-parity/1.0, rapp-canon/1.0, rapp-cubby/1.0, rapp-trust/1.0, rapp-substrate-trust/1.0, rapp-distro/1.0 (distros), rapp-fleet-chat/1.0 (fleet over /chat), rapp-metropolis/1.0, rapp-stores/1.0, brainstem-egg/2.3. The kernel never breaks userspace.",
+      "summary": "The kernel + its governance: the frozen single-file brainstem (rapp-agent/1.0, GRAIL=kody-w/rapp-installer; kody-w/RAPP is the reference distro pinning it via rapp-distro/1.0). Specs: rapp-kernel/1.0, rapp-auth/1.0, rapp-kernel-boundary/1.0, rapp-runtime-parity/1.0, rapp-canon/1.0, rapp-cubby/1.0, rapp-trust/1.0, rapp-substrate-trust/1.0, rapp-distro/1.0 (distros), rapp-fleet-chat/1.0 (fleet over /chat), rapp-stores/1.0, brainstem-egg/2.3. The retired rapp-metropolis/1.0 proposal remains indexed only as pinned historical material. The kernel never breaks userspace.",
       "protocols": [
         "brainstem-egg/2.3",
         "rapp-auth/1.0",
@@ -312,7 +312,7 @@
       "why": "The kernel/governance vertebra: the frozen ABI + the constitution + identity (rapp/1 \u00a76 mint-once, in kody-w/rapp-1 \u2014 NOT the retired rapp-eternity/1.0) + the distro model + the canonical fleet wire. Grail=rapp-installer; RAPP is a distro."
     },
     {
-      "situation": "How do neighborhoods/estates aggregate into a metropolis? Or: how does a distro pin the kernel, or fleet talk over /chat?",
+      "situation": "What did the retired metropolis proposal say about neighborhood/estate aggregation? Or: how does a distro pin the kernel, or fleet talk over /chat?",
       "use": [
         "rapp-metropolis/1.0",
         "rapp-distro/1.0",
@@ -320,7 +320,7 @@
         "rapp-runtime-parity/1.0",
         "rapp/1"
       ],
-      "why": "The kernel/governance vertebra's load-bearing specs: metropolis mesh composition, the distro pin model, the canonical fleet wire, T1/T2 runtime parity, and rapp/1 \u00a76 mint-once identity (keyless minting keeps the default PKI-free; a keypair is still optional)."
+      "why": "The metropolis item is deprecated historical context, pinned to its last self-declaring bytes; it is not a current protocol authority. The live items are the distro pin model, the canonical fleet wire, T1/T2 runtime parity, and rapp/1 \u00a76 mint-once identity (keyless minting keeps the default PKI-free; a keypair is still optional)."
     },
     {
       "situation": "Auth chain / network boundary / cubby storage / trust+ownership / substrate signing / the three stores / the egg family \u2014 where are these governed?",
@@ -736,9 +736,9 @@
     {
       "spec_id": "rapp-metropolis/1.0",
       "repo": "kody-w/rapp-estate",
-      "role": "rapp-metropolis/1.0",
-      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-estate/main/METROPOLIS.md",
-      "entry_point": "read METROPOLIS.md in kody-w/rapp-estate",
+      "role": "rapp-metropolis/1.0 \u2014 RETIRED and DEPRECATED historical mesh-composition proposal. The live main/METROPOLIS.md path is a retirement notice and explicitly publishes no protocol authority; these immutable baseline bytes are retained for audit and history only.",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-estate/24c8fdc1e770c790b98724002d719d515d5e5465/METROPOLIS.md",
+      "entry_point": "read the pinned historical METROPOLIS.md only to audit the retired proposal; do not implement it as current",
       "layer": "kernel"
     },
     {

@@ -48,7 +48,7 @@
 044 | declared | canonical_material | protocol:kody-w/rapp-eternity/rapp-eternity/1.0 | https://raw.githubusercontent.com/kody-w/rapp-eternity/main/SPEC.md
 045 | declared | canonical_material | protocol:kody-w/leviathan/rapp-fleet-chat/1.0 | https://raw.githubusercontent.com/kody-w/leviathan/main/FLEET_CHAT.md
 046 | declared | canonical_material | protocol:kody-w/rapp-spine/rapp-kernel/1.0 | https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/KERNEL.md
-047 | declared | canonical_material | protocol:kody-w/rapp-estate/rapp-metropolis/1.0 | https://raw.githubusercontent.com/kody-w/rapp-estate/main/METROPOLIS.md
+047 | declared | canonical_material | protocol:kody-w/rapp-estate/rapp-metropolis/1.0 | https://raw.githubusercontent.com/kody-w/rapp-estate/24c8fdc1e770c790b98724002d719d515d5e5465/METROPOLIS.md
 048 | declared | canonical_material | protocol:kody-w/rapp-spine/rapp-auth/1.0 | https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/AUTH_CHAIN.md
 049 | declared | canonical_material | protocol:kody-w/rapp-spine/rapp-kernel-boundary/1.0 | https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/NETWORK_TRUST_BOUNDARY.md
 050 | declared | canonical_material | protocol:kody-w/rapp-spine/rapp-trust/1.0 | https://raw.githubusercontent.com/kody-w/rapp-spine/main/specs/TRUST_AND_OWNERSHIP.md
