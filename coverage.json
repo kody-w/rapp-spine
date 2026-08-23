@@ -5,48 +5,48 @@
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "db5df6a56ef610107b358469d523bf89e55d47674474923b6ddfdb3d1fa00de9"
+      "sha256": "a80d2b16479ff37eb558314f827294e8aa77f91187a3611cc2bcbeb1c3f09db8"
     },
     "foundation": {
       "path": "foundation.json",
-      "sha256": "2c5478ccc22f0827390a6a061f465fd2e4915ffe31649f5ea4227f97cdb3d899"
+      "sha256": "616451477d45397cdc3884000448e7e1cb0a0af657ff57820abc3c95880bb694"
     }
   },
   "inventory": {
-    "registry_entries_expected": 60,
-    "registry_nodes_represented": 60,
+    "registry_entries_expected": 58,
+    "registry_nodes_represented": 58,
     "routes_expected": 32,
     "route_nodes_represented": 32,
-    "route_target_references": 67,
-    "repositories_represented": 48,
-    "foundation_records_represented": 19
+    "route_target_references": 64,
+    "repositories_represented": 46,
+    "foundation_records_represented": 18
   },
   "graph": {
-    "nodes": 222,
-    "relations": 689,
+    "nodes": 215,
+    "relations": 669,
     "nodes_by_type": {
       "artifact": 2,
-      "evidence": 19,
-      "issue": 53,
+      "evidence": 18,
+      "issue": 51,
       "layer": 7,
-      "protocol": 60,
-      "repository": 48,
+      "protocol": 58,
+      "repository": 46,
       "route": 32,
       "spine": 1
     },
     "nodes_by_status": {
       "informational": 19,
-      "represented": 46,
-      "resolved": 80,
-      "unresolved": 77
+      "represented": 44,
+      "resolved": 79,
+      "unresolved": 73
     },
     "orphans": [],
     "dangling_relations": []
   },
   "required_material": {
-    "protocols": 60,
+    "protocols": 58,
     "exact_targets": 26,
-    "unresolved": 34,
+    "unresolved": 32,
     "unresolved_node_ids": [
       "protocol:kody-w/rapp/rapp-agent/1.0",
       "protocol:kody-w/communityrapp/entry",
@@ -70,8 +70,6 @@
       "protocol:kody-w/rapp-neighborhood-protocol/rapp-neighborhood-protocol/1.0",
       "protocol:kody-w/rapp-messaging/rapp-messaging/1.0",
       "protocol:kody-w/rapp-kite/entry",
-      "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
-      "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
       "protocol:kody-w/rapp_docs/entry",
       "protocol:kody-w/rapp_hub/entry",
       "protocol:kody-w/rapp-estate/rapp-estate/1.1",
@@ -86,9 +84,9 @@
     "complete": false
   },
   "all_required_sources": {
-    "required": 129,
-    "exact_targets": 93,
-    "unresolved": 36,
+    "required": 124,
+    "exact_targets": 90,
+    "unresolved": 34,
     "unresolved_sources": [
       {
         "node_id": "protocol:kody-w/rapp/rapp-agent/1.0",
@@ -179,14 +177,6 @@
         "role": "canonical_material"
       },
       {
-        "node_id": "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
-        "role": "canonical_material"
-      },
-      {
-        "node_id": "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
-        "role": "canonical_material"
-      },
-      {
         "node_id": "protocol:kody-w/rapp_docs/entry",
         "role": "canonical_material"
       },
@@ -238,8 +228,8 @@
     "complete": false
   },
   "known_gaps": {
-    "structured_issues": 53,
-    "blocking": 41,
+    "structured_issues": 51,
+    "blocking": 39,
     "blocking_issue_ids": [
       "issue:security:de7fec630b7d59b0",
       "issue:gap:aae4cfd4841a6e85",
@@ -268,8 +258,6 @@
       "issue:material:be48eaddfea9c191",
       "issue:material:020f8e7508a5b340",
       "issue:material:1677c9a183e038b8",
-      "issue:material:5fd0a78b490ac709",
-      "issue:material:ddb3aec94f5404f6",
       "issue:material:6eb9c2770267aa08",
       "issue:material:0a13ad04ca09c1f1",
       "issue:material:5001349d64046d25",

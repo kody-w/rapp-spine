@@ -299,9 +299,13 @@ At no point did anyone commit to the grail, exchange a key, or hit a non-`/chat`
 - **TV-9 (CI gate).** Mutate a cubby without rebuilding; `super_rar rebuild=true --check` → non-zero exit (stale-index drift).
 - **TV-10 (egg round-trip).** `cubby_egg` then `cubby_import` into a clean root → recursive sha256 of every non-secret file matches the original.
 
-### 8.3 Registration in the drift observatory
+### 8.3 Historical registration instruction — retired
 
-`rapp-cubby/1.0` and `rapp-super-rar/1.0` MUST be registered as **parts** in `kody-w/rapp-god` (`registry.json` / `ecosystem-spec.json`, mirrored to `kody-w/rapp-map`) so the drift observatory tracks their schema versions across the four legs (agent / rapp-god / rapp-map / RAPP-Bible). Home of record for both specs is this file, `kody-w/RAPP/specs/CUBBY.md`. Divergence between the two `ecosystem-spec.json` mirrors **is** drift and MUST fail `verify`.
+The former instruction to register these schemas in `rapp-god` and mirror them
+to `rapp-map` is retired. `rapp-god` is private and the map ecosystem path is a
+quarantine status document. Home-of-record and protocol validation must use
+public immutable sources and the exact RAPP/1 authority pin; no active
+four-leg or byte-identical ecosystem mirror contract exists.
 
 ---
 

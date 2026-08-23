@@ -46,6 +46,16 @@ class SpineContractTests(_SpineFixture, unittest.TestCase):
                 with (ROOT / filename).open(encoding="utf-8") as handle:
                     self.assertIsInstance(json.load(handle), dict)
 
+    def test_retired_ecosystem_mirrors_are_not_protocol_nodes(self):
+        spec_ids = {entry["spec_id"] for entry in self.spine["registry"]}
+        self.assertFalse(
+            any("rapp-ecosystem-spec/1.0" in spec_id for spec_id in spec_ids)
+        )
+        self.assertNotIn("rapp-grail-scan/1.0", spec_ids)
+        canon = (ROOT / "specs/CANON.md").read_text(encoding="utf-8")
+        self.assertIn("No active byte-identical ecosystem mirror set exists", canon)
+        self.assertIn("d2cd5abed48d3f52b86bbb975ac3558286d1db41", canon)
+
     def test_crawl_is_backward_compatible_1_1_surface(self):
         self.assertEqual(self.crawl["spec"], "rapp-spine/1.1")
         for field in (
@@ -393,7 +403,7 @@ class CrawlGraphTests(_SpineFixture, unittest.TestCase):
             if node["type"] == "protocol"
             and node["sources"][0]["availability"] == "unresolved"
         ]
-        self.assertEqual(len(unresolved), 34)
+        self.assertEqual(len(unresolved), 32)
         issues_by_node = defaultdict(list)
         for issue in self.crawl["issues"]:
             for node_id in issue["related_node_ids"]:
@@ -489,7 +499,7 @@ class CrawlGraphTests(_SpineFixture, unittest.TestCase):
         visited_protocols = sum(
             self.nodes[node_id]["type"] == "protocol" for node_id in plan["node_ids"]
         )
-        self.assertEqual(visited_protocols, 60)
+        self.assertEqual(visited_protocols, 58)
         self.assertGreater(plan["batch_count"], 1)
         required_roles = Counter(
             source["role"] for source in plan["read_targets"] if source["required"]
@@ -499,10 +509,10 @@ class CrawlGraphTests(_SpineFixture, unittest.TestCase):
             Counter(
                 {
                     "authoritative_input": 2,
-                    "canonical_material": 60,
+                    "canonical_material": 58,
                     "integrity_evidence": 11,
-                    "repository_identity": 48,
-                    "supporting_evidence": 8,
+                    "repository_identity": 46,
+                    "supporting_evidence": 7,
                 }
             ),
         )
@@ -617,13 +627,13 @@ class CrawlGraphTests(_SpineFixture, unittest.TestCase):
             receipt["completion"]["inventory_graph_coverage"]["complete"]
         )
         sources = receipt["completion"]["source_integrity_availability"]
-        self.assertEqual(sources["expected_required_sources"], 129)
+        self.assertEqual(sources["expected_required_sources"], 124)
         self.assertEqual(
             sources["visited_required_sources"],
             sum(source["required"] for source in plan["read_targets"]),
         )
-        self.assertEqual(sum(sources["counts"].values()), 129)
-        self.assertEqual(sum(sources["integrity"].values()), 129)
+        self.assertEqual(sum(sources["counts"].values()), 124)
+        self.assertEqual(sum(sources["integrity"].values()), 124)
         self.assertEqual(
             sources["integrity"]["not_checkable"],
             sources["counts"]["not_read"],
@@ -687,7 +697,7 @@ class CrawlGraphTests(_SpineFixture, unittest.TestCase):
         )
         self.assertEqual(
             receipt["completion"]["source_integrity_availability"]["counts"],
-            {"read": 93, "unresolved": 36},
+            {"read": 90, "unresolved": 34},
         )
 
     def test_receipt_separates_all_completion_dimensions(self):
@@ -765,13 +775,13 @@ class GeneratedSurfaceTests(_SpineFixture, unittest.TestCase):
 
     def test_coverage_matches_graph(self):
         self.assertEqual(self.coverage, generate_crawl.build_coverage(self.crawl))
-        self.assertEqual(self.coverage["inventory"]["registry_nodes_represented"], 60)
+        self.assertEqual(self.coverage["inventory"]["registry_nodes_represented"], 58)
         self.assertEqual(self.coverage["inventory"]["routes_expected"], 32)
         self.assertEqual(self.coverage["required_material"]["exact_targets"], 26)
-        self.assertEqual(self.coverage["required_material"]["unresolved"], 34)
-        self.assertEqual(self.coverage["all_required_sources"]["required"], 129)
-        self.assertEqual(self.coverage["all_required_sources"]["exact_targets"], 93)
-        self.assertEqual(self.coverage["all_required_sources"]["unresolved"], 36)
+        self.assertEqual(self.coverage["required_material"]["unresolved"], 32)
+        self.assertEqual(self.coverage["all_required_sources"]["required"], 124)
+        self.assertEqual(self.coverage["all_required_sources"]["exact_targets"], 90)
+        self.assertEqual(self.coverage["all_required_sources"]["unresolved"], 34)
         self.assertFalse(self.coverage["complete"])
 
     def test_secondary_ai_and_human_surfaces_are_full(self):

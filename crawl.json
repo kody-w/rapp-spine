@@ -5,11 +5,11 @@
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "db5df6a56ef610107b358469d523bf89e55d47674474923b6ddfdb3d1fa00de9"
+      "sha256": "a80d2b16479ff37eb558314f827294e8aa77f91187a3611cc2bcbeb1c3f09db8"
     },
     "foundation": {
       "path": "foundation.json",
-      "sha256": "2c5478ccc22f0827390a6a061f465fd2e4915ffe31649f5ea4227f97cdb3d899"
+      "sha256": "616451477d45397cdc3884000448e7e1cb0a0af657ff57820abc3c95880bb694"
     }
   },
   "safety": {
@@ -110,10 +110,8 @@
     },
     {
       "layer": "map (orientation + observability)",
-      "summary": "Crawl here FIRST when lost or auditing. Answers 'where does this concept live?' and 'is my copy current?'. rapp-map indexes WHICH repo owns WHICH spec; rapp-god is the live every-version content-addressed registry + drift observatory (observes, never fixes); RAPP-Bible is the synthesized human narrative ('the one file to read'); rapp_docs streams every spec's raw text live with zero copies. These four are the 'drift triangle' (actually 4 legs) anchored on ecosystem-spec.json — when they disagree, the JSON wins.",
+      "summary": "Crawl here FIRST when lost or auditing. Answers 'where does this concept live?' and 'is my copy current?'. The former ecosystem drift triangle is retired: rapp-map serves a quarantine status document, rapp-god is private and not a public mirror, and RAPP-Bible is historical. No byte-identical ecosystem mirror contract is active. Protocol authority resolves to the exact immutable kody-w/rapp-1 rev-5 pin.",
       "protocols": [
-        "rapp-ecosystem-spec/1.0 (rapp-map)",
-        "rapp-grail-scan/1.0 (rapp-god)",
         "rapp/1 (identity authority — kody-w/rapp-1 SPEC.md §6; RAPP-Bible mirrors the RETIRED rapp-eternity/1.0 narrative, which is history, not current law)",
         "rapp_docs (live renderer, no slug)"
       ]
@@ -147,7 +145,7 @@
     },
     {
       "layer": "identity (who an agent IS + confidentiality)",
-      "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood §8). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp/1 §6, in kody-w/rapp-1 — SPEC.md pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b). §6.1 leaves the STRING untouched: rappid:@owner/slug:64hex is still the only conformant form, so nothing that merely EMITS a rappid is broken. §6.2 changed MINTING: the 64-hex tail is minted exactly ONCE and is then immutable — keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER) — and a producer MUST NOT derive the tail from owner/slug or any name. Keys stay OPTIONAL (keyless minting is a first-class branch), so gh-collaborator remains the default ownership and a keypair remains sovereignty, NEVER a requirement. rapp-eternity/1.0 — which taught the sha256 CONTENT-ADDRESS tail — is RETIRED as of 2026-07-17 (kody-w/rapp-eternity commit 9c970a1e; its SPEC.md is now a tombstone reading 'RETIRED · SUBORDINATE TO RAPP · NON-NORMATIVE'). Read it as history; never cite it as current or as a compatibility authority. Anything still COMPUTING a tail by hashing its own content is now non-conformant even though the emitted string still looks right.",
+      "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood §8). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp/1 §6, in kody-w/rapp-1 — SPEC.md pinned at d2cd5abed48d3f52b86bbb975ac3558286d1db41 (41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a). §6.1 leaves the STRING untouched: rappid:@owner/slug:64hex is still the only conformant form, so nothing that merely EMITS a rappid is broken. §6.2 changed MINTING: the 64-hex tail is minted exactly ONCE and is then immutable — keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER) — and a producer MUST NOT derive the tail from owner/slug or any name. Keys stay OPTIONAL (keyless minting is a first-class branch), so gh-collaborator remains the default ownership and a keypair remains sovereignty, NEVER a requirement. rapp-eternity/1.0 — which taught the sha256 CONTENT-ADDRESS tail — is RETIRED as of 2026-07-17 (kody-w/rapp-eternity commit 9c970a1e; its SPEC.md is now a tombstone reading 'RETIRED · SUBORDINATE TO RAPP · NON-NORMATIVE'). Read it as history; never cite it as current or as a compatibility authority. Anything still COMPUTING a tail by hashing its own content is now non-conformant even though the emitted string still looks right.",
       "protocols": [
         "rapp/1 (canonical identity — §6 of kody-w/rapp-1 SPEC.md; also owns canonicalization, content addressing, the frame, the wire and the egg)",
         "rapp-sealed/1.0",
@@ -248,7 +246,7 @@
       "use": [
         "rapp-static-api/1.0"
       ],
-      "why": "The repo IS the API — CDN-cached, CORS-open, content-addressed fallbacks that never break. It's the foundation under rapp-god, RAR, and rapp-mcp's static catalogs."
+      "why": "The repo IS the API — CDN-cached, CORS-open, content-addressed fallbacks that never break. Public examples include RAR and rapp-mcp; the former rapp-god implementation is private and non-authoritative."
     },
     {
       "situation": "I must encrypt neighborhood traffic so a relayed channel is as safe as on-device, across languages.",
@@ -328,12 +326,10 @@
     {
       "situation": "I'm lost in the ~60-repo ecosystem, or need to know whether my copy of a load-bearing file is current.",
       "use": [
-        "rapp-map (rapp-ecosystem-spec/1.0)",
-        "rapp-god (rapp-grail-scan/1.0)",
-        "RAPP-Bible (synthesized narrative)",
+        "rapp/1 (identity authority — kody-w/rapp-1 SPEC.md §6; RAPP-Bible mirrors the RETIRED rapp-eternity/1.0 narrative, which is history, not current law)",
         "rapp_docs"
       ],
-      "why": "Crawl the map layer first: rapp-map = WHERE a concept lives; rapp-god = every-version drift observatory + content-addressed fallback frames; RAPP-Bible = synthesized human narrative; rapp_docs = live raw spec text. When the legs disagree, ecosystem-spec.json wins."
+      "why": "Crawl the map layer for historical location context only. The former mirror legs are retired and do not decide authority. For current protocol behavior, follow the exact immutable kody-w/rapp-1 rev-5 pin."
     },
     {
       "situation": "I want the brainstem framed as a sealed game console with a frozen cartridge contract and a curated starter set.",
@@ -367,12 +363,11 @@
     {
       "situation": "Where is the canonical, current spec for X — and is my copy authoritative (not drifted)?",
       "use": [
-        "RAPP-Bible (canonical aggregate)",
+        "rapp/1",
         "rapp_docs (live stream)",
-        "rapp-god (drift detector)",
         "foundation.json (locked hashes)"
       ],
-      "why": "the corpus is aggregated, live-streamed, and drift-watched against canonical hashes; foundation.json locks the foundation pillars + law."
+      "why": "Current protocol authority is the exact immutable RAPP/1 pin; public source text and locked historical foundation hashes are supporting evidence, not mirror authority."
     },
     {
       "situation": "What does the kernel/law actually say, or where is a newly-formalized foundation spec?",
@@ -547,7 +542,7 @@
       "repo": "kody-w/rapp-static-apis",
       "layer": "distribution",
       "purpose": "Foundational convention for read-only APIs served entirely from static Git-host files (raw.githubusercontent.com / Pages) — no server, no DB, no runtime; the repo IS the API. Append-only content-addressed blobs, one idempotent build step, schema string on every doc.",
-      "when_to_use": "When you need a registry/catalog/status endpoint with zero infrastructure: CDN-cached, CORS-open, forkable, auditable in git, with pinnable content-addressed fallbacks. Reference impls: rapp-god (full), RAR (index), rapp-mcp (profile).",
+      "when_to_use": "When you need a registry/catalog/status endpoint with zero infrastructure: CDN-cached, CORS-open, forkable, auditable in git, with pinnable content-addressed fallbacks. Public reference implementations: RAR (index), rapp-mcp (profile).",
       "entry_point": "Copy template/ into a new repo, edit manifest.json, run python3 build.py -> registry.json + api/v1/*.json. SPEC.md in repo."
     },
     {
@@ -637,22 +632,6 @@
       "purpose": "CLI + Chrome-DevTools-Protocol operator tools (vbridge.sh, kited_twin.js, kite_vtwin.js, claude_bridge.js) to fly and operate kited twins over the sealed neighborhood. Implements §5a kite transport; speaks rapp-sealed/1.0.",
       "when_to_use": "When an operator (canonically Claude) must be the connective tissue between a public/browser peer and a machine's LOCAL brainstem — join a hosted vBrainstem from a shell, hold the CDP string to a local tab, tether a deployed page to a local brainstem.",
       "entry_point": "Clone + run, e.g. vbridge.sh <peer> <token> <ask|eval|run|chat|agents|health>. CDP hop stays on-machine; only cross-machine rides WebRTC + seal. MIT."
-    },
-    {
-      "spec_id": "rapp-ecosystem-spec/1.0 (byte-identical mirror)",
-      "repo": "kody-w/rapp-map",
-      "layer": "map",
-      "purpose": "The index of the ecosystem — which repo is the canonical home of which part of the spec (not the spec text itself). Carries the machine map ecosystem-spec.json + the neuron-mesh (neurons.json) for swarm/sync skills. One of the four legs of the drift triangle.",
-      "when_to_use": "When lost in the ~60-repo ecosystem and you need to know WHERE a concept lives, or to wire a new repo into its correct neighborhood without creating drift.",
-      "entry_point": "https://github.com/kody-w/rapp-map (README = human map; ecosystem-spec.json = machine map). Tagged v1.0.0."
-    },
-    {
-      "spec_id": "rapp-grail-scan/1.0",
-      "repo": "kody-w/rapp-god",
-      "layer": "map",
-      "purpose": "God's-eye registry + live drift observatory of the WHOLE ecosystem — every load-bearing part and every version, content-addressed as immutable fallback frames. 'Observes, never fixes.' Reference impl of rapp-static-api/1.0. Also mirrors ecosystem-spec.json; home of GRAIL_SCAN.md.",
-      "when_to_use": "When you need to know if your copy of a load-bearing file (install.sh, kernel, spec, codec) is current vs the grail, pin/fetch an exact prior version as a fallback, or audit cross-repo drift. Registers the ECOSYSTEM (vs RAR, which registers agents).",
-      "entry_point": "https://kody-w.github.io/rapp-god/ (dashboard); registry.json + api/v1/status.json (static API); build_god.py."
     },
     {
       "spec_id": "(none; live spec renderer)",
@@ -779,8 +758,8 @@
       "repo": "kody-w/rapp-1",
       "purpose": "rapp/1 (RAPP Protocol Suite, rev-5) — the unified normative specification and the CANONICAL identity authority. §6 owns the rappid: §6.1 the unchanged rappid:@owner/slug:64hex grammar, §6.2 mint-once minting (keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER); a producer MUST NOT derive the tail from owner/slug or any name), §6.3 canonicalize-on-read and the owner-authorized re-anchor. It also owns §4 canonicalization (JCS), §5 domain-separated content addressing, §7 the frame, §8 the wire, §9 the egg and §10 detached-JWS signatures. It takes over from rapp-eternity/1.0 (retired 2026-07-17) and consolidates rapp-frame/2.0, rapp-frame/2.1, rapp-rappid-spec/2.0, rapp-protocol/1.0 and the scattered egg specs.",
       "when_to_use": "Whenever you mint, read, canonicalize or verify a rappid — §6 is the CANONICAL identity authority for the estate, in place of the RETIRED rapp-eternity/1.0. Emitters of rappid:@owner/slug:64hex are unaffected, because §6.1 keeps that grammar verbatim; MINTERS that hash their own content to build the 64-hex tail no longer conform and must move to §6.2 mint-once. Also the place to look for the frame, the wire, the egg and content addressing.",
-      "entry_point": "read SPEC.md §6 in kody-w/rapp-1. Pinned authority: kody-w/rapp-1@6723c7add2aed36bb68992fc71a56b0a4bd5ad81 — SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b (the same pin rapp-map/RAPP1_AUTHORITY.json records; structural pin only).",
-      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-1/6723c7add2aed36bb68992fc71a56b0a4bd5ad81/SPEC.md",
+      "entry_point": "read SPEC.md §6 in kody-w/rapp-1. Pinned authority: kody-w/rapp-1@d2cd5abed48d3f52b86bbb975ac3558286d1db41 — SPEC.md, 41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a (the same pin rapp-map/RAPP1_AUTHORITY.json records; structural pin only).",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-1/d2cd5abed48d3f52b86bbb975ac3558286d1db41/SPEC.md",
       "layer": "identity"
     },
     {
@@ -947,8 +926,8 @@
     "'rappter*' NAMING CLUSTER: OpenRappter is the intended consumer RAPP substrate-distro and RAPP<->OpenClaw Rosetta stone (current parity incomplete; data root ~/.openrappter); rappterbox is a console re-skin on ~/.brainstem; rappter is the standalone Wrapped Organism Spec home and EXISTS but is PRIVATE (an anonymous crawl reads it as 404); the readable copy of that spec is on the kody-w/rappterbook branch worktree-wrapped-organism; rappterbook (+~25 rappterbook-*/rappter-* repos) is the social estate. They are distinct roles. OpenRappter must converge on the frozen /chat behavior and drop-in agent.py ABI without turning OpenClaw-shaped compatibility surfaces into new RAPP protocol authorities.",
     "'kite' NAMING CLUSTER: rapp-kite (the operator 'string' — CDP tooling) is distinct from kite-mark (visual identity repo) and rapp-kited-twin (canonical kite-mark SVG). Three 'kite' things; only rapp-kite is the transport operator.",
     "RAPPID IDENTITY REPRESENTATIONAL SEAMS: multiple on-the-wire forms coexist — rappid:<birth-slug>:<64hex> (rapp-egg-hub v2.0), rappid:@owner/slug:<64hex> (canonical, now rapp/1 §6.1 — formerly attributed to the retired rapp-eternity/1.0; the grammar is byte-identical, only its owner moved), rappid:v2:<kind>:@owner/slug:<hex> (rapp-estate), rappid:v3:<base64url(SHA-256(pub))> (rapp-commons). rapp-commons' event SCHEMA and its PROTOCOL.md even show different forms. Rule (per the compatibility contract): READ all legacy forms forever, EMIT only canonical, join on the hash — never rewrite identity in place.",
-    "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
-    "'DRIFT TRIANGLE' IS A MISNOMER — it has FOUR legs (the @rapp/rapp agent, rapp-god, rapp-map, RAPP-Bible) anchored on ecosystem-spec.json; when any leg disagrees with the JSON, the JSON wins. rapp-map and rapp-god both carry byte-identical mirrors of ecosystem-spec.json, so divergence between them IS the detectable drift signal.",
+    "IDENTITY AUTHORITY MOVED (resolved 2026-08-04; pin refreshed 2026-08-23): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at d2cd5abed48d3f52b86bbb975ac3558286d1db41 (SPEC.md, 41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a historical narrative, never the owner.",
+    "MIRROR CONTRACT RETIRED (resolved 2026-08-23): the former @rapp/rapp + rapp-god + rapp-map + RAPP-Bible drift triangle is not an authority surface. rapp-map serves a quarantined-candidate status document, rapp-god is private and publicly unreachable, and RAPP-Bible is historical. No active byte-identical ecosystem mirror set exists; protocol authority is the exact immutable kody-w/rapp-1 rev-5 pin.",
     "OVERLAP — distribution catalogs: rapp-agents (flat public agent stack + RappLoader) overlaps RAR (curated content-addressed registry); rapp-egg-hub (twin .egg hub) overlaps twin-egg-hatcher (generic hatcher) and rapp-carts (the unifying cartridge abstraction). They are complementary (stack vs registry; hub-distribution vs hatch-tool vs user-facing unit), not duplicates — but a crawler should pick by role, not by nearest match.",
     "OVERLAP — map renderers: RAPP-Bible (synthesized, PINNED v1.0.0 human narrative — can itself drift), rapp_docs (live raw passthrough, always-current, zero copies), and rapp-map (index of WHERE, not the TEXT) cover overlapping ground with different jobs. Use rapp_docs for current spec text, Bible for narrative onboarding, rapp-map for location.",
     "LICENSE COLLISION: most of the cluster is MIT (rapp-sealed, rapp-dataverse, rapp-neighborhood-protocol, rapp-kite, rapp-static-apis, rapp-agents). BUT kody-w/RAPP and rappterbox are source-available All-Rights-Reserved, and rapp-moment/1.0 is PolyForm-Noncommercial 1.0.0 + trademarked marks ('RAPP', 'Holographic Moment(s)'). A consumer/redistributor must check per-repo terms, not assume MIT.",
@@ -994,7 +973,7 @@
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "db5df6a56ef610107b358469d523bf89e55d47674474923b6ddfdb3d1fa00de9",
+            "sha256": "a80d2b16479ff37eb558314f827294e8aa77f91187a3611cc2bcbeb1c3f09db8",
             "integrity": "sha256"
           }
         ],
@@ -1031,7 +1010,7 @@
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "2c5478ccc22f0827390a6a061f465fd2e4915ffe31649f5ea4227f97cdb3d899",
+            "sha256": "616451477d45397cdc3884000448e7e1cb0a0af657ff57820abc3c95880bb694",
             "integrity": "sha256"
           }
         ],
@@ -1107,10 +1086,8 @@
         ],
         "display": {
           "layer": "map (orientation + observability)",
-          "summary": "Crawl here FIRST when lost or auditing. Answers 'where does this concept live?' and 'is my copy current?'. rapp-map indexes WHICH repo owns WHICH spec; rapp-god is the live every-version content-addressed registry + drift observatory (observes, never fixes); RAPP-Bible is the synthesized human narrative ('the one file to read'); rapp_docs streams every spec's raw text live with zero copies. These four are the 'drift triangle' (actually 4 legs) anchored on ecosystem-spec.json — when they disagree, the JSON wins.",
+          "summary": "Crawl here FIRST when lost or auditing. Answers 'where does this concept live?' and 'is my copy current?'. The former ecosystem drift triangle is retired: rapp-map serves a quarantine status document, rapp-god is private and not a public mirror, and RAPP-Bible is historical. No byte-identical ecosystem mirror contract is active. Protocol authority resolves to the exact immutable kody-w/rapp-1 rev-5 pin.",
           "protocols": [
-            "rapp-ecosystem-spec/1.0 (rapp-map)",
-            "rapp-grail-scan/1.0 (rapp-god)",
             "rapp/1 (identity authority — kody-w/rapp-1 SPEC.md §6; RAPP-Bible mirrors the RETIRED rapp-eternity/1.0 narrative, which is history, not current law)",
             "rapp_docs (live renderer, no slug)"
           ]
@@ -1198,7 +1175,7 @@
         ],
         "display": {
           "layer": "identity (who an agent IS + confidentiality)",
-          "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood §8). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp/1 §6, in kody-w/rapp-1 — SPEC.md pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b). §6.1 leaves the STRING untouched: rappid:@owner/slug:64hex is still the only conformant form, so nothing that merely EMITS a rappid is broken. §6.2 changed MINTING: the 64-hex tail is minted exactly ONCE and is then immutable — keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER) — and a producer MUST NOT derive the tail from owner/slug or any name. Keys stay OPTIONAL (keyless minting is a first-class branch), so gh-collaborator remains the default ownership and a keypair remains sovereignty, NEVER a requirement. rapp-eternity/1.0 — which taught the sha256 CONTENT-ADDRESS tail — is RETIRED as of 2026-07-17 (kody-w/rapp-eternity commit 9c970a1e; its SPEC.md is now a tombstone reading 'RETIRED · SUBORDINATE TO RAPP · NON-NORMATIVE'). Read it as history; never cite it as current or as a compatibility authority. Anything still COMPUTING a tail by hashing its own content is now non-conformant even though the emitted string still looks right.",
+          "summary": "Cryptographic identity, ownership, and sealing. rapp-sealed/1.0 is the canonical AES-256-GCM sealed-envelope codec with cross-language conformance vectors (auth by key-possession only; transport-agnostic; realizes neighborhood §8). rapp-moment/1.0 is a keypair-signed (ECDSA P-256) social primitive that uses an OPTIONAL keypair binding. CANONICALLY identity is rapp/1 §6, in kody-w/rapp-1 — SPEC.md pinned at d2cd5abed48d3f52b86bbb975ac3558286d1db41 (41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a). §6.1 leaves the STRING untouched: rappid:@owner/slug:64hex is still the only conformant form, so nothing that merely EMITS a rappid is broken. §6.2 changed MINTING: the 64-hex tail is minted exactly ONCE and is then immutable — keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER) — and a producer MUST NOT derive the tail from owner/slug or any name. Keys stay OPTIONAL (keyless minting is a first-class branch), so gh-collaborator remains the default ownership and a keypair remains sovereignty, NEVER a requirement. rapp-eternity/1.0 — which taught the sha256 CONTENT-ADDRESS tail — is RETIRED as of 2026-07-17 (kody-w/rapp-eternity commit 9c970a1e; its SPEC.md is now a tombstone reading 'RETIRED · SUBORDINATE TO RAPP · NON-NORMATIVE'). Read it as history; never cite it as current or as a compatibility authority. Anything still COMPUTING a tail by hashing its own content is now non-conformant even though the emitted string still looks right.",
           "protocols": [
             "rapp/1 (canonical identity — §6 of kody-w/rapp-1 SPEC.md; also owns canonicalization, content addressing, the frame, the wire and the egg)",
             "rapp-sealed/1.0",
@@ -1956,7 +1933,7 @@
           "repo": "kody-w/rapp-static-apis",
           "layer": "distribution",
           "purpose": "Foundational convention for read-only APIs served entirely from static Git-host files (raw.githubusercontent.com / Pages) — no server, no DB, no runtime; the repo IS the API. Append-only content-addressed blobs, one idempotent build step, schema string on every doc.",
-          "when_to_use": "When you need a registry/catalog/status endpoint with zero infrastructure: CDN-cached, CORS-open, forkable, auditable in git, with pinnable content-addressed fallbacks. Reference impls: rapp-god (full), RAR (index), rapp-mcp (profile).",
+          "when_to_use": "When you need a registry/catalog/status endpoint with zero infrastructure: CDN-cached, CORS-open, forkable, auditable in git, with pinnable content-addressed fallbacks. Public reference implementations: RAR (index), rapp-mcp (profile).",
           "entry_point": "Copy template/ into a new repo, edit manifest.json, run python3 build.py -> registry.json + api/v1/*.json. SPEC.md in repo."
         }
       },
@@ -2581,119 +2558,6 @@
         }
       },
       {
-        "id": "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
-        "type": "protocol",
-        "label": "rapp-ecosystem-spec/1.0 (byte-identical mirror)",
-        "repo": "kody-w/rapp-map",
-        "canonical_protocol_identity": "rapp-ecosystem-spec/1.0",
-        "layer_id": "layer:map",
-        "lifecycle": "active",
-        "status": "unresolved",
-        "materiality": "required",
-        "material_profile": "registry-protocol",
-        "required_source_roles": [
-          "canonical_material"
-        ],
-        "sources": [
-          {
-            "role": "canonical_material",
-            "required": true,
-            "target": null,
-            "availability": "unresolved",
-            "read_only": true,
-            "method": "GET"
-          }
-        ],
-        "entry_points": [
-          {
-            "kind": "repository_read",
-            "target": "https://github.com/kody-w/rapp-map",
-            "method": "GET",
-            "read_only": true,
-            "safe_for_crawl": true
-          },
-          {
-            "kind": "display_only",
-            "display": "https://github.com/kody-w/rapp-map (README = human map; ecosystem-spec.json = machine map). Tagged v1.0.0.",
-            "read_only": false,
-            "safe_for_crawl": false,
-            "policy": "never_execute"
-          }
-        ],
-        "conformance": "not_assessed",
-        "aliases": [
-          "kody-w/rapp-map",
-          "rapp-ecosystem-spec/1.0",
-          "rapp-ecosystem-spec/1.0 byte-identical mirror",
-          "rapp-map"
-        ],
-        "display": {
-          "registry_index": 23,
-          "spec_id": "rapp-ecosystem-spec/1.0 (byte-identical mirror)",
-          "repo": "kody-w/rapp-map",
-          "layer": "map",
-          "purpose": "The index of the ecosystem — which repo is the canonical home of which part of the spec (not the spec text itself). Carries the machine map ecosystem-spec.json + the neuron-mesh (neurons.json) for swarm/sync skills. One of the four legs of the drift triangle.",
-          "when_to_use": "When lost in the ~60-repo ecosystem and you need to know WHERE a concept lives, or to wire a new repo into its correct neighborhood without creating drift.",
-          "entry_point": "https://github.com/kody-w/rapp-map (README = human map; ecosystem-spec.json = machine map). Tagged v1.0.0."
-        }
-      },
-      {
-        "id": "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
-        "type": "protocol",
-        "label": "rapp-grail-scan/1.0",
-        "repo": "kody-w/rapp-god",
-        "canonical_protocol_identity": "rapp-grail-scan/1.0",
-        "layer_id": "layer:map",
-        "lifecycle": "active",
-        "status": "unresolved",
-        "materiality": "required",
-        "material_profile": "registry-protocol",
-        "required_source_roles": [
-          "canonical_material"
-        ],
-        "sources": [
-          {
-            "role": "canonical_material",
-            "required": true,
-            "target": null,
-            "availability": "unresolved",
-            "read_only": true,
-            "method": "GET"
-          }
-        ],
-        "entry_points": [
-          {
-            "kind": "repository_read",
-            "target": "https://github.com/kody-w/rapp-god",
-            "method": "GET",
-            "read_only": true,
-            "safe_for_crawl": true
-          },
-          {
-            "kind": "display_only",
-            "display": "https://kody-w.github.io/rapp-god/ (dashboard); registry.json + api/v1/status.json (static API); build_god.py.",
-            "read_only": false,
-            "safe_for_crawl": false,
-            "policy": "never_execute"
-          }
-        ],
-        "conformance": "not_assessed",
-        "aliases": [
-          "kody-w/rapp-god",
-          "rapp-god",
-          "rapp-grail-scan/1.0"
-        ],
-        "display": {
-          "registry_index": 24,
-          "spec_id": "rapp-grail-scan/1.0",
-          "repo": "kody-w/rapp-god",
-          "layer": "map",
-          "purpose": "God's-eye registry + live drift observatory of the WHOLE ecosystem — every load-bearing part and every version, content-addressed as immutable fallback frames. 'Observes, never fixes.' Reference impl of rapp-static-api/1.0. Also mirrors ecosystem-spec.json; home of GRAIL_SCAN.md.",
-          "when_to_use": "When you need to know if your copy of a load-bearing file (install.sh, kernel, spec, codec) is current vs the grail, pin/fetch an exact prior version as a fallback, or audit cross-repo drift. Registers the ECOSYSTEM (vs RAR, which registers agents).",
-          "entry_point": "https://kody-w.github.io/rapp-god/ (dashboard); registry.json + api/v1/status.json (static API); build_god.py."
-        }
-      },
-      {
         "id": "protocol:kody-w/rapp_docs/entry",
         "type": "protocol",
         "label": "(none; live spec renderer)",
@@ -2740,7 +2604,7 @@
           "rapp_docs"
         ],
         "display": {
-          "registry_index": 25,
+          "registry_index": 23,
           "spec_id": "(none; live spec renderer)",
           "repo": "kody-w/rapp_docs",
           "layer": "map",
@@ -2796,7 +2660,7 @@
           "rapp_hub"
         ],
         "display": {
-          "registry_index": 26,
+          "registry_index": 24,
           "spec_id": "(DEPRECATED -> the RAR/RAPP_Store registry path)",
           "repo": "kody-w/RAPP_Hub",
           "layer": "distribution",
@@ -2853,7 +2717,7 @@
           "rapp-estate/1.1 canonical def in kody-w/rapp specs/spec.md"
         ],
         "display": {
-          "registry_index": 27,
+          "registry_index": 25,
           "spec_id": "rapp-estate/1.1 (canonical def in kody-w/RAPP specs/SPEC.md)",
           "repo": "kody-w/rapp-estate",
           "layer": "network",
@@ -2910,7 +2774,7 @@
           "rapp-network/1.0 draft v0"
         ],
         "display": {
-          "registry_index": 28,
+          "registry_index": 26,
           "spec_id": "rapp-network/1.0 (Draft v0)",
           "repo": "kody-w/RAPP-Network",
           "layer": "network",
@@ -2968,7 +2832,7 @@
           "rapp-commons-protocol/2.0 rapp-commons-event/1.0"
         ],
         "display": {
-          "registry_index": 29,
+          "registry_index": 27,
           "spec_id": "rapp-commons-protocol/2.0 (+ rapp-commons-event/1.0)",
           "repo": "kody-w/rapp-commons",
           "layer": "network",
@@ -3024,7 +2888,7 @@
           "rapp-vneighborhood/1.0"
         ],
         "display": {
-          "registry_index": 30,
+          "registry_index": 28,
           "spec_id": "rapp-vneighborhood/1.0",
           "repo": "kody-w/rapp-vneighborhood",
           "layer": "network",
@@ -3081,7 +2945,7 @@
           "none mirror-spec instance kernel-derived one-string change not byte-identical to grail"
         ],
         "display": {
-          "registry_index": 31,
+          "registry_index": 29,
           "spec_id": "(none; Mirror-Spec instance, kernel-derived (one-string change; NOT byte-identical) to grail)",
           "repo": "kody-w/heimdall",
           "layer": "distribution",
@@ -3138,7 +3002,7 @@
           "rapp-resident"
         ],
         "display": {
-          "registry_index": 32,
+          "registry_index": 30,
           "spec_id": "(none; serves rapp-commons-event/1.0 over HTTP)",
           "repo": "kody-w/rapp-resident",
           "layer": "network",
@@ -3194,7 +3058,7 @@
           "rapp-frame/2.0"
         ],
         "display": {
-          "registry_index": 33,
+          "registry_index": 31,
           "spec_id": "rapp-frame/2.0",
           "repo": "kody-w/rapp-frame-net",
           "layer": "leviathan",
@@ -3250,7 +3114,7 @@
           "rapp-hydra/1.0"
         ],
         "display": {
-          "registry_index": 34,
+          "registry_index": 32,
           "spec_id": "rapp-hydra/1.0",
           "repo": "kody-w/rapp-frame-net",
           "layer": "network",
@@ -3313,7 +3177,7 @@
           "rapp_sense_store"
         ],
         "display": {
-          "registry_index": 35,
+          "registry_index": 33,
           "spec_id": "rapp-sense/1.0",
           "repo": "kody-w/RAPP_Sense_Store",
           "role": "Canonical public catalog + spec for RAPP senses (modular per-channel output overlays that drop into a brainstem's utils/senses/); peer to RAR (agents) and RAPP_Store (rapplications)",
@@ -3376,7 +3240,7 @@
           "rapp_store"
         ],
         "display": {
-          "registry_index": 36,
+          "registry_index": 34,
           "spec_id": "rapp-application/1.0",
           "repo": "kody-w/RAPP_Store",
           "role": "Public catalog + canonical spec for rapplications (bundled single-file agent + UI/state/service/twin cartridges); defines bundle layout, manifest schema, gated-rapp federation, and the static Pokedex API.",
@@ -3439,7 +3303,7 @@
           "rappcards-binder/1.0"
         ],
         "display": {
-          "registry_index": 37,
+          "registry_index": 35,
           "spec_id": "rappcards-binder/1.0",
           "repo": "kody-w/RAPPcards",
           "role": "Canonical owner of the portable RAPPcards trading-card standard (card data model, deterministic seed identity, incantation protocol, lossless export, cross-binder federation) — declares rappcards-binder/1.0 + rappcards-peers/1.0 + rappcards-seed-index/1.0",
@@ -3502,7 +3366,7 @@
           "rapp-demos"
         ],
         "display": {
-          "registry_index": 38,
+          "registry_index": 36,
           "spec_id": "rapp-demo/1.0",
           "repo": "kody-w/rapp-demos",
           "role": "Owner of the rapp-demo/1.0 scenario schema and its scan-to-watch synced demo player: an M365-style template where a host walks a text scenario step-by-step and QR/link watchers follow live, read-only, over a rapp-sealed WebRTC channel.",
@@ -3565,7 +3429,7 @@
           "rapp-spine/1.0"
         ],
         "display": {
-          "registry_index": 39,
+          "registry_index": 37,
           "spec_id": "rapp-spine/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "The situational router/index over the full RAPP protocol stack — maps situation→layer→protocol across ~60 repos and ~33 specs; also owns FOUNDATION (foundation.json, the locked content-addressed canonical registry) and the crawlable registry.json",
@@ -3592,7 +3456,7 @@
           {
             "role": "canonical_material",
             "required": true,
-            "target": "https://raw.githubusercontent.com/kody-w/rapp-1/6723c7add2aed36bb68992fc71a56b0a4bd5ad81/SPEC.md",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-1/d2cd5abed48d3f52b86bbb975ac3558286d1db41/SPEC.md",
             "availability": "declared",
             "read_only": true,
             "method": "GET"
@@ -3601,7 +3465,7 @@
         "entry_points": [
           {
             "kind": "canonical_read",
-            "target": "https://raw.githubusercontent.com/kody-w/rapp-1/6723c7add2aed36bb68992fc71a56b0a4bd5ad81/SPEC.md",
+            "target": "https://raw.githubusercontent.com/kody-w/rapp-1/d2cd5abed48d3f52b86bbb975ac3558286d1db41/SPEC.md",
             "method": "GET",
             "read_only": true,
             "safe_for_crawl": true
@@ -3615,7 +3479,7 @@
           },
           {
             "kind": "display_only",
-            "display": "read SPEC.md §6 in kody-w/rapp-1. Pinned authority: kody-w/rapp-1@6723c7add2aed36bb68992fc71a56b0a4bd5ad81 — SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b (the same pin rapp-map/RAPP1_AUTHORITY.json records; structural pin only).",
+            "display": "read SPEC.md §6 in kody-w/rapp-1. Pinned authority: kody-w/rapp-1@d2cd5abed48d3f52b86bbb975ac3558286d1db41 — SPEC.md, 41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a (the same pin rapp-map/RAPP1_AUTHORITY.json records; structural pin only).",
             "read_only": false,
             "safe_for_crawl": false,
             "policy": "never_execute"
@@ -3628,13 +3492,13 @@
           "rapp/1"
         ],
         "display": {
-          "registry_index": 40,
+          "registry_index": 38,
           "spec_id": "rapp/1",
           "repo": "kody-w/rapp-1",
           "purpose": "rapp/1 (RAPP Protocol Suite, rev-5) — the unified normative specification and the CANONICAL identity authority. §6 owns the rappid: §6.1 the unchanged rappid:@owner/slug:64hex grammar, §6.2 mint-once minting (keyless Hb('rapp/1:rappid', uuid4_octets) or keyed Hb('rapp/1:rappid', SPKI_DER); a producer MUST NOT derive the tail from owner/slug or any name), §6.3 canonicalize-on-read and the owner-authorized re-anchor. It also owns §4 canonicalization (JCS), §5 domain-separated content addressing, §7 the frame, §8 the wire, §9 the egg and §10 detached-JWS signatures. It takes over from rapp-eternity/1.0 (retired 2026-07-17) and consolidates rapp-frame/2.0, rapp-frame/2.1, rapp-rappid-spec/2.0, rapp-protocol/1.0 and the scattered egg specs.",
           "when_to_use": "Whenever you mint, read, canonicalize or verify a rappid — §6 is the CANONICAL identity authority for the estate, in place of the RETIRED rapp-eternity/1.0. Emitters of rappid:@owner/slug:64hex are unaffected, because §6.1 keeps that grammar verbatim; MINTERS that hash their own content to build the 64-hex tail no longer conform and must move to §6.2 mint-once. Also the place to look for the frame, the wire, the egg and content addressing.",
-          "entry_point": "read SPEC.md §6 in kody-w/rapp-1. Pinned authority: kody-w/rapp-1@6723c7add2aed36bb68992fc71a56b0a4bd5ad81 — SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b (the same pin rapp-map/RAPP1_AUTHORITY.json records; structural pin only).",
-          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-1/6723c7add2aed36bb68992fc71a56b0a4bd5ad81/SPEC.md",
+          "entry_point": "read SPEC.md §6 in kody-w/rapp-1. Pinned authority: kody-w/rapp-1@d2cd5abed48d3f52b86bbb975ac3558286d1db41 — SPEC.md, 41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a (the same pin rapp-map/RAPP1_AUTHORITY.json records; structural pin only).",
+          "raw_url": "https://raw.githubusercontent.com/kody-w/rapp-1/d2cd5abed48d3f52b86bbb975ac3558286d1db41/SPEC.md",
           "layer": "identity"
         }
       },
@@ -3692,7 +3556,7 @@
           "rapp-eternity/1.0"
         ],
         "display": {
-          "registry_index": 41,
+          "registry_index": 39,
           "spec_id": "rapp-eternity/1.0",
           "repo": "kody-w/rapp-eternity",
           "role": "rapp-eternity/1.0 — RETIRED historical identity standard, superseded by rapp/1 §6 in kody-w/rapp-1. Retired 2026-07-17 (commit 9c970a1e, then 17bb6d21); SPEC.md is now a tombstone declaring itself 'RETIRED · SUBORDINATE TO RAPP · NON-NORMATIVE'. Its content-address minting rule and its estate-wide identity authority are both withdrawn. Read for history; do not implement it, cite it as current, or treat it as a compatibility authority.",
@@ -3755,7 +3619,7 @@
           "rapp-fleet-chat/1.0"
         ],
         "display": {
-          "registry_index": 42,
+          "registry_index": 40,
           "spec_id": "rapp-fleet-chat/1.0",
           "repo": "kody-w/leviathan",
           "role": "RAPP Fleet-Chat — `rapp-fleet-chat/1.0`",
@@ -3818,7 +3682,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 43,
+          "registry_index": 41,
           "spec_id": "rapp-kernel/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "rapp-kernel/1.0",
@@ -3881,7 +3745,7 @@
           "rapp-metropolis/1.0"
         ],
         "display": {
-          "registry_index": 44,
+          "registry_index": 42,
           "spec_id": "rapp-metropolis/1.0",
           "repo": "kody-w/rapp-estate",
           "role": "rapp-metropolis/1.0 — RETIRED and DEPRECATED historical mesh-composition proposal. The live main/METROPOLIS.md path is a retirement notice and explicitly publishes no protocol authority; these immutable baseline bytes are retained for audit and history only.",
@@ -3944,7 +3808,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 45,
+          "registry_index": 43,
           "spec_id": "rapp-auth/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "rapp-auth/1.0 — The Brainstem Auth Chain",
@@ -4007,7 +3871,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 46,
+          "registry_index": 44,
           "spec_id": "rapp-kernel-boundary/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "rapp-kernel-boundary/1.0 — The Kernel Network Trust Boundary",
@@ -4070,7 +3934,7 @@
           "rapp-trust/1.0"
         ],
         "display": {
-          "registry_index": 47,
+          "registry_index": 45,
           "spec_id": "rapp-trust/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "Trust & ownership — defers identity to rapp/1 §6 (mint-once; keyless or keyed; keypair still optional). Its three-layer model (L0 keyless identity / L1 gh-collaborator default / L2 optional keypair) is unaffected, but the rapp-eternity/1.0 content-address minting rule it quoted is retired.",
@@ -4133,7 +3997,7 @@
           "rapp-substrate-trust/1.0"
         ],
         "display": {
-          "registry_index": 48,
+          "registry_index": 46,
           "spec_id": "rapp-substrate-trust/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "The Substrate Trust Model — `rapp-substrate-trust/1.0`. Consumes identity only; its identity deferral now reads rapp/1 §6, not the retired rapp-eternity/1.0.",
@@ -4196,7 +4060,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 49,
+          "registry_index": 47,
           "spec_id": "rapp-cubby/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "The Cubby Shelf & the Super-RAR",
@@ -4259,7 +4123,7 @@
           "rapp_store"
         ],
         "display": {
-          "registry_index": 50,
+          "registry_index": 48,
           "spec_id": "rapp-stores/1.0",
           "repo": "kody-w/RAPP_Store",
           "role": "RAPP Stores — The Three-Store Topology",
@@ -4322,7 +4186,7 @@
           "rapp-egg-hub"
         ],
         "display": {
-          "registry_index": 51,
+          "registry_index": 49,
           "spec_id": "brainstem-egg/2.3",
           "repo": "kody-w/rapp-egg-hub",
           "role": "The `.egg` Cartridge Family & Multi-Scale Hatch Contract",
@@ -4385,7 +4249,7 @@
           "rapp-payphone-dial/1.0"
         ],
         "display": {
-          "registry_index": 52,
+          "registry_index": 50,
           "spec_id": "rapp-payphone-dial/1.0",
           "repo": "kody-w/rapp-neighborhood-protocol",
           "role": "PAYPHONE.md",
@@ -4448,7 +4312,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 53,
+          "registry_index": 51,
           "spec_id": "rapp-runtime-parity/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "rapp-runtime-parity/1.0",
@@ -4511,7 +4375,7 @@
           "rapp-spine"
         ],
         "display": {
-          "registry_index": 54,
+          "registry_index": 52,
           "spec_id": "rapp-canon/1.0",
           "repo": "kody-w/rapp-spine",
           "role": "rapp-canon/1.0 — see kody-w/rapp-spine",
@@ -4574,7 +4438,7 @@
           "rapp-distro/1.0"
         ],
         "display": {
-          "registry_index": 55,
+          "registry_index": 53,
           "spec_id": "rapp-distro/1.0",
           "repo": "kody-w/rapp-distro",
           "role": "The RAPP distro standard — a distro = the unmodified pinned grail kernel + a userland; spawn permissionlessly; freeze CI proves the kernel is unmodified. Grail=rapp-installer; RAPP is the reference distro.",
@@ -4637,7 +4501,7 @@
           "rapp-roadmap/1.0"
         ],
         "display": {
-          "registry_index": 56,
+          "registry_index": 54,
           "spec_id": "rapp-roadmap/1.0",
           "repo": "kody-w/rapp-roadmap",
           "role": "The grounded 5-phase ecosystem roadmap (re-anchored on the metropolis north star).",
@@ -4700,7 +4564,7 @@
           "rapp-roadmap"
         ],
         "display": {
-          "registry_index": 57,
+          "registry_index": 55,
           "spec_id": "rapp-backlog/1.0",
           "repo": "kody-w/rapp-roadmap",
           "role": "The adversarial hardening backlog (165 wrenches + pre-solves).",
@@ -4763,7 +4627,7 @@
           "rar"
         ],
         "display": {
-          "registry_index": 58,
+          "registry_index": 56,
           "spec_id": "rapp-registry/1.0",
           "repo": "kody-w/RAR",
           "layer": "distribution",
@@ -4826,7 +4690,7 @@
           "rapp-burrow/1.0"
         ],
         "display": {
-          "registry_index": 59,
+          "registry_index": 57,
           "spec_id": "rapp-burrow/1.0",
           "repo": "kody-w/rapp-burrow",
           "layer": "distribution",
@@ -5539,43 +5403,6 @@
         ]
       },
       {
-        "id": "repo:kody-w/rapp-god",
-        "type": "repository",
-        "label": "kody-w/rapp-god",
-        "repo": "kody-w/rapp-god",
-        "lifecycle": "active",
-        "status": "represented",
-        "materiality": "required",
-        "material_profile": "repository",
-        "required_source_roles": [
-          "repository_identity"
-        ],
-        "sources": [
-          {
-            "role": "repository_identity",
-            "required": true,
-            "target": "https://github.com/kody-w/rapp-god",
-            "availability": "declared",
-            "read_only": true,
-            "method": "GET"
-          }
-        ],
-        "entry_points": [
-          {
-            "kind": "repository_read",
-            "target": "https://github.com/kody-w/rapp-god",
-            "method": "GET",
-            "read_only": true,
-            "safe_for_crawl": true
-          }
-        ],
-        "conformance": "not_assessed",
-        "aliases": [
-          "kody-w/rapp-god",
-          "rapp-god"
-        ]
-      },
-      {
         "id": "repo:kody-w/rapp-hologram",
         "type": "repository",
         "label": "kody-w/rapp-hologram",
@@ -5721,43 +5548,6 @@
         "aliases": [
           "kody-w/rapp-leviathan-hub",
           "rapp-leviathan-hub"
-        ]
-      },
-      {
-        "id": "repo:kody-w/rapp-map",
-        "type": "repository",
-        "label": "kody-w/rapp-map",
-        "repo": "kody-w/rapp-map",
-        "lifecycle": "active",
-        "status": "represented",
-        "materiality": "required",
-        "material_profile": "repository",
-        "required_source_roles": [
-          "repository_identity"
-        ],
-        "sources": [
-          {
-            "role": "repository_identity",
-            "required": true,
-            "target": "https://github.com/kody-w/rapp-map",
-            "availability": "declared",
-            "read_only": true,
-            "method": "GET"
-          }
-        ],
-        "entry_points": [
-          {
-            "kind": "repository_read",
-            "target": "https://github.com/kody-w/rapp-map",
-            "method": "GET",
-            "read_only": true,
-            "safe_for_crawl": true
-          }
-        ],
-        "conformance": "not_assessed",
-        "aliases": [
-          "kody-w/rapp-map",
-          "rapp-map"
         ]
       },
       {
@@ -7277,52 +7067,6 @@
         }
       },
       {
-        "id": "evidence:foundation/spec_corpus/drift_detector@kody-w/rapp-god",
-        "type": "evidence",
-        "label": "drift_detector",
-        "repo": "kody-w/rapp-god",
-        "canonical_protocol_identity": null,
-        "foundation_section": "spec_corpus",
-        "lifecycle": "active",
-        "status": "resolved",
-        "materiality": "supporting",
-        "material_profile": "foundation-supporting",
-        "required_source_roles": [
-          "supporting_evidence"
-        ],
-        "sources": [
-          {
-            "role": "supporting_evidence",
-            "required": true,
-            "target": "https://github.com/kody-w/rapp-god",
-            "availability": "declared",
-            "read_only": true,
-            "method": "GET"
-          }
-        ],
-        "entry_points": [
-          {
-            "kind": "evidence_read",
-            "target": "https://github.com/kody-w/rapp-god",
-            "method": "GET",
-            "read_only": true,
-            "safe_for_crawl": true
-          }
-        ],
-        "conformance": "not_assessed",
-        "aliases": [
-          "kody-w/rapp-god",
-          "rapp-god"
-        ],
-        "display": {
-          "foundation_section": "spec_corpus",
-          "foundation_index": 2,
-          "role": "drift_detector",
-          "repo": "kody-w/rapp-god",
-          "url": "https://github.com/kody-w/rapp-god — god's-eye map + live canonical-integrity / cross-repo drift detector"
-        }
-      },
-      {
         "id": "evidence:foundation/spec_corpus/router@kody-w/rapp-spine",
         "type": "evidence",
         "label": "router",
@@ -7362,7 +7106,7 @@
         ],
         "display": {
           "foundation_section": "spec_corpus",
-          "foundation_index": 3,
+          "foundation_index": 2,
           "role": "router",
           "repo": "kody-w/rapp-spine",
           "url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/registry.json"
@@ -7786,7 +7530,7 @@
           "use": [
             "rapp-static-api/1.0"
           ],
-          "why": "The repo IS the API — CDN-cached, CORS-open, content-addressed fallbacks that never break. It's the foundation under rapp-god, RAR, and rapp-mcp's static catalogs."
+          "why": "The repo IS the API — CDN-cached, CORS-open, content-addressed fallbacks that never break. Public examples include RAR and rapp-mcp; the former rapp-god implementation is private and non-authoritative."
         }
       },
       {
@@ -8055,9 +7799,7 @@
         "label": "I'm lost in the ~60-repo ecosystem, or need to know whether my copy of a load-bearing file is current.",
         "route_index": 19,
         "target_ids": [
-          "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
-          "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
-          "evidence:foundation/spec_corpus/canonical_aggregate@kody-w/rapp-bible",
+          "protocol:kody-w/rapp-1/rapp/1",
           "protocol:kody-w/rapp_docs/entry"
         ],
         "lifecycle": "active",
@@ -8072,12 +7814,10 @@
         "display": {
           "situation": "I'm lost in the ~60-repo ecosystem, or need to know whether my copy of a load-bearing file is current.",
           "use": [
-            "rapp-map (rapp-ecosystem-spec/1.0)",
-            "rapp-god (rapp-grail-scan/1.0)",
-            "RAPP-Bible (synthesized narrative)",
+            "rapp/1 (identity authority — kody-w/rapp-1 SPEC.md §6; RAPP-Bible mirrors the RETIRED rapp-eternity/1.0 narrative, which is history, not current law)",
             "rapp_docs"
           ],
-          "why": "Crawl the map layer first: rapp-map = WHERE a concept lives; rapp-god = every-version drift observatory + content-addressed fallback frames; RAPP-Bible = synthesized human narrative; rapp_docs = live raw spec text. When the legs disagree, ecosystem-spec.json wins."
+          "why": "Crawl the map layer for historical location context only. The former mirror legs are retired and do not decide authority. For current protocol behavior, follow the exact immutable kody-w/rapp-1 rev-5 pin."
         }
       },
       {
@@ -8188,9 +7928,8 @@
         "label": "Where is the canonical, current spec for X — and is my copy authoritative (not drifted)?",
         "route_index": 24,
         "target_ids": [
-          "evidence:foundation/spec_corpus/canonical_aggregate@kody-w/rapp-bible",
+          "protocol:kody-w/rapp-1/rapp/1",
           "protocol:kody-w/rapp_docs/entry",
-          "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
           "artifact:foundation.json"
         ],
         "lifecycle": "active",
@@ -8205,12 +7944,11 @@
         "display": {
           "situation": "Where is the canonical, current spec for X — and is my copy authoritative (not drifted)?",
           "use": [
-            "RAPP-Bible (canonical aggregate)",
+            "rapp/1",
             "rapp_docs (live stream)",
-            "rapp-god (drift detector)",
             "foundation.json (locked hashes)"
           ],
-          "why": "the corpus is aggregated, live-streamed, and drift-watched against canonical hashes; foundation.json locks the foundation pillars + law."
+          "why": "Current protocol authority is the exact immutable RAPP/1 pin; public source text and locked historical foundation hashes are supporting evidence, not mirror authority."
         }
       },
       {
@@ -8724,9 +8462,9 @@
         }
       },
       {
-        "id": "issue:clarification:9256aa44a3f53509",
+        "id": "issue:clarification:0ca6d3a763f5e65e",
         "type": "issue",
-        "label": "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
+        "label": "IDENTITY AUTHORITY MOVED (resolved 2026-08-04; pin refreshed 2026-08-23): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at d2cd5abed48d3f52b86bbb975ac3558286d1db41 (SPEC.md, 41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a historical narrative, never the owner.",
         "lifecycle": "not_applicable",
         "status": "informational",
         "materiality": "informational",
@@ -8737,10 +8475,10 @@
         "conformance": "not_applicable",
         "aliases": [],
         "display": {
-          "id": "issue:clarification:9256aa44a3f53509",
+          "id": "issue:clarification:0ca6d3a763f5e65e",
           "type": "issue",
           "kind": "clarification",
-          "summary": "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
+          "summary": "IDENTITY AUTHORITY MOVED (resolved 2026-08-04; pin refreshed 2026-08-23): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at d2cd5abed48d3f52b86bbb975ac3558286d1db41 (SPEC.md, 41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a historical narrative, never the owner.",
           "severity": "advisory",
           "blocking": false,
           "related_node_ids": [
@@ -8753,9 +8491,9 @@
         }
       },
       {
-        "id": "issue:clarification:2d6d88887c6074b9",
+        "id": "issue:clarification:c169d2593382389d",
         "type": "issue",
-        "label": "'DRIFT TRIANGLE' IS A MISNOMER — it has FOUR legs (the @rapp/rapp agent, rapp-god, rapp-map, RAPP-Bible) anchored on ecosystem-spec.json; when any leg disagrees with the JSON, the JSON wins. rapp-map and rapp-god both carry byte-identical mirrors of ecosystem-spec.json, so divergence between them IS the detectable drift signal.",
+        "label": "MIRROR CONTRACT RETIRED (resolved 2026-08-23): the former @rapp/rapp + rapp-god + rapp-map + RAPP-Bible drift triangle is not an authority surface. rapp-map serves a quarantined-candidate status document, rapp-god is private and publicly unreachable, and RAPP-Bible is historical. No active byte-identical ecosystem mirror set exists; protocol authority is the exact immutable kody-w/rapp-1 rev-5 pin.",
         "lifecycle": "not_applicable",
         "status": "informational",
         "materiality": "informational",
@@ -8766,14 +8504,15 @@
         "conformance": "not_applicable",
         "aliases": [],
         "display": {
-          "id": "issue:clarification:2d6d88887c6074b9",
+          "id": "issue:clarification:c169d2593382389d",
           "type": "issue",
           "kind": "clarification",
-          "summary": "'DRIFT TRIANGLE' IS A MISNOMER — it has FOUR legs (the @rapp/rapp agent, rapp-god, rapp-map, RAPP-Bible) anchored on ecosystem-spec.json; when any leg disagrees with the JSON, the JSON wins. rapp-map and rapp-god both carry byte-identical mirrors of ecosystem-spec.json, so divergence between them IS the detectable drift signal.",
+          "summary": "MIRROR CONTRACT RETIRED (resolved 2026-08-23): the former @rapp/rapp + rapp-god + rapp-map + RAPP-Bible drift triangle is not an authority surface. rapp-map serves a quarantined-candidate status document, rapp-god is private and publicly unreachable, and RAPP-Bible is historical. No active byte-identical ecosystem mirror set exists; protocol authority is the exact immutable kody-w/rapp-1 rev-5 pin.",
           "severity": "advisory",
           "blocking": false,
           "related_node_ids": [
-            "spine:rapp-spine%2F1.1"
+            "protocol:kody-w/rapp-1/rapp/1",
+            "repo:kody-w/rapp-1"
           ],
           "source": "registry.collisions_and_gaps"
         }
@@ -9537,62 +9276,6 @@
         }
       },
       {
-        "id": "issue:material:5fd0a78b490ac709",
-        "type": "issue",
-        "label": "rapp-ecosystem-spec/1.0 (byte-identical mirror) in kody-w/rapp-map has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
-        "lifecycle": "not_applicable",
-        "status": "unresolved",
-        "materiality": "gap",
-        "material_profile": "issue",
-        "required_source_roles": [],
-        "sources": [],
-        "entry_points": [],
-        "conformance": "not_applicable",
-        "aliases": [],
-        "display": {
-          "id": "issue:material:5fd0a78b490ac709",
-          "type": "issue",
-          "kind": "material",
-          "summary": "rapp-ecosystem-spec/1.0 (byte-identical mirror) in kody-w/rapp-map has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
-          "severity": "blocking",
-          "blocking": true,
-          "related_node_ids": [
-            "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
-            "repo:kody-w/rapp-map"
-          ],
-          "source": "generated.required_material",
-          "source_role": "canonical_material"
-        }
-      },
-      {
-        "id": "issue:material:ddb3aec94f5404f6",
-        "type": "issue",
-        "label": "rapp-grail-scan/1.0 in kody-w/rapp-god has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
-        "lifecycle": "not_applicable",
-        "status": "unresolved",
-        "materiality": "gap",
-        "material_profile": "issue",
-        "required_source_roles": [],
-        "sources": [],
-        "entry_points": [],
-        "conformance": "not_applicable",
-        "aliases": [],
-        "display": {
-          "id": "issue:material:ddb3aec94f5404f6",
-          "type": "issue",
-          "kind": "material",
-          "summary": "rapp-grail-scan/1.0 in kody-w/rapp-god has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
-          "severity": "blocking",
-          "blocking": true,
-          "related_node_ids": [
-            "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
-            "repo:kody-w/rapp-god"
-          ],
-          "source": "generated.required_material",
-          "source_role": "canonical_material"
-        }
-      },
-      {
         "id": "issue:material:6eb9c2770267aa08",
         "type": "issue",
         "label": "(none; live spec renderer) in kody-w/rapp_docs has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
@@ -10011,11 +9694,6 @@
       {
         "from": "artifact:foundation.json",
         "type": "declares",
-        "to": "evidence:foundation/spec_corpus/drift_detector@kody-w/rapp-god"
-      },
-      {
-        "from": "artifact:foundation.json",
-        "type": "declares",
         "to": "evidence:foundation/spec_corpus/live_stream@kody-w/rapp_docs"
       },
       {
@@ -10131,11 +9809,6 @@
       {
         "from": "artifact:registry.json",
         "type": "declares",
-        "to": "protocol:kody-w/rapp-god/rapp-grail-scan/1.0"
-      },
-      {
-        "from": "artifact:registry.json",
-        "type": "declares",
         "to": "protocol:kody-w/rapp-installer/rapp-agent/1.0"
       },
       {
@@ -10147,11 +9820,6 @@
         "from": "artifact:registry.json",
         "type": "declares",
         "to": "protocol:kody-w/rapp-leviathan-hub/rapp-leviathan-egg/1.0"
-      },
-      {
-        "from": "artifact:registry.json",
-        "type": "declares",
-        "to": "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0"
       },
       {
         "from": "artifact:registry.json",
@@ -10484,16 +10152,6 @@
         "to": "artifact:foundation.json"
       },
       {
-        "from": "evidence:foundation/spec_corpus/drift_detector@kody-w/rapp-god",
-        "type": "owned_by",
-        "to": "repo:kody-w/rapp-god"
-      },
-      {
-        "from": "evidence:foundation/spec_corpus/drift_detector@kody-w/rapp-god",
-        "type": "uses_artifact",
-        "to": "artifact:foundation.json"
-      },
-      {
         "from": "evidence:foundation/spec_corpus/live_stream@kody-w/rapp_docs",
         "type": "owned_by",
         "to": "repo:kody-w/rapp_docs"
@@ -10512,6 +10170,26 @@
         "from": "evidence:foundation/spec_corpus/router@kody-w/rapp-spine",
         "type": "uses_artifact",
         "to": "artifact:foundation.json"
+      },
+      {
+        "from": "issue:clarification:0ca6d3a763f5e65e",
+        "type": "affects",
+        "to": "protocol:kody-w/rapp-1/rapp/1"
+      },
+      {
+        "from": "issue:clarification:0ca6d3a763f5e65e",
+        "type": "affects",
+        "to": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0"
+      },
+      {
+        "from": "issue:clarification:0ca6d3a763f5e65e",
+        "type": "affects",
+        "to": "repo:kody-w/rapp-1"
+      },
+      {
+        "from": "issue:clarification:0ca6d3a763f5e65e",
+        "type": "affects",
+        "to": "repo:kody-w/rapp-eternity"
       },
       {
         "from": "issue:clarification:0f9bdce8fcf3e42e",
@@ -10564,29 +10242,14 @@
         "to": "repo:kody-w/rapp-moment"
       },
       {
-        "from": "issue:clarification:2d6d88887c6074b9",
-        "type": "affects",
-        "to": "spine:rapp-spine%2F1.1"
-      },
-      {
-        "from": "issue:clarification:9256aa44a3f53509",
+        "from": "issue:clarification:c169d2593382389d",
         "type": "affects",
         "to": "protocol:kody-w/rapp-1/rapp/1"
       },
       {
-        "from": "issue:clarification:9256aa44a3f53509",
-        "type": "affects",
-        "to": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0"
-      },
-      {
-        "from": "issue:clarification:9256aa44a3f53509",
+        "from": "issue:clarification:c169d2593382389d",
         "type": "affects",
         "to": "repo:kody-w/rapp-1"
-      },
-      {
-        "from": "issue:clarification:9256aa44a3f53509",
-        "type": "affects",
-        "to": "repo:kody-w/rapp-eternity"
       },
       {
         "from": "issue:clarification:c514ef934d2df0f1",
@@ -10984,16 +10647,6 @@
         "to": "repo:kody-w/rapp-installer"
       },
       {
-        "from": "issue:material:5fd0a78b490ac709",
-        "type": "affects",
-        "to": "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0"
-      },
-      {
-        "from": "issue:material:5fd0a78b490ac709",
-        "type": "affects",
-        "to": "repo:kody-w/rapp-map"
-      },
-      {
         "from": "issue:material:6a2042e1ae168bcd",
         "type": "affects",
         "to": "protocol:kody-w/communityrapp/entry"
@@ -11107,16 +10760,6 @@
         "from": "issue:material:c387bb9428b6469c",
         "type": "affects",
         "to": "repo:kody-w/heimdall"
-      },
-      {
-        "from": "issue:material:ddb3aec94f5404f6",
-        "type": "affects",
-        "to": "protocol:kody-w/rapp-god/rapp-grail-scan/1.0"
-      },
-      {
-        "from": "issue:material:ddb3aec94f5404f6",
-        "type": "affects",
-        "to": "repo:kody-w/rapp-god"
       },
       {
         "from": "issue:material:e8ef6014c6d9388c",
@@ -11307,7 +10950,12 @@
       {
         "from": "protocol:kody-w/rapp-1/rapp/1",
         "type": "has_issue",
-        "to": "issue:clarification:9256aa44a3f53509"
+        "to": "issue:clarification:0ca6d3a763f5e65e"
+      },
+      {
+        "from": "protocol:kody-w/rapp-1/rapp/1",
+        "type": "has_issue",
+        "to": "issue:clarification:c169d2593382389d"
       },
       {
         "from": "protocol:kody-w/rapp-1/rapp/1",
@@ -11497,12 +11145,12 @@
       {
         "from": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
         "type": "has_issue",
-        "to": "issue:clarification:29f0ff618cf3db54"
+        "to": "issue:clarification:0ca6d3a763f5e65e"
       },
       {
         "from": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
         "type": "has_issue",
-        "to": "issue:clarification:9256aa44a3f53509"
+        "to": "issue:clarification:29f0ff618cf3db54"
       },
       {
         "from": "protocol:kody-w/rapp-eternity/rapp-eternity/1.0",
@@ -11558,21 +11206,6 @@
         "from": "protocol:kody-w/rapp-frame-net/rapp-hydra/1.0",
         "type": "supported_by",
         "to": "evidence:foundation/pillars/rapp-hydra/1.0@kody-w/rapp-frame-net"
-      },
-      {
-        "from": "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
-        "type": "has_issue",
-        "to": "issue:material:ddb3aec94f5404f6"
-      },
-      {
-        "from": "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
-        "type": "in_layer",
-        "to": "layer:map"
-      },
-      {
-        "from": "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
-        "type": "owned_by",
-        "to": "repo:kody-w/rapp-god"
       },
       {
         "from": "protocol:kody-w/rapp-installer/rapp-agent/1.0",
@@ -11643,21 +11276,6 @@
         "from": "protocol:kody-w/rapp-leviathan-hub/rapp-leviathan-egg/1.0",
         "type": "supported_by",
         "to": "evidence:foundation/pillars/rapp-leviathan-egg/1.0@kody-w/rapp-leviathan-hub"
-      },
-      {
-        "from": "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
-        "type": "has_issue",
-        "to": "issue:material:5fd0a78b490ac709"
-      },
-      {
-        "from": "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
-        "type": "in_layer",
-        "to": "layer:map"
-      },
-      {
-        "from": "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
-        "type": "owned_by",
-        "to": "repo:kody-w/rapp-map"
       },
       {
         "from": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
@@ -12409,9 +12027,9 @@
       {
         "from": "route:5afadf255971f067",
         "type": "routes_to",
-        "to": "evidence:foundation/spec_corpus/canonical_aggregate@kody-w/rapp-bible",
+        "to": "protocol:kody-w/rapp-1/rapp/1",
         "order": 0,
-        "display_target": "RAPP-Bible (canonical aggregate)"
+        "display_target": "rapp/1"
       },
       {
         "from": "route:5afadf255971f067",
@@ -12423,15 +12041,8 @@
       {
         "from": "route:5afadf255971f067",
         "type": "routes_to",
-        "to": "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
-        "order": 2,
-        "display_target": "rapp-god (drift detector)"
-      },
-      {
-        "from": "route:5afadf255971f067",
-        "type": "routes_to",
         "to": "artifact:foundation.json",
-        "order": 3,
+        "order": 2,
         "display_target": "foundation.json (locked hashes)"
       },
       {
@@ -12473,29 +12084,15 @@
       {
         "from": "route:88e4159f6c384c3d",
         "type": "routes_to",
-        "to": "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
+        "to": "protocol:kody-w/rapp-1/rapp/1",
         "order": 0,
-        "display_target": "rapp-map (rapp-ecosystem-spec/1.0)"
-      },
-      {
-        "from": "route:88e4159f6c384c3d",
-        "type": "routes_to",
-        "to": "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
-        "order": 1,
-        "display_target": "rapp-god (rapp-grail-scan/1.0)"
-      },
-      {
-        "from": "route:88e4159f6c384c3d",
-        "type": "routes_to",
-        "to": "evidence:foundation/spec_corpus/canonical_aggregate@kody-w/rapp-bible",
-        "order": 2,
-        "display_target": "RAPP-Bible (synthesized narrative)"
+        "display_target": "rapp/1 (identity authority — kody-w/rapp-1 SPEC.md §6; RAPP-Bible mirrors the RETIRED rapp-eternity/1.0 narrative, which is history, not current law)"
       },
       {
         "from": "route:88e4159f6c384c3d",
         "type": "routes_to",
         "to": "protocol:kody-w/rapp_docs/entry",
-        "order": 3,
+        "order": 1,
         "display_target": "rapp_docs"
       },
       {
@@ -12801,6 +12398,11 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "documents_issue",
+        "to": "issue:clarification:0ca6d3a763f5e65e"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "documents_issue",
         "to": "issue:clarification:0f9bdce8fcf3e42e"
       },
       {
@@ -12811,12 +12413,7 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "documents_issue",
-        "to": "issue:clarification:2d6d88887c6074b9"
-      },
-      {
-        "from": "spine:rapp-spine%2F1.1",
-        "type": "documents_issue",
-        "to": "issue:clarification:9256aa44a3f53509"
+        "to": "issue:clarification:c169d2593382389d"
       },
       {
         "from": "spine:rapp-spine%2F1.1",
@@ -12961,11 +12558,6 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "documents_issue",
-        "to": "issue:material:5fd0a78b490ac709"
-      },
-      {
-        "from": "spine:rapp-spine%2F1.1",
-        "type": "documents_issue",
         "to": "issue:material:6a2042e1ae168bcd"
       },
       {
@@ -13022,11 +12614,6 @@
         "from": "spine:rapp-spine%2F1.1",
         "type": "documents_issue",
         "to": "issue:material:c387bb9428b6469c"
-      },
-      {
-        "from": "spine:rapp-spine%2F1.1",
-        "type": "documents_issue",
-        "to": "issue:material:ddb3aec94f5404f6"
       },
       {
         "from": "spine:rapp-spine%2F1.1",
@@ -13331,11 +12918,6 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "inventories_repository",
-        "to": "repo:kody-w/rapp-god"
-      },
-      {
-        "from": "spine:rapp-spine%2F1.1",
-        "type": "inventories_repository",
         "to": "repo:kody-w/rapp-hologram"
       },
       {
@@ -13352,11 +12934,6 @@
         "from": "spine:rapp-spine%2F1.1",
         "type": "inventories_repository",
         "to": "repo:kody-w/rapp-leviathan-hub"
-      },
-      {
-        "from": "spine:rapp-spine%2F1.1",
-        "type": "inventories_repository",
-        "to": "repo:kody-w/rapp-map"
       },
       {
         "from": "spine:rapp-spine%2F1.1",
@@ -13543,8 +13120,6 @@
       "protocol:kody-w/rapp-neighborhood-protocol/rapp-neighborhood-protocol/1.0",
       "protocol:kody-w/rapp-messaging/rapp-messaging/1.0",
       "protocol:kody-w/rapp-kite/entry",
-      "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
-      "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
       "protocol:kody-w/rapp_docs/entry",
       "protocol:kody-w/rapp_hub/entry",
       "protocol:kody-w/rapp-estate/rapp-estate/1.1",
@@ -13599,12 +13174,10 @@
       "repo:kody-w/rapp-estate",
       "repo:kody-w/rapp-eternity",
       "repo:kody-w/rapp-frame-net",
-      "repo:kody-w/rapp-god",
       "repo:kody-w/rapp-hologram",
       "repo:kody-w/rapp-installer",
       "repo:kody-w/rapp-kite",
       "repo:kody-w/rapp-leviathan-hub",
-      "repo:kody-w/rapp-map",
       "repo:kody-w/rapp-mcp",
       "repo:kody-w/rapp-messaging",
       "repo:kody-w/rapp-moment",
@@ -13641,7 +13214,6 @@
       "evidence:foundation/law/Rappterbook%20Constitution@kody-w/rappterbook",
       "evidence:foundation/spec_corpus/canonical_aggregate@kody-w/rapp-bible",
       "evidence:foundation/spec_corpus/live_stream@kody-w/rapp_docs",
-      "evidence:foundation/spec_corpus/drift_detector@kody-w/rapp-god",
       "evidence:foundation/spec_corpus/router@kody-w/rapp-spine",
       "evidence:foundation/core_infra/agent_registry@kody-w/rar",
       "evidence:foundation/core_infra/egg_spec_origin@kody-w/rappterbook",
@@ -13689,8 +13261,8 @@
       "issue:gap:e63bf54e87fb17bd",
       "issue:clarification:c514ef934d2df0f1",
       "issue:collision:1a5b56ac037ab2b1",
-      "issue:clarification:9256aa44a3f53509",
-      "issue:clarification:2d6d88887c6074b9",
+      "issue:clarification:0ca6d3a763f5e65e",
+      "issue:clarification:c169d2593382389d",
       "issue:collision:a6ea5c002cb735a4",
       "issue:collision:7efea7a02a39856f",
       "issue:collision:ca3f2e11b06efea8",
@@ -13718,8 +13290,6 @@
       "issue:material:be48eaddfea9c191",
       "issue:material:020f8e7508a5b340",
       "issue:material:1677c9a183e038b8",
-      "issue:material:5fd0a78b490ac709",
-      "issue:material:ddb3aec94f5404f6",
       "issue:material:6eb9c2770267aa08",
       "issue:material:0a13ad04ca09c1f1",
       "issue:material:5001349d64046d25",
@@ -13775,8 +13345,6 @@
         "protocol:kody-w/rapp-neighborhood-protocol/rapp-neighborhood-protocol/1.0",
         "protocol:kody-w/rapp-messaging/rapp-messaging/1.0",
         "protocol:kody-w/rapp-kite/entry",
-        "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
-        "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
         "protocol:kody-w/rapp_docs/entry",
         "protocol:kody-w/rapp_hub/entry",
         "protocol:kody-w/rapp-estate/rapp-estate/1.1",
@@ -13831,12 +13399,10 @@
         "repo:kody-w/rapp-estate",
         "repo:kody-w/rapp-eternity",
         "repo:kody-w/rapp-frame-net",
-        "repo:kody-w/rapp-god",
         "repo:kody-w/rapp-hologram",
         "repo:kody-w/rapp-installer",
         "repo:kody-w/rapp-kite",
         "repo:kody-w/rapp-leviathan-hub",
-        "repo:kody-w/rapp-map",
         "repo:kody-w/rapp-mcp",
         "repo:kody-w/rapp-messaging",
         "repo:kody-w/rapp-moment",
@@ -13873,7 +13439,6 @@
         "evidence:foundation/law/Rappterbook%20Constitution@kody-w/rappterbook",
         "evidence:foundation/spec_corpus/canonical_aggregate@kody-w/rapp-bible",
         "evidence:foundation/spec_corpus/live_stream@kody-w/rapp_docs",
-        "evidence:foundation/spec_corpus/drift_detector@kody-w/rapp-god",
         "evidence:foundation/spec_corpus/router@kody-w/rapp-spine",
         "evidence:foundation/core_infra/agent_registry@kody-w/rar",
         "evidence:foundation/core_infra/egg_spec_origin@kody-w/rappterbook",
@@ -13921,8 +13486,8 @@
         "issue:gap:e63bf54e87fb17bd",
         "issue:clarification:c514ef934d2df0f1",
         "issue:collision:1a5b56ac037ab2b1",
-        "issue:clarification:9256aa44a3f53509",
-        "issue:clarification:2d6d88887c6074b9",
+        "issue:clarification:0ca6d3a763f5e65e",
+        "issue:clarification:c169d2593382389d",
         "issue:collision:a6ea5c002cb735a4",
         "issue:collision:7efea7a02a39856f",
         "issue:collision:ca3f2e11b06efea8",
@@ -13950,8 +13515,6 @@
         "issue:material:be48eaddfea9c191",
         "issue:material:020f8e7508a5b340",
         "issue:material:1677c9a183e038b8",
-        "issue:material:5fd0a78b490ac709",
-        "issue:material:ddb3aec94f5404f6",
         "issue:material:6eb9c2770267aa08",
         "issue:material:0a13ad04ca09c1f1",
         "issue:material:5001349d64046d25",
@@ -14126,10 +13689,10 @@
       "source": "registry.collisions_and_gaps"
     },
     {
-      "id": "issue:clarification:9256aa44a3f53509",
+      "id": "issue:clarification:0ca6d3a763f5e65e",
       "type": "issue",
       "kind": "clarification",
-      "summary": "IDENTITY AUTHORITY MOVED (resolved 2026-08-04): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at 6723c7add2aed36bb68992fc71a56b0a4bd5ad81 (SPEC.md, 41880 bytes, sha256 6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a narrative mirror, never the owner, and its eternity narrative is now historical.",
+      "summary": "IDENTITY AUTHORITY MOVED (resolved 2026-08-04; pin refreshed 2026-08-23): the estate-wide identity authority is rapp/1 §6 in kody-w/rapp-1, pinned at d2cd5abed48d3f52b86bbb975ac3558286d1db41 (SPEC.md, 41952 bytes, sha256 cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a) — the same pin rapp-map/RAPP1_AUTHORITY.json records. kody-w/rapp-eternity was RETIRED to a tombstone on 2026-07-17 (commit 9c970a1e, then 17bb6d21) and is no longer a live standard, an identity authority, or a compatibility authority. The spine asserted the opposite until now because registry.json was generated 2026-07-11, six days before the retirement. What actually changed is the MINTING METHOD, not the string: §6.1 keeps rappid:@owner/slug:64hex verbatim, so emitters are fine, while §6.2 mandates mint-once and PROHIBITS deriving the tail from owner/slug or any name — so the eternity-era sha256-of-your-own-content tail is retired. RAPP-Bible remains a historical narrative, never the owner.",
       "severity": "advisory",
       "blocking": false,
       "related_node_ids": [
@@ -14141,14 +13704,15 @@
       "source": "registry.collisions_and_gaps"
     },
     {
-      "id": "issue:clarification:2d6d88887c6074b9",
+      "id": "issue:clarification:c169d2593382389d",
       "type": "issue",
       "kind": "clarification",
-      "summary": "'DRIFT TRIANGLE' IS A MISNOMER — it has FOUR legs (the @rapp/rapp agent, rapp-god, rapp-map, RAPP-Bible) anchored on ecosystem-spec.json; when any leg disagrees with the JSON, the JSON wins. rapp-map and rapp-god both carry byte-identical mirrors of ecosystem-spec.json, so divergence between them IS the detectable drift signal.",
+      "summary": "MIRROR CONTRACT RETIRED (resolved 2026-08-23): the former @rapp/rapp + rapp-god + rapp-map + RAPP-Bible drift triangle is not an authority surface. rapp-map serves a quarantined-candidate status document, rapp-god is private and publicly unreachable, and RAPP-Bible is historical. No active byte-identical ecosystem mirror set exists; protocol authority is the exact immutable kody-w/rapp-1 rev-5 pin.",
       "severity": "advisory",
       "blocking": false,
       "related_node_ids": [
-        "spine:rapp-spine%2F1.1"
+        "protocol:kody-w/rapp-1/rapp/1",
+        "repo:kody-w/rapp-1"
       ],
       "source": "registry.collisions_and_gaps"
     },
@@ -14528,34 +14092,6 @@
       "related_node_ids": [
         "protocol:kody-w/rapp-kite/entry",
         "repo:kody-w/rapp-kite"
-      ],
-      "source": "generated.required_material",
-      "source_role": "canonical_material"
-    },
-    {
-      "id": "issue:material:5fd0a78b490ac709",
-      "type": "issue",
-      "kind": "material",
-      "summary": "rapp-ecosystem-spec/1.0 (byte-identical mirror) in kody-w/rapp-map has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
-      "severity": "blocking",
-      "blocking": true,
-      "related_node_ids": [
-        "protocol:kody-w/rapp-map/rapp-ecosystem-spec/1.0",
-        "repo:kody-w/rapp-map"
-      ],
-      "source": "generated.required_material",
-      "source_role": "canonical_material"
-    },
-    {
-      "id": "issue:material:ddb3aec94f5404f6",
-      "type": "issue",
-      "kind": "material",
-      "summary": "rapp-grail-scan/1.0 in kody-w/rapp-god has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
-      "severity": "blocking",
-      "blocking": true,
-      "related_node_ids": [
-        "protocol:kody-w/rapp-god/rapp-grail-scan/1.0",
-        "repo:kody-w/rapp-god"
       ],
       "source": "generated.required_material",
       "source_role": "canonical_material"

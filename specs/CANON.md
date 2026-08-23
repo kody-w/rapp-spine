@@ -2,8 +2,10 @@
 
 # RAPP Canon — the levels of canon law, their precedence, and the amendment process
 
-> **Spec id:** `rapp-canon/1.0` · **status:** normative, governance-constitutional · **home:** kody-w/rapp-spine/specs/CANON.md
-> **canonical_source:** kody-w/RAPP · **drift legs:** rapp-god (archive + grail-scan), rapp-map (mirror), RAPP-Bible (render)
+> **Spec id:** `rapp-canon/1.0` · **status:** historical governance model,
+> subordinate to the exact RAPP/1 rev-5 authority · **home:**
+> kody-w/rapp-spine/specs/CANON.md
+> **protocol authority:** `kody-w/rapp-1@d2cd5abed48d3f52b86bbb975ac3558286d1db41`
 >
 > The RAPP estate is governed by many documents — a north-star plan, a constitution, dozens of wire/protocol specs, a machine registry, per-spec docs, agent metadata, and soul files. They will eventually disagree. **rapp-canon** is the meta-law that says *which document wins*, *for which kind of question*, and *how the law itself is changed*. It is the constitution of the constitutions.
 >
@@ -59,29 +61,35 @@ When two documents at the **same** rank disagree:
 
 1. **More-specific over more-general.** A sub-domain spec governs its domain over a general one *within that domain only* (lex specialis). It can never thereby override a *higher* tier (see §6).
 2. **Newer ratified version over older**, *only* for documents that carry a version and were amended by the §5 process. An unversioned edit never beats a ratified version.
-3. **The `canonical_source` copy wins over any mirror.** `kody-w/RAPP` is the canonical home; a divergent copy in any other repo is drift, not an alternative reading (§7).
+3. **Historical ecosystem copies do not decide current protocol.** Resolve
+   protocol behavior to the exact immutable `kody-w/rapp-1` pin (§7).
 4. **If still tied:** the conflict is unresolved law and MUST be escalated to an amendment (§5). It is not resolved by code.
 
 ---
 
-## 3. The registry of record (the currency axis)
+## 3. Historical registry-of-record model (retired)
 
-For the question *"what is true / current?"* — which specs exist, at which version, with which home repo, which sha, which status — **`ecosystem-spec.json` is supreme over every narrative document, including the Constitution and the Master Plan.**
+The former model treated `ecosystem-spec.json` as supreme on current ecosystem
+facts. That assertion is retired: the public map path is a quarantine status
+document and no authenticated RAPP/1 section 13 registry has replaced it.
 
 This is not a contradiction of §2. The law ladder governs *legality*; it deliberately contains **no live facts**, precisely so it never goes stale. The moment a fact needs stating ("rapp-commons is at 2.0," "the home of rappid eternity is rapp-moment"), it belongs in the JSON, and **the JSON wins** over any prose that says otherwise — because prose drifts and the registry is the audited, drift-triangulated source.
 
-- **Home:** `kody-w/rapp-spine/specs/CANON.md`
-- **Mirror (must be sha256-identical):** `kody-w/rapp-map/ecosystem-spec.json`
-- **Schema:** `rapp-ecosystem-spec/1.0`
+- **Historical home:** `kody-w/rapp-spine/specs/CANON.md`
+- **Former map path:** `kody-w/rapp-map/ecosystem-spec.json`
+  (`quarantined-candidate`, not a mirror)
+- **Historical schema:** `rapp-ecosystem-spec/1.0`
 - **Bound by the law.** The registry records *what is*; it **cannot record what the law forbids**. A registry entry that describes a state the Constitution prohibits is itself a violation — the entry loses, and grail-scan (§4) MUST flag it. The registry is supreme on facts, **subordinate on legality.**
 
 > **Why the registry is not a rung on the ladder.** Earlier drafts placed `ecosystem-spec.json` *inside* the legality ladder. That is the error rapp-canon corrects: the registry answers a different question. It is an orthogonal axis, not a rung. (This is consistent with `authority_order`, which has always omitted the registry from its five rungs.)
 
 ---
 
-## 4. The grail rule — precedence as the merge gate
+## 4. Historical grail merge-gate model
 
-Precedence is inert unless it is enforced at the only moment law actually changes: **the merge.** rapp-canon binds precedence to `rapp-grail-scan/1.0` (home: kody-w/rapp-god).
+The prior text bound precedence to `rapp-grail-scan/1.0` in
+`kody-w/rapp-god`. That repository is private and is not a public authority or
+merge gate. The model below is retained as historical governance prose only.
 
 A change-set is **canonical** if and only if its grail verdict is `grail: true`, which requires **both**:
 
@@ -137,18 +145,19 @@ The estate has domain sub-constitutions — e.g. **rappterbook** and **rappterbo
 
 ---
 
-## 7. Where canon lives and how it is drift-watched
+## 7. Retired ecosystem mirror contract
 
-Canon is content-addressed like the kernel, so the law is as immutable and verifiable as the code it governs.
+The former four-leg “drift triangle” is not a current authority or verification
+surface. `rapp-map/ecosystem-spec.json` is a `quarantined-candidate` status
+document, the `kody-w/rapp-god` repository is private and its unauthenticated
+raw path returns the 14-byte HTTP 404 sentinel, and RAPP-Bible is a historical
+rendering. No active byte-identical ecosystem mirror set exists.
 
-- **Canonical home:** `kody-w/RAPP` (`MASTER_PLAN.md`, `CONSTITUTION.md`, `CANON.md`, `specs/ecosystem-spec.json`).
-- **Immutable archive:** every ratified version of the law is snapshotted into `kody-w/rapp-god/versions/` (e.g. `versions/CONSTITUTION.md`), addressed by sha256. The law has rollback points exactly as the kernel does (`brainstem-vX.Y.Z` tags).
-- **Drift triangle (four independent representations):**
-  - `rapp_agent.py` — the executable contract.
-  - `rapp-god` — `ecosystem-spec.json` (machine) + `ECOSYSTEM_SPEC.md` (human) + `GRAIL_SCAN.md` (the gate).
-  - `rapp-map` — sha256-identical mirror of the registry.
-  - `RAPP-Bible` — the human-facing render; **mirrors only, loses on disagreement.**
-- **The detection invariant:** `sha256(rapp-god/ecosystem-spec.json) == sha256(rapp-map/ecosystem-spec.json)`. If the two mirrors diverge, the registry has drifted and MUST be reconciled (run `rapp_agent.py action=verify`, or summon the `ecosystem-sync` swarm).
+Current protocol questions resolve to `kody-w/rapp-1` rev-5 at immutable commit
+`d2cd5abed48d3f52b86bbb975ac3558286d1db41`: `SPEC.md` is 41,952 bytes with
+SHA-256 `cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a`.
+Future mirror reinstatement requires public immutable artifacts and a fresh
+byte-for-byte proof; this historical document does not authorize one.
 
 ---
 
@@ -216,10 +225,13 @@ A proposed Constitution Article would mandate a central RAPP coordination server
 
 ### 9.4 Full amendment walkthrough — locking "metropolis mesh composition"
 1. A new primitive (neighborhood→estate composition) is decided. It introduces vocabulary the corpus has no slot for → **registration debt.**
-2. Author publishes `rapp-metropolis/1.0` (Tier 3) in its home repo, and in the *same* change-set adds its entry to `ecosystem-spec.json` (currency axis updated) and mirrors it to rapp-map.
-3. grail-scan runs: checks the new spec against Tiers 1–2 (no central-server, /chat-only, ABI intact → compliance ✓) and the corpus against the commit (registry entry present, no doc left stale → freshness ✓). Verdict `grail: true`.
+2. Historically, the author would have added an ecosystem-spec entry and
+   mirrored it. That publication path is retired.
+3. Current review runs the owning repository's public conformance checks
+   against the exact RAPP/1 authority pin.
 4. A collaborator merges the PR to `kody-w/RAPP` → ratified (`sig_suite: none`; no keypair required).
-5. rapp-god snapshots the registry into `versions/`, sha256-addressed. The mesh mirrors stay byte-identical. The law is now content-addressed, immutable, and learnable.
+5. Public immutable source URLs and hashes provide the review evidence; no
+   private snapshot or mirror publication is inferred.
 
 ---
 

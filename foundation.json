@@ -1,6 +1,6 @@
 {
   "spec": "rapp-foundation/1.0",
-  "what": "The locked, content-addressed canonical registry of the RAPP foundation pillars. Fetch over the hydra, verify sha256 against this, then build ON the wire (agents/cartridges/profiles) — never into the kernel. rapp-god watches copies against these hashes (its own observatory has known-open lag — see estate-map known-open) for drift.",
+  "what": "The locked, content-addressed registry of historical RAPP foundation pillars. Fetch each immutable public source and verify sha256 locally; no private observatory or ecosystem mirror is an authority input.",
   "doctrine": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/FOUNDATION.md",
   "generated": "2026-07-10",
   "pillars": [
@@ -120,11 +120,6 @@
       "role": "live_stream",
       "repo": "kody-w/rapp_docs",
       "url": "https://github.com/kody-w/rapp_docs — every spec streamed live from each home repo's raw data, no copies"
-    },
-    {
-      "role": "drift_detector",
-      "repo": "kody-w/rapp-god",
-      "url": "https://github.com/kody-w/rapp-god — god's-eye map + live canonical-integrity / cross-repo drift detector"
     },
     {
       "role": "router",
