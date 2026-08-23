@@ -19,8 +19,8 @@
 > therefore reads through to:
 >
 > **`rapp/1` §6 — `kody-w/rapp-1`, `SPEC.md` pinned at
-> `6723c7add2aed36bb68992fc71a56b0a4bd5ad81` (41880 bytes, sha256
-> `6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b`).**
+> `d2cd5abed48d3f52b86bbb975ac3558286d1db41` (41952 bytes, sha256
+> `cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a`).**
 >
 > **What this spec's own model keeps.** Everything. The three-layer stack — L0 keyless
 > identity, L1 gh-collaborator default, L2 optional keypair sovereignty — is unaffected:
@@ -290,7 +290,7 @@ A component is `rapp-trust/1.0`-conformant iff:
 ## §14 — Changelog & cross-references
 
 - **1.0** (2026-06-28) — initial canonical formalization of the signing-optional trust & ownership model. Names the three-layer stack (L0 identity / L1 gh-collaborator default / L2 optional keypair sovereignty), the normative verifier, the `sig_suite` eternity ladder (`none → ed25519 → ecdsa-p256 → reserved-PQ`, growable, unknown-suite = skip-as-absent), and the MASTER_PLAN §3↔§4 reconciliation via optional sovereignty. Defers identity minting entirely to `rapp-eternity/1.0` (content-address only) and de-conflicts the `rapp-moment/1.0` keypair ownership profile as an optional layer rather than a minting rule.
-- **1.0 errata** (2026-08-04) — **no normative change to this spec's own model.** Records that the spec this document defers identity to, `rapp-eternity/1.0`, was retired to a tombstone on 2026-07-17, and repoints every deferral at `rapp/1` §6 in `kody-w/rapp-1` (pinned `6723c7add2aed36bb68992fc71a56b0a4bd5ad81`, sha256 `6d06daba65d7c045716f3d6e95db8401ab58e727820e4114466d847f62cae49b`). The three-layer stack, the keyless default, and the §7 no-mandatory-key rule are unaffected; the *content-address* minting sentences (§1, §7) are marked historical against `rapp/1` §6.2 mint-once. The `sig_suite` ladder's ownership is left **open** — `rapp/1` §10 defines no `sig_suite` — and is tracked in `rapp-spine/registry.json` → `collisions_and_gaps` rather than re-homed here. A real re-homing needs a version bump by the spec owner.
+- **1.0 errata** (2026-08-04; authority pin refreshed 2026-08-23) — **no normative change to this spec's own model.** Records that the spec this document defers identity to, `rapp-eternity/1.0`, was retired to a tombstone on 2026-07-17, and repoints every deferral at `rapp/1` §6 in `kody-w/rapp-1` (pinned `d2cd5abed48d3f52b86bbb975ac3558286d1db41`, sha256 `cea7847f98f9751734995f46fd4e1bde211c8eb9d03dbbb477934213865bb91a`). The three-layer stack, the keyless default, and the §7 no-mandatory-key rule are unaffected; the *content-address* minting sentences (§1, §7) are marked historical against `rapp/1` §6.2 mint-once. The `sig_suite` ladder's ownership is left **open** — `rapp/1` §10 defines no `sig_suite` — and is tracked in `rapp-spine/registry.json` → `collisions_and_gaps` rather than re-homed here. A real re-homing needs a version bump by the spec owner.
 
 **See also:** `rapp/1` §6 (the canonical identity standard, `kody-w/rapp-1`) · `rapp/1` §6.1 (canonical rappid string) · `rapp-eternity/1.0` (RETIRED 2026-07-17 — historical predecessor, non-normative) · `rapp-moment/1.0` §6 (keypair ownership, deed chains) · `rapp-commons-event/1.0` + `rapp-resident` (signed twin-chat events) · `rapp-sealed/1.0` (encryption, non-goal) · `rapp-substrate-trust/1.0` (substrate write-path, non-goal) · `CONSTITUTION.md` Art. XXV, Art. XXXIV.5 · `MASTER_PLAN.md` Part Deux §3, §4 · the RAPP compatibility contract.
 
