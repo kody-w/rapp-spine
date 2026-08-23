@@ -172,7 +172,7 @@
       "use": [
         "rapp-static-api/1.0"
       ],
-      "why": "The repo IS the API \u2014 CDN-cached, CORS-open, content-addressed fallbacks that never break. It's the foundation under rapp-god, RAR, and rapp-mcp's static catalogs."
+      "why": "The repo IS the API \u2014 CDN-cached, CORS-open, content-addressed fallbacks that never break. Public examples include RAR and rapp-mcp; the former rapp-god implementation is private and non-authoritative."
     },
     {
       "situation": "I must encrypt neighborhood traffic so a relayed channel is as safe as on-device, across languages.",
@@ -289,12 +289,11 @@
     {
       "situation": "Where is the canonical, current spec for X \u2014 and is my copy authoritative (not drifted)?",
       "use": [
-        "RAPP-Bible (canonical aggregate)",
+        "rapp/1",
         "rapp_docs (live stream)",
-        "rapp-god (drift detector)",
         "foundation.json (locked hashes)"
       ],
-      "why": "the corpus is aggregated, live-streamed, and drift-watched against canonical hashes; foundation.json locks the foundation pillars + law."
+      "why": "Current protocol authority is the exact immutable RAPP/1 pin; public source text and locked historical foundation hashes are supporting evidence, not mirror authority."
     },
     {
       "situation": "What does the kernel/law actually say, or where is a newly-formalized foundation spec?",
@@ -469,7 +468,7 @@
       "repo": "kody-w/rapp-static-apis",
       "layer": "distribution",
       "purpose": "Foundational convention for read-only APIs served entirely from static Git-host files (raw.githubusercontent.com / Pages) \u2014 no server, no DB, no runtime; the repo IS the API. Append-only content-addressed blobs, one idempotent build step, schema string on every doc.",
-      "when_to_use": "When you need a registry/catalog/status endpoint with zero infrastructure: CDN-cached, CORS-open, forkable, auditable in git, with pinnable content-addressed fallbacks. Reference impls: rapp-god (full), RAR (index), rapp-mcp (profile).",
+      "when_to_use": "When you need a registry/catalog/status endpoint with zero infrastructure: CDN-cached, CORS-open, forkable, auditable in git, with pinnable content-addressed fallbacks. Public reference implementations: RAR (index), rapp-mcp (profile).",
       "entry_point": "Copy template/ into a new repo, edit manifest.json, run python3 build.py -> registry.json + api/v1/*.json. SPEC.md in repo."
     },
     {

@@ -65,8 +65,9 @@ kernel. RAPP is to the brainstem what Ubuntu is to Linux.
 Every load-bearing spec has a **canonical twin**: content-addressed, signed, and served
 as a static API over GitHub raw (`rapp-static-api/1.0`). Any brainstem, anywhere — even a
 fresh one, even an edge on a spotty link — fetches the *authoritative* version from a
-public URL, verifies its hash, and acts. [`rapp-god`](https://github.com/kody-w/rapp-god)
-watches every copy against the canonical hash and reports drift; it never silently forks.
+public URL, verifies its hash, and acts. Verification is local against the
+immutable URL and hash; no private observatory or ecosystem mirror is an
+authority input.
 
 The canonical registry is [`foundation.json`](foundation.json) — `{ spec, version, repo,
 raw_url, sha256, locked }` per foundation pillar. Fetch it, verify it, build on it.
@@ -87,7 +88,7 @@ build →  agents/cartridges/profiles ON the wire           (never into the kern
 | **Planet** | `rapp-frame/2.0` | many fleets, async, over GitHub (frame/echo/public-twin) |
 | **Survival** | `rapp-hydra/1.0` | many heads, one body — the static medium no one can shut down (cut a head, two grow) |
 | **Router** | `rapp-spine/1.0` | situation → the right pillar |
-| **Map / Drift** | `rapp-map`, `rapp-god` | where each pillar lives; is your copy canonical? |
+| **Map / history** | `rapp-map` | historical location context; its ecosystem path is quarantined, not authority |
 | **Roadmap** | [`rapp-roadmap`](https://github.com/kody-w/rapp-roadmap) | how we build from here without un-locking the kernel |
 
 ## 4a. The law + the spec corpus (brought into the lock)
@@ -101,11 +102,11 @@ spec corpus**, both content-addressed and hydra-served in [`foundation.json`](fo
   wins**); **SPEC** is the wire contract they protect. Estate constitutions
   (`rappterbook`, `rappterbook-governance`) govern their own domains. *"What does the law say — is this
   change allowed?"* routes here.
-- **The spec corpus.** Every RAPP spec, three ways: **[RAPP-Bible](https://github.com/kody-w/RAPP-Bible)**
-  (canonical aggregate), **[rapp_docs](https://github.com/kody-w/rapp_docs)** (live-streamed from each home
-  repo's raw, no copies), and **[rapp-god](https://github.com/kody-w/rapp-god)** (the drift detector —
-  watches every copy against the canonical hash). The spine's [`registry.json`](registry.json) routes
-  situations to the right spec; `foundation.json` locks the pillars + the law by hash.
+- **The spec corpus.** RAPP-Bible is a historical aggregate;
+  **[rapp_docs](https://github.com/kody-w/rapp_docs)** streams public source
+  text. The spine's [`registry.json`](registry.json) routes situations to the
+  right current public spec; `foundation.json` locks its historical pillars +
+  law by hash. Current protocol authority is the immutable RAPP/1 rev-5 pin.
 
 The law and the corpus are themselves canonical public twins — so the discipline that keeps the kernel
 sacred is as locked, public, and drift-watched as the kernel itself.
@@ -113,7 +114,7 @@ sacred is as locked, public, and drift-watched as the kernel itself.
 ## 5. Build from here
 
 Lock first, build second. New capability = a new agent/cartridge/egg/frame, registered
-against `foundation.json`, routed by the spine, watched by rapp-god, promoted per the
+against `foundation.json`, routed by the spine, checked against public immutable sources, promoted per the
 roadmap. The kernel does not move. The twin is always public. Nothing drifts.
 
 ---

@@ -5,11 +5,11 @@
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "e836994faf154db7870a4aea6cce23fc37e6fc782ec886e8915735eeddce9a51"
+      "sha256": "a80d2b16479ff37eb558314f827294e8aa77f91187a3611cc2bcbeb1c3f09db8"
     },
     "foundation": {
       "path": "foundation.json",
-      "sha256": "2c5478ccc22f0827390a6a061f465fd2e4915ffe31649f5ea4227f97cdb3d899"
+      "sha256": "616451477d45397cdc3884000448e7e1cb0a0af657ff57820abc3c95880bb694"
     }
   },
   "safety": {
@@ -246,7 +246,7 @@
       "use": [
         "rapp-static-api/1.0"
       ],
-      "why": "The repo IS the API — CDN-cached, CORS-open, content-addressed fallbacks that never break. It's the foundation under rapp-god, RAR, and rapp-mcp's static catalogs."
+      "why": "The repo IS the API — CDN-cached, CORS-open, content-addressed fallbacks that never break. Public examples include RAR and rapp-mcp; the former rapp-god implementation is private and non-authoritative."
     },
     {
       "situation": "I must encrypt neighborhood traffic so a relayed channel is as safe as on-device, across languages.",
@@ -363,12 +363,11 @@
     {
       "situation": "Where is the canonical, current spec for X — and is my copy authoritative (not drifted)?",
       "use": [
-        "RAPP-Bible (canonical aggregate)",
+        "rapp/1",
         "rapp_docs (live stream)",
-        "rapp-god (drift detector)",
         "foundation.json (locked hashes)"
       ],
-      "why": "the corpus is aggregated, live-streamed, and drift-watched against canonical hashes; foundation.json locks the foundation pillars + law."
+      "why": "Current protocol authority is the exact immutable RAPP/1 pin; public source text and locked historical foundation hashes are supporting evidence, not mirror authority."
     },
     {
       "situation": "What does the kernel/law actually say, or where is a newly-formalized foundation spec?",
@@ -543,7 +542,7 @@
       "repo": "kody-w/rapp-static-apis",
       "layer": "distribution",
       "purpose": "Foundational convention for read-only APIs served entirely from static Git-host files (raw.githubusercontent.com / Pages) — no server, no DB, no runtime; the repo IS the API. Append-only content-addressed blobs, one idempotent build step, schema string on every doc.",
-      "when_to_use": "When you need a registry/catalog/status endpoint with zero infrastructure: CDN-cached, CORS-open, forkable, auditable in git, with pinnable content-addressed fallbacks. Reference impls: rapp-god (full), RAR (index), rapp-mcp (profile).",
+      "when_to_use": "When you need a registry/catalog/status endpoint with zero infrastructure: CDN-cached, CORS-open, forkable, auditable in git, with pinnable content-addressed fallbacks. Public reference implementations: RAR (index), rapp-mcp (profile).",
       "entry_point": "Copy template/ into a new repo, edit manifest.json, run python3 build.py -> registry.json + api/v1/*.json. SPEC.md in repo."
     },
     {
@@ -974,7 +973,7 @@
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "e836994faf154db7870a4aea6cce23fc37e6fc782ec886e8915735eeddce9a51",
+            "sha256": "a80d2b16479ff37eb558314f827294e8aa77f91187a3611cc2bcbeb1c3f09db8",
             "integrity": "sha256"
           }
         ],
@@ -1011,7 +1010,7 @@
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "2c5478ccc22f0827390a6a061f465fd2e4915ffe31649f5ea4227f97cdb3d899",
+            "sha256": "616451477d45397cdc3884000448e7e1cb0a0af657ff57820abc3c95880bb694",
             "integrity": "sha256"
           }
         ],
@@ -1934,7 +1933,7 @@
           "repo": "kody-w/rapp-static-apis",
           "layer": "distribution",
           "purpose": "Foundational convention for read-only APIs served entirely from static Git-host files (raw.githubusercontent.com / Pages) — no server, no DB, no runtime; the repo IS the API. Append-only content-addressed blobs, one idempotent build step, schema string on every doc.",
-          "when_to_use": "When you need a registry/catalog/status endpoint with zero infrastructure: CDN-cached, CORS-open, forkable, auditable in git, with pinnable content-addressed fallbacks. Reference impls: rapp-god (full), RAR (index), rapp-mcp (profile).",
+          "when_to_use": "When you need a registry/catalog/status endpoint with zero infrastructure: CDN-cached, CORS-open, forkable, auditable in git, with pinnable content-addressed fallbacks. Public reference implementations: RAR (index), rapp-mcp (profile).",
           "entry_point": "Copy template/ into a new repo, edit manifest.json, run python3 build.py -> registry.json + api/v1/*.json. SPEC.md in repo."
         }
       },
@@ -5404,43 +5403,6 @@
         ]
       },
       {
-        "id": "repo:kody-w/rapp-god",
-        "type": "repository",
-        "label": "kody-w/rapp-god",
-        "repo": "kody-w/rapp-god",
-        "lifecycle": "active",
-        "status": "represented",
-        "materiality": "required",
-        "material_profile": "repository",
-        "required_source_roles": [
-          "repository_identity"
-        ],
-        "sources": [
-          {
-            "role": "repository_identity",
-            "required": true,
-            "target": "https://github.com/kody-w/rapp-god",
-            "availability": "declared",
-            "read_only": true,
-            "method": "GET"
-          }
-        ],
-        "entry_points": [
-          {
-            "kind": "repository_read",
-            "target": "https://github.com/kody-w/rapp-god",
-            "method": "GET",
-            "read_only": true,
-            "safe_for_crawl": true
-          }
-        ],
-        "conformance": "not_assessed",
-        "aliases": [
-          "kody-w/rapp-god",
-          "rapp-god"
-        ]
-      },
-      {
         "id": "repo:kody-w/rapp-hologram",
         "type": "repository",
         "label": "kody-w/rapp-hologram",
@@ -7105,52 +7067,6 @@
         }
       },
       {
-        "id": "evidence:foundation/spec_corpus/drift_detector@kody-w/rapp-god",
-        "type": "evidence",
-        "label": "drift_detector",
-        "repo": "kody-w/rapp-god",
-        "canonical_protocol_identity": null,
-        "foundation_section": "spec_corpus",
-        "lifecycle": "active",
-        "status": "resolved",
-        "materiality": "supporting",
-        "material_profile": "foundation-supporting",
-        "required_source_roles": [
-          "supporting_evidence"
-        ],
-        "sources": [
-          {
-            "role": "supporting_evidence",
-            "required": true,
-            "target": "https://github.com/kody-w/rapp-god",
-            "availability": "declared",
-            "read_only": true,
-            "method": "GET"
-          }
-        ],
-        "entry_points": [
-          {
-            "kind": "evidence_read",
-            "target": "https://github.com/kody-w/rapp-god",
-            "method": "GET",
-            "read_only": true,
-            "safe_for_crawl": true
-          }
-        ],
-        "conformance": "not_assessed",
-        "aliases": [
-          "kody-w/rapp-god",
-          "rapp-god"
-        ],
-        "display": {
-          "foundation_section": "spec_corpus",
-          "foundation_index": 2,
-          "role": "drift_detector",
-          "repo": "kody-w/rapp-god",
-          "url": "https://github.com/kody-w/rapp-god — god's-eye map + live canonical-integrity / cross-repo drift detector"
-        }
-      },
-      {
         "id": "evidence:foundation/spec_corpus/router@kody-w/rapp-spine",
         "type": "evidence",
         "label": "router",
@@ -7190,7 +7106,7 @@
         ],
         "display": {
           "foundation_section": "spec_corpus",
-          "foundation_index": 3,
+          "foundation_index": 2,
           "role": "router",
           "repo": "kody-w/rapp-spine",
           "url": "https://raw.githubusercontent.com/kody-w/rapp-spine/main/registry.json"
@@ -7614,7 +7530,7 @@
           "use": [
             "rapp-static-api/1.0"
           ],
-          "why": "The repo IS the API — CDN-cached, CORS-open, content-addressed fallbacks that never break. It's the foundation under rapp-god, RAR, and rapp-mcp's static catalogs."
+          "why": "The repo IS the API — CDN-cached, CORS-open, content-addressed fallbacks that never break. Public examples include RAR and rapp-mcp; the former rapp-god implementation is private and non-authoritative."
         }
       },
       {
@@ -8012,9 +7928,8 @@
         "label": "Where is the canonical, current spec for X — and is my copy authoritative (not drifted)?",
         "route_index": 24,
         "target_ids": [
-          "evidence:foundation/spec_corpus/canonical_aggregate@kody-w/rapp-bible",
+          "protocol:kody-w/rapp-1/rapp/1",
           "protocol:kody-w/rapp_docs/entry",
-          "evidence:foundation/spec_corpus/drift_detector@kody-w/rapp-god",
           "artifact:foundation.json"
         ],
         "lifecycle": "active",
@@ -8029,12 +7944,11 @@
         "display": {
           "situation": "Where is the canonical, current spec for X — and is my copy authoritative (not drifted)?",
           "use": [
-            "RAPP-Bible (canonical aggregate)",
+            "rapp/1",
             "rapp_docs (live stream)",
-            "rapp-god (drift detector)",
             "foundation.json (locked hashes)"
           ],
-          "why": "the corpus is aggregated, live-streamed, and drift-watched against canonical hashes; foundation.json locks the foundation pillars + law."
+          "why": "Current protocol authority is the exact immutable RAPP/1 pin; public source text and locked historical foundation hashes are supporting evidence, not mirror authority."
         }
       },
       {
@@ -9780,11 +9694,6 @@
       {
         "from": "artifact:foundation.json",
         "type": "declares",
-        "to": "evidence:foundation/spec_corpus/drift_detector@kody-w/rapp-god"
-      },
-      {
-        "from": "artifact:foundation.json",
-        "type": "declares",
         "to": "evidence:foundation/spec_corpus/live_stream@kody-w/rapp_docs"
       },
       {
@@ -10239,16 +10148,6 @@
       },
       {
         "from": "evidence:foundation/spec_corpus/canonical_aggregate@kody-w/rapp-bible",
-        "type": "uses_artifact",
-        "to": "artifact:foundation.json"
-      },
-      {
-        "from": "evidence:foundation/spec_corpus/drift_detector@kody-w/rapp-god",
-        "type": "owned_by",
-        "to": "repo:kody-w/rapp-god"
-      },
-      {
-        "from": "evidence:foundation/spec_corpus/drift_detector@kody-w/rapp-god",
         "type": "uses_artifact",
         "to": "artifact:foundation.json"
       },
@@ -12128,9 +12027,9 @@
       {
         "from": "route:5afadf255971f067",
         "type": "routes_to",
-        "to": "evidence:foundation/spec_corpus/canonical_aggregate@kody-w/rapp-bible",
+        "to": "protocol:kody-w/rapp-1/rapp/1",
         "order": 0,
-        "display_target": "RAPP-Bible (canonical aggregate)"
+        "display_target": "rapp/1"
       },
       {
         "from": "route:5afadf255971f067",
@@ -12142,15 +12041,8 @@
       {
         "from": "route:5afadf255971f067",
         "type": "routes_to",
-        "to": "evidence:foundation/spec_corpus/drift_detector@kody-w/rapp-god",
-        "order": 2,
-        "display_target": "rapp-god (drift detector)"
-      },
-      {
-        "from": "route:5afadf255971f067",
-        "type": "routes_to",
         "to": "artifact:foundation.json",
-        "order": 3,
+        "order": 2,
         "display_target": "foundation.json (locked hashes)"
       },
       {
@@ -13026,11 +12918,6 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "inventories_repository",
-        "to": "repo:kody-w/rapp-god"
-      },
-      {
-        "from": "spine:rapp-spine%2F1.1",
-        "type": "inventories_repository",
         "to": "repo:kody-w/rapp-hologram"
       },
       {
@@ -13287,7 +13174,6 @@
       "repo:kody-w/rapp-estate",
       "repo:kody-w/rapp-eternity",
       "repo:kody-w/rapp-frame-net",
-      "repo:kody-w/rapp-god",
       "repo:kody-w/rapp-hologram",
       "repo:kody-w/rapp-installer",
       "repo:kody-w/rapp-kite",
@@ -13328,7 +13214,6 @@
       "evidence:foundation/law/Rappterbook%20Constitution@kody-w/rappterbook",
       "evidence:foundation/spec_corpus/canonical_aggregate@kody-w/rapp-bible",
       "evidence:foundation/spec_corpus/live_stream@kody-w/rapp_docs",
-      "evidence:foundation/spec_corpus/drift_detector@kody-w/rapp-god",
       "evidence:foundation/spec_corpus/router@kody-w/rapp-spine",
       "evidence:foundation/core_infra/agent_registry@kody-w/rar",
       "evidence:foundation/core_infra/egg_spec_origin@kody-w/rappterbook",
@@ -13514,7 +13399,6 @@
         "repo:kody-w/rapp-estate",
         "repo:kody-w/rapp-eternity",
         "repo:kody-w/rapp-frame-net",
-        "repo:kody-w/rapp-god",
         "repo:kody-w/rapp-hologram",
         "repo:kody-w/rapp-installer",
         "repo:kody-w/rapp-kite",
@@ -13555,7 +13439,6 @@
         "evidence:foundation/law/Rappterbook%20Constitution@kody-w/rappterbook",
         "evidence:foundation/spec_corpus/canonical_aggregate@kody-w/rapp-bible",
         "evidence:foundation/spec_corpus/live_stream@kody-w/rapp_docs",
-        "evidence:foundation/spec_corpus/drift_detector@kody-w/rapp-god",
         "evidence:foundation/spec_corpus/router@kody-w/rapp-spine",
         "evidence:foundation/core_infra/agent_registry@kody-w/rar",
         "evidence:foundation/core_infra/egg_spec_origin@kody-w/rappterbook",

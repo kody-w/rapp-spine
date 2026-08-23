@@ -511,8 +511,8 @@ class CrawlGraphTests(_SpineFixture, unittest.TestCase):
                     "authoritative_input": 2,
                     "canonical_material": 58,
                     "integrity_evidence": 11,
-                    "repository_identity": 47,
-                    "supporting_evidence": 8,
+                    "repository_identity": 46,
+                    "supporting_evidence": 7,
                 }
             ),
         )
@@ -627,13 +627,13 @@ class CrawlGraphTests(_SpineFixture, unittest.TestCase):
             receipt["completion"]["inventory_graph_coverage"]["complete"]
         )
         sources = receipt["completion"]["source_integrity_availability"]
-        self.assertEqual(sources["expected_required_sources"], 126)
+        self.assertEqual(sources["expected_required_sources"], 124)
         self.assertEqual(
             sources["visited_required_sources"],
             sum(source["required"] for source in plan["read_targets"]),
         )
-        self.assertEqual(sum(sources["counts"].values()), 126)
-        self.assertEqual(sum(sources["integrity"].values()), 126)
+        self.assertEqual(sum(sources["counts"].values()), 124)
+        self.assertEqual(sum(sources["integrity"].values()), 124)
         self.assertEqual(
             sources["integrity"]["not_checkable"],
             sources["counts"]["not_read"],
@@ -697,7 +697,7 @@ class CrawlGraphTests(_SpineFixture, unittest.TestCase):
         )
         self.assertEqual(
             receipt["completion"]["source_integrity_availability"]["counts"],
-            {"read": 92, "unresolved": 34},
+            {"read": 90, "unresolved": 34},
         )
 
     def test_receipt_separates_all_completion_dimensions(self):
@@ -779,8 +779,8 @@ class GeneratedSurfaceTests(_SpineFixture, unittest.TestCase):
         self.assertEqual(self.coverage["inventory"]["routes_expected"], 32)
         self.assertEqual(self.coverage["required_material"]["exact_targets"], 26)
         self.assertEqual(self.coverage["required_material"]["unresolved"], 32)
-        self.assertEqual(self.coverage["all_required_sources"]["required"], 126)
-        self.assertEqual(self.coverage["all_required_sources"]["exact_targets"], 92)
+        self.assertEqual(self.coverage["all_required_sources"]["required"], 124)
+        self.assertEqual(self.coverage["all_required_sources"]["exact_targets"], 90)
         self.assertEqual(self.coverage["all_required_sources"]["unresolved"], 34)
         self.assertFalse(self.coverage["complete"])
 

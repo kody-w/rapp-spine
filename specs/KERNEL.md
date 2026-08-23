@@ -248,7 +248,9 @@ There is exactly **one** authoritative kernel: `brainstem.py` in `rapp-installer
 - **Mirrors** (e.g. a kernel copy embedded in `RAPP` or `rapp-mcp`) are **downstream replicas** and MUST be byte-identical to a tagged grail kernel. A mirror that diverges from its claimed tag is drift.
 - **`function_app.py` parity** (the Azure tier) is sacred: the cloud entrypoint MUST behave identically to `brainstem.py` for the ABI surface. Stem/function_app parity is part of "never break userspace" across tiers.
 
-**Enforcement leg:** `rapp-god` drift detection treats the grail kernel at its latest tag as ground truth and flags any mirror, distro pin, or `function_app.py` whose ABI surface or kernel bytes drift from it. Drift is filed as a traceable issue, not silently tolerated. The neuron mesh (`rapp-map`) carries per-file cards so a single changed kernel line can be swept across every dependent surface.
+**Enforcement:** public conformance checks compare each claimed mirror, distro
+pin, and `function_app.py` ABI directly with the immutable grail tag. A private
+observatory or quarantined map is not authority evidence.
 
 ---
 
@@ -278,7 +280,9 @@ A server that adds capability only through drop-in agents, never moves a tag, an
    ABI: unchanged (drop-ins from all prior 1.x run unmodified)."
    git push origin brainstem-v1.1.0
    ```
-6. **Downstream.** `rapp-god` re-checks: grail latest tag = `brainstem-v1.1.0`; the `RAPP` kernel mirror and `function_app.py` are swept for parity; any distro may now choose to re-pin from `brainstem-v1.0.0` → `brainstem-v1.1.0`, or stay pinned — both keep working.
+6. **Downstream.** Public parity checks compare the `RAPP` kernel mirror and
+   `function_app.py` directly with `brainstem-v1.1.0`; any distro may choose to
+   re-pin or stay pinned.
 7. **Rollback proof.** A user who dislikes the new injection runs `BRAINSTEM_VERSION=1.0.0 curl … | bash` and is byte-identically back on `brainstem-v1.0.0`. No data migration, because `agents/` (userspace) never changed.
 
 **Contrast — what a MAJOR would have required.** Had the change instead altered `perform`'s signature or `/chat`'s response shape, it would break prior drop-ins → it MUST be a `2.0.0` MAJOR, gated as a governance decision, with release notes stating the exact break and a migration path. The default answer to "should we break the ABI?" is **no** — find the additive path.
@@ -302,7 +306,7 @@ guarantee: works on every 1.x kernel, unmodified, forever.
 |------|--------------|
 | `rapp-distro/1.0` | a distro **pins** a `brainstem-vX.Y.Z`; this spec defines what it's pinning |
 | `rappid eternity` | the kernel artifact at a tag is sha256 content-addressed; PKI-free, keypair optional |
-| `rapp-god` | drift enforcement: grail-latest-tag is ground truth for all mirrors/distros |
+| public conformance checks | compare claimed mirror/distro bytes directly with an immutable grail tag |
 | `rapp-commons-event/1.0` / `rapp-leviathan` | fleet/estate messaging rides **on** `/chat` (ABI-2), not a side route |
 | `function_app.py` (Tier 2) | MUST hold ABI parity with `brainstem.py` ("never break userspace" across tiers) |
 

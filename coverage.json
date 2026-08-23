@@ -5,11 +5,11 @@
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "e836994faf154db7870a4aea6cce23fc37e6fc782ec886e8915735eeddce9a51"
+      "sha256": "a80d2b16479ff37eb558314f827294e8aa77f91187a3611cc2bcbeb1c3f09db8"
     },
     "foundation": {
       "path": "foundation.json",
-      "sha256": "2c5478ccc22f0827390a6a061f465fd2e4915ffe31649f5ea4227f97cdb3d899"
+      "sha256": "616451477d45397cdc3884000448e7e1cb0a0af657ff57820abc3c95880bb694"
     }
   },
   "inventory": {
@@ -17,27 +17,27 @@
     "registry_nodes_represented": 58,
     "routes_expected": 32,
     "route_nodes_represented": 32,
-    "route_target_references": 65,
-    "repositories_represented": 47,
-    "foundation_records_represented": 19
+    "route_target_references": 64,
+    "repositories_represented": 46,
+    "foundation_records_represented": 18
   },
   "graph": {
-    "nodes": 217,
-    "relations": 674,
+    "nodes": 215,
+    "relations": 669,
     "nodes_by_type": {
       "artifact": 2,
-      "evidence": 19,
+      "evidence": 18,
       "issue": 51,
       "layer": 7,
       "protocol": 58,
-      "repository": 47,
+      "repository": 46,
       "route": 32,
       "spine": 1
     },
     "nodes_by_status": {
       "informational": 19,
-      "represented": 45,
-      "resolved": 80,
+      "represented": 44,
+      "resolved": 79,
       "unresolved": 73
     },
     "orphans": [],
@@ -84,8 +84,8 @@
     "complete": false
   },
   "all_required_sources": {
-    "required": 126,
-    "exact_targets": 92,
+    "required": 124,
+    "exact_targets": 90,
     "unresolved": 34,
     "unresolved_sources": [
       {

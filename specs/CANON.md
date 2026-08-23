@@ -225,10 +225,13 @@ A proposed Constitution Article would mandate a central RAPP coordination server
 
 ### 9.4 Full amendment walkthrough — locking "metropolis mesh composition"
 1. A new primitive (neighborhood→estate composition) is decided. It introduces vocabulary the corpus has no slot for → **registration debt.**
-2. Author publishes `rapp-metropolis/1.0` (Tier 3) in its home repo, and in the *same* change-set adds its entry to `ecosystem-spec.json` (currency axis updated) and mirrors it to rapp-map.
-3. grail-scan runs: checks the new spec against Tiers 1–2 (no central-server, /chat-only, ABI intact → compliance ✓) and the corpus against the commit (registry entry present, no doc left stale → freshness ✓). Verdict `grail: true`.
+2. Historically, the author would have added an ecosystem-spec entry and
+   mirrored it. That publication path is retired.
+3. Current review runs the owning repository's public conformance checks
+   against the exact RAPP/1 authority pin.
 4. A collaborator merges the PR to `kody-w/RAPP` → ratified (`sig_suite: none`; no keypair required).
-5. rapp-god snapshots the registry into `versions/`, sha256-addressed. The mesh mirrors stay byte-identical. The law is now content-addressed, immutable, and learnable.
+5. Public immutable source URLs and hashes provide the review evidence; no
+   private snapshot or mirror publication is inferred.
 
 ---
 
