@@ -39,9 +39,21 @@ _CANONICAL_WIRE_REQUIREMENTS = [
 
 
 def _load_url(url):
-    request = urllib.request.Request(url, headers={"User-Agent": "rapp-spine/1.1"})
-    with urllib.request.urlopen(request, timeout=20) as response:
-        return json.loads(response.read())
+    try:
+        request = urllib.request.Request(url, headers={"User-Agent": "rapp-spine/1.1"})
+        with urllib.request.urlopen(request, timeout=20) as response:
+            return json.loads(response.read())
+    except Exception as exc:
+        # Unlike read_target() (probe reads, which are allowed to come back
+        # "unreadable" and get represented as such in the receipt), this
+        # loads the primary registry/crawl document the whole CLI depends
+        # on -- a DNS failure, timeout, HTTP error, or invalid JSON response
+        # previously surfaced as a raw Python traceback instead of the
+        # controlled `raise SystemExit(...)` errors main() uses everywhere
+        # else for a bad CLI invocation.
+        raise SystemExit(
+            f"cannot load remote document from {url}: {type(exc).__name__}: {exc}"
+        ) from exc
 
 
 def load(remote=False):

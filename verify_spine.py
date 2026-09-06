@@ -746,7 +746,14 @@ def main(argv=None):
         add_drift(report, "I6", error)
 
     # I7 — fuzzy labels are display-only; exact graph targets and relations are authoritative.
-    route_errors = validate_route_integrity(crawl_document, registry)
+    # Mirrors the I6 check two blocks up: validate_route_integrity() previously
+    # ran unprotected, so a malformed node/relation (missing "type"/"from"/"id")
+    # raised KeyError straight out of main() instead of the controlled I7
+    # drift/failure entry this whole report structure exists to produce.
+    try:
+        route_errors = validate_route_integrity(crawl_document, registry)
+    except Exception as error:
+        route_errors = [str(error)]
     report["invariants"]["I7_route_referential_integrity"] = {
         "routes": len(registry.get("router", [])),
         "exact_target_references": sum(
