@@ -80,12 +80,12 @@ class SpineContractTests(_SpineFixture, unittest.TestCase):
             with self.subTest(situation=route["situation"]):
                 self.assertEqual(crawl.match(self.spine, route["situation"], n=1), [route])
 
-    def test_openrappter_routes_to_consumer_substrate_distro(self):
+    def test_openrappter_routes_to_archived_runtime_contract(self):
         hits = crawl.match(self.spine, "openrappter", n=1)
         self.assertEqual(len(hits), 1)
-        self.assertIn("consumer substrate-distro", hits[0]["use"][0])
+        self.assertIn("archived consumer substrate-distro", hits[0]["use"][0])
         self.assertIn("agent.py", hits[0]["situation"])
-        self.assertIn("Conversation is the control surface", hits[0]["why"])
+        self.assertIn("removed from main", hits[0]["why"])
 
     def test_spec_ids_have_one_owner(self):
         owners = {}
@@ -1239,15 +1239,17 @@ class RegistryConformanceRecordTests(_SpineFixture, unittest.TestCase):
         node = self.nodes["protocol:kody-w/leviathan/leviathan/1.0"]
         self.assertEqual(node["conformance"], "nonconformant")
 
-    def test_openrappter_is_not_assessed_rather_than_conformant(self):
-        """Nobody has assessed openrappter, so the graph must not claim it is fine."""
+    def test_openrappter_is_deprecated_and_not_assessed(self):
+        """The pinned OpenRappter contract is historical, not an active verdict."""
         entry = self.entry("kody-w/openrappter")
         self.assertEqual(entry["spec_id"], "openrappter-runtime/1.0")
+        self.assertIn("DEPRECATED historical", entry["purpose"])
         self.assertEqual(entry["conformance"]["state"], "not_assessed")
         self.assertNotIn("evidence", entry["conformance"])
-        self.assertNotIn("parity target incomplete", entry["when_to_use"].lower())
+        self.assertIn("Historical audit only", entry["when_to_use"])
 
         node = self.nodes["protocol:kody-w/openrappter/openrappter-runtime/1.0"]
+        self.assertEqual(node["lifecycle"], "deprecated")
         self.assertEqual(node["conformance"], "not_assessed")
         self.assertEqual(node["status"], "resolved")
 

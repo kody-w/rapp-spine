@@ -44,14 +44,14 @@
     },
     {
       "layer": "runtime (the engine)",
-      "summary": "What actually runs single-file *_agent.py cartridges through one /chat tool-calling loop. The reference kernel is rapp-agent/1.0 in kody-w/rapp-installer; substrate-distros may implement the same locked loop and frozen agent ABI on different machinery. CommunityRAPP, rapp-brainstem-sdk, rappterbox, and rapp-dataverse occupy that family. OpenRappter is the intended consumer-facing machine AI and RAPP<->OpenClaw Rosetta stone; its current Python+TypeScript release has not yet proved runtime parity, so it remains a conformance target rather than a second kernel.",
+      "summary": "What actually runs single-file *_agent.py cartridges through one /chat tool-calling loop. The reference kernel is rapp-agent/1.0 in kody-w/rapp-installer; substrate-distros may implement the same locked loop and frozen agent ABI on different machinery. CommunityRAPP, rapp-brainstem-sdk, rappterbox, and rapp-dataverse occupy that family. OpenRappter's former consumer-facing RAPP runtime contract is archived historical material: main removed SPEC.md and the legacy product tree in 2026-09, so the spine pins the last text only for audit, not as a live runtime target.",
       "protocols": [
         "rapp-agent/1.0 (grail: rapp-installer)",
         "rappterbox-console-spec/1.0",
         "rapp-dataverse/1.0",
         "CommunityRAPP (Tier-2, no slug)",
         "rapp-brainstem-sdk (no slug)",
-        "openrappter (consumer substrate-distro; parity target incomplete)"
+        "openrappter-runtime/1.0 (DEPRECATED historical consumer substrate-distro contract)"
       ]
     },
     {
@@ -131,11 +131,11 @@
       "why": "stdlib-only headless runtime serving the same /chat envelope in real CPython \u2014 the headless twin of the browser vBrainstem, ideal for secret/network agents and automation."
     },
     {
-      "situation": "I want OpenRappter: a consumer-facing, chat-first AI that lives on my machine, hot-loads RAPP agent.py cartridges, and maps RAPP concepts to OpenClaw-compatible experiences.",
+      "situation": "I need the historical OpenRappter RAPP runtime contract that used to describe a consumer-facing, chat-first AI with hot-loaded RAPP agent.py cartridges.",
       "use": [
-        "OpenRappter consumer substrate-distro (RAPP parity target; currently incomplete)"
+        "OpenRappter archived consumer substrate-distro contract (DEPRECATED historical pin)"
       ],
-      "why": "OpenRappter is the full machine-resident RAPP experience and a bidirectional RAPP<->OpenClaw Rosetta stone. Conversation is the control surface: capabilities and configuration are generated through natural language over /chat, while UI views render conversation and state instead of becoming a competing form-driven authority. It may implement the kernel loop with its own architecture, but conformance requires the same /chat behavior and frozen drop-in agent.py ABI. The lineage was running by Groundhog Day 2025, before its first public release; current Python+TypeScript releases have not yet attested RAPP runtime parity."
+      "why": "The former OpenRappter SPEC.md described a full machine-resident RAPP experience and a bidirectional RAPP<->OpenClaw Rosetta stone. That contract was removed from main by kody-w/openrappter 758c7cd (2026-09-12, \"rewrite: remove the legacy product tree\"). The spine pins its last published text at 9e8349d so crawlers can audit what existed, but the active openrappter main is now a different RAPP Work app and this pin is not a live conformance target."
     },
     {
       "situation": "An AI in Claude Desktop / Copilot CLI / Cursor needs to use my local agents or my on-device brainstem.",
@@ -393,9 +393,9 @@
       "spec_id": "openrappter-runtime/1.0",
       "repo": "kody-w/openrappter",
       "layer": "runtime",
-      "purpose": "The consumer-facing RAPP machine AI: an OpenClaw-class local experience built to preserve the RAPP /chat loop and hot-load the same drop-in *_agent.py cartridges, while translating RAPP concepts to and from OpenClaw-compatible UI, channel, and skill surfaces. OpenRappter is chat-first: natural language over /chat creates and configures the experience; UI views render conversation and state rather than defining capability through forms. It may use its own Python+TypeScript implementation architecture; brainstem.py remains the reference kernel shape, not a file OpenRappter must vendor. Local state lives under ~/.openrappter/, while prompts and channel payloads may leave the machine for the configured provider. The lineage was running by Groundhog Day 2025, before its first public release.",
-      "when_to_use": "When you want the full consumer AI living on a machine \u2014 daemon, desktop/web UI, channels, memory, and OpenClaw interoperability \u2014 while retaining RAPP cartridge compatibility. Its runtime contract was published as openrappter-runtime/1.0 in SPEC.md until kody-w/openrappter 758c7cd (2026-09-12, \"rewrite: remove the legacy product tree\") removed that file from main; the spine pins its last text, at 9e8349d. It has not been independently assessed against the reference kernel.",
-      "entry_point": "curl -fsSL https://kody-w.github.io/openrappter/install.sh | bash (or hand skills.md to any AI agent to self-install)",
+      "purpose": "DEPRECATED historical OpenRappter runtime contract: a consumer-facing RAPP machine AI and OpenClaw-class local experience that described preserving the RAPP /chat loop and hot-loading the same drop-in *_agent.py cartridges. kody-w/openrappter main removed SPEC.md and the legacy product tree at 758c7cd (2026-09-12, \"rewrite: remove the legacy product tree\"); the current mainline is a different RAPP Work app. This entry pins the last published SPEC.md text for audit only.",
+      "when_to_use": "Historical audit only. Read this pin when you need to know what openrappter-runtime/1.0 said before it was archived and removed from main. Do not treat it as the active OpenRappter contract, a current installer path, or evidence of runtime conformance.",
+      "entry_point": "HISTORICAL ONLY: read the pinned SPEC.md at 9e8349d. The former installer surface is not advertised here as a live RAPP runtime entry point.",
       "raw_url": "https://raw.githubusercontent.com/kody-w/openrappter/9e8349dbf5dc7982b5e9b4fbd49e508220467441/SPEC.md",
       "conformance": {
         "state": "not_assessed"
