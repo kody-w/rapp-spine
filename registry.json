@@ -81,7 +81,7 @@
     },
     {
       "layer": "network (peers, transports, neighborhoods, federation)",
-      "summary": "Once you have a runtime + identity, how organisms find and talk to each other. The capstone god-spec is rapp-neighborhood-protocol/1.0 \u2014 it owns the vocabulary and the rapp-twin-chat/1.0 \u00a76 envelope (delegating the \u00a78 seal to rapp-sealed). rapp-messaging/1.0 profiles human trust, memory projection, consent, group epochs, and delivery over that existing wire. Everything else is a \u00a75 transport or a \u00a7-profile carrying that same envelope, never a new peer type: rapp-commons-protocol/2.0 (open global town square), rapp-vneighborhood/1.0 (private brandable front-door template), rapp-network/1.0 (project-twin fan-out), rapp-estate/1.1 (operator-wide discovery, 'the network is the backup'), rapp-mcp-spec/1.0 (MCP host onto /chat), rapp-kite ('the string' CDP operator tools), rapp-resident (always-on Azure cloud relay; 'kited is the floor, this is the ceiling').",
+      "summary": "Once you have a runtime + identity, how organisms find and talk to each other. The capstone god-spec is rapp-neighborhood-protocol/1.0 \u2014 it owns the vocabulary and the rapp-twin-chat/1.0 \u00a76 envelope (delegating the \u00a78 seal to rapp-sealed). rapp-messaging/1.0 profiles human trust, memory projection, consent, group epochs, and delivery over that existing wire. Everything else is a \u00a75 transport or a \u00a7-profile carrying that same envelope, never a new peer type: rapp-commons-protocol/2.0 (open global town square), rapp-vneighborhood/1.0 (private brandable front-door template), rapp-network/1.0 (project-twin fan-out), rapp-estate/1.1 (operator-wide discovery, 'the network is the backup'), rapp-mcp-spec/2.0 (MCP host onto /chat), rapp-kite ('the string' CDP operator tools), rapp-resident (always-on Azure cloud relay; 'kited is the floor, this is the ceiling').",
       "protocols": [
         "rapp-neighborhood-protocol/1.0 (owns rapp-twin-chat/1.0 \u00a76)",
         "rapp-messaging/1.0 (+ rapp-messaging-imessage/1.0)",
@@ -89,7 +89,7 @@
         "rapp-vneighborhood/1.0",
         "rapp-network/1.0",
         "rapp-estate/1.1 (+ rapp-network-beacon/1.1)",
-        "rapp-mcp-spec/1.0",
+        "rapp-mcp-spec/2.0",
         "rapp-kite (operator tooling)",
         "rapp-resident (cloud relay)"
       ]
@@ -140,7 +140,7 @@
     {
       "situation": "An AI in Claude Desktop / Copilot CLI / Cursor needs to use my local agents or my on-device brainstem.",
       "use": [
-        "rapp-mcp-spec/1.0"
+        "rapp-mcp-spec/2.0"
       ],
       "why": "MCP is TRANSPORT realizing 'Chat Is The Only Wire' onto /chat \u2014 serve a folder as tools, bridge a running brainstem as one tool, or serve a static catalog. It reaches the same cartridge, never a new unit."
     },
@@ -472,7 +472,7 @@
       "entry_point": "Copy template/ into a new repo, edit manifest.json, run python3 build.py -> registry.json + api/v1/*.json. SPEC.md in repo."
     },
     {
-      "spec_id": "rapp-mcp-spec/1.0",
+      "spec_id": "rapp-mcp-spec/2.0",
       "repo": "kody-w/rapp-mcp",
       "layer": "network",
       "purpose": "Bring RAPP onto any MCP host (zero-dep stdlib): serve a folder of *_agent.py as MCP tools, bridge a whole running brainstem as one tool, or serve a static CDN catalog. MCP is TRANSPORT realizing 'Chat Is The Only Wire' onto /chat \u2014 not a new unit.",

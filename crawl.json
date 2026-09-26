@@ -5,7 +5,7 @@
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "a80d2b16479ff37eb558314f827294e8aa77f91187a3611cc2bcbeb1c3f09db8"
+      "sha256": "1a07827d0cb48d58c2bf62b55c0e6ad3d7ebfae5c22f72182a04968de91cb1ac"
     },
     "foundation": {
       "path": "foundation.json",
@@ -155,7 +155,7 @@
     },
     {
       "layer": "network (peers, transports, neighborhoods, federation)",
-      "summary": "Once you have a runtime + identity, how organisms find and talk to each other. The capstone god-spec is rapp-neighborhood-protocol/1.0 — it owns the vocabulary and the rapp-twin-chat/1.0 §6 envelope (delegating the §8 seal to rapp-sealed). rapp-messaging/1.0 profiles human trust, memory projection, consent, group epochs, and delivery over that existing wire. Everything else is a §5 transport or a §-profile carrying that same envelope, never a new peer type: rapp-commons-protocol/2.0 (open global town square), rapp-vneighborhood/1.0 (private brandable front-door template), rapp-network/1.0 (project-twin fan-out), rapp-estate/1.1 (operator-wide discovery, 'the network is the backup'), rapp-mcp-spec/1.0 (MCP host onto /chat), rapp-kite ('the string' CDP operator tools), rapp-resident (always-on Azure cloud relay; 'kited is the floor, this is the ceiling').",
+      "summary": "Once you have a runtime + identity, how organisms find and talk to each other. The capstone god-spec is rapp-neighborhood-protocol/1.0 — it owns the vocabulary and the rapp-twin-chat/1.0 §6 envelope (delegating the §8 seal to rapp-sealed). rapp-messaging/1.0 profiles human trust, memory projection, consent, group epochs, and delivery over that existing wire. Everything else is a §5 transport or a §-profile carrying that same envelope, never a new peer type: rapp-commons-protocol/2.0 (open global town square), rapp-vneighborhood/1.0 (private brandable front-door template), rapp-network/1.0 (project-twin fan-out), rapp-estate/1.1 (operator-wide discovery, 'the network is the backup'), rapp-mcp-spec/2.0 (MCP host onto /chat), rapp-kite ('the string' CDP operator tools), rapp-resident (always-on Azure cloud relay; 'kited is the floor, this is the ceiling').",
       "protocols": [
         "rapp-neighborhood-protocol/1.0 (owns rapp-twin-chat/1.0 §6)",
         "rapp-messaging/1.0 (+ rapp-messaging-imessage/1.0)",
@@ -163,7 +163,7 @@
         "rapp-vneighborhood/1.0",
         "rapp-network/1.0",
         "rapp-estate/1.1 (+ rapp-network-beacon/1.1)",
-        "rapp-mcp-spec/1.0",
+        "rapp-mcp-spec/2.0",
         "rapp-kite (operator tooling)",
         "rapp-resident (cloud relay)"
       ]
@@ -214,7 +214,7 @@
     {
       "situation": "An AI in Claude Desktop / Copilot CLI / Cursor needs to use my local agents or my on-device brainstem.",
       "use": [
-        "rapp-mcp-spec/1.0"
+        "rapp-mcp-spec/2.0"
       ],
       "why": "MCP is TRANSPORT realizing 'Chat Is The Only Wire' onto /chat — serve a folder as tools, bridge a running brainstem as one tool, or serve a static catalog. It reaches the same cartridge, never a new unit."
     },
@@ -546,7 +546,7 @@
       "entry_point": "Copy template/ into a new repo, edit manifest.json, run python3 build.py -> registry.json + api/v1/*.json. SPEC.md in repo."
     },
     {
-      "spec_id": "rapp-mcp-spec/1.0",
+      "spec_id": "rapp-mcp-spec/2.0",
       "repo": "kody-w/rapp-mcp",
       "layer": "network",
       "purpose": "Bring RAPP onto any MCP host (zero-dep stdlib): serve a folder of *_agent.py as MCP tools, bridge a whole running brainstem as one tool, or serve a static CDN catalog. MCP is TRANSPORT realizing 'Chat Is The Only Wire' onto /chat — not a new unit.",
@@ -973,7 +973,7 @@
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "a80d2b16479ff37eb558314f827294e8aa77f91187a3611cc2bcbeb1c3f09db8",
+            "sha256": "1a07827d0cb48d58c2bf62b55c0e6ad3d7ebfae5c22f72182a04968de91cb1ac",
             "integrity": "sha256"
           }
         ],
@@ -1203,7 +1203,7 @@
         ],
         "display": {
           "layer": "network (peers, transports, neighborhoods, federation)",
-          "summary": "Once you have a runtime + identity, how organisms find and talk to each other. The capstone god-spec is rapp-neighborhood-protocol/1.0 — it owns the vocabulary and the rapp-twin-chat/1.0 §6 envelope (delegating the §8 seal to rapp-sealed). rapp-messaging/1.0 profiles human trust, memory projection, consent, group epochs, and delivery over that existing wire. Everything else is a §5 transport or a §-profile carrying that same envelope, never a new peer type: rapp-commons-protocol/2.0 (open global town square), rapp-vneighborhood/1.0 (private brandable front-door template), rapp-network/1.0 (project-twin fan-out), rapp-estate/1.1 (operator-wide discovery, 'the network is the backup'), rapp-mcp-spec/1.0 (MCP host onto /chat), rapp-kite ('the string' CDP operator tools), rapp-resident (always-on Azure cloud relay; 'kited is the floor, this is the ceiling').",
+          "summary": "Once you have a runtime + identity, how organisms find and talk to each other. The capstone god-spec is rapp-neighborhood-protocol/1.0 — it owns the vocabulary and the rapp-twin-chat/1.0 §6 envelope (delegating the §8 seal to rapp-sealed). rapp-messaging/1.0 profiles human trust, memory projection, consent, group epochs, and delivery over that existing wire. Everything else is a §5 transport or a §-profile carrying that same envelope, never a new peer type: rapp-commons-protocol/2.0 (open global town square), rapp-vneighborhood/1.0 (private brandable front-door template), rapp-network/1.0 (project-twin fan-out), rapp-estate/1.1 (operator-wide discovery, 'the network is the backup'), rapp-mcp-spec/2.0 (MCP host onto /chat), rapp-kite ('the string' CDP operator tools), rapp-resident (always-on Azure cloud relay; 'kited is the floor, this is the ceiling').",
           "protocols": [
             "rapp-neighborhood-protocol/1.0 (owns rapp-twin-chat/1.0 §6)",
             "rapp-messaging/1.0 (+ rapp-messaging-imessage/1.0)",
@@ -1211,7 +1211,7 @@
             "rapp-vneighborhood/1.0",
             "rapp-network/1.0",
             "rapp-estate/1.1 (+ rapp-network-beacon/1.1)",
-            "rapp-mcp-spec/1.0",
+            "rapp-mcp-spec/2.0",
             "rapp-kite (operator tooling)",
             "rapp-resident (cloud relay)"
           ]
@@ -1938,11 +1938,11 @@
         }
       },
       {
-        "id": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+        "id": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
         "type": "protocol",
-        "label": "rapp-mcp-spec/1.0",
+        "label": "rapp-mcp-spec/2.0",
         "repo": "kody-w/rapp-mcp",
-        "canonical_protocol_identity": "rapp-mcp-spec/1.0",
+        "canonical_protocol_identity": "rapp-mcp-spec/2.0",
         "layer_id": "layer:network",
         "lifecycle": "active",
         "status": "unresolved",
@@ -1981,11 +1981,11 @@
         "aliases": [
           "kody-w/rapp-mcp",
           "rapp-mcp",
-          "rapp-mcp-spec/1.0"
+          "rapp-mcp-spec/2.0"
         ],
         "display": {
           "registry_index": 12,
-          "spec_id": "rapp-mcp-spec/1.0",
+          "spec_id": "rapp-mcp-spec/2.0",
           "repo": "kody-w/rapp-mcp",
           "layer": "network",
           "purpose": "Bring RAPP onto any MCP host (zero-dep stdlib): serve a folder of *_agent.py as MCP tools, bridge a whole running brainstem as one tool, or serve a static CDN catalog. MCP is TRANSPORT realizing 'Chat Is The Only Wire' onto /chat — not a new unit.",
@@ -7410,7 +7410,7 @@
         "label": "An AI in Claude Desktop / Copilot CLI / Cursor needs to use my local agents or my on-device brainstem.",
         "route_index": 4,
         "target_ids": [
-          "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0"
+          "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0"
         ],
         "lifecycle": "active",
         "status": "resolved",
@@ -7424,7 +7424,7 @@
         "display": {
           "situation": "An AI in Claude Desktop / Copilot CLI / Cursor needs to use my local agents or my on-device brainstem.",
           "use": [
-            "rapp-mcp-spec/1.0"
+            "rapp-mcp-spec/2.0"
           ],
           "why": "MCP is TRANSPORT realizing 'Chat Is The Only Wire' onto /chat — serve a folder as tools, bridge a running brainstem as one tool, or serve a static catalog. It reaches the same cartridge, never a new unit."
         }
@@ -8968,9 +8968,9 @@
         }
       },
       {
-        "id": "issue:material:56879919da0bbf86",
+        "id": "issue:material:2cd92f926b374902",
         "type": "issue",
-        "label": "rapp-mcp-spec/1.0 in kody-w/rapp-mcp has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
+        "label": "rapp-mcp-spec/2.0 in kody-w/rapp-mcp has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
         "lifecycle": "not_applicable",
         "status": "unresolved",
         "materiality": "gap",
@@ -8981,14 +8981,14 @@
         "conformance": "not_applicable",
         "aliases": [],
         "display": {
-          "id": "issue:material:56879919da0bbf86",
+          "id": "issue:material:2cd92f926b374902",
           "type": "issue",
           "kind": "material",
-          "summary": "rapp-mcp-spec/1.0 in kody-w/rapp-mcp has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
+          "summary": "rapp-mcp-spec/2.0 in kody-w/rapp-mcp has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
           "severity": "blocking",
           "blocking": true,
           "related_node_ids": [
-            "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+            "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
             "repo:kody-w/rapp-mcp"
           ],
           "source": "generated.required_material",
@@ -9824,7 +9824,7 @@
       {
         "from": "artifact:registry.json",
         "type": "declares",
-        "to": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0"
+        "to": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0"
       },
       {
         "from": "artifact:registry.json",
@@ -10577,6 +10577,16 @@
         "to": "repo:kody-w/rapp-frame-net"
       },
       {
+        "from": "issue:material:2cd92f926b374902",
+        "type": "affects",
+        "to": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0"
+      },
+      {
+        "from": "issue:material:2cd92f926b374902",
+        "type": "affects",
+        "to": "repo:kody-w/rapp-mcp"
+      },
+      {
         "from": "issue:material:2dc434483f7e4a73",
         "type": "affects",
         "to": "protocol:kody-w/rapp-dataverse/rapp-dataverse/1.0"
@@ -10625,16 +10635,6 @@
         "from": "issue:material:5001349d64046d25",
         "type": "affects",
         "to": "repo:kody-w/rapp-estate"
-      },
-      {
-        "from": "issue:material:56879919da0bbf86",
-        "type": "affects",
-        "to": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0"
-      },
-      {
-        "from": "issue:material:56879919da0bbf86",
-        "type": "affects",
-        "to": "repo:kody-w/rapp-mcp"
       },
       {
         "from": "issue:material:5899f4076540cf06",
@@ -11278,17 +11278,17 @@
         "to": "evidence:foundation/pillars/rapp-leviathan-egg/1.0@kody-w/rapp-leviathan-hub"
       },
       {
-        "from": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+        "from": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
         "type": "has_issue",
-        "to": "issue:material:56879919da0bbf86"
+        "to": "issue:material:2cd92f926b374902"
       },
       {
-        "from": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+        "from": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
         "type": "in_layer",
         "to": "layer:network"
       },
       {
-        "from": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+        "from": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
         "type": "owned_by",
         "to": "repo:kody-w/rapp-mcp"
       },
@@ -11864,9 +11864,9 @@
       {
         "from": "route:2ba91861b3c84cb2",
         "type": "routes_to",
-        "to": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+        "to": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
         "order": 0,
-        "display_target": "rapp-mcp-spec/1.0"
+        "display_target": "rapp-mcp-spec/2.0"
       },
       {
         "from": "route:2ba91861b3c84cb2",
@@ -12523,6 +12523,11 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "documents_issue",
+        "to": "issue:material:2cd92f926b374902"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "documents_issue",
         "to": "issue:material:2dc434483f7e4a73"
       },
       {
@@ -12544,11 +12549,6 @@
         "from": "spine:rapp-spine%2F1.1",
         "type": "documents_issue",
         "to": "issue:material:5001349d64046d25"
-      },
-      {
-        "from": "spine:rapp-spine%2F1.1",
-        "type": "documents_issue",
-        "to": "issue:material:56879919da0bbf86"
       },
       {
         "from": "spine:rapp-spine%2F1.1",
@@ -13109,7 +13109,7 @@
       "protocol:kody-w/wrap_leviathan/entry",
       "protocol:kody-w/rappterbook/entry",
       "protocol:kody-w/rapp-static-apis/rapp-static-api/1.0",
-      "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+      "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
       "protocol:kody-w/rapp-egg-hub/rapp-rappid-spec/2.0",
       "protocol:kody-w/twin-egg-hatcher/entry",
       "protocol:kody-w/rapp-carts/rapp-cart/1.0",
@@ -13279,7 +13279,7 @@
       "issue:material:4172a18374adb0fd",
       "issue:material:859c12f45e2cb368",
       "issue:material:e8faf0545618570e",
-      "issue:material:56879919da0bbf86",
+      "issue:material:2cd92f926b374902",
       "issue:material:e965f8e88439d6e4",
       "issue:material:0189b254c5c9f89a",
       "issue:material:4f8d57ad6c888205",
@@ -13334,7 +13334,7 @@
         "protocol:kody-w/wrap_leviathan/entry",
         "protocol:kody-w/rappterbook/entry",
         "protocol:kody-w/rapp-static-apis/rapp-static-api/1.0",
-        "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+        "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
         "protocol:kody-w/rapp-egg-hub/rapp-rappid-spec/2.0",
         "protocol:kody-w/twin-egg-hatcher/entry",
         "protocol:kody-w/rapp-carts/rapp-cart/1.0",
@@ -13504,7 +13504,7 @@
         "issue:material:4172a18374adb0fd",
         "issue:material:859c12f45e2cb368",
         "issue:material:e8faf0545618570e",
-        "issue:material:56879919da0bbf86",
+        "issue:material:2cd92f926b374902",
         "issue:material:e965f8e88439d6e4",
         "issue:material:0189b254c5c9f89a",
         "issue:material:4f8d57ad6c888205",
@@ -13943,14 +13943,14 @@
       "source_role": "canonical_material"
     },
     {
-      "id": "issue:material:56879919da0bbf86",
+      "id": "issue:material:2cd92f926b374902",
       "type": "issue",
       "kind": "material",
-      "summary": "rapp-mcp-spec/1.0 in kody-w/rapp-mcp has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
+      "summary": "rapp-mcp-spec/2.0 in kody-w/rapp-mcp has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
       "severity": "blocking",
       "blocking": true,
       "related_node_ids": [
-        "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+        "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
         "repo:kody-w/rapp-mcp"
       ],
       "source": "generated.required_material",
