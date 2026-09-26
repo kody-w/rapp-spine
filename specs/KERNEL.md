@@ -10,6 +10,26 @@
 - **depends on:** `rapp-installer` (the grail repo), the GitHub substrate (raw CDN, tags, Pages)
 - **referenced by:** `rapp-distro/1.0` (a distro PINS a kernel tag), `rapp-god` (drift detection), `rappid eternity` (content-address of the kernel artifact)
 
+> ### ⚠ Live-agents correction notice (recorded 2026-09-26, not yet a versioned amendment)
+>
+> This spec documents the grail kernel, but §2.3, §3, §7 and Appendix A misdescribe which files it
+> loads. Every grail release since `v0.1.0` (`kody-w/rapp-installer` `8220932`, 2026-03-05) discovers
+> only the **top-level** `agents/*_agent.py` files; only the grail's pre-release cores, from its
+> first core `91d13ce` (2026-02-24) to `c5be5d5` (2026-03-05), globbed recursively. (RAPP's own copy
+> of the kernel recursed from `c1f356e` to `06d16f1`, 2026-04-21 to 2026-05-01, so RAPP's tags
+> `brainstem-v0.10.0` to `brainstem-v0.12.1` shipped a recursive loader; it has been flat since.)
+>
+> RAPP proposal 0001 ([kody-w/RAPP#119](https://github.com/kody-w/RAPP/pull/119), `a879530`),
+> implemented by the constitutional amendment
+> [kody-w/RAPP#124](https://github.com/kody-w/RAPP/pull/124) (`e045fc3`), states the rule: live
+> agents are only the top-level `agents/*_agent.py` files, discovered fresh on every `/chat`;
+> every folder under `agents/` is organization only and never loads, whatever its name, so no
+> folder name is reserved; loading or unloading an agent is a plain file move.
+>
+> The notes marked **Correction (2026-09-26)** below govern where they sit, and the wording they
+> correct is kept as superseded. No grail kernel's behavior changes, and every drop-in that runs
+> on one keeps running.
+
 > **One-line definition.** The *kernel* is a single file — `brainstem.py` — that serves exactly one wire (`POST /chat`) and auto-discovers exactly one extension point (drop-in agents). Every release of the kernel is an **immutable, annotated git tag** `brainstem-vX.Y.Z`. The ABI those agents are written against is **frozen**: any agent written for any prior `vX` MUST run unmodified on every later kernel of the same MAJOR. This is the RAPP rendering of "never break userspace."
 
 ---
@@ -139,6 +159,15 @@ Guarantees: `/chat` accepts `user_input` + optional `conversation_history`/`sess
 
 The kernel discovers agents from the **`agents/` tree** by the filename pattern **`*_agent.py`**. Discovery is fresh on every `/chat` request — edit a file and the next request picks it up, no restart. Reserved subdirectories `experimental_agents/` and `disabled_agents/` are **excluded** from discovery and are reserved names a conforming kernel will never auto-load. Everything else under `agents/` is the user's to organize (subdirectories for swarms/stacks are allowed). The pattern `*_agent.py`, the reserved-dir exclusions, and the reload-per-request semantics are frozen.
 
+> **Correction (2026-09-26).** This note governs; the paragraph above is superseded where it
+> differs (see the notice at the top). The kernel discovers agents only from the **top level** of
+> `agents/`, by the filename pattern `*_agent.py`, fresh on every `/chat` request. Every folder
+> under `agents/` is organization only and never loads, whatever its name: `experimental_agents/`
+> and `disabled_agents/` are folders like any other, and no folder name is reserved. Subfolders
+> stay allowed for organizing; moving a file to the top of `agents/` loads it, and moving it into
+> any folder unloads it. The frozen parts of ABI-3 are the top-level `*_agent.py` pattern and the
+> reload-per-request semantics.
+
 ### 2.4 ABI-4 — The import shims
 
 So that agents authored for the cloud tier (CommunityRAPP / Azure Functions) run locally unmodified, the kernel injects `sys.modules` at import time. The frozen shim:
@@ -176,6 +205,10 @@ The kernel version in `VERSION` is `MAJOR.MINOR.PATCH`. The rule binds the meani
 - `POST /chat` keeps its request/response shape;
 - `*_agent.py` auto-discovery + reserved-dir exclusions keep working;
 - the `utils.azure_file_storage` shim keeps resolving.
+
+> **Correction (2026-09-26).** Read the third item as "top-level `agents/*_agent.py` discovery
+> keeps working" (§2.3, as corrected). No folder name is reserved, so there are no reserved-dir
+> exclusions to keep.
 
 **An ABI break is a last resort, not a feature.** A MAJOR bump is a governance event (a Constitution-level decision), not a routine release. The bias is overwhelmingly toward *additive* MINOR changes. If a capability can be delivered as a new optional kwarg, a new agent, or new behavior behind `/chat`, it MUST be — never as a breaking change to ABI-1..4.
 
@@ -262,6 +295,10 @@ A server is a conforming **`rapp-kernel/1.0`** if and only if **all** hold:
 2. **The frozen ABI.** It auto-discovers `agents/**/*_agent.py` (excluding `experimental_agents/` and `disabled_agents/`), instantiates classes extending `BasicAgent`, builds tools from `metadata`, calls `perform(**kwargs)`, reads back a string, and honors the `utils.azure_file_storage` shim — i.e. a drop-in written for any `1.x` kernel runs unmodified.
 3. **A matching tag.** Its `VERSION` equals `X.Y.Z` and it was shipped at an immutable annotated tag `brainstem-vX.Y.Z` (legacy `vX.Y.Z` accepted on read) traceable to the grail.
 
+> **Correction (2026-09-26).** In item 2, read "auto-discovers `agents/**/*_agent.py` (excluding
+> `experimental_agents/` and `disabled_agents/`)" as "auto-discovers the top-level
+> `agents/*_agent.py` files, and nothing in any folder under `agents/`" (§2.3, as corrected).
+
 A server that adds capability only through drop-in agents, never moves a tag, and never breaks a prior drop-in **remains conformant forever**. That permanence is the foundation the neighborhoods → estate → metropolis mesh is built on.
 
 ---
@@ -299,6 +336,10 @@ wire:  POST /chat {user_input, conversation_history?, session_id?} -> success {r
 shim:  from utils.azure_file_storage import AzureFileStorageManager   (→ local)
 guarantee: works on every 1.x kernel, unmodified, forever.
 ```
+
+> **Correction (2026-09-26).** Read the `file:` line as `agents/<name>_agent.py`, at the top level
+> of `agents/` only: a file in any folder under `agents/` is parked and never loads (§2.3, as
+> corrected).
 
 ## Appendix B — Relationship to the estate
 

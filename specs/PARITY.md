@@ -109,6 +109,13 @@ This is the heart of parity. Per `/chat` call, in order:
 2. **Discover agents** fresh from the agent source (`rapp-kernel/1.0` auto-discovery:
    recursive `*_agent.py`, excluding `experimental_agents/` and `disabled_agents/`). Agents
    are reloaded **every request** in the dev/reference runtime (no warm cache survives an edit). A *deployed immutable substrate-distro* (e.g. T2 on Azure, where the agent set cannot change between requests) MAY cache agents IFF observable output is identical — a permitted substrate optimization (§0.5), never a loop change.
+
+   > **Correction (2026-09-26).** `rapp-kernel/1.0` auto-discovery is the top-level
+   > `agents/*_agent.py` files only: every folder under the agent source is organization only
+   > and never loads, whatever its name, and no folder name is reserved (`rapp-kernel/1.0` §2.3,
+   > as corrected; RAPP proposal 0001, [kody-w/RAPP#124](https://github.com/kody-w/RAPP/pull/124)).
+   > This note governs the parenthetical above, which is kept as superseded.
+
 3. **Build tools** = `[agent.to_tool() for agent in agents]`, or `null`/absent if there are
    no agents. Each tool is the OpenAI function schema `{"type":"function","function":
    {"name","description","parameters"}}` derived from the agent's `metadata`.
