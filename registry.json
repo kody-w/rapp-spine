@@ -394,9 +394,9 @@
       "repo": "kody-w/openrappter",
       "layer": "runtime",
       "purpose": "The consumer-facing RAPP machine AI: an OpenClaw-class local experience built to preserve the RAPP /chat loop and hot-load the same drop-in *_agent.py cartridges, while translating RAPP concepts to and from OpenClaw-compatible UI, channel, and skill surfaces. OpenRappter is chat-first: natural language over /chat creates and configures the experience; UI views render conversation and state rather than defining capability through forms. It may use its own Python+TypeScript implementation architecture; brainstem.py remains the reference kernel shape, not a file OpenRappter must vendor. Local state lives under ~/.openrappter/, while prompts and channel payloads may leave the machine for the configured provider. The lineage was running by Groundhog Day 2025, before its first public release.",
-      "when_to_use": "When you want the full consumer AI living on a machine \u2014 daemon, desktop/web UI, channels, memory, and OpenClaw interoperability \u2014 while retaining RAPP cartridge compatibility. Its runtime contract is published as openrappter-runtime/1.0 in SPEC.md; it has not been independently assessed against the reference kernel.",
+      "when_to_use": "When you want the full consumer AI living on a machine \u2014 daemon, desktop/web UI, channels, memory, and OpenClaw interoperability \u2014 while retaining RAPP cartridge compatibility. Its runtime contract was published as openrappter-runtime/1.0 in SPEC.md until kody-w/openrappter 758c7cd (2026-09-12, \"rewrite: remove the legacy product tree\") removed that file from main; the spine pins its last text, at 9e8349d. It has not been independently assessed against the reference kernel.",
       "entry_point": "curl -fsSL https://kody-w.github.io/openrappter/install.sh | bash (or hand skills.md to any AI agent to self-install)",
-      "raw_url": "https://raw.githubusercontent.com/kody-w/openrappter/main/SPEC.md",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/openrappter/9e8349dbf5dc7982b5e9b4fbd49e508220467441/SPEC.md",
       "conformance": {
         "state": "not_assessed"
       }

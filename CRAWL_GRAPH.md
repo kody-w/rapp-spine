@@ -98,7 +98,7 @@
 | 11 | `protocol:kody-w/rapp/rapp-agent/1.0` | protocol | active | unresolved | required | UNRESOLVED |
 | 12 | `protocol:kody-w/communityrapp/entry` | protocol | active | unresolved | required | UNRESOLVED |
 | 13 | `protocol:kody-w/rapp-brainstem-sdk/entry` | protocol | active | unresolved | required | UNRESOLVED |
-| 14 | `protocol:kody-w/openrappter/openrappter-runtime/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/openrappter/main/SPEC.md |
+| 14 | `protocol:kody-w/openrappter/openrappter-runtime/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/openrappter/9e8349dbf5dc7982b5e9b4fbd49e508220467441/SPEC.md |
 | 15 | `protocol:kody-w/rappterbox/rappterbox-console-spec/1.0` | protocol | active | unresolved | required | UNRESOLVED |
 | 16 | `protocol:kody-w/rapp-installer/rapp-agent/1.0` | protocol | active | unresolved | required | UNRESOLVED |
 | 17 | `protocol:kody-w/leviathan/leviathan/1.0` | protocol | active | unresolved | required | UNRESOLVED |
