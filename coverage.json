@@ -5,7 +5,7 @@
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "a80d2b16479ff37eb558314f827294e8aa77f91187a3611cc2bcbeb1c3f09db8"
+      "sha256": "b63a0f644c88aada5e3dcc550a8ecb00ee846a7ccdb3debb9e8a695130469b42"
     },
     "foundation": {
       "path": "foundation.json",
@@ -59,7 +59,7 @@
       "protocol:kody-w/wrap_leviathan/entry",
       "protocol:kody-w/rappterbook/entry",
       "protocol:kody-w/rapp-static-apis/rapp-static-api/1.0",
-      "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+      "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
       "protocol:kody-w/rapp-egg-hub/rapp-rappid-spec/2.0",
       "protocol:kody-w/twin-egg-hatcher/entry",
       "protocol:kody-w/rapp-carts/rapp-cart/1.0",
@@ -133,7 +133,7 @@
         "role": "canonical_material"
       },
       {
-        "node_id": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+        "node_id": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
         "role": "canonical_material"
       },
       {
@@ -247,7 +247,7 @@
       "issue:material:4172a18374adb0fd",
       "issue:material:859c12f45e2cb368",
       "issue:material:e8faf0545618570e",
-      "issue:material:56879919da0bbf86",
+      "issue:material:2cd92f926b374902",
       "issue:material:e965f8e88439d6e4",
       "issue:material:0189b254c5c9f89a",
       "issue:material:4f8d57ad6c888205",

@@ -5,7 +5,7 @@
   "inputs": {
     "registry": {
       "path": "registry.json",
-      "sha256": "a80d2b16479ff37eb558314f827294e8aa77f91187a3611cc2bcbeb1c3f09db8"
+      "sha256": "b63a0f644c88aada5e3dcc550a8ecb00ee846a7ccdb3debb9e8a695130469b42"
     },
     "foundation": {
       "path": "foundation.json",
@@ -118,14 +118,14 @@
     },
     {
       "layer": "runtime (the engine)",
-      "summary": "What actually runs single-file *_agent.py cartridges through one /chat tool-calling loop. The reference kernel is rapp-agent/1.0 in kody-w/rapp-installer; substrate-distros may implement the same locked loop and frozen agent ABI on different machinery. CommunityRAPP, rapp-brainstem-sdk, rappterbox, and rapp-dataverse occupy that family. OpenRappter is the intended consumer-facing machine AI and RAPP<->OpenClaw Rosetta stone; its current Python+TypeScript release has not yet proved runtime parity, so it remains a conformance target rather than a second kernel.",
+      "summary": "What actually runs single-file *_agent.py cartridges through one /chat tool-calling loop. The reference kernel is rapp-agent/1.0 in kody-w/rapp-installer; substrate-distros may implement the same locked loop and frozen agent ABI on different machinery. CommunityRAPP, rapp-brainstem-sdk, rappterbox, and rapp-dataverse occupy that family. OpenRappter's former consumer-facing RAPP runtime contract is archived historical material: main removed SPEC.md and the legacy product tree in 2026-09, so the spine pins the last text only for audit, not as a live runtime target.",
       "protocols": [
         "rapp-agent/1.0 (grail: rapp-installer)",
         "rappterbox-console-spec/1.0",
         "rapp-dataverse/1.0",
         "CommunityRAPP (Tier-2, no slug)",
         "rapp-brainstem-sdk (no slug)",
-        "openrappter (consumer substrate-distro; parity target incomplete)"
+        "openrappter-runtime/1.0 (DEPRECATED historical consumer substrate-distro contract)"
       ]
     },
     {
@@ -155,7 +155,7 @@
     },
     {
       "layer": "network (peers, transports, neighborhoods, federation)",
-      "summary": "Once you have a runtime + identity, how organisms find and talk to each other. The capstone god-spec is rapp-neighborhood-protocol/1.0 — it owns the vocabulary and the rapp-twin-chat/1.0 §6 envelope (delegating the §8 seal to rapp-sealed). rapp-messaging/1.0 profiles human trust, memory projection, consent, group epochs, and delivery over that existing wire. Everything else is a §5 transport or a §-profile carrying that same envelope, never a new peer type: rapp-commons-protocol/2.0 (open global town square), rapp-vneighborhood/1.0 (private brandable front-door template), rapp-network/1.0 (project-twin fan-out), rapp-estate/1.1 (operator-wide discovery, 'the network is the backup'), rapp-mcp-spec/1.0 (MCP host onto /chat), rapp-kite ('the string' CDP operator tools), rapp-resident (always-on Azure cloud relay; 'kited is the floor, this is the ceiling').",
+      "summary": "Once you have a runtime + identity, how organisms find and talk to each other. The capstone god-spec is rapp-neighborhood-protocol/1.0 — it owns the vocabulary and the rapp-twin-chat/1.0 §6 envelope (delegating the §8 seal to rapp-sealed). rapp-messaging/1.0 profiles human trust, memory projection, consent, group epochs, and delivery over that existing wire. Everything else is a §5 transport or a §-profile carrying that same envelope, never a new peer type: rapp-commons-protocol/2.0 (open global town square), rapp-vneighborhood/1.0 (private brandable front-door template), rapp-network/1.0 (project-twin fan-out), rapp-estate/1.1 (operator-wide discovery, 'the network is the backup'), rapp-mcp-spec/2.0 (MCP host onto /chat), rapp-kite ('the string' CDP operator tools), rapp-resident (always-on Azure cloud relay; 'kited is the floor, this is the ceiling').",
       "protocols": [
         "rapp-neighborhood-protocol/1.0 (owns rapp-twin-chat/1.0 §6)",
         "rapp-messaging/1.0 (+ rapp-messaging-imessage/1.0)",
@@ -163,7 +163,7 @@
         "rapp-vneighborhood/1.0",
         "rapp-network/1.0",
         "rapp-estate/1.1 (+ rapp-network-beacon/1.1)",
-        "rapp-mcp-spec/1.0",
+        "rapp-mcp-spec/2.0",
         "rapp-kite (operator tooling)",
         "rapp-resident (cloud relay)"
       ]
@@ -205,16 +205,16 @@
       "why": "stdlib-only headless runtime serving the same /chat envelope in real CPython — the headless twin of the browser vBrainstem, ideal for secret/network agents and automation."
     },
     {
-      "situation": "I want OpenRappter: a consumer-facing, chat-first AI that lives on my machine, hot-loads RAPP agent.py cartridges, and maps RAPP concepts to OpenClaw-compatible experiences.",
+      "situation": "I need the historical OpenRappter RAPP runtime contract that used to describe a consumer-facing, chat-first AI with hot-loaded RAPP agent.py cartridges.",
       "use": [
-        "OpenRappter consumer substrate-distro (RAPP parity target; currently incomplete)"
+        "OpenRappter archived consumer substrate-distro contract (DEPRECATED historical pin)"
       ],
-      "why": "OpenRappter is the full machine-resident RAPP experience and a bidirectional RAPP<->OpenClaw Rosetta stone. Conversation is the control surface: capabilities and configuration are generated through natural language over /chat, while UI views render conversation and state instead of becoming a competing form-driven authority. It may implement the kernel loop with its own architecture, but conformance requires the same /chat behavior and frozen drop-in agent.py ABI. The lineage was running by Groundhog Day 2025, before its first public release; current Python+TypeScript releases have not yet attested RAPP runtime parity."
+      "why": "The former OpenRappter SPEC.md described a full machine-resident RAPP experience and a bidirectional RAPP<->OpenClaw Rosetta stone. That contract was removed from main by kody-w/openrappter 758c7cd (2026-09-12, \"rewrite: remove the legacy product tree\"). The spine pins its last published text at 9e8349d so crawlers can audit what existed, but the active openrappter main is now a different RAPP Work app and this pin is not a live conformance target."
     },
     {
       "situation": "An AI in Claude Desktop / Copilot CLI / Cursor needs to use my local agents or my on-device brainstem.",
       "use": [
-        "rapp-mcp-spec/1.0"
+        "rapp-mcp-spec/2.0"
       ],
       "why": "MCP is TRANSPORT realizing 'Chat Is The Only Wire' onto /chat — serve a folder as tools, bridge a running brainstem as one tool, or serve a static catalog. It reaches the same cartridge, never a new unit."
     },
@@ -467,10 +467,10 @@
       "spec_id": "openrappter-runtime/1.0",
       "repo": "kody-w/openrappter",
       "layer": "runtime",
-      "purpose": "The consumer-facing RAPP machine AI: an OpenClaw-class local experience built to preserve the RAPP /chat loop and hot-load the same drop-in *_agent.py cartridges, while translating RAPP concepts to and from OpenClaw-compatible UI, channel, and skill surfaces. OpenRappter is chat-first: natural language over /chat creates and configures the experience; UI views render conversation and state rather than defining capability through forms. It may use its own Python+TypeScript implementation architecture; brainstem.py remains the reference kernel shape, not a file OpenRappter must vendor. Local state lives under ~/.openrappter/, while prompts and channel payloads may leave the machine for the configured provider. The lineage was running by Groundhog Day 2025, before its first public release.",
-      "when_to_use": "When you want the full consumer AI living on a machine — daemon, desktop/web UI, channels, memory, and OpenClaw interoperability — while retaining RAPP cartridge compatibility. Its runtime contract is published as openrappter-runtime/1.0 in SPEC.md; it has not been independently assessed against the reference kernel.",
-      "entry_point": "curl -fsSL https://kody-w.github.io/openrappter/install.sh | bash (or hand skills.md to any AI agent to self-install)",
-      "raw_url": "https://raw.githubusercontent.com/kody-w/openrappter/main/SPEC.md",
+      "purpose": "DEPRECATED historical OpenRappter runtime contract: a consumer-facing RAPP machine AI and OpenClaw-class local experience that described preserving the RAPP /chat loop and hot-loading the same drop-in *_agent.py cartridges. kody-w/openrappter main removed SPEC.md and the legacy product tree at 758c7cd (2026-09-12, \"rewrite: remove the legacy product tree\"); the current mainline is a different RAPP Work app. This entry pins the last published SPEC.md text for audit only.",
+      "when_to_use": "Historical audit only. Read this pin when you need to know what openrappter-runtime/1.0 said before it was archived and removed from main. Do not treat it as the active OpenRappter contract, a current installer path, or evidence of runtime conformance.",
+      "entry_point": "HISTORICAL ONLY: read the pinned SPEC.md at 9e8349d. The former installer surface is not advertised here as a live RAPP runtime entry point.",
+      "raw_url": "https://raw.githubusercontent.com/kody-w/openrappter/9e8349dbf5dc7982b5e9b4fbd49e508220467441/SPEC.md",
       "conformance": {
         "state": "not_assessed"
       }
@@ -546,7 +546,7 @@
       "entry_point": "Copy template/ into a new repo, edit manifest.json, run python3 build.py -> registry.json + api/v1/*.json. SPEC.md in repo."
     },
     {
-      "spec_id": "rapp-mcp-spec/1.0",
+      "spec_id": "rapp-mcp-spec/2.0",
       "repo": "kody-w/rapp-mcp",
       "layer": "network",
       "purpose": "Bring RAPP onto any MCP host (zero-dep stdlib): serve a folder of *_agent.py as MCP tools, bridge a whole running brainstem as one tool, or serve a static CDN catalog. MCP is TRANSPORT realizing 'Chat Is The Only Wire' onto /chat — not a new unit.",
@@ -973,7 +973,7 @@
             "availability": "declared",
             "read_only": true,
             "method": "GET",
-            "sha256": "a80d2b16479ff37eb558314f827294e8aa77f91187a3611cc2bcbeb1c3f09db8",
+            "sha256": "b63a0f644c88aada5e3dcc550a8ecb00ee846a7ccdb3debb9e8a695130469b42",
             "integrity": "sha256"
           }
         ],
@@ -1112,14 +1112,14 @@
         ],
         "display": {
           "layer": "runtime (the engine)",
-          "summary": "What actually runs single-file *_agent.py cartridges through one /chat tool-calling loop. The reference kernel is rapp-agent/1.0 in kody-w/rapp-installer; substrate-distros may implement the same locked loop and frozen agent ABI on different machinery. CommunityRAPP, rapp-brainstem-sdk, rappterbox, and rapp-dataverse occupy that family. OpenRappter is the intended consumer-facing machine AI and RAPP<->OpenClaw Rosetta stone; its current Python+TypeScript release has not yet proved runtime parity, so it remains a conformance target rather than a second kernel.",
+          "summary": "What actually runs single-file *_agent.py cartridges through one /chat tool-calling loop. The reference kernel is rapp-agent/1.0 in kody-w/rapp-installer; substrate-distros may implement the same locked loop and frozen agent ABI on different machinery. CommunityRAPP, rapp-brainstem-sdk, rappterbox, and rapp-dataverse occupy that family. OpenRappter's former consumer-facing RAPP runtime contract is archived historical material: main removed SPEC.md and the legacy product tree in 2026-09, so the spine pins the last text only for audit, not as a live runtime target.",
           "protocols": [
             "rapp-agent/1.0 (grail: rapp-installer)",
             "rappterbox-console-spec/1.0",
             "rapp-dataverse/1.0",
             "CommunityRAPP (Tier-2, no slug)",
             "rapp-brainstem-sdk (no slug)",
-            "openrappter (consumer substrate-distro; parity target incomplete)"
+            "openrappter-runtime/1.0 (DEPRECATED historical consumer substrate-distro contract)"
           ]
         }
       },
@@ -1203,7 +1203,7 @@
         ],
         "display": {
           "layer": "network (peers, transports, neighborhoods, federation)",
-          "summary": "Once you have a runtime + identity, how organisms find and talk to each other. The capstone god-spec is rapp-neighborhood-protocol/1.0 — it owns the vocabulary and the rapp-twin-chat/1.0 §6 envelope (delegating the §8 seal to rapp-sealed). rapp-messaging/1.0 profiles human trust, memory projection, consent, group epochs, and delivery over that existing wire. Everything else is a §5 transport or a §-profile carrying that same envelope, never a new peer type: rapp-commons-protocol/2.0 (open global town square), rapp-vneighborhood/1.0 (private brandable front-door template), rapp-network/1.0 (project-twin fan-out), rapp-estate/1.1 (operator-wide discovery, 'the network is the backup'), rapp-mcp-spec/1.0 (MCP host onto /chat), rapp-kite ('the string' CDP operator tools), rapp-resident (always-on Azure cloud relay; 'kited is the floor, this is the ceiling').",
+          "summary": "Once you have a runtime + identity, how organisms find and talk to each other. The capstone god-spec is rapp-neighborhood-protocol/1.0 — it owns the vocabulary and the rapp-twin-chat/1.0 §6 envelope (delegating the §8 seal to rapp-sealed). rapp-messaging/1.0 profiles human trust, memory projection, consent, group epochs, and delivery over that existing wire. Everything else is a §5 transport or a §-profile carrying that same envelope, never a new peer type: rapp-commons-protocol/2.0 (open global town square), rapp-vneighborhood/1.0 (private brandable front-door template), rapp-network/1.0 (project-twin fan-out), rapp-estate/1.1 (operator-wide discovery, 'the network is the backup'), rapp-mcp-spec/2.0 (MCP host onto /chat), rapp-kite ('the string' CDP operator tools), rapp-resident (always-on Azure cloud relay; 'kited is the floor, this is the ceiling').",
           "protocols": [
             "rapp-neighborhood-protocol/1.0 (owns rapp-twin-chat/1.0 §6)",
             "rapp-messaging/1.0 (+ rapp-messaging-imessage/1.0)",
@@ -1211,7 +1211,7 @@
             "rapp-vneighborhood/1.0",
             "rapp-network/1.0",
             "rapp-estate/1.1 (+ rapp-network-beacon/1.1)",
-            "rapp-mcp-spec/1.0",
+            "rapp-mcp-spec/2.0",
             "rapp-kite (operator tooling)",
             "rapp-resident (cloud relay)"
           ]
@@ -1421,7 +1421,7 @@
         "repo": "kody-w/openrappter",
         "canonical_protocol_identity": "openrappter-runtime/1.0",
         "layer_id": "layer:runtime",
-        "lifecycle": "active",
+        "lifecycle": "deprecated",
         "status": "resolved",
         "materiality": "required",
         "material_profile": "registry-protocol",
@@ -1432,7 +1432,7 @@
           {
             "role": "canonical_material",
             "required": true,
-            "target": "https://raw.githubusercontent.com/kody-w/openrappter/main/SPEC.md",
+            "target": "https://raw.githubusercontent.com/kody-w/openrappter/9e8349dbf5dc7982b5e9b4fbd49e508220467441/SPEC.md",
             "availability": "declared",
             "read_only": true,
             "method": "GET"
@@ -1441,7 +1441,7 @@
         "entry_points": [
           {
             "kind": "canonical_read",
-            "target": "https://raw.githubusercontent.com/kody-w/openrappter/main/SPEC.md",
+            "target": "https://raw.githubusercontent.com/kody-w/openrappter/9e8349dbf5dc7982b5e9b4fbd49e508220467441/SPEC.md",
             "method": "GET",
             "read_only": true,
             "safe_for_crawl": true
@@ -1455,7 +1455,7 @@
           },
           {
             "kind": "display_only",
-            "display": "curl -fsSL https://kody-w.github.io/openrappter/install.sh | bash (or hand skills.md to any AI agent to self-install)",
+            "display": "HISTORICAL ONLY: read the pinned SPEC.md at 9e8349d. The former installer surface is not advertised here as a live RAPP runtime entry point.",
             "read_only": false,
             "safe_for_crawl": false,
             "policy": "never_execute"
@@ -1472,10 +1472,10 @@
           "spec_id": "openrappter-runtime/1.0",
           "repo": "kody-w/openrappter",
           "layer": "runtime",
-          "purpose": "The consumer-facing RAPP machine AI: an OpenClaw-class local experience built to preserve the RAPP /chat loop and hot-load the same drop-in *_agent.py cartridges, while translating RAPP concepts to and from OpenClaw-compatible UI, channel, and skill surfaces. OpenRappter is chat-first: natural language over /chat creates and configures the experience; UI views render conversation and state rather than defining capability through forms. It may use its own Python+TypeScript implementation architecture; brainstem.py remains the reference kernel shape, not a file OpenRappter must vendor. Local state lives under ~/.openrappter/, while prompts and channel payloads may leave the machine for the configured provider. The lineage was running by Groundhog Day 2025, before its first public release.",
-          "when_to_use": "When you want the full consumer AI living on a machine — daemon, desktop/web UI, channels, memory, and OpenClaw interoperability — while retaining RAPP cartridge compatibility. Its runtime contract is published as openrappter-runtime/1.0 in SPEC.md; it has not been independently assessed against the reference kernel.",
-          "entry_point": "curl -fsSL https://kody-w.github.io/openrappter/install.sh | bash (or hand skills.md to any AI agent to self-install)",
-          "raw_url": "https://raw.githubusercontent.com/kody-w/openrappter/main/SPEC.md",
+          "purpose": "DEPRECATED historical OpenRappter runtime contract: a consumer-facing RAPP machine AI and OpenClaw-class local experience that described preserving the RAPP /chat loop and hot-loading the same drop-in *_agent.py cartridges. kody-w/openrappter main removed SPEC.md and the legacy product tree at 758c7cd (2026-09-12, \"rewrite: remove the legacy product tree\"); the current mainline is a different RAPP Work app. This entry pins the last published SPEC.md text for audit only.",
+          "when_to_use": "Historical audit only. Read this pin when you need to know what openrappter-runtime/1.0 said before it was archived and removed from main. Do not treat it as the active OpenRappter contract, a current installer path, or evidence of runtime conformance.",
+          "entry_point": "HISTORICAL ONLY: read the pinned SPEC.md at 9e8349d. The former installer surface is not advertised here as a live RAPP runtime entry point.",
+          "raw_url": "https://raw.githubusercontent.com/kody-w/openrappter/9e8349dbf5dc7982b5e9b4fbd49e508220467441/SPEC.md",
           "conformance": {
             "state": "not_assessed"
           }
@@ -1938,11 +1938,11 @@
         }
       },
       {
-        "id": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+        "id": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
         "type": "protocol",
-        "label": "rapp-mcp-spec/1.0",
+        "label": "rapp-mcp-spec/2.0",
         "repo": "kody-w/rapp-mcp",
-        "canonical_protocol_identity": "rapp-mcp-spec/1.0",
+        "canonical_protocol_identity": "rapp-mcp-spec/2.0",
         "layer_id": "layer:network",
         "lifecycle": "active",
         "status": "unresolved",
@@ -1981,11 +1981,11 @@
         "aliases": [
           "kody-w/rapp-mcp",
           "rapp-mcp",
-          "rapp-mcp-spec/1.0"
+          "rapp-mcp-spec/2.0"
         ],
         "display": {
           "registry_index": 12,
-          "spec_id": "rapp-mcp-spec/1.0",
+          "spec_id": "rapp-mcp-spec/2.0",
           "repo": "kody-w/rapp-mcp",
           "layer": "network",
           "purpose": "Bring RAPP onto any MCP host (zero-dep stdlib): serve a folder of *_agent.py as MCP tools, bridge a whole running brainstem as one tool, or serve a static CDN catalog. MCP is TRANSPORT realizing 'Chat Is The Only Wire' onto /chat — not a new unit.",
@@ -7380,9 +7380,9 @@
         }
       },
       {
-        "id": "route:1d3e46640dd04d9c",
+        "id": "route:01603e5219158a73",
         "type": "route",
-        "label": "I want OpenRappter: a consumer-facing, chat-first AI that lives on my machine, hot-loads RAPP agent.py cartridges, and maps RAPP concepts to OpenClaw-compatible experiences.",
+        "label": "I need the historical OpenRappter RAPP runtime contract that used to describe a consumer-facing, chat-first AI with hot-loaded RAPP agent.py cartridges.",
         "route_index": 3,
         "target_ids": [
           "protocol:kody-w/openrappter/openrappter-runtime/1.0"
@@ -7397,11 +7397,11 @@
         "conformance": "not_applicable",
         "aliases": [],
         "display": {
-          "situation": "I want OpenRappter: a consumer-facing, chat-first AI that lives on my machine, hot-loads RAPP agent.py cartridges, and maps RAPP concepts to OpenClaw-compatible experiences.",
+          "situation": "I need the historical OpenRappter RAPP runtime contract that used to describe a consumer-facing, chat-first AI with hot-loaded RAPP agent.py cartridges.",
           "use": [
-            "OpenRappter consumer substrate-distro (RAPP parity target; currently incomplete)"
+            "OpenRappter archived consumer substrate-distro contract (DEPRECATED historical pin)"
           ],
-          "why": "OpenRappter is the full machine-resident RAPP experience and a bidirectional RAPP<->OpenClaw Rosetta stone. Conversation is the control surface: capabilities and configuration are generated through natural language over /chat, while UI views render conversation and state instead of becoming a competing form-driven authority. It may implement the kernel loop with its own architecture, but conformance requires the same /chat behavior and frozen drop-in agent.py ABI. The lineage was running by Groundhog Day 2025, before its first public release; current Python+TypeScript releases have not yet attested RAPP runtime parity."
+          "why": "The former OpenRappter SPEC.md described a full machine-resident RAPP experience and a bidirectional RAPP<->OpenClaw Rosetta stone. That contract was removed from main by kody-w/openrappter 758c7cd (2026-09-12, \"rewrite: remove the legacy product tree\"). The spine pins its last published text at 9e8349d so crawlers can audit what existed, but the active openrappter main is now a different RAPP Work app and this pin is not a live conformance target."
         }
       },
       {
@@ -7410,7 +7410,7 @@
         "label": "An AI in Claude Desktop / Copilot CLI / Cursor needs to use my local agents or my on-device brainstem.",
         "route_index": 4,
         "target_ids": [
-          "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0"
+          "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0"
         ],
         "lifecycle": "active",
         "status": "resolved",
@@ -7424,7 +7424,7 @@
         "display": {
           "situation": "An AI in Claude Desktop / Copilot CLI / Cursor needs to use my local agents or my on-device brainstem.",
           "use": [
-            "rapp-mcp-spec/1.0"
+            "rapp-mcp-spec/2.0"
           ],
           "why": "MCP is TRANSPORT realizing 'Chat Is The Only Wire' onto /chat — serve a folder as tools, bridge a running brainstem as one tool, or serve a static catalog. It reaches the same cartridge, never a new unit."
         }
@@ -8968,9 +8968,9 @@
         }
       },
       {
-        "id": "issue:material:56879919da0bbf86",
+        "id": "issue:material:2cd92f926b374902",
         "type": "issue",
-        "label": "rapp-mcp-spec/1.0 in kody-w/rapp-mcp has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
+        "label": "rapp-mcp-spec/2.0 in kody-w/rapp-mcp has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
         "lifecycle": "not_applicable",
         "status": "unresolved",
         "materiality": "gap",
@@ -8981,14 +8981,14 @@
         "conformance": "not_applicable",
         "aliases": [],
         "display": {
-          "id": "issue:material:56879919da0bbf86",
+          "id": "issue:material:2cd92f926b374902",
           "type": "issue",
           "kind": "material",
-          "summary": "rapp-mcp-spec/1.0 in kody-w/rapp-mcp has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
+          "summary": "rapp-mcp-spec/2.0 in kody-w/rapp-mcp has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
           "severity": "blocking",
           "blocking": true,
           "related_node_ids": [
-            "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+            "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
             "repo:kody-w/rapp-mcp"
           ],
           "source": "generated.required_material",
@@ -9824,7 +9824,7 @@
       {
         "from": "artifact:registry.json",
         "type": "declares",
-        "to": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0"
+        "to": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0"
       },
       {
         "from": "artifact:registry.json",
@@ -10577,6 +10577,16 @@
         "to": "repo:kody-w/rapp-frame-net"
       },
       {
+        "from": "issue:material:2cd92f926b374902",
+        "type": "affects",
+        "to": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0"
+      },
+      {
+        "from": "issue:material:2cd92f926b374902",
+        "type": "affects",
+        "to": "repo:kody-w/rapp-mcp"
+      },
+      {
         "from": "issue:material:2dc434483f7e4a73",
         "type": "affects",
         "to": "protocol:kody-w/rapp-dataverse/rapp-dataverse/1.0"
@@ -10625,16 +10635,6 @@
         "from": "issue:material:5001349d64046d25",
         "type": "affects",
         "to": "repo:kody-w/rapp-estate"
-      },
-      {
-        "from": "issue:material:56879919da0bbf86",
-        "type": "affects",
-        "to": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0"
-      },
-      {
-        "from": "issue:material:56879919da0bbf86",
-        "type": "affects",
-        "to": "repo:kody-w/rapp-mcp"
       },
       {
         "from": "issue:material:5899f4076540cf06",
@@ -11278,17 +11278,17 @@
         "to": "evidence:foundation/pillars/rapp-leviathan-egg/1.0@kody-w/rapp-leviathan-hub"
       },
       {
-        "from": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+        "from": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
         "type": "has_issue",
-        "to": "issue:material:56879919da0bbf86"
+        "to": "issue:material:2cd92f926b374902"
       },
       {
-        "from": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+        "from": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
         "type": "in_layer",
         "to": "layer:network"
       },
       {
-        "from": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+        "from": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
         "type": "owned_by",
         "to": "repo:kody-w/rapp-mcp"
       },
@@ -11788,6 +11788,18 @@
         "to": "repo:kody-w/wrap_leviathan"
       },
       {
+        "from": "route:01603e5219158a73",
+        "type": "routes_to",
+        "to": "protocol:kody-w/openrappter/openrappter-runtime/1.0",
+        "order": 0,
+        "display_target": "OpenRappter archived consumer substrate-distro contract (DEPRECATED historical pin)"
+      },
+      {
+        "from": "route:01603e5219158a73",
+        "type": "uses_artifact",
+        "to": "artifact:registry.json"
+      },
+      {
         "from": "route:03168f410f414c50",
         "type": "routes_to",
         "to": "protocol:kody-w/rapp-vneighborhood/rapp-vneighborhood/1.0",
@@ -11831,18 +11843,6 @@
         "to": "artifact:registry.json"
       },
       {
-        "from": "route:1d3e46640dd04d9c",
-        "type": "routes_to",
-        "to": "protocol:kody-w/openrappter/openrappter-runtime/1.0",
-        "order": 0,
-        "display_target": "OpenRappter consumer substrate-distro (RAPP parity target; currently incomplete)"
-      },
-      {
-        "from": "route:1d3e46640dd04d9c",
-        "type": "uses_artifact",
-        "to": "artifact:registry.json"
-      },
-      {
         "from": "route:2ac04bb4e193b2a3",
         "type": "routes_to",
         "to": "evidence:foundation/law/rapp-constitution%20%28kernel%29@kody-w/rapp",
@@ -11864,9 +11864,9 @@
       {
         "from": "route:2ba91861b3c84cb2",
         "type": "routes_to",
-        "to": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+        "to": "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
         "order": 0,
-        "display_target": "rapp-mcp-spec/1.0"
+        "display_target": "rapp-mcp-spec/2.0"
       },
       {
         "from": "route:2ba91861b3c84cb2",
@@ -12523,6 +12523,11 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "documents_issue",
+        "to": "issue:material:2cd92f926b374902"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "documents_issue",
         "to": "issue:material:2dc434483f7e4a73"
       },
       {
@@ -12544,11 +12549,6 @@
         "from": "spine:rapp-spine%2F1.1",
         "type": "documents_issue",
         "to": "issue:material:5001349d64046d25"
-      },
-      {
-        "from": "spine:rapp-spine%2F1.1",
-        "type": "documents_issue",
-        "to": "issue:material:56879919da0bbf86"
       },
       {
         "from": "spine:rapp-spine%2F1.1",
@@ -12663,6 +12663,11 @@
       {
         "from": "spine:rapp-spine%2F1.1",
         "type": "indexes_route",
+        "to": "route:01603e5219158a73"
+      },
+      {
+        "from": "spine:rapp-spine%2F1.1",
+        "type": "indexes_route",
         "to": "route:03168f410f414c50"
       },
       {
@@ -12674,11 +12679,6 @@
         "from": "spine:rapp-spine%2F1.1",
         "type": "indexes_route",
         "to": "route:152a48fe4a72c994"
-      },
-      {
-        "from": "spine:rapp-spine%2F1.1",
-        "type": "indexes_route",
-        "to": "route:1d3e46640dd04d9c"
       },
       {
         "from": "spine:rapp-spine%2F1.1",
@@ -13109,7 +13109,7 @@
       "protocol:kody-w/wrap_leviathan/entry",
       "protocol:kody-w/rappterbook/entry",
       "protocol:kody-w/rapp-static-apis/rapp-static-api/1.0",
-      "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+      "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
       "protocol:kody-w/rapp-egg-hub/rapp-rappid-spec/2.0",
       "protocol:kody-w/twin-egg-hatcher/entry",
       "protocol:kody-w/rapp-carts/rapp-cart/1.0",
@@ -13222,7 +13222,7 @@
       "route:d1bab4e9255f37b5",
       "route:9ee1d7ba7b480968",
       "route:a3a910356fd3b15f",
-      "route:1d3e46640dd04d9c",
+      "route:01603e5219158a73",
       "route:2ba91861b3c84cb2",
       "route:152a48fe4a72c994",
       "route:059801a9ef580801",
@@ -13279,7 +13279,7 @@
       "issue:material:4172a18374adb0fd",
       "issue:material:859c12f45e2cb368",
       "issue:material:e8faf0545618570e",
-      "issue:material:56879919da0bbf86",
+      "issue:material:2cd92f926b374902",
       "issue:material:e965f8e88439d6e4",
       "issue:material:0189b254c5c9f89a",
       "issue:material:4f8d57ad6c888205",
@@ -13334,7 +13334,7 @@
         "protocol:kody-w/wrap_leviathan/entry",
         "protocol:kody-w/rappterbook/entry",
         "protocol:kody-w/rapp-static-apis/rapp-static-api/1.0",
-        "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+        "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
         "protocol:kody-w/rapp-egg-hub/rapp-rappid-spec/2.0",
         "protocol:kody-w/twin-egg-hatcher/entry",
         "protocol:kody-w/rapp-carts/rapp-cart/1.0",
@@ -13447,7 +13447,7 @@
         "route:d1bab4e9255f37b5",
         "route:9ee1d7ba7b480968",
         "route:a3a910356fd3b15f",
-        "route:1d3e46640dd04d9c",
+        "route:01603e5219158a73",
         "route:2ba91861b3c84cb2",
         "route:152a48fe4a72c994",
         "route:059801a9ef580801",
@@ -13504,7 +13504,7 @@
         "issue:material:4172a18374adb0fd",
         "issue:material:859c12f45e2cb368",
         "issue:material:e8faf0545618570e",
-        "issue:material:56879919da0bbf86",
+        "issue:material:2cd92f926b374902",
         "issue:material:e965f8e88439d6e4",
         "issue:material:0189b254c5c9f89a",
         "issue:material:4f8d57ad6c888205",
@@ -13943,14 +13943,14 @@
       "source_role": "canonical_material"
     },
     {
-      "id": "issue:material:56879919da0bbf86",
+      "id": "issue:material:2cd92f926b374902",
       "type": "issue",
       "kind": "material",
-      "summary": "rapp-mcp-spec/1.0 in kody-w/rapp-mcp has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
+      "summary": "rapp-mcp-spec/2.0 in kody-w/rapp-mcp has no exact canonical material URL; the routing display is retained, but exhaustive reading cannot claim this node complete.",
       "severity": "blocking",
       "blocking": true,
       "related_node_ids": [
-        "protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0",
+        "protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0",
         "repo:kody-w/rapp-mcp"
       ],
       "source": "generated.required_material",

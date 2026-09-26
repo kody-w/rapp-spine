@@ -21,8 +21,8 @@
 | I need persistent memory, an always-on cloud body, or a path to Copilot Studio + Teams (Tier 2/3). | CommunityRAPP (Tier-2 Azure Functions) | `protocol:kody-w/communityrapp/entry` |
 | I need persistent memory, an always-on cloud body, or a path to Copilot Studio + Teams (Tier 2/3). | rapp-dataverse/1.0 | `protocol:kody-w/rapp-dataverse/rapp-dataverse/1.0` |
 | I need a brainstem for curl/CI/MCP/scripts with no Flask, no browser, no Copilot subscription. | rapp-brainstem-sdk (vbrainstem_sdk.py) | `protocol:kody-w/rapp-brainstem-sdk/entry` |
-| I want OpenRappter: a consumer-facing, chat-first AI that lives on my machine, hot-loads RAPP agent.py cartridges, and maps RAPP concepts to OpenClaw-compatible experiences. | OpenRappter consumer substrate-distro (RAPP parity target; currently incomplete) | `protocol:kody-w/openrappter/openrappter-runtime/1.0` |
-| An AI in Claude Desktop / Copilot CLI / Cursor needs to use my local agents or my on-device brainstem. | rapp-mcp-spec/1.0 | `protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0` |
+| I need the historical OpenRappter RAPP runtime contract that used to describe a consumer-facing, chat-first AI with hot-loaded RAPP agent.py cartridges. | OpenRappter archived consumer substrate-distro contract (DEPRECATED historical pin) | `protocol:kody-w/openrappter/openrappter-runtime/1.0` |
+| An AI in Claude Desktop / Copilot CLI / Cursor needs to use my local agents or my on-device brainstem. | rapp-mcp-spec/2.0 | `protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0` |
 | I need a Rappter to remember everyone across direct and group conversations without leaking confidences, and to honor explicit natural-language consent when a fact may be shared. | rapp-messaging/1.0 | `protocol:kody-w/rapp-messaging/rapp-messaging/1.0` |
 | I need a Rappter to remember everyone across direct and group conversations without leaking confidences, and to honor explicit natural-language consent when a fact may be shared. | rapp-messaging-imessage/1.0 (when the transport is iMessage) | `protocol:kody-w/rapp-messaging/rapp-messaging/1.0` |
 | I want to package ONE capability for a nontechnical user who should never see ports or code. | rapp-cart/1.0 | `protocol:kody-w/rapp-carts/rapp-cart/1.0` |
@@ -98,7 +98,7 @@
 | 11 | `protocol:kody-w/rapp/rapp-agent/1.0` | protocol | active | unresolved | required | UNRESOLVED |
 | 12 | `protocol:kody-w/communityrapp/entry` | protocol | active | unresolved | required | UNRESOLVED |
 | 13 | `protocol:kody-w/rapp-brainstem-sdk/entry` | protocol | active | unresolved | required | UNRESOLVED |
-| 14 | `protocol:kody-w/openrappter/openrappter-runtime/1.0` | protocol | active | resolved | required | https://raw.githubusercontent.com/kody-w/openrappter/main/SPEC.md |
+| 14 | `protocol:kody-w/openrappter/openrappter-runtime/1.0` | protocol | deprecated | resolved | required | https://raw.githubusercontent.com/kody-w/openrappter/9e8349dbf5dc7982b5e9b4fbd49e508220467441/SPEC.md |
 | 15 | `protocol:kody-w/rappterbox/rappterbox-console-spec/1.0` | protocol | active | unresolved | required | UNRESOLVED |
 | 16 | `protocol:kody-w/rapp-installer/rapp-agent/1.0` | protocol | active | unresolved | required | UNRESOLVED |
 | 17 | `protocol:kody-w/leviathan/leviathan/1.0` | protocol | active | unresolved | required | UNRESOLVED |
@@ -107,7 +107,7 @@
 | 20 | `protocol:kody-w/wrap_leviathan/entry` | protocol | unpublished | unresolved | required | UNRESOLVED |
 | 21 | `protocol:kody-w/rappterbook/entry` | protocol | unpublished | unresolved | required | UNRESOLVED |
 | 22 | `protocol:kody-w/rapp-static-apis/rapp-static-api/1.0` | protocol | active | unresolved | required | UNRESOLVED |
-| 23 | `protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0` | protocol | active | unresolved | required | UNRESOLVED |
+| 23 | `protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0` | protocol | active | unresolved | required | UNRESOLVED |
 | 24 | `protocol:kody-w/rapp-egg-hub/rapp-rappid-spec/2.0` | protocol | active | unresolved | required | UNRESOLVED |
 | 25 | `protocol:kody-w/twin-egg-hatcher/entry` | protocol | active | unresolved | required | UNRESOLVED |
 | 26 | `protocol:kody-w/rapp-carts/rapp-cart/1.0` | protocol | active | unresolved | required | UNRESOLVED |
@@ -220,7 +220,7 @@
 | 133 | `route:d1bab4e9255f37b5` | route | active | resolved | routing | — |
 | 134 | `route:9ee1d7ba7b480968` | route | active | resolved | routing | — |
 | 135 | `route:a3a910356fd3b15f` | route | active | resolved | routing | — |
-| 136 | `route:1d3e46640dd04d9c` | route | active | resolved | routing | — |
+| 136 | `route:01603e5219158a73` | route | active | resolved | routing | — |
 | 137 | `route:2ba91861b3c84cb2` | route | active | resolved | routing | — |
 | 138 | `route:152a48fe4a72c994` | route | active | resolved | routing | — |
 | 139 | `route:059801a9ef580801` | route | active | resolved | routing | — |
@@ -277,7 +277,7 @@
 | 190 | `issue:material:4172a18374adb0fd` | issue | not_applicable | unresolved | gap | — |
 | 191 | `issue:material:859c12f45e2cb368` | issue | not_applicable | unresolved | gap | — |
 | 192 | `issue:material:e8faf0545618570e` | issue | not_applicable | unresolved | gap | — |
-| 193 | `issue:material:56879919da0bbf86` | issue | not_applicable | unresolved | gap | — |
+| 193 | `issue:material:2cd92f926b374902` | issue | not_applicable | unresolved | gap | — |
 | 194 | `issue:material:e965f8e88439d6e4` | issue | not_applicable | unresolved | gap | — |
 | 195 | `issue:material:0189b254c5c9f89a` | issue | not_applicable | unresolved | gap | — |
 | 196 | `issue:material:4f8d57ad6c888205` | issue | not_applicable | unresolved | gap | — |
@@ -316,7 +316,7 @@
 | `protocol:kody-w/wrap_leviathan/entry` | canonical_material | unresolved |
 | `protocol:kody-w/rappterbook/entry` | canonical_material | unresolved |
 | `protocol:kody-w/rapp-static-apis/rapp-static-api/1.0` | canonical_material | unresolved |
-| `protocol:kody-w/rapp-mcp/rapp-mcp-spec/1.0` | canonical_material | unresolved |
+| `protocol:kody-w/rapp-mcp/rapp-mcp-spec/2.0` | canonical_material | unresolved |
 | `protocol:kody-w/rapp-egg-hub/rapp-rappid-spec/2.0` | canonical_material | unresolved |
 | `protocol:kody-w/twin-egg-hatcher/entry` | canonical_material | unresolved |
 | `protocol:kody-w/rapp-carts/rapp-cart/1.0` | canonical_material | unresolved |
