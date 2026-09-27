@@ -1,5 +1,9 @@
 # 🦴 rapp-spine
 
+<!-- rapp1:network-header:start -->
+[![RAPP/1](https://kody-w.github.io/rapp-hive-public/portfolio/badges/rapp-spine.svg)](https://github.com/kody-w/rapp-hive-public/blob/main/portfolio/repos/rapp-spine.md) · **New to RAPP?** [Start here: get your Brainstem →](https://github.com/kody-w/rapp-installer#start-here)
+<!-- rapp1:network-header:end -->
+
 **Crawl the spine — and know what to do across the whole RAPP protocol stack for whatever situation you have at hand.**
 
 The RAPP ecosystem is ~60 repos and ~33 load-bearing protocols. The spine is not another protocol — it's the **situational router** over all of them: an ordered column of layers where each layer owns exactly one question, plus a map from *your concrete situation* to *the protocol(s) that govern it* and how to act. `rapp-spine/1.1` adds a deterministic exhaustive crawl graph without changing the existing registry/router display contract.
